@@ -122,16 +122,29 @@ export const fetchUsers = async () => {
 };
 
 // feedback
+
 export const submitFeedback = async (feedbackData) => {
   try {
-    const res = await axios.post("/feedback/", feedbackData);
+    const res = await axios.post('/feedback', feedbackData);
     if (res.status !== 200) {
-      throw new Error("Unable to submit feedback");
+      throw new Error('Unable to submit feedback');
     }
     return res.data;
   } catch (error) {
-    console.error("Error submitting feedback:", error);
+    console.error('Error submitting feedback:', error);
     throw error;
+  }
+};
+
+// session API calls
+
+export const fetchSessionData = async () => {
+  try {
+    const response = await axios.get('/session');
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching session data:', error);
+    throw new Error('Failed to fetch session data');
   }
 };
 
