@@ -26,6 +26,9 @@ export default function Header() {
               <Link to="/schedule">Schedule</Link>
             </li>
             <li>
+              <Link to="/session">Session</Link>
+            </li>
+            <li>
               <Link to="/feedback">Feedback</Link>
             </li>
             <li>
