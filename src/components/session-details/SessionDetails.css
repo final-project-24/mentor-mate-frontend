@@ -1,0 +1,49 @@
+.session-details-container {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: 20px auto;
+}
+
+.session-details-container h2 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.session-details-container p {
+  font-size: 1em;
+  color: #555;
+  margin: 5px 0;
+}
+
+.session-details-container .session-id {
+  font-weight: bold;
+}
+
+.session-details-container .session-description {
+  font-style: italic;
+}
+
+.meeting-link-container {
+  margin-top: 20px;
+}
+
+.meeting-link-container p {
+  font-size: 1em;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.meeting-link {
+  color: #0e892b;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.meeting-link:hover {
+  text-decoration: underline;
+}
+
