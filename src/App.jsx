@@ -4,6 +4,7 @@ import HomePage from "./pages/home-page/HomePage.jsx";
 import Settings from "./pages/settings/Settings.jsx";
 import MatchMaking from "./pages/match-making/MatchMaking.jsx";
 import Schedule from "./pages/schedule/Schedule.jsx";
+import Session from "./pages/session/Session.jsx";
 import Feedback from "./pages/feedback/Feedback.jsx";
 import Authentication from "./pages/authentication/Authentication.jsx";
 import Playground from "./pages/playground/Playground.jsx";
@@ -17,6 +18,7 @@ export default function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/match-making" element={<MatchMaking />} />
           <Route path="/schedule" element={<Schedule />} />
+          <Route path="/session" element={<Session />} />
           <Route path="/feedback" element={<Feedback />} />
           <Route path="/authentication" element={<Authentication />} />
           <Route path="/settings" element={<Settings />} />
