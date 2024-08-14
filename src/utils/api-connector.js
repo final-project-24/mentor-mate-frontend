@@ -177,7 +177,7 @@ export const addAvailability = async (start, end) => {
       end,
       title: "Available",
     });
-    if (res.status !== 200) {
+    if (res.status !== 200 && res.status !== 201) {
       throw new Error("Unable to add availability");
     }
     return res.data;
