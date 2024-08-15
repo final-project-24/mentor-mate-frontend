@@ -11,8 +11,10 @@ const Playground = () => {
     <>
       <Layout>
         {isLoggedIn && <h1 className="greetings">Welcome, {user.userName}!</h1>}
-        {isLoggedIn && user.role === "mentor" && <h2>MENTOOORRRRRRR</h2>}
-        {isLoggedIn && user.role === "mentee" && <h2>MENTEEEEEEEEEE</h2>}
+        {/* {isLoggedIn && user.role === "mentor" && <h2>MENTOOORRRRRRR</h2>} */}
+        {isLoggedIn && user.role.includes("mentor") && <h2>MENTOOORRRRRRR</h2>}
+        {/* {isLoggedIn && user.role === "mentee" && <h2>MENTEEEEEEEEEE</h2>} */}
+        {isLoggedIn && user.role.includes("mentee") && <h2>MENTEEEEEEEEEE</h2>}
         <div className="test">Playground!</div>
         {isLoggedIn && <UserProfile />}
         {isLoggedIn && <UserShowcase />}

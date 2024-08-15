@@ -26,6 +26,7 @@ export const AuthProvider = ({ children }) => {
           email: data.email,
           userName: data.userName,
           role: data.role,
+          originalRole: data.originalRole, // Include originalRole
           image: data.image,
         });
         // Set isLoggedIn to true
@@ -51,6 +52,7 @@ export const AuthProvider = ({ children }) => {
         email: data.email,
         userName: data.userName,
         role: data.role,
+        originalRole: data.originalRole, // Include originalRole
         image: data.image,
       });
       // Set isLoggedIn to true
@@ -83,6 +85,7 @@ export const AuthProvider = ({ children }) => {
         email: data.email,
         userName: data.userName,
         role: data.role,
+        originalRole: data.originalRole, // Include originalRole
         image: data.image,
       });
       // Set isLoggedIn to true
