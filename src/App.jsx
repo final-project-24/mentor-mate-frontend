@@ -5,9 +5,9 @@ import Authentication from "./pages/authentication/Authentication.jsx";
 import Settings from "./pages/settings/Settings.jsx";
 import MatchMaking from "./pages/match-making/MatchMaking.jsx";
 import Schedule from "./pages/schedule/Schedule.jsx";
-import BookingDetails from "./pages/booking-details/BookingDetails.jsx";
+import Booking from "./pages/booking/Booking.jsx";
 import Session from "./pages/session/Session.jsx";
-import Feedback from "./pages/feedback/Feedback.jsx"
+import Feedback from "./pages/feedback/Feedback.jsx";
 import Playground from "./pages/playground/Playground.jsx";
 import NotFound from "./pages/not-found/NotFound.jsx";
 
@@ -21,7 +21,7 @@ export default function App() {
           <Route path="/settings" element={<Settings />} />
           <Route path="/match-making" element={<MatchMaking />} />
           <Route path="/schedule" element={<Schedule />} />
-          <Route path="/booking-details" element={<BookingDetails />} />
+          <Route path="/booking/:id" element={<Booking />} />
           <Route path="/session" element={<Session />} />
           <Route path="/feedback" element={<Feedback />} />
           <Route path="/playground" element={<Playground />} />

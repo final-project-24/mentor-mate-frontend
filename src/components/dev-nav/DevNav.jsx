@@ -3,7 +3,8 @@
 import "./DevNav.css";
 import React from "react";
 import { Link } from "react-router-dom";
-import { useAuthContext } from "../../store/authentication-context/AuthenticationContext.jsx"; //
+import { useAuthContext } from "../../store/authentication-context/AuthenticationContext.jsx";
+import LoginButton from "../login-button/LoginButton.jsx";
 import LogoutButton from "../logout/Logout.jsx";
 
 export default function DevNav() {
@@ -27,7 +28,7 @@ export default function DevNav() {
           <Link to="/schedule">Schedule</Link>
         </li>
         <li>
-          <Link to="/booking-details">Booking Details</Link>
+          <Link to="/booking/:id">Booking</Link>
         </li>
         <li>
           <Link to="/session">Session</Link>
@@ -43,7 +44,7 @@ export default function DevNav() {
       <ul>
         {!isLoggedIn && (
           <li>
-            <Link to="/authentication">Login</Link>{" "}
+            <LoginButton />
           </li>
         )}
       </ul>
