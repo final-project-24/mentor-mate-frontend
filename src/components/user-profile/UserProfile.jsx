@@ -7,12 +7,14 @@ const UserProfile = () => {
   return (
     <>
       {isLoggedIn && (
-        <div className="user-info">
-          <p>Email: {user.email}</p>
-          <p>Name: {user.userName}</p>
-          <p>Role: {user.role}</p>
-          <p>Id: {user.id}</p>
-          <img src={user.image} alt="User" />
+        <div className="user-info flex flex-row-reverse items-center justify-center ">
+          <div className="">
+            <p> {user.email}</p>
+            <p> {user.userName}</p>
+            <p>Role: {user.role}</p>
+            <p className="hidden">Id: {user.id}</p>
+          </div>
+          <img src={user.image} alt="User"  />
         </div>
       )}
     </>

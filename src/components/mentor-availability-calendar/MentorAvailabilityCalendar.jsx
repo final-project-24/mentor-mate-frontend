@@ -103,7 +103,11 @@
 import React, { useState, useEffect } from "react";
 import { Calendar, momentLocalizer } from "react-big-calendar";
 import moment from "moment";
-import { fetchAvailability, addAvailability, bookSlot } from "../../utils/api-connector";
+import {
+  fetchAvailability,
+  addAvailability,
+  bookSlot,
+} from "../../utils/api-connector";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 
 const localizer = momentLocalizer(moment);
@@ -161,19 +165,25 @@ const MentorAvailabilityCalendar = ({ mentorId, userRole }) => {
   };
 
   return (
-    <div className="calendar-container">
-      <Calendar
-        localizer={localizer}
-        events={events}
-        startAccessor="start"
-        endAccessor="end"
-        style={{ height: "100%" }}
-        selectable={userRole === "mentor"}
-        onSelectSlot={handleSelectSlot}
-        onSelectEvent={handleBookSlot}
-      />
+    <div className="calendar-container flex h-screen">
+      <div
+        className={`calendar flex transition-all duration-300 ${
+          selectedSlot ? "w-[70%]" : "w-full"
+        }`}
+      >
+        <Calendar
+          localizer={localizer}
+          events={events}
+          startAccessor="start"
+          endAccessor="end"
+          style={{ height: "100%", width: "100%" }}
+          selectable={userRole === "mentor"}
+          onSelectSlot={handleSelectSlot}
+          onSelectEvent={handleBookSlot}
+        />
+      </div>
       {userRole === "mentor" && selectedSlot && (
-        <div className="mt-4 p-4 bg-blue-100 rounded">
+        <div className="selected-slot-info w-[30%] mt-4 p-4 bg-blue-100 rounded flex flex-col items-center justify-center transition-all duration-300">
           <h3 className="text-lg font-semibold">Add Availability</h3>
           <p>
             Start: {moment(selectedSlot.start).format("MMMM Do YYYY, h:mm a")}

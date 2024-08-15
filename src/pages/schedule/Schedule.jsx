@@ -47,9 +47,9 @@ export default function Schedule() {
   // =======================================
 
   return (
-    <Layout>
+    
       <section id="schedule">
-        <h1>Schedule a Meeting</h1>
+        <h1 className="text-center">Schedule a Meeting</h1>
         {user.role === "mentee" && !selectedMentorId && (
           <div>
             <p>Please select a mentor to view their availability:</p>
@@ -59,7 +59,7 @@ export default function Schedule() {
           </div>
         )}
         {user.role === "mentor" && (
-          <p>Manage your availability calendar below:</p>
+          <p className="text-center">Manage your availability on calendar below:</p>
         )}
         {(selectedMentorId || user.role === "mentor") && (
           <MentorAvailabilityCalendar
@@ -69,6 +69,6 @@ export default function Schedule() {
         )}
         {/* <p>end of page</p> */}
       </section>
-    </Layout>
+    
   );
 }
