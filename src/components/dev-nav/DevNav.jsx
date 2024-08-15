@@ -27,6 +27,9 @@ export default function DevNav() {
           <Link to="/schedule">Schedule</Link>
         </li>
         <li>
+          <Link to="/booking-details">Booking Details</Link>
+        </li>
+        <li>
           <Link to="/session">Session</Link>
         </li>
         <li>
