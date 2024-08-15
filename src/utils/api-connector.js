@@ -126,7 +126,7 @@ export const fetchUsers = async () => {
 export const submitFeedback = async (feedbackData) => {
   try {
     const res = await axios.post('/feedback', feedbackData);
-    if (res.status == 200) {
+    if (res.status !== 200) {
       throw new Error('Unable to submit feedback');
     }
     return res.data;
@@ -135,6 +135,7 @@ export const submitFeedback = async (feedbackData) => {
     throw error;
   }
 };
+
 
 // session API calls
 
