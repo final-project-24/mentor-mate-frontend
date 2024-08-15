@@ -1,11 +1,16 @@
 import "./Playground.css";
+import Loading from "../../components/loading/Loading.jsx";
 import Layout from "../../components/layout/Layout.jsx";
 import UserShowcase from "../../components/showcase-users/ShowcaseUsers.jsx";
 import UserProfile from "../../components/user-profile/UserProfile.jsx";
 import { useAuthContext } from "../../store/authentication-context/AuthenticationContext.jsx";
 
 const Playground = () => {
-  const { isLoggedIn, user } = useAuthContext(); // Use useAuthContext hook to access isLoggedIn state and user object
+  const { loading, isLoggedIn, user } = useAuthContext(); // Use useAuthContext hook to access isLoggedIn state and user object
+
+  if (loading) {
+    return <Loading />;
+  } // or any other loading indicator
 
   return (
     <>

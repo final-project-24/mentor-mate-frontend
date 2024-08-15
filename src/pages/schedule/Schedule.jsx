@@ -3,12 +3,13 @@ import { useAuthContext } from "../../store/authentication-context/Authenticatio
 import { ClipLoader } from "react-spinners";
 import { Link } from "react-router-dom";
 import "./Schedule.css";
+import Loading from "../../components/loading/Loading";
 import Layout from "../../components/layout/Layout";
 import MentorAvailabilityCalendar from "../../components/mentor-availability-calendar/MentorAvailabilityCalendar";
 import ExampleMentorList from "../../components/example-mentor-list/ExampleMentorList.jsx";
 
 export default function Schedule() {
-  const { user } = useAuthContext(); // Use useAuthContext hook to access user information
+  const { loading, user } = useAuthContext(); // Use useAuthContext hook to access user information
   const [selectedMentorId, setSelectedMentorId] = useState(null);
 
   // Function to handle mentor selection
@@ -17,19 +18,10 @@ export default function Schedule() {
     setSelectedMentorId(mentorId);
   };
 
-  // =======================================
-  // if (!user) {
-  //   return <div>Loading...</div>; // or any other loading indicator
-  // }
-  // =======================================
-  // if (!user) {
-  //   return (
-  //     <div className="loading-container">
-  //       <ClipLoader size={50} color={"#123abc"} loading={true} />
-  //     </div>
-  //   ); // or any other loading indicator
-  // }
-  // =======================================
+  if (loading) {
+    return <Loading />;
+  } // or any other loading indicator
+
   if (!user) {
     return (
       <Layout>
