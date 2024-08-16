@@ -2,8 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useAuthContext } from "../../store/authentication-context/AuthenticationContext";
+import "./BookingDetails.css";
 import Loading from "../../components/loading/Loading";
 import Layout from "../../components/layout/Layout";
+import InfoCard from "../info-card/InfoCard";
 
 const BookingDetails = () => {
   const { loading } = useAuthContext(); // Use useAuthContext hook to access user information
@@ -38,21 +40,20 @@ const BookingDetails = () => {
   }
 
   return (
-    <Layout>
-      <div>
-        <h1>Booking Details</h1>
-        <p>
-          <strong>Mentor:</strong> {bookingDetails.userId?.userName || "N/A"}
-        </p>
-        <p>
-          <strong>Start:</strong>{" "}
-          {new Date(bookingDetails.start).toLocaleString()}
-        </p>
-        <p>
-          <strong>End:</strong> {new Date(bookingDetails.end).toLocaleString()}
-        </p>
-      </div>
-    </Layout>
+    <div className="flex-container">
+      <h1>Booking Details</h1>
+
+      <InfoCard
+        // id={bookingDetails.userId._id}
+        image={bookingDetails.userId.image}
+        userName={bookingDetails.userId.userName}
+        // email={bookingDetails.userId.email}
+        // role={bookingDetails.userId.role}
+        // skills={bookingDetails.userId.skills}
+        start={bookingDetails.start}
+        end={bookingDetails.end}
+      />
+    </div>
   );
 };
 

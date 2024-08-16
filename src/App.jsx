@@ -6,6 +6,7 @@ import Settings from "./pages/settings/Settings.jsx";
 import MatchMaking from "./pages/match-making/MatchMaking.jsx";
 import Schedule from "./pages/schedule/Schedule.jsx";
 import Booking from "./pages/booking/Booking.jsx";
+import Terms from "./pages/terms/Terms.jsx";
 import Session from "./pages/session/Session.jsx";
 import Feedback from "./pages/feedback/Feedback.jsx";
 import Playground from "./pages/playground/Playground.jsx";
@@ -22,6 +23,7 @@ export default function App() {
           <Route path="/match-making" element={<MatchMaking />} />
           <Route path="/schedule" element={<Schedule />} />
           <Route path="/booking/:id" element={<Booking />} />
+          <Route path="/terms" element={<Terms />} />
           <Route path="/session" element={<Session />} />
           <Route path="/feedback" element={<Feedback />} />
           <Route path="/playground" element={<Playground />} />

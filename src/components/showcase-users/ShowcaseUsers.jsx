@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./ShowcaseUsers.css";
-import UserCard from "../user-card/UserCard.jsx";
+import InfoCard from "../info-card/InfoCard.jsx";
 import { fetchUsers } from "../../utils/api-connector";
 
 export default function UserShowcase() {
@@ -31,7 +31,7 @@ export default function UserShowcase() {
         <div className="user-container">
           {loadData &&
             Object.keys(userData).map((id) => (
-              <UserCard key={id} id={id} {...userData[id]} />
+              <InfoCard key={id} id={id} {...userData[id]} />
             ))}
         </div>
       </main>
