@@ -121,31 +121,45 @@ export const fetchUsers = async () => {
   }
 };
 
-// feedback
-
-export const submitFeedback = async (feedbackData) => {
+// update user role (admin only)
+export const updateUserRole = async (newRole) => {
   try {
-    const res = await axios.post('/feedback', feedbackData);
-    if (res.status !== 200) {
-      throw new Error('Unable to submit feedback');
-    }
+    const res = await axios.put(`/user/update-role`, {
+      newRole,
+    });
     return res.data;
   } catch (error) {
-    console.error('Error submitting feedback:', error);
+    console.error("Error updating user role:", error);
     throw error;
   }
 };
 
+// feedback API calls ==================================================
 
-// session API calls
+// submit feedback
+export const submitFeedback = async (feedbackData) => {
+  try {
+    const res = await axios.post("/feedback", feedbackData);
+    if (res.status !== 200) {
+      throw new Error("Unable to submit feedback");
+    }
+    return res.data;
+  } catch (error) {
+    console.error("Error submitting feedback:", error);
+    throw error;
+  }
+};
 
+// session API calls ===================================================
+
+// fetch session data
 export const fetchSessionData = async () => {
   try {
-    const response = await axios.get('/session');
+    const response = await axios.get("/session");
     return response.data;
   } catch (error) {
-    console.error('Error fetching session data:', error);
-    throw new Error('Failed to fetch session data');
+    console.error("Error fetching session data:", error);
+    throw new Error("Failed to fetch session data");
   }
 };
 

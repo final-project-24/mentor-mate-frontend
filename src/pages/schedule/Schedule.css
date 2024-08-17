@@ -1,20 +1,13 @@
 /* Schedule.css */
 .calendar-container {
-    height: calc(100vh - 200px); /* Adjust based on your layout */
-    overflow-y: auto;
-    padding: 20px;
+  height: calc(100vh - 200px); /* Adjust based on your layout */
+  overflow-y: auto;
+  padding: 20px;
 }
 
 .availability-form {
-    margin-top: 20px;
-    padding: 20px;
-    background-color: #e0f7fa;
-    border-radius: 8px;
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #e0f7fa;
+  border-radius: 8px;
 }
-
-.loading-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
