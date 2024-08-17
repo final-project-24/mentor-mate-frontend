@@ -1,29 +1,35 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useBookingContext } from "../../store/booking-context/BookingContext";
 import "./TermsAndConditions.css";
 
-const TermsAndConditions = ({ onAgree, id }) => {
-  const [isChecked, setIsChecked] = useState(false);
+const TermsAndConditions = ({ onAgree }) => {
+  const { bookingId, isAgreed, setIsAgreed } = useBookingContext(); // Use the booking context
+  const [isChecked, setIsChecked] = useState(isAgreed); // Use the isAgreed state from the context
   const location = useLocation();
   const navigate = useNavigate();
 
   useEffect(() => {
     if (location.state && location.state.agreed) {
       setIsChecked(true);
+      setIsAgreed(true);
       onAgree(true);
     }
-  }, []);
+    // }, [location.state, onAgree, setIsAgreed]);
+  }, []); // u can't uncheck the checkbox if you use the above line
 
   const handleCheckboxChange = () => {
-    setIsChecked(!isChecked);
-    onAgree(!isChecked);
+    const newCheckedStatus = !isChecked;
+    setIsChecked(newCheckedStatus);
+    setIsAgreed(newCheckedStatus);
+    onAgree(newCheckedStatus);
   };
 
   const handleReadTerms = () => {
-    if (id) {
-      navigate(`/terms?id=${id}`);
+    if (bookingId) {
+      navigate(`/terms?id=${bookingId}`);
     } else {
-      console.error("ID not found in props");
+      console.error("Booking ID not found in context");
     }
   };
 

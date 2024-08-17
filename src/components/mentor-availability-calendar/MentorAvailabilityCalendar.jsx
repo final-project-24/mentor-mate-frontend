@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Calendar, momentLocalizer } from "react-big-calendar";
 import moment from "moment";
 import { useNavigate } from "react-router-dom";
+import { useBookingContext } from "../../store/booking-context/BookingContext";
 import {
   fetchAvailability,
   addAvailability,
@@ -14,6 +15,9 @@ const localizer = momentLocalizer(moment);
 const MentorAvailabilityCalendar = ({ mentorId, userRole }) => {
   const [events, setEvents] = useState([]);
   const [selectedSlot, setSelectedSlot] = useState(null);
+
+  const { setBookingId } = useBookingContext(); // Use the booking context
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchAvailabilityData();
@@ -52,14 +56,13 @@ const MentorAvailabilityCalendar = ({ mentorId, userRole }) => {
     }
   };
 
-  const navigate = useNavigate(); // Use useNavigate hook to access navigate function
-
   const handleBookSlot = async (event) => {
     if (userRole !== "mentee") return;
 
     try {
       await bookSlot(event.id);
       fetchAvailabilityData();
+      setBookingId(event.id); // Set the booking ID in the context
       navigate(`/booking/${event.id}`); // Redirect to BookingDetails page with event ID dhfdf
     } catch (error) {
       console.error("Error booking slot:", error);

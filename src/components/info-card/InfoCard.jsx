@@ -21,19 +21,19 @@ export default function InfoCard({
 
   return (
     <>
-      <div className="user-card">
+      <div className="info-card">
         {image && (
-          <img className="user-card-image" src={image} alt={userName} />
+          <img className="info-card-image" src={image} alt={userName} />
         )}
 
-        <div className="user-card-content">
+        <div className="info-card-content">
           {role && <span className="user-status">{role}</span>}
 
-          {userName && <h3 className="content">Mentor: {userName}</h3>}
+          {userName && <h3 className="info-card-header">Mentor: {userName}</h3>}
 
-          {email && <p className="user-description">{email}</p>}
+          {email && <p className="info-card-content">{email}</p>}
 
-          <p className="content">Topic: English C1.1 - Reading</p>
+          <p className="info-card-content">Topic: English C1.1 - Reading</p>
 
           {skills && skills.length > 0 && (
             <ul className="skills">
@@ -45,7 +45,7 @@ export default function InfoCard({
           )}
 
           {(start || end) && (
-            <ul className="content">
+            <ul className="info-card-content">
               <li>Date and Time:</li>
               {start && <li>Start: {start}</li>}
               {end && <li>End: {end}</li>}

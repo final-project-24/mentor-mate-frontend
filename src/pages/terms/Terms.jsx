@@ -1,37 +1,43 @@
-import React, { useState } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useBookingContext } from "../../store/booking-context/BookingContext";
 import terms from "../../assets/data/terms.json";
+import "./Terms.css";
 
 const Terms = () => {
-  const [isChecked, setIsChecked] = useState(false);
+  const { bookingId, isAgreed, setIsAgreed } = useBookingContext(); // Use the booking context
+  const [isChecked, setIsChecked] = useState(isAgreed); // Use the isAgreed state from the context
   const navigate = useNavigate();
-  const location = useLocation();
+
+  useEffect(() => {
+    setIsChecked(isAgreed);
+  }, [isAgreed]);
 
   const handleCheckboxChange = () => {
-    setIsChecked(!isChecked);
-    if (!isChecked) {
-      const id = new URLSearchParams(location.search).get("id");
-      if (id) {
-        navigate(`/booking/${id}`, { state: { agreed: true } });
+    const newCheckedStatus = !isChecked;
+    setIsChecked(newCheckedStatus);
+    setIsAgreed(newCheckedStatus);
+    if (newCheckedStatus) {
+      if (bookingId) {
+        navigate(`/booking/${bookingId}`, { state: { agreed: true } });
       } else {
-        console.error("ID not found in URL");
+        console.error("Booking ID not found in context");
       }
     }
   };
 
   const handleGoBack = () => {
-    const id = new URLSearchParams(location.search).get("id");
-    if (id) {
-      navigate(`/booking/${id}`, { state: { agreed: isChecked } });
+    if (bookingId) {
+      navigate(`/booking/${bookingId}`, { state: { agreed: isChecked } });
     } else {
-      console.error("ID not found in URL");
+      console.error("Booking ID not found in context");
     }
   };
 
   return (
-    <div className="terms-page">
+    <div className="flex-container">
       <h1>Terms and Conditions</h1>
-      <p>{terms.terms}</p>
+      <p className="terms">{terms.terms}</p>
       <label>
         <input
           type="checkbox"
