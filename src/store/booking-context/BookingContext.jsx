@@ -6,6 +6,8 @@ export const BookingProvider = ({ children }) => {
   const [bookingId, setBookingId] = useState(null);
   const [isAgreed, setIsAgreed] = useState(false);
 
+  // Debug logs ========================================
+
   useEffect(() => {
     console.log("BookingContext initialized");
   }, []);
@@ -18,6 +20,8 @@ export const BookingProvider = ({ children }) => {
     console.log("isAgreed changed:", isAgreed);
   }, [isAgreed]);
 
+  // ==================================================
+
   return (
     <BookingContext.Provider
       value={{ bookingId, setBookingId, isAgreed, setIsAgreed }}
@@ -26,6 +30,10 @@ export const BookingProvider = ({ children }) => {
     </BookingContext.Provider>
   );
 };
+
+// export const useBookingContext = () => useContext(BookingContext);
+
+// export with debug logs ========================================
 
 export const useBookingContext = () => {
   const context = useContext(BookingContext);

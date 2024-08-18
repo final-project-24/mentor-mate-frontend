@@ -15,7 +15,6 @@ const localizer = momentLocalizer(moment);
 const MentorAvailabilityCalendar = ({ mentorId, userRole }) => {
   const [events, setEvents] = useState([]);
   const [selectedSlot, setSelectedSlot] = useState(null);
-
   const { setBookingId } = useBookingContext(); // Use the booking context
   const navigate = useNavigate();
 
@@ -25,7 +24,7 @@ const MentorAvailabilityCalendar = ({ mentorId, userRole }) => {
 
   const fetchAvailabilityData = async () => {
     try {
-      const response = await fetchAvailability(mentorId);
+      const response = await fetchAvailability(mentorId); // efgef the id should be fetched in the backend
       const formattedEvents = response.map((slot) => ({
         start: new Date(slot.start),
         end: new Date(slot.end),

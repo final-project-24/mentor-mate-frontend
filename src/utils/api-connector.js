@@ -166,6 +166,7 @@ export const fetchSessionData = async () => {
 // calendar API calls ==================================================
 
 // fetch availability
+// kjsc id should be fetched in the backend!
 export const fetchAvailability = async (mentorId) => {
   try {
     const res = await axios.get(`/calendar/${mentorId}`, {
