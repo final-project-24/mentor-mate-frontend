@@ -30,4 +30,4 @@ test/
 
 # env
 .env
-
+.env-prod

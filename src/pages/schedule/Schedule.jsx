@@ -1,14 +1,17 @@
 import React, { useState } from "react";
 import { useAuthContext } from "../../store/authentication-context/AuthenticationContext.jsx";
-import { ClipLoader } from "react-spinners";
-import { Link } from "react-router-dom";
+// import { ClipLoader } from "react-spinners";
+// import { Link } from "react-router-dom";
 import "./Schedule.css";
+import Loading from "../../components/loading/Loading";
+import NotLoggedInMessage from "../../components/not-logged-in-message/NotLoggedInMessage";
 import Layout from "../../components/layout/Layout";
+// import LoginButton from "../../components/login-button/LoginButton";
 import MentorAvailabilityCalendar from "../../components/mentor-availability-calendar/MentorAvailabilityCalendar";
 import ExampleMentorList from "../../components/example-mentor-list/ExampleMentorList.jsx";
 
 export default function Schedule() {
-  const { user } = useAuthContext(); // Use useAuthContext hook to access user information
+  const { loading, user } = useAuthContext(); // Use useAuthContext hook to access user information
   const [selectedMentorId, setSelectedMentorId] = useState(null);
 
   // Function to handle mentor selection
@@ -17,34 +20,19 @@ export default function Schedule() {
     setSelectedMentorId(mentorId);
   };
 
-  // =======================================
-  // if (!user) {
-  //   return <div>Loading...</div>; // or any other loading indicator
-  // }
-  // =======================================
-  // if (!user) {
-  //   return (
-  //     <div className="loading-container">
-  //       <ClipLoader size={50} color={"#123abc"} loading={true} />
-  //     </div>
-  //   ); // or any other loading indicator
-  // }
-  // =======================================
+  // If the page is still loading, display a loading indicator
+  if (loading) {
+    return <Loading />;
+  } 
+
+  // If the user is not logged in, display a message to prompt them to log in
   if (!user) {
     return (
       <Layout>
-        <div className="not-logged-in-container">
-          <p>You are not logged in. Please log in to schedule a meeting.</p>
-          <ul>
-            <li>
-              <Link to="/authentication">Login</Link>
-            </li>
-          </ul>
-        </div>
+        <NotLoggedInMessage />
       </Layout>
-    ); // or any other loading indicator
+    );
   }
-  // =======================================
 
   return (
     <Layout>

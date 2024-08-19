@@ -121,10 +121,25 @@ export const fetchUsers = async () => {
   }
 };
 
-// feedback
+// update user role (admin only)
+export const updateUserRole = async (newRole) => {
+  try {
+    const res = await axios.put(`/user/update-role`, {
+      newRole,
+    });
+    return res.data;
+  } catch (error) {
+    console.error("Error updating user role:", error);
+    throw error;
+  }
+};
+
+// feedback API calls ==================================================
+
+// submit feedback
 export const submitFeedback = async (feedbackData) => {
   try {
-    const res = await axios.post("/feedback/", feedbackData);
+    const res = await axios.post("/feedback", feedbackData);
     if (res.status !== 200) {
       throw new Error("Unable to submit feedback");
     }
@@ -132,6 +147,19 @@ export const submitFeedback = async (feedbackData) => {
   } catch (error) {
     console.error("Error submitting feedback:", error);
     throw error;
+  }
+};
+
+// session API calls ===================================================
+
+// fetch session data
+export const fetchSessionData = async () => {
+  try {
+    const response = await axios.get("/session");
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching session data:", error);
+    throw new Error("Failed to fetch session data");
   }
 };
 
@@ -164,7 +192,7 @@ export const addAvailability = async (start, end) => {
       end,
       title: "Available",
     });
-    if (res.status !== 200) {
+    if (res.status !== 200 && res.status !== 201) {
       throw new Error("Unable to add availability");
     }
     return res.data;
