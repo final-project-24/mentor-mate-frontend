@@ -79,10 +79,6 @@ const Booking = () => {
         <h1>Booking Details</h1>
 
         <InfoCard
-          // id={bookingDetails.userId._id}
-          // image={bookingDetails.userId.image}
-          // userName={bookingDetails.userId.userName}
-          id={bookingDetails.mentorId._id} // Use mentorId instead of userId
           image={bookingDetails.mentorId.image} // Use mentorId instead of userId
           userName={bookingDetails.mentorId.userName} // Use mentorId instead of userId
           start={bookingDetails.start}

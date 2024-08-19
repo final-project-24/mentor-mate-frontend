@@ -121,7 +121,7 @@ export const fetchUsers = async () => {
   }
 };
 
-// update user role (admin only)
+// (admin only) ChangeRole.jsx
 export const updateUserRole = async (newRole) => {
   try {
     const res = await axios.put(`/user/update-role`, {
@@ -165,11 +165,10 @@ export const fetchSessionData = async () => {
 
 // calendar API calls ==================================================
 
-// fetch availability
-// kjsc id should be fetched in the backend!
-export const fetchAvailability = async (mentorId) => {
+// MentorAvailabilityCalendar.jsx
+export const fetchAvailability = async (mentorUuid) => {
   try {
-    const res = await axios.get(`/calendar/${mentorId}`, {
+    const res = await axios.get(`/calendar/${mentorUuid}`, {
       params: {
         start: moment().startOf("month").toISOString(),
         end: moment().endOf("month").toISOString(),
@@ -185,7 +184,7 @@ export const fetchAvailability = async (mentorId) => {
   }
 };
 
-// add availability
+// MentorAvailabilityCalendar.jsx
 export const addAvailability = async (start, end) => {
   try {
     const res = await axios.post("/calendar", {
@@ -203,7 +202,7 @@ export const addAvailability = async (start, end) => {
   }
 };
 
-// book slot
+// MentorAvailabilityCalendar.jsx
 export const bookSlot = async (eventId) => {
   try {
     const res = await axios.post(`/calendar/book/${eventId}`);
