@@ -1,18 +1,34 @@
-import React, { useState } from 'react';
-import './FeedbackForm.css'; 
+import React, { useState } from "react";
+import "./FeedbackForm.css";
 
 function FeedbackForm({ isMentor, onSubmit }) {
-  const [comment, setComment] = useState('');
-  const [strengths, setStrengths] = useState('');
-  const [improvement, setImprovement] = useState('');
+  const [comment, setComment] = useState("");
+  const [strengths, setStrengths] = useState("");
+  const [improvement, setImprovement] = useState("");
   const [publicFeedback, setPublicFeedback] = useState(false);
-  const [rating, setRating] = useState(1);  // Default rating set to 1
-  const [additionalComment, setAdditionalComment] = useState('');
+  const [rating, setRating] = useState(1); // Default rating set to 1
+  const [additionalComment, setAdditionalComment] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (isMentor || (comment && (rating || additionalComment))) {  // Ensure feedback is provided if required
-      onSubmit({ comment, strengths, improvement, publicFeedback, rating, additionalComment });
+    console.log("Form submitted with data:", {
+      comment,
+      strengths,
+      improvement,
+      publicFeedback,
+      rating,
+      additionalComment,
+    });
+    if (isMentor || (comment && (rating || additionalComment))) {
+      // Ensure feedback is provided if required
+      onSubmit({
+        comment,
+        strengths,
+        improvement,
+        publicFeedback,
+        rating,
+        additionalComment,
+      });
     } else {
       alert("Please provide feedback.");
     }
@@ -30,7 +46,7 @@ function FeedbackForm({ isMentor, onSubmit }) {
           required={isMentor} // Required for mentors, optional for mentees
         />
       </div>
-      
+
       {isMentor && (
         <>
           <div className="form-group">
@@ -55,7 +71,7 @@ function FeedbackForm({ isMentor, onSubmit }) {
           </div>
         </>
       )}
-      
+
       {!isMentor && (
         <>
           <div className="form-group">
@@ -65,7 +81,7 @@ function FeedbackForm({ isMentor, onSubmit }) {
               value={rating}
               onChange={(e) => setRating(Number(e.target.value))}
             >
-              {[1, 2, 3, 4, 5].map(value => (
+              {[1, 2, 3, 4, 5].map((value) => (
                 <option key={value} value={value}>
                   {value}
                 </option>
@@ -84,7 +100,7 @@ function FeedbackForm({ isMentor, onSubmit }) {
           </div>
         </>
       )}
-      
+
       <button type="submit">Submit Feedback</button>
     </form>
   );
