@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
-import './FeedbackForm.css';
+
+import React, { useState } from "react";
+import "./FeedbackForm.css";
 
 function FeedbackForm({ isMentor, onSubmit }) {
-  const [comment, setComment] = useState('');
-  const [strengths, setStrengths] = useState('');
-  const [improvement, setImprovement] = useState('');
+  const [comment, setComment] = useState("");
+  const [strengths, setStrengths] = useState("");
+  const [improvement, setImprovement] = useState("");
   const [publicFeedback, setPublicFeedback] = useState(false);
   const [rating, setRating] = useState(1); // Default rating set to 1
   const [additionalComment, setAdditionalComment] = useState('');
