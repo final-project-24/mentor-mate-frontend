@@ -12,7 +12,7 @@ export default function Navbar() {
   const { isLoggedIn } = useAuthContext();
 
   const navLinks = [
-    { to: "/", label: "Home" },
+    { to: "/", label: "" },
     { to: "/settings", label: "Settings" },
     { to: "/match-making", label: "Match Making" },
     { to: "/schedule", label: "Schedule" },

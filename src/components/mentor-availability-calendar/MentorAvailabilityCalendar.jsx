@@ -165,7 +165,10 @@ const MentorAvailabilityCalendar = ({ mentorId, userRole }) => {
   };
 
   return (
-    <div className="calendar-container flex h-screen">
+    <div
+      className="calendar-container flex"
+      style={{ height: "calc(100vh - 250px)" }}
+    >
       <div
         className={`calendar flex transition-all duration-300 ${
           selectedSlot ? "w-[70%]" : "w-full"
