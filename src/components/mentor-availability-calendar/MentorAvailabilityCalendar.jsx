@@ -12,20 +12,19 @@ import "react-big-calendar/lib/css/react-big-calendar.css";
 
 const localizer = momentLocalizer(moment);
 
-const MentorAvailabilityCalendar = ({ mentorId, userRole }) => {
-  const [events, setEvents] = useState([]);
-  const [selectedSlot, setSelectedSlot] = useState(null);
-
-  const { setBookingId } = useBookingContext(); // Use the booking context
+const MentorAvailabilityCalendar = ({ mentorUuid, userRole }) => {
+  const [events, setEvents] = useState([]); // State to store the availability events
+  const [selectedSlot, setSelectedSlot] = useState(null); // State to store the selected slot
+  const { setBookingId } = useBookingContext(); // Use the booking context to set the event ID
   const navigate = useNavigate();
 
   useEffect(() => {
     fetchAvailabilityData();
-  }, [mentorId, userRole]);
+  }, [mentorUuid, userRole]); // Fetch availability data when the mentor ID or user role changes
 
   const fetchAvailabilityData = async () => {
     try {
-      const response = await fetchAvailability(mentorId);
+      const response = await fetchAvailability(mentorUuid); // efgef the id should be fetched in the backend
       const formattedEvents = response.map((slot) => ({
         start: new Date(slot.start),
         end: new Date(slot.end),
@@ -36,16 +35,16 @@ const MentorAvailabilityCalendar = ({ mentorId, userRole }) => {
     } catch (error) {
       console.error("Error fetching availability:", error);
     }
-  };
+  }; // Fetch availability data from the API
 
   const handleSelectSlot = (slotInfo) => {
     if (userRole === "mentor") {
       setSelectedSlot(slotInfo);
     }
-  };
+  }; // Handle slot selection
 
   const handleAddAvailability = async () => {
-    if (!selectedSlot) return;
+    if (!selectedSlot) return; // Return if no slot is selected
 
     try {
       await addAvailability(selectedSlot.start, selectedSlot.end);
@@ -54,10 +53,10 @@ const MentorAvailabilityCalendar = ({ mentorId, userRole }) => {
     } catch (error) {
       console.error("Error adding availability:", error);
     }
-  };
+  }; // Handle adding availability
 
   const handleBookSlot = async (event) => {
-    if (userRole !== "mentee") return;
+    if (userRole !== "mentee") return; // Return if the user is not a mentee
 
     try {
       await bookSlot(event.id);
@@ -67,7 +66,7 @@ const MentorAvailabilityCalendar = ({ mentorId, userRole }) => {
     } catch (error) {
       console.error("Error booking slot:", error);
     }
-  };
+  }; // Handle booking a slot
 
   return (
     <div className="calendar-container">

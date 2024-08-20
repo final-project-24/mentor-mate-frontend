@@ -2,8 +2,8 @@ import "./Playground.css";
 import Loading from "../../components/loading/Loading.jsx";
 import Layout from "../../components/layout/Layout.jsx";
 import UserShowcase from "../../components/showcase-users/ShowcaseUsers.jsx";
-import UserProfile from "../../components/user-profile/UserProfile.jsx";
 import { useAuthContext } from "../../store/authentication-context/AuthenticationContext.jsx";
+import InfoCard from "../../components/info-card/InfoCard.jsx";
 
 const Playground = () => {
   const { loading, isLoggedIn, user } = useAuthContext(); // Use useAuthContext hook to access isLoggedIn state and user object
@@ -21,7 +21,14 @@ const Playground = () => {
         {/* {isLoggedIn && user.role === "mentee" && <h2>MENTEEEEEEEEEE</h2>} */}
         {isLoggedIn && user.role.includes("mentee") && <h2>MENTEEEEEEEEEE</h2>}
         <div className="test">Playground!</div>
-        {isLoggedIn && <UserProfile />}
+        {isLoggedIn && (
+          <InfoCard
+            image={user.image}
+            userName={user.userName}
+            role={user.role}
+            email={user.email}
+          />
+        )}
         {isLoggedIn && <UserShowcase />}
       </Layout>
     </>

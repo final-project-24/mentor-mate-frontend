@@ -24,7 +24,8 @@ export const AuthProvider = ({ children }) => {
           console.log("User authenticated:", data); // debug log
           // Set user data in state
           setUser({
-            id: data.id,
+            // id: data.id,
+            // uuid: data.uuid,
             email: data.email,
             userName: data.userName,
             role: data.role,
@@ -57,7 +58,8 @@ export const AuthProvider = ({ children }) => {
       console.log("User logged in:", data); // debug log
       // Set user data in state
       setUser({
-        id: data.id,
+        // id: data.id,
+        // uuid: data.uuid,
         email: data.email,
         userName: data.userName,
         role: data.role,
@@ -92,7 +94,8 @@ export const AuthProvider = ({ children }) => {
       console.log("User signed up:", data); // debug log
       // Set user data in state
       setUser({
-        id: data.id,
+        // id: data.id,
+        // uuid: data.uuid,
         email: data.email,
         userName: data.userName,
         role: data.role,

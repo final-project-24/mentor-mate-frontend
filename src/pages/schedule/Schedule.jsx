@@ -12,18 +12,18 @@ import ExampleMentorList from "../../components/example-mentor-list/ExampleMento
 
 export default function Schedule() {
   const { loading, user } = useAuthContext(); // Use useAuthContext hook to access user information
-  const [selectedMentorId, setSelectedMentorId] = useState(null);
+  const [selectedMentorUuid, setSelectedMentorUuid] = useState(null);
 
   // Function to handle mentor selection
-  const handleMentorSelect = (mentorId) => {
-    console.log(`Selected mentor ID: ${mentorId}`);
-    setSelectedMentorId(mentorId);
+  const handleMentorSelect = (mentorUuid) => {
+    console.log(`Selected mentor UUID: ${mentorUuid}`);
+    setSelectedMentorUuid(mentorUuid);
   };
 
   // If the page is still loading, display a loading indicator
   if (loading) {
     return <Loading />;
-  } 
+  }
 
   // If the user is not logged in, display a message to prompt them to log in
   if (!user) {
@@ -38,7 +38,7 @@ export default function Schedule() {
     <Layout>
       <section id="schedule">
         <h1>Schedule a Meeting</h1>
-        {user.role === "mentee" && !selectedMentorId && (
+        {user.role === "mentee" && !selectedMentorUuid && (
           <div>
             <p>Please select a mentor to view their availability:</p>
             {/* Add a mentor selection component here */}
@@ -49,9 +49,9 @@ export default function Schedule() {
         {user.role === "mentor" && (
           <p>Manage your availability calendar below:</p>
         )}
-        {(selectedMentorId || user.role === "mentor") && (
+        {(selectedMentorUuid || user.role === "mentor") && (
           <MentorAvailabilityCalendar
-            mentorId={selectedMentorId || user.id}
+            mentorUuid={selectedMentorUuid || user.id}
             userRole={user.role}
           />
         )}
