@@ -37,13 +37,13 @@ export default function Schedule() {
   return (
     
       <section id="schedule">
-<<<<<<< HEAD
+
         <h1 className="text-center">Schedule a Meeting</h1>
         {user.role === "mentee" && !selectedMentorId && (
-=======
-        <h1>Schedule a Meeting</h1>
-        {user.role === "mentee" && !selectedMentorUuid && (
->>>>>>> origin/main
+
+        // <h1>Schedule a Meeting</h1>
+        // {user.role === "mentee" && !selectedMentorUuid && (
+
           <div>
             <p>Please select a mentor to view their availability:</p>
             {/* Add a mentor selection component here */}
