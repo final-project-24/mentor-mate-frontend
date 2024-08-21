@@ -27,10 +27,10 @@ const ExampleMentorList = ({ onSelect }) => {
       <ul>
         {mentors.map((mentor, index) => (
           <li
-            key={`${mentor._id}-${index}`}
+            key={`${mentor.uuid}-${index}`}
             onClick={() => {
-              console.log(`Selected mentor object:`, mentor); // Debugging log
-              onSelect(mentor._id);
+              console.log(`🔎 Selected mentor object:`, mentor); // Debugging log
+              onSelect(mentor.uuid);
             }}
           >
             {mentor.userName}

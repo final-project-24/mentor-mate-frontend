@@ -13,23 +13,34 @@ const AuthContext = createContext(null);
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null); // State to hold the current user information
   const [isLoggedIn, setIsLoggedIn] = useState(false); // State to track if the user is logged in
+  const [loading, setLoading] = useState(true); // State to track if any async operations are in progress
 
   // Effect to check user authentication status on component mount
   useEffect(() => {
     async function checkAuthStatus() {
-      const data = await checkUserAuth();
-      if (data) {
-        console.log("User authenticated:", data); // debug log
-        // Set user data in state
-        setUser({
-          id: data.id,
-          email: data.email,
-          userName: data.userName,
-          role: data.role,
-          image: data.image,
-        });
-        // Set isLoggedIn to true
-        setIsLoggedIn(true);
+      try {
+        const data = await checkUserAuth();
+        if (data) {
+          console.log("User authenticated:", data); // debug log
+          // Set user data in state
+          setUser({
+            // id: data.id,
+            // uuid: data.uuid,
+            email: data.email,
+            userName: data.userName,
+            role: data.role,
+            originalRole: data.originalRole, // Include originalRole
+            image: data.image,
+          });
+          // Set isLoggedIn to true
+          setIsLoggedIn(true);
+        }
+        // Set loading to false
+        setLoading(false);
+      } catch (error) {
+        console.error("Error checking authentication status:", error);
+        // Set loading to false
+        setLoading(false);
       }
     }
     checkAuthStatus();
@@ -42,14 +53,18 @@ export const AuthProvider = ({ children }) => {
       console.log("User logged in:", data); // debug log
       // Set user data in state
       setUser({
-        id: data.id,
+        // id: data.id,
+        // uuid: data.uuid,
         email: data.email,
         userName: data.userName,
         role: data.role,
+        originalRole: data.originalRole, // Include originalRole
         image: data.image,
       });
       // Set isLoggedIn to true
       setIsLoggedIn(true);
+      // Set loading to false
+      setLoading(false);
     }
   };
 
@@ -74,14 +89,18 @@ export const AuthProvider = ({ children }) => {
       console.log("User signed up:", data); // debug log
       // Set user data in state
       setUser({
-        id: data.id,
+        // id: data.id,
+        // uuid: data.uuid,
         email: data.email,
         userName: data.userName,
         role: data.role,
+        originalRole: data.originalRole, // Include originalRole
         image: data.image,
       });
       // Set isLoggedIn to true
       setIsLoggedIn(true);
+      // Set loading to false
+      setLoading(false);
     }
   };
 
@@ -91,6 +110,7 @@ export const AuthProvider = ({ children }) => {
     await logoutUser();
     setIsLoggedIn(false); // Set isLoggedIn to false
     setUser(null); // Clear user data
+    setLoading(false); // Set loading to false
     window.location.reload(); // Reload the page to clear any staged data
   };
 
@@ -100,6 +120,7 @@ export const AuthProvider = ({ children }) => {
       value={{
         user, // User data object - use it in the whole app to get user details - also includes role for role-based rendering
         isLoggedIn, // Check if user is logged in- use it in the whole app to show/hide content
+        loading, // Check if any async operations are in progress - use it to show loading indicators
         login, // only needed in login component
         logout, // only needed in logout component
         signup, // only needed in signup component

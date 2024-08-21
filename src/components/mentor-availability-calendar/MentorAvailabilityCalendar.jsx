@@ -1,108 +1,11 @@
-// import React, { useState, useEffect } from "react";
-// import { Calendar, momentLocalizer } from "react-big-calendar";
-// import moment from "moment";
-// import axios from "axios";
-// import "react-big-calendar/lib/css/react-big-calendar.css";
-
-// const localizer = momentLocalizer(moment);
-
-// const MentorAvailabilityCalendar = ({ mentorId, userRole }) => {
-//   const [events, setEvents] = useState([]);
-//   const [selectedSlot, setSelectedSlot] = useState(null);
-
-//   useEffect(() => {
-//     fetchAvailability();
-//   }, [mentorId, userRole]);
-
-//   const fetchAvailability = async () => {
-//     try {
-//       const response = await axios.get(`/calendar/${mentorId}`, {
-//         params: {
-//           start: moment().startOf("month").toISOString(),
-//           end: moment().endOf("month").toISOString(),
-//         },
-//       });
-//       const formattedEvents = response.data.map((slot) => ({
-//         start: new Date(slot.start),
-//         end: new Date(slot.end),
-//         title: slot.title || "Available",
-//         id: slot._id,
-//       }));
-//       setEvents(formattedEvents);
-//     } catch (error) {
-//       console.error("Error fetching availability:", error);
-//     }
-//   };
-
-//   const handleSelectSlot = (slotInfo) => {
-//     if (userRole === "mentor") {
-//       setSelectedSlot(slotInfo);
-//     }
-//   };
-
-//   const handleAddAvailability = async () => {
-//     if (!selectedSlot) return;
-
-//     try {
-//       await axios.post("/calendar", {
-//         start: selectedSlot.start,
-//         end: selectedSlot.end,
-//         title: "Available",
-//       });
-//       fetchAvailability();
-//       setSelectedSlot(null);
-//     } catch (error) {
-//       console.error("Error adding availability:", error);
-//     }
-//   };
-
-//   const handleBookSlot = async (event) => {
-//     if (userRole !== "mentee") return;
-
-//     try {
-//       await axios.post(`/calendar/book/${event.id}`);
-//       fetchAvailability();
-//     } catch (error) {
-//       console.error("Error booking slot:", error);
-//     }
-//   };
-
-//   return (
-//     <div className="calendar-container">
-//       <Calendar
-//         localizer={localizer}
-//         events={events}
-//         startAccessor="start"
-//         endAccessor="end"
-//         style={{ height: "100%" }}
-//         selectable={userRole === "mentor"}
-//         onSelectSlot={handleSelectSlot}
-//         onSelectEvent={handleBookSlot}
-//       />
-//       {userRole === "mentor" && selectedSlot && (
-//         <div className="mt-4 p-4 bg-blue-100 rounded">
-//           <h3 className="text-lg font-semibold">Add Availability</h3>
-//           <p>
-//             Start: {moment(selectedSlot.start).format("MMMM Do YYYY, h:mm a")}
-//           </p>
-//           <p>End: {moment(selectedSlot.end).format("MMMM Do YYYY, h:mm a")}</p>
-//           <button
-//             className="mt-2 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-//             onClick={handleAddAvailability}
-//           >
-//             Add Availability
-//           </button>
-//         </div>
-//       )}
-//     </div>
-//   );
-// };
-
-// export default MentorAvailabilityCalendar;
-
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Calendar, momentLocalizer } from "react-big-calendar";
 import moment from "moment";
+
+
+import { useNavigate } from "react-router-dom";
+import { useBookingContext } from "../../store/booking-context/BookingContext";
+
 import {
   fetchAvailability,
   addAvailability,
@@ -112,17 +15,19 @@ import "react-big-calendar/lib/css/react-big-calendar.css";
 
 const localizer = momentLocalizer(moment);
 
-const MentorAvailabilityCalendar = ({ mentorId, userRole }) => {
-  const [events, setEvents] = useState([]);
-  const [selectedSlot, setSelectedSlot] = useState(null);
+const MentorAvailabilityCalendar = ({ mentorUuid, userRole }) => {
+  const [events, setEvents] = useState([]); // State to store the availability events
+  const [selectedSlot, setSelectedSlot] = useState(null); // State to store the selected slot
+  const { setBookingId } = useBookingContext(); // Use the booking context to set the event ID
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchAvailabilityData();
-  }, [mentorId, userRole]);
+  }, [mentorUuid, userRole]); // Fetch availability data when the mentor ID or user role changes
 
   const fetchAvailabilityData = async () => {
     try {
-      const response = await fetchAvailability(mentorId);
+      const response = await fetchAvailability(mentorUuid); // efgef the id should be fetched in the backend
       const formattedEvents = response.map((slot) => ({
         start: new Date(slot.start),
         end: new Date(slot.end),
@@ -133,16 +38,16 @@ const MentorAvailabilityCalendar = ({ mentorId, userRole }) => {
     } catch (error) {
       console.error("Error fetching availability:", error);
     }
-  };
+  }; // Fetch availability data from the API
 
   const handleSelectSlot = (slotInfo) => {
     if (userRole === "mentor") {
       setSelectedSlot(slotInfo);
     }
-  };
+  }; // Handle slot selection
 
   const handleAddAvailability = async () => {
-    if (!selectedSlot) return;
+    if (!selectedSlot) return; // Return if no slot is selected
 
     try {
       await addAvailability(selectedSlot.start, selectedSlot.end);
@@ -151,18 +56,20 @@ const MentorAvailabilityCalendar = ({ mentorId, userRole }) => {
     } catch (error) {
       console.error("Error adding availability:", error);
     }
-  };
+  }; // Handle adding availability
 
   const handleBookSlot = async (event) => {
-    if (userRole !== "mentee") return;
+    if (userRole !== "mentee") return; // Return if the user is not a mentee
 
     try {
       await bookSlot(event.id);
       fetchAvailabilityData();
+      setBookingId(event.id); // Set the booking ID in the context
+      navigate(`/booking/${event.id}`); // Redirect to BookingDetails page with event ID dhfdf
     } catch (error) {
       console.error("Error booking slot:", error);
     }
-  };
+  }; // Handle booking a slot
 
   return (
     <div

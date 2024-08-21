@@ -14,6 +14,7 @@
   --accent-color: #4caf50;
   --neutral-color: #b7792c;
   --error-color: #9f2c2c;
+  --card-color: #f9f9f9; /* added */
 
   /* Typography */
   --font-family: "Arial, sans-serif";
@@ -31,7 +32,7 @@
   --gap-base: 1rem;
 
   /* Borders */
-  --border-radius-base: 4px;
+  --border-radius-base: 8px;
   --border-width-base: 1px;
   --border-color-base: #dddddd;
 
@@ -127,4 +128,47 @@ input[type="file"] {
   display: flex;
   flex-direction: column;
   gap: 10px;
+}
+
+/* container ============================= */
+
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.parent-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.component-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 20px;
+  min-width: 100px;
+  max-width: 600px;
+}
+
+/* colors */
+
+h1 {
+  color: var(--accent-color);
+  font-size: var(--font-size-xl);
+}
+
+h2 {
+  color: var(--accent-color);
+  font-size: var(--font-size-lg);
 }

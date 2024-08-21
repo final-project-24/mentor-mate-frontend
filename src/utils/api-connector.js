@@ -121,11 +121,26 @@ export const fetchUsers = async () => {
   }
 };
 
-// feedback
+// (admin only) ChangeRole.jsx
+export const updateUserRole = async (newRole) => {
+  try {
+    const res = await axios.put(`/user/update-role`, {
+      newRole,
+    });
+    return res.data;
+  } catch (error) {
+    console.error("Error updating user role:", error);
+    throw error;
+  }
+};
+
+// feedback API calls ==================================================
+
+// submit feedback
 export const submitFeedback = async (feedbackData) => {
   try {
-    const res = await axios.post("/feedback/", feedbackData);
-    if (res.status !== 200) {
+    const res = await axios.post("/feedback", feedbackData);
+    if (res.status !== 201) {
       throw new Error("Unable to submit feedback");
     }
     return res.data;
@@ -135,12 +150,25 @@ export const submitFeedback = async (feedbackData) => {
   }
 };
 
+// session API calls ===================================================
+
+// fetch session data
+export const fetchSessionData = async () => {
+  try {
+    const response = await axios.get("/session");
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching session data:", error);
+    throw new Error("Failed to fetch session data");
+  }
+};
+
 // calendar API calls ==================================================
 
-// fetch availability
-export const fetchAvailability = async (mentorId) => {
+// MentorAvailabilityCalendar.jsx
+export const fetchAvailability = async (mentorUuid) => {
   try {
-    const res = await axios.get(`/calendar/${mentorId}`, {
+    const res = await axios.get(`/calendar/${mentorUuid}`, {
       params: {
         start: moment().startOf("month").toISOString(),
         end: moment().endOf("month").toISOString(),
@@ -156,7 +184,7 @@ export const fetchAvailability = async (mentorId) => {
   }
 };
 
-// add availability
+// MentorAvailabilityCalendar.jsx
 export const addAvailability = async (start, end) => {
   try {
     const res = await axios.post("/calendar", {
@@ -164,7 +192,7 @@ export const addAvailability = async (start, end) => {
       end,
       title: "Available",
     });
-    if (res.status !== 200) {
+    if (res.status !== 200 && res.status !== 201) {
       throw new Error("Unable to add availability");
     }
     return res.data;
@@ -174,7 +202,7 @@ export const addAvailability = async (start, end) => {
   }
 };
 
-// book slot
+// MentorAvailabilityCalendar.jsx
 export const bookSlot = async (eventId) => {
   try {
     const res = await axios.post(`/calendar/book/${eventId}`);
