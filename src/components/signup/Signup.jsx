@@ -45,7 +45,7 @@ function SignUp({ onSignUp }) {
   return (
     <div className="container">
       <div className="form-container">
-        <h2>Sign Up</h2>
+        <h2 className="pt-10">Sign Up</h2>
         {errorMessage && <p className="error-message">{errorMessage}</p>}
         <form onSubmit={handleSubmit}>
           <input

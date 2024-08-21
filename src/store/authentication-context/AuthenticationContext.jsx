@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
+import  { createContext, useContext, useEffect, useState } from "react";
 import {
   checkUserAuth,
   loginUser,
@@ -45,11 +45,6 @@ export const AuthProvider = ({ children }) => {
     }
     checkAuthStatus();
   }, []);
-
-  // // Effect to log isLoggedIn state whenever it changes / debug log
-  // useEffect(() => {
-  //   console.log("isLoggedIn state:", isLoggedIn);
-  // }, [isLoggedIn]);
 
   // Function to handle user login
   const login = async (email, password) => {
