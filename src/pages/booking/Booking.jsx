@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Layout from "../../components/layout/Layout";
 import axios from "axios";
 import { useAuthContext } from "../../store/authentication-context/AuthenticationContext";
@@ -45,7 +45,7 @@ const Booking = () => {
     const fetchBookingDetails = async () => {
       try {
         const response = await axios.get(
-          `/calendar/booking-details/${bookingId}`
+          `/booking/booking-details/${bookingId}`
         );
         console.log("Booking details response:", response.data);
         setBookingDetails(response.data);

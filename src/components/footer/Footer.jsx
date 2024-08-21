@@ -1,10 +1,17 @@
 import "./Footer.css";
+import LanguageButton from "../language-button/LanguageButton";
 
 export default function Footer() {
   return (
     <>
+
+
       <footer id="footer">
-        <p>Footer: part of layout component</p>
+        <div className="flex-container">
+          <LanguageButton />
+          <p>Footer: part of layout component</p>
+        </div>
+
       </footer>
     </>
   );
