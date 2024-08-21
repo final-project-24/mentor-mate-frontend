@@ -1,0 +1,107 @@
+/* Sidebar container */
+.sidebar {
+    height: 100%;
+    width: 300px;
+    position: fixed;
+    right: 0;
+    top: 0;
+    background-color: #f9f6f6;
+    padding: 20px;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+    transition: 0.3s;
+    overflow-y: auto;
+    z-index: 1000;
+}
+
+/* Sidebar open state */
+.sidebar.open {
+    right: 0;
+}
+
+/* Close button */
+.closeBtn {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1002;
+}
+
+/* Open button */
+.openBtn {
+    display: none;
+}
+
+/* Small open button when sidebar is closed */
+.smallOpenBtn {
+    position: fixed;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px 0 0 5px;
+    z-index: 1001;
+}
+
+/* Profile picture */
+.profile-pic {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+/* Review container */
+.review {
+    display: flex;
+    margin-bottom: 30px; /* Aumenta el espacio entre reviews */
+}
+
+/* Review content */
+.review-content {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Name styling */
+.review-name {
+    color: #1a1a1a;
+    margin: 0;
+}
+
+/* Topic styling */
+.review-topic {
+    color: #333;
+    margin: 5px 0;
+}
+
+/* Feedback styling */
+.review-feedback {
+    color: #666;
+    margin: 5px 0;
+}
+
+/* Rating stars */
+.rating {
+    color: #ffcc00;
+}
+
+.feedbackLink {
+    display: block;
+    margin-top: 20px;
+    text-align: center;
+    color: #007BFF;
+    text-decoration: none;
+}
+
+.feedbackLink:hover {
+    text-decoration: underline;
+}
