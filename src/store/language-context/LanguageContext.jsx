@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useContext, useState } from "react";
 // import englishLayoutData from "../../assets/data/layoutDataEnglish.json";
 // import germanLayoutData from "../../assets/data/layoutDataGerman.json";
 // import englishProfileData from "../../assets/data/profileDataEnglish.json";
@@ -65,3 +65,5 @@ export function LanguageProvider({ children }) {
     </LanguageContext.Provider>
   );
 }
+
+export const useLanguageContext = () => useContext(LanguageContext);
