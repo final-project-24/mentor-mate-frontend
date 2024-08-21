@@ -13,6 +13,11 @@ import Feedback from "./pages/feedback/Feedback.jsx";
 import Playground from "./pages/playground/Playground.jsx";
 import NotFound from "./pages/not-found/NotFound.jsx";
 
+
+
+
+
+
 export default function App() {
   return (
     <Router>
@@ -29,6 +34,8 @@ export default function App() {
             <Route path="/session" element={<Session />} />
             <Route path="/feedback" element={<Feedback />} />
             <Route path="/playground" element={<Playground />} />
+            
+
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BookingProvider>
