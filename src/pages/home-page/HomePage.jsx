@@ -207,10 +207,12 @@ const HomePage = () => {
         {isLoggedIn && (
           <div className="flex-1 lg:w-3/4 mx-auto border border-red-500 h-[500px]">
             <Schedule />
-          
+            </div>
         )}
-      </div>
-            </section>
+            
+      </section>
+          
+  
     </Layout>
   );
 }
