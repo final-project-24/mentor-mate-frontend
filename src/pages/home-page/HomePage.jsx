@@ -138,7 +138,6 @@ const HomePage = () => {
   const getWelcomeMessage = () => {
     if (!isLoggedIn) {
       return "Welcome to MentorMate";
-
     }
     return user.role === "mentor" ? "Welcome Mentor" : "Welcome Mentee";
   };
@@ -156,7 +155,6 @@ const HomePage = () => {
   const levelOptions = ["Option 3A", "Option 3B", "Option 3C"];
   const languageOptions = ["Option 4A", "Option 4B", "Option 4C"];
 
-
   return (
     <Layout>
       <section id="home" className="pt-[150px] mx-2">
@@ -164,7 +162,6 @@ const HomePage = () => {
           {getWelcomeMessage()}
         </h1>
         <p className="text-2xl text-center text-neutral py-4">
-
           {userNameDisplay()}
         </p>
 
@@ -178,17 +175,9 @@ const HomePage = () => {
                 email={user.email}
               />
             </div>
-
-
-          //{userNameDisplay()}
-      
-        //{/* Keep ReviewSidebar from nacho branch */}
-        <ReviewSidebar />
-        {/* Keep comments section from main branch */}
-        <section className="flex py-10">
-
-
-        
+            {/* Keep ReviewSidebar from nacho branch */}
+            <ReviewSidebar />
+          </div>
         )}
 
         {isLoggedIn && user.role === "mentee" && (
@@ -201,19 +190,19 @@ const HomePage = () => {
               languageOptions={languageOptions}
             />
           </div>
+        )}
 
-        )}
-        <h2 className="text-center pb-2">Already know your mentor? Select your appointment</h2>
+        <h2 className="text-center pb-2">
+          Already know your mentor? Select your appointment
+        </h2>
+
         {isLoggedIn && (
-          <div className="flex-1 lg:w-3/4 mx-auto border border-red-500 ">
+          <div className="flex-1 lg:w-3/4 mx-auto border border-red-500">
             <Schedule />
-            </div>
+          </div>
         )}
-            
       </section>
-          
-  
-          </Layout>
+    </Layout>
   );
 };
 
