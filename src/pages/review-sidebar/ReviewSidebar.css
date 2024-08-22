@@ -1,6 +1,7 @@
 /* Sidebar container */
 .sidebar {
     height: 100%;
+    margin-top: 100px;
     width: 300px;
     position: fixed;
     right: 0;
@@ -8,53 +9,45 @@
     background-color: #f9f6f6;
     padding: 20px;
     box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
-    transition: 0.3s;
+    transition: transform 0.3s ease;
     overflow-y: auto;
     z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transform: translateX(0); /* Sidebar visible state */
 }
 
-/* Sidebar open state */
-.sidebar.open {
-    right: 0;
+/* Sidebar closed state */
+.sidebar.closed {
+    transform: translateX(100%); /* Move sidebar off screen */
 }
 
-/* Close button */
-.closeBtn {
-    position: absolute;
-    top: 10px;
-    right: 20px;
-    font-size: 24px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    z-index: 1002;
-}
-
-/* Open button */
-.openBtn {
-    display: none;
-}
-
-/* Small open button when sidebar is closed */
+/* Small open/close button */
 .smallOpenBtn {
     position: fixed;
     right: 0;
     top: 50%;
     transform: translateY(-50%);
-    font-size: 18px;
+    font-size: 24px; /* Increased font size to fit the '×' character */
     background-color: #007bff;
     color: white;
     border: none;
-    padding: 5px 10px;
+    padding: 10px;
     cursor: pointer;
     border-radius: 5px 0 0 5px;
     z-index: 1001;
 }
 
+.smallOpenBtn:hover {
+    background-color: #0056b3; /* Color de fondo al hacer hover */
+    color: #f0f0f0; /* Color del texto al hacer hover (opcional) */
+}
+
 /* Profile picture */
 .profile-pic {
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     margin-right: 10px;
 }
@@ -62,7 +55,7 @@
 /* Review container */
 .review {
     display: flex;
-    margin-bottom: 30px; /* Aumenta el espacio entre reviews */
+    margin-bottom: 30px; /* Increase space between reviews */
 }
 
 /* Review content */
@@ -89,19 +82,40 @@
     margin: 5px 0;
 }
 
-/* Rating stars */
 .rating {
     color: #ffcc00;
 }
 
-.feedbackLink {
-    display: block;
-    margin-top: 20px;
+.feedbackButton {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #151414;
+    color: white;
     text-align: center;
-    color: #007BFF;
     text-decoration: none;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
 }
 
-.feedbackLink:hover {
-    text-decoration: underline;
+.feedbackButton:hover {
+    background-color: #0056b3;
 }
+
+.feedback-icon {
+    width: 60px; /* Adjust the size of the icon */
+    height: 60px;
+    margin-left: 20px; /* Space between the text and the icon */
+    vertical-align: middle; /* Align the icon vertically with the text */
+}
+
+.user-feedbacks-heading {
+    color: #151414;
+    font-size: 1.5em;
+    display: inline-flex; /* Ensures elements are aligned on the same line */
+    align-items: center;  /* Vertically centers the icon with the text */
+}
+
+
