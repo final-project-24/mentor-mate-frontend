@@ -29,8 +29,8 @@ const Header = () => {
     { to: "/my-account", label: "My Account" },
     { to: "/my-schedule", label: "My Schedule" },
     { to: "/settings", label: "Settings" },
-    { to: "/feedback", label: "Feedback" },
-    { to: "/playground", label: "Playground" },
+  
+    
   ];
 
   const menteeLinks = [
