@@ -73,12 +73,12 @@ const MentorAvailabilityCalendar = ({ mentorUuid, userRole }) => {
 
   return (
     <div
-      className="calendar-container flex"
-      style={{ height: "calc(100vh - 250px)" }}
+      className="calendar-container flex flex-col lg:flex-row"
+      style={{ height: "calc(100vh)" }}
     >
       <div
-        className={`calendar flex transition-all duration-300 ${
-          selectedSlot ? "w-[70%]" : "w-full"
+        className={`calendar flex   transition-all duration-300 ${
+          selectedSlot ? "lg:w-[70%]" : "w-full"
         }`}
       >
         <Calendar
@@ -86,14 +86,14 @@ const MentorAvailabilityCalendar = ({ mentorUuid, userRole }) => {
           events={events}
           startAccessor="start"
           endAccessor="end"
-          style={{ height: "100%", width: "100%" }}
+          style={{ height: "100vh", width: "100%" }}
           selectable={userRole === "mentor"}
           onSelectSlot={handleSelectSlot}
           onSelectEvent={handleBookSlot}
         />
       </div>
       {userRole === "mentor" && selectedSlot && (
-        <div className="selected-slot-info w-[30%] mt-4 p-4 bg-blue-100 rounded flex flex-col items-center justify-center transition-all duration-300">
+        <div className="selected-slot-info lg:w-[30%] mt-4 p-4 bg-blue-100 rounded flex flex-col items-center justify-center transition-all duration-300">
           <h3 className="text-lg font-semibold">Add Availability</h3>
           <p>
             Start: {moment(selectedSlot.start).format("MMMM Do YYYY, h:mm a")}
