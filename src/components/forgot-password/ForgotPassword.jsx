@@ -1,5 +1,6 @@
-import React, { useState } from "react";
-import { forgotPassword } from "../../utils/api-connector"; // Adjust the import path as needed
+import { useState } from "react";
+import { forgotPassword } from "../../utils/api-connector"; 
+import "./ForgotPassword.css";
 
 function ForgotPassword({ onResetRequest }) {
   const [email, setEmail] = useState("");
@@ -18,7 +19,7 @@ function ForgotPassword({ onResetRequest }) {
   };
 
   return (
-    <div className="form-container">
+    <div className="forgot-password-container">
       <h2>Forgot Password</h2>
       <form onSubmit={handleSubmit}>
         <input

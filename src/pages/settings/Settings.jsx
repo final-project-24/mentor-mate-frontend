@@ -26,7 +26,9 @@ export default function Settings() {
             {(user.role === "admin" || user.originalRole === "admin") && (
               <ChangeRole user={user} />
             )}
-            <DeleteUser />
+            <div className="delete-user-button-container">
+              <DeleteUser />
+            </div>
           </>
         )}
         {/* <ResetPassword /> */}

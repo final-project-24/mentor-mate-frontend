@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import FileBase64 from "react-file-base64";
 import "./Signup.css";
-import { useAuthContext } from "../../store/authentication-context/AuthenticationContext.jsx"; //
-import { useNavigate } from "react-router-dom"; //
+import { useAuthContext } from "../../store/authentication-context/AuthenticationContext.jsx";
+import ToggleButton from "../../components/toggle-button/ToggleButton.jsx";
 
-function SignUp({ onSignUp }) {
+function SignUp({ onToggleLogin }) {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -43,58 +44,62 @@ function SignUp({ onSignUp }) {
   };
 
   return (
-    <div className="container">
-      <div className="form-container">
-        <h2 className="pt-10">Sign Up</h2>
-        {errorMessage && <p className="error-message">{errorMessage}</p>}
-        <form onSubmit={handleSubmit}>
-          <input
-            name="userName"
-            type="text"
-            placeholder="Username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-          />
-          <input
-            name="email"
-            type="email"
-            placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-          <input
-            name="password"
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-          <input
-            name="confirmPassword"
-            type="password"
-            placeholder="Confirm Password"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-            required
-          />
+    // <div className="container">
+    <div className="sign-up-container">
+      <h2 className="pt-10">Sign Up</h2>
+      {errorMessage && <p className="sign-up-error-message">{errorMessage}</p>}
+      <form onSubmit={handleSubmit}>
+        <input
+          name="userName"
+          type="text"
+          placeholder="Username"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          required
+        />
+        <input
+          name="email"
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+        <input
+          name="password"
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
+        <input
+          name="confirmPassword"
+          type="password"
+          placeholder="Confirm Password"
+          value={confirmPassword}
+          onChange={(e) => setConfirmPassword(e.target.value)}
+          required
+        />
 
-          <label>
-            Role:
-            <select value={role} onChange={(e) => setRole(e.target.value)}>
-              <option value="mentor">Mentor</option>
-              <option value="mentee">Mentee</option>
-            </select>
-          </label>
-          <FileBase64
-            multiple={false}
-            onDone={({ base64 }) => setImage(base64)}
-          />
-          <button type="submit">Sign Up</button>
-        </form>
-      </div>
+        <label>
+          Role:
+          <select value={role} onChange={(e) => setRole(e.target.value)}>
+            <option value="mentor">Mentor</option>
+            <option value="mentee">Mentee</option>
+          </select>
+        </label>
+        <FileBase64
+          multiple={false}
+          onDone={({ base64 }) => setImage(base64)}
+        />
+        <button type="submit">Sign Up</button>
+      </form>
+      <ToggleButton
+        onToggle={onToggleLogin}
+        buttonName="Go back to Login"
+        className="button-type-link"
+      />
     </div>
   );
 }
