@@ -65,7 +65,7 @@ const StripePayment = ({ amount, onPaymentStart, onPaymentSuccess, onPaymentEnd,
 
   return (
     <form onSubmit={handleSubmit} className="payment-form">
-      <h4>You can enter here your credit card details</h4>
+      <h6>You can enter here your credit card details</h6>
       <CardElement />
       <button type="submit" disabled={loading || pending || !stripe}>
         {loading ? 'Processing...' : 'Pay Now'}
