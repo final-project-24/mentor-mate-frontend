@@ -213,7 +213,7 @@ const HomePage = () => {
       </section>
           
   
-    </Layout>
+    <Layout/>
   )
 }
 
