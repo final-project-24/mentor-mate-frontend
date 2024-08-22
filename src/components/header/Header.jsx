@@ -35,6 +35,10 @@ const Header = () => {
     { to: "/", label: "Home" },
     { to: "/my-account", label: "My Account" },
     { to: "/my-calendar", label: "My Calendar" },
+    { to: "/payment", label: "Payment"},
+    { to: "/session", label: "Session"},
+    { to: "/feedback", label: "Feedback"},
+    { to: "/terms", label: "Terms"},
     { to: "/my-classes", label: "My Classes" },
     { to: "/playground", label: "Playground" },
     

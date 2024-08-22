@@ -6,7 +6,7 @@ import { useBookingContext } from "../../store/booking-context/BookingContext";
 import Loading from "../../components/loading/Loading";
 import InfoCard from "../../components/info-card/InfoCard";
 // import BookingDetails from "../../components/booking-details/BookingDetails";
-import TermsAndConditions from "../../components/terms-and-conditions/TermsAndConditions";
+// import Terms from "../pages/terms/Terms";
 import Payment from "../../components/payment/Payment";
 import { useParams, useLocation } from "react-router-dom";
 
