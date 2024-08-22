@@ -1,10 +1,13 @@
 import "./HomePage.css";
 import { useState } from "react";
 import Layout from "../../components/layout/Layout";
+
+import ReviewSidebar from "../review-sidebar/ReviewSidebar";
 import { useAuthContext } from "../../store/authentication-context/AuthenticationContext";
 import Schedule from "../schedule/Schedule";
 import InfoCard from "../../components/info-card/InfoCard.jsx";
 import ToggleButton from "../../components/toggle-button/ToggleButton.jsx";
+
 
 // Define the SearchComponent separately or before usage
 function SearchComponent({
@@ -33,7 +36,7 @@ function SearchComponent({
 
   return (
     <>
-      {" "}
+    
       <div className="flex justify-between ">
         <div className="w-1/5 ">
           <label htmlFor="dropdown1"></label>
@@ -126,12 +129,16 @@ function SearchComponent({
   );
 }
 
-function HomePage() {
+
+
+const HomePage = () => {
+
   const { user, isLoggedIn } = useAuthContext();
 
   const getWelcomeMessage = () => {
     if (!isLoggedIn) {
       return "Welcome to MentorMate";
+
     }
     return user.role === "mentor" ? "Welcome Mentor" : "Welcome Mentee";
   };
@@ -149,6 +156,7 @@ function HomePage() {
   const levelOptions = ["Option 3A", "Option 3B", "Option 3C"];
   const languageOptions = ["Option 4A", "Option 4B", "Option 4C"];
 
+
   return (
     <Layout>
       <section id="home" className="pt-[150px] mx-2">
@@ -156,6 +164,7 @@ function HomePage() {
           {getWelcomeMessage()}
         </h1>
         <p className="text-2xl text-center text-neutral py-4">
+
           {userNameDisplay()}
         </p>
 
@@ -169,7 +178,17 @@ function HomePage() {
                 email={user.email}
               />
             </div>
-          </div>
+=======
+
+          //{userNameDisplay()}
+        </p>
+        {/* Keep ReviewSidebar from nacho branch */}
+        <ReviewSidebar />
+        {/* Keep comments section from main branch */}
+        <section className="flex py-10">
+
+
+        
         )}
 
         {isLoggedIn && user.role === "mentee" && (
@@ -182,12 +201,13 @@ function HomePage() {
               languageOptions={languageOptions}
             />
           </div>
+
         )}
         <h2 className="text-center pb-2">Already know your mentor? Select your appointment</h2>
         {isLoggedIn && (
           <div className="flex-1 lg:w-3/4 mx-auto border border-red-500 h-[500px]">
             <Schedule />
-          </div>
+          
         )}
       </section>
     </Layout>
