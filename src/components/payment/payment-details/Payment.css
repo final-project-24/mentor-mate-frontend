@@ -1,0 +1,154 @@
+.payment-container {
+    width: 100%;
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 30px;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+.payment-container:hover {
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.payment-title {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.offer-details {
+    margin-bottom: 30px;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    border: 1px solid #dcdcdc;
+    transition: border-color 0.3s ease;
+}
+
+.offer-details:hover {
+    border-color: #bbb;
+}
+
+.offer-details h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.offer-details p {
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: #555;
+}
+
+.offer-price {
+    font-size: 18px;
+    font-weight: bold;
+    color: #29940f;
+}
+
+.mentee-details {
+    margin-bottom: 20px;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: #f1f1f1;
+    border: 1px solid #ccc;
+}
+
+.mentee-details h4 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.mentee-details p {
+    font-size: 16px;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+.terms-conditions-section {
+    margin-top: 20px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.instructions {
+    font-size: 16px;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.terms-link {
+    color: #08a41d;
+    text-decoration: underline;
+}
+
+.terms-link:hover {
+    color: #13a42b;
+}
+
+.payment-methods-section {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.payment-methods-section h3 {
+    font-size: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
+}
+
+/* Stripe Payment Section */
+.stripe-payment-section {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.stripe-payment-section h4 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+/* PayPal Payment Section */
+.paypal-payment-section {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.paypal-payment-section h4 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.paypal-payment-section p {
+    font-size: 16px;
+    margin-bottom: 15px;
+    color: #555;
+}
+
+.paypal-button {
+    display: inline-block;
+    padding: 12px 20px;
+    background-color: #0070ba;
+    color: #ffffff;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.paypal-button:hover {
+    background-color: #005e8a;
+    transform: translateY(-2px);
+}

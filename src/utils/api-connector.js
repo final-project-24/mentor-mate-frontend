@@ -215,3 +215,76 @@ export const bookSlot = async (eventId) => {
     throw error;
   }
 };
+
+
+// Booking API calls ===================================================
+
+// Create a new booking
+export const createBooking = async (mentorId, menteeId, eventId, start, end) => {
+  try {
+    const res = await axios.post("/booking", {
+      mentorId,
+      menteeId,
+      eventId,
+      start,
+      end,
+    });
+    if (res.status !== 201) {
+      throw new Error("Unable to create booking");
+    }
+    return res.data;
+  } catch (error) {
+    console.error("Error creating booking:", error);
+    throw error;
+  }
+};
+
+// Fetch booking details
+export const fetchBookingDetails = async (bookingId) => {
+  try {
+    const res = await axios.get(`/booking/${bookingId}`);
+    if (res.status !== 200) {
+      throw new Error("Unable to fetch booking details");
+    }
+    return res.data;
+  } catch (error) {
+    console.error("Error fetching booking details:", error);
+    throw error;
+  }
+};
+
+// Payment API calls ===================================================
+
+// Create payment intent for a booking
+export const createPaymentIntent = async (amount, bookingId) => {
+  try {
+    const res = await axios.post("/payment/create-payment-intent", {
+      amount,
+      bookingId,
+    });
+    if (res.status !== 200) {
+      throw new Error("Unable to create payment intent");
+    }
+    return res.data;
+  } catch (error) {
+    console.error("Error creating payment intent:", error);
+    throw error;
+  }
+};
+
+// Confirm payment and update booking status
+export const confirmPayment = async (paymentIntentId, bookingId) => {
+  try {
+    const res = await axios.post("/payment/confirm-payment", {
+      paymentIntentId,
+      bookingId,
+    });
+    if (res.status !== 200) {
+      throw new Error("Unable to confirm payment");
+    }
+    return res.data;
+  } catch (error) {
+    console.error("Error confirming payment:", error);
+    throw error;
+  }
+};
