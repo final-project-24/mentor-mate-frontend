@@ -205,7 +205,7 @@ const HomePage = () => {
         )}
         <h2 className="text-center pb-2">Already know your mentor? Select your appointment</h2>
         {isLoggedIn && (
-          <div className="flex-1 lg:w-3/4 mx-auto border border-red-500 h-[500px]">
+          <div className="flex-1 lg:w-3/4 mx-auto border border-red-500 ">
             <Schedule />
             </div>
         )}
@@ -213,9 +213,9 @@ const HomePage = () => {
       </section>
           
   
-    <Layout/>
-  )
-}
+          </Layout>
+  );
+};
 
 export default HomePage;
 
