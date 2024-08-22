@@ -44,7 +44,7 @@ const Payment = ({ amount, offerDetails = {}, menteeData = {} }) => {
 
   return (
     <div className="payment-container">
-      {(stripePending || paypalPending) && <p>Processing payment...</p>}
+      {(stripePending || paypalPending) && <p className="processing-message">Processing payment...</p>}
 
       <h2 className="payment-title">Payment Details</h2>
 
@@ -69,11 +69,9 @@ const Payment = ({ amount, offerDetails = {}, menteeData = {} }) => {
       <div className="terms-conditions-section">
         <p className="instructions">
           Before proceeding with the payment, please review and accept our{' '}
-          <Link to="/terms" className="terms-link">
-            Terms and Conditions
-          </Link>.
+          <Link to="/terms" className="terms-link">Terms and Conditions</Link>.
         </p>
-        <label>
+        <label className="terms-checkbox">
           <input
             type="checkbox"
             checked={isAgreed}
@@ -86,7 +84,7 @@ const Payment = ({ amount, offerDetails = {}, menteeData = {} }) => {
       {/* Conditionally Render Payment Options */}
       {isAgreed && (
         <div className="payment-methods-section">
-          <h3>Select Your Payment Method</h3>
+          <h3 className="payment-methods-title">Select Your Payment Method</h3>
 
           {/* Stripe Payment Integration */}
           <div className="stripe-payment-section">
@@ -136,3 +134,4 @@ const Payment = ({ amount, offerDetails = {}, menteeData = {} }) => {
 };
 
 export default Payment;
+

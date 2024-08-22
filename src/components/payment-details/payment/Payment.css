@@ -99,6 +99,11 @@
   text-align: center;
 }
 
+.payment-methods-title {
+  font-size: 20px;
+  color: #08a41d; /* Green color for the payment method section title */
+}
+
 .payment-methods-section h3 {
   font-size: 20px;
   margin-bottom: 20px;
@@ -116,6 +121,23 @@
   font-size: 18px;
   margin-bottom: 15px;
   color: #333;
+}
+
+.stripe-payment-button {
+  display: inline-block;
+  padding: 12px 20px;
+  background-color: #08a41d; /* Green color for the button */
+  color: #ffffff;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.stripe-payment-button:hover {
+  background-color: #066e15;
+  transform: translateY(-2px);
 }
 
 /* PayPal Payment Section */

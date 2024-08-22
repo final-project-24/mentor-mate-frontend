@@ -1,10 +1,15 @@
 import React, { useState } from 'react';
 import { Elements, useStripe, useElements, CardElement } from '@stripe/react-stripe-js';
+import { loadStripe } from '@stripe/stripe-js';
 import axios from 'axios';
+import './StripePayment.css'; // Import the CSS file
 
 // Load your Stripe public key from environment variables
 const stripePublicKeyId = import.meta.env.VITE_STRIPE_PUBLIC_KEY;
 console.log("Stripe Public Key:", stripePublicKeyId);
+
+// Initialize Stripe with your public key
+const stripePromise = loadStripe(stripePublicKeyId);
 
 const StripePayment = ({ amount, onPaymentStart, onPaymentSuccess, onPaymentEnd, menteeData }) => {
   const [error, setError] = useState(null);
@@ -59,14 +64,13 @@ const StripePayment = ({ amount, onPaymentStart, onPaymentSuccess, onPaymentEnd,
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div className="payment-form">
-        <CardElement />
-        <button type="submit" disabled={loading || pending || !stripe}>
-          {loading ? 'Processing...' : 'Pay Now'}
-        </button>
-        {error && <div className="payment-error">{error}</div>}
-      </div>
+    <form onSubmit={handleSubmit} className="payment-form">
+      <h4>You can enter here your credit card details</h4>
+      <CardElement />
+      <button type="submit" disabled={loading || pending || !stripe}>
+        {loading ? 'Processing...' : 'Pay Now'}
+      </button>
+      {error && <div className="payment-error">{error}</div>}
     </form>
   );
 };
@@ -78,4 +82,3 @@ const StripePaymentWrapper = (props) => (
 );
 
 export default StripePaymentWrapper;
-
