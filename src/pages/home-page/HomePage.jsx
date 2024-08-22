@@ -178,11 +178,11 @@ const HomePage = () => {
                 email={user.email}
               />
             </div>
-=======
+
 
           //{userNameDisplay()}
-        </p>
-        {/* Keep ReviewSidebar from nacho branch */}
+      
+        //{/* Keep ReviewSidebar from nacho branch */}
         <ReviewSidebar />
         {/* Keep comments section from main branch */}
         <section className="flex py-10">
