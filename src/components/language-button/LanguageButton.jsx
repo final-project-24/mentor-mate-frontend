@@ -29,7 +29,7 @@ export default function LanguageButton() {
 
   return (
     <div>
-      <div>
+      <div className="language-button-container">
         <button
           className={`eng-button ${activeLanguage === "eng" ? "active" : ""}`}
           onClick={handleEnglishClick}

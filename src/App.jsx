@@ -4,6 +4,9 @@ import { LanguageProvider } from "./store/language-context/LanguageContext.jsx";
 import { BookingProvider } from "./store/booking-context/BookingContext";
 import HomePage from "./pages/home-page/HomePage.jsx";
 import Authentication from "./pages/authentication/Authentication.jsx";
+import DashboardLayout from "./components/dashboard-layout/DashboardLayout";
+import DashboardHome from "./components/dashboard-home/DashboardHome";
+import AdminTools from "./pages/admin-tools/AdminTools.jsx";
 import Settings from "./pages/settings/Settings.jsx";
 import MatchMaking from "./pages/match-making/MatchMaking.jsx";
 import Schedule from "./pages/schedule/Schedule.jsx";
@@ -23,6 +26,14 @@ export default function App() {
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/authentication" element={<Authentication />} />
+              <Route path="/dashboard" element={<DashboardLayout />}>
+                <Route index element={<DashboardHome />} />
+                <Route path="admin-tools" element={<AdminTools />} />
+                <Route path="settings" element={<Settings />} />
+                <Route path="schedule" element={<Schedule />} />
+                <Route path="session" element={<Session />} />
+                <Route path="feedback" element={<Feedback />} />
+              </Route>
               <Route path="/settings" element={<Settings />} />
               <Route path="/match-making" element={<MatchMaking />} />
               <Route path="/schedule" element={<Schedule />} />

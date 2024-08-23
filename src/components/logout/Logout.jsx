@@ -1,7 +1,7 @@
-import "./Logout.css";
-import { useAuthContext } from "../../store/authentication-context/AuthenticationContext.jsx";
-import React, { useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuthContext } from "../../store/authentication-context/AuthenticationContext.jsx";
+import "./Logout.css";
 
 const LogoutButton = () => {
   const [feedbackMessage, setFeedbackMessage] = useState("");
@@ -19,7 +19,7 @@ const LogoutButton = () => {
   };
 
   return (
-    <div>
+    <div className="logout-container">
       <button onClick={handleLogout}>Logout</button>
       {feedbackMessage && <p>{feedbackMessage}</p>}
     </div>
