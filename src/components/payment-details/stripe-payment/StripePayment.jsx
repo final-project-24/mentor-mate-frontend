@@ -2,13 +2,12 @@ import React, { useState } from 'react';
 import { Elements, useStripe, useElements, CardElement } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import axios from 'axios';
-import './StripePayment.css'; // Import the CSS file
+import './StripePayment.css'; 
 
-// Load your Stripe public key from environment variables
 const stripePublicKeyId = import.meta.env.VITE_STRIPE_PUBLIC_KEY;
 console.log("Stripe Public Key:", stripePublicKeyId);
 
-// Initialize Stripe with your public key
+// Initialize Stripe with public key
 const stripePromise = loadStripe(stripePublicKeyId);
 
 const StripePayment = ({ amount, onPaymentStart, onPaymentSuccess, onPaymentEnd, menteeData }) => {
@@ -31,7 +30,7 @@ const StripePayment = ({ amount, onPaymentStart, onPaymentSuccess, onPaymentEnd,
     if (onPaymentStart) onPaymentStart();
 
     try {
-      // Call your backend to create a PaymentIntent
+      // Call backend to create a PaymentIntent
       const response = await axios.post('/api/payment/create-payment-intent', { amount });
       const { clientSecret } = response.data;
 

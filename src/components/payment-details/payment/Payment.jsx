@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+// import { useAuthContext } from "../../store/authentication-context/AuthenticationContext";
 import './Payment.css';
 import StripePayment from '../stripe-payment/StripePayment';
 import PayPalPayment from '../paypal-payment/PayPalPayment';
 
 const Payment = ({ amount, offerDetails = {}, menteeData = {} }) => {
+  // const { user, loading: authLoading } = useAuthContext(); 
   const [isAgreed, setIsAgreed] = useState(false);
   const [stripePending, setStripePending] = useState(false);
   const [paypalPending, setPayPalPending] = useState(false);

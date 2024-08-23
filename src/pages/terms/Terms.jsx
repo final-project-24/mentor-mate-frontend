@@ -7,8 +7,8 @@ import Layout from "../../components/layout/Layout";
 
 const Terms = () => {
   const { termsData } = useContext(LanguageContext); // Use the language context
-  const { bookingId, isAgreed, setIsAgreed } = useBookingContext(); // Use the booking context
-  const [isChecked, setIsChecked] = useState(isAgreed); // Use the isAgreed state from the context
+  const { bookingId, isAgreed, setIsAgreed } = useBookingContext(); 
+  const [isChecked, setIsChecked] = useState(isAgreed); 
   const navigate = useNavigate();
 
   useEffect(() => {

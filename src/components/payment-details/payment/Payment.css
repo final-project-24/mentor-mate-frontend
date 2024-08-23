@@ -2,74 +2,73 @@
   width: 100%;
   max-width: 600px;
   margin: 40px auto;
-  padding: 40px; /* Increased padding for a more spacious feel */
-  border-radius: 12px; /* Slightly rounded corners */
+  padding: 40px; 
+  border-radius: 12px; 
   background-color: #ffffff;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1); /* Softer shadow */
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1); 
   transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
 .payment-container:hover {
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
-  transform: translateY(-4px); /* Subtle lift effect */
+  transform: translateY(-4px); 
 }
 
 .payment-title {
-  font-size: 26px; /* Larger title for better emphasis */
+  font-size: 26px; 
   font-weight: bold;
   text-align: center;
-  margin-bottom: 24px; /* Increased margin for better spacing */
+  margin-bottom: 24px; 
   color: #333;
 }
 
 .offer-details {
   margin-bottom: 30px;
-  padding: 24px; /* Increased padding for better readability */
-  border-radius: 10px; /* More rounded corners */
-  background-color: #f5f5f5; /* Slightly lighter background */
-  border: 1px solid #ddd; /* Subtle border color */
+  padding: 24px; 
+  border-radius: 10px; 
+  background-color: #f5f5f5; 
+  border: 1px solid #ddd; 
   transition: border-color 0.3s ease;
 }
 
 .offer-details:hover {
-  border-color: #bbb; /* Slightly darker border on hover */
+  border-color: #bbb; 
 }
 
 .offer-details h3 {
-  font-size: 22px; /* Slightly larger heading */
-  margin-bottom: 12px; /* Increased margin for better separation */
+  font-size: 22px; 
+  margin-bottom: 12px; 
   color: #333;
 }
 
 .offer-details p {
   font-size: 16px;
-  margin-bottom: 12px; /* Increased spacing for readability */
-  color: #666; /* Lighter text color for improved contrast */
+  margin-bottom: 12px; 
+  color: #666; 
 }
 
 .offer-price {
-  font-size: 20px; /* Larger price text for emphasis */
+  font-size: 20px; 
   font-weight: bold;
-  color: #27ae60; /* Updated green color for better visibility */
+  color: #27ae60; 
 }
 
 .mentee-details {
   margin-bottom: 20px;
-  padding: 20px; /* Increased padding for consistency */
-  border-radius: 10px; /* Rounded corners */
-  background-color: #f9f9f9; /* Lighter background */
-  border: 1px solid #ddd; /* Subtle border color */
+  padding: 20px; 
+  border-radius: 10px; 
+  background-color: #f9f9f9; 
+  border: 1px solid #ddd; 
 }
 
 .mentee-details h4 {
-  font-size: 20px; /* Slightly larger heading */
-  margin-bottom: 12px; /* Increased margin for better spacing */
+  font-size: 20px; 
+  margin-bottom: 12px; 
   color: #333;
 }
 
 .mentee-details p {
   font-size: 16px;
-  margin-bottom: 8px; /* Slightly increased spacing */
+  margin-bottom: 8px; 
   color: #666;
 }
 
@@ -81,17 +80,17 @@
 
 .instructions {
   font-size: 16px;
-  margin-bottom: 20px; /* Increased margin for readability */
+  margin-bottom: 20px; 
   color: #333;
 }
 
 .terms-link {
-  color: #27ae60; /* Updated green color */
+  color: #27ae60; 
   text-decoration: underline;
 }
 
 .terms-link:hover {
-  color: #2ecc71; /* Slightly lighter green on hover */
+  color: #2ecc71; 
 }
 
 .payment-methods-section {
@@ -100,54 +99,52 @@
 }
 
 .payment-methods-title {
-  font-size: 22px; /* Larger font size for emphasis */
-  color: #27ae60; /* Green color for the section title */
+  font-size: 22px; 
+  color: #27ae60; 
 }
 
 .payment-methods-section h3 {
-  font-size: 22px; /* Slightly larger heading */
-  margin-bottom: 20px; /* Increased margin for spacing */
+  font-size: 22px; 
+  margin-bottom: 20px; 
   text-align: center;
   color: #333;
 }
 
-/* Stripe Payment Section */
 .stripe-payment-section {
   margin-bottom: 30px;
   text-align: center;
 }
 
 .stripe-payment-section h4 {
-  font-size: 20px; /* Larger heading */
+  font-size: 20px; 
   margin-bottom: 15px;
   color: #333;
 }
 
 .stripe-payment-button {
   display: inline-block;
-  padding: 14px 24px; /* Increased padding for a larger button */
-  background-color: #27ae60; /* Green color for the button */
+  padding: 14px 24px; 
+  background-color: #27ae60; 
   color: #ffffff;
-  border-radius: 8px; /* Rounded corners */
+  border-radius: 8px; 
   text-decoration: none;
-  font-size: 18px; /* Larger font size */
+  font-size: 18px; 
   font-weight: 600;
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .stripe-payment-button:hover {
-  background-color: #1e8449; /* Darker green on hover */
+  background-color: #1e8449; 
   transform: translateY(-2px);
 }
 
-/* PayPal Payment Section */
 .paypal-payment-section {
   margin-top: 30px;
   text-align: center;
 }
 
 .paypal-payment-section h4 {
-  font-size: 20px; /* Larger heading */
+  font-size: 20px; 
   margin-bottom: 15px;
   color: #333;
 }
@@ -160,17 +157,17 @@
 
 .paypal-button {
   display: inline-block;
-  padding: 14px 24px; /* Increased padding for a larger button */
+  padding: 14px 24px; 
   background-color: #0070ba;
   color: #ffffff;
-  border-radius: 8px; /* Rounded corners */
+  border-radius: 8px; 
   text-decoration: none;
-  font-size: 18px; /* Larger font size */
+  font-size: 18px; 
   font-weight: 600;
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .paypal-button:hover {
-  background-color: #005e8a; /* Darker blue on hover */
+  background-color: #005e8a; 
   transform: translateY(-2px);
 }
