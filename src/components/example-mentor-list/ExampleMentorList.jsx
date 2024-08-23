@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { fetchUsers } from "../../utils/api-connector";
 
 const ExampleMentorList = ({ onSelect }) => {
@@ -22,9 +22,33 @@ const ExampleMentorList = ({ onSelect }) => {
   }, []);
 
   return (
-    <div>
-      <h2>Select a Mentor</h2>
-      <ul>
+    <div className="flex flex-col items-center ">
+      <h2 className="text-center">Select a Mentor</h2>
+
+      <select onChange={(e) => onSelect(e.target.value)}
+        className="w-1/2 p-1 "
+        defaultValue=""
+      >
+        <option
+          value="" disabled 
+          className="text-center"
+        >
+          Choose a mentor
+        </option>
+        {mentors.map((mentor, index) => (
+          <option key={`${mentor.uuid}-${index}`}
+            value={mentor.uuid}
+          className="text-center">
+            {mentor.userName}
+          
+          </option>
+        ))}
+      </select>
+    </div>
+  );
+};
+
+      {/* <ul>
         {mentors.map((mentor, index) => (
           <li
             key={`${mentor.uuid}-${index}`}
@@ -36,9 +60,8 @@ const ExampleMentorList = ({ onSelect }) => {
             {mentor.userName}
           </li>
         ))}
-      </ul>
-    </div>
-  );
-};
+      </ul> */}
+    
+
 
 export default ExampleMentorList;
