@@ -31,10 +31,16 @@ export default function DevNav() {
           <Link to="/booking/:id">Booking</Link>
         </li>
         <li>
+          <Link to="/payment">Payment</Link>
+        </li>
+        <li>
           <Link to="/session">Session</Link>
         </li>
         <li>
           <Link to="/feedback">Feedback</Link>
+        </li>
+        <li>
+          <Link to="/terms">Terms</Link>
         </li>
         <li>
           <Link to="/playground">Playground</Link>
