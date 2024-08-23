@@ -1,6 +1,7 @@
 // DashboardSidebar.jsx
 import { Link } from "react-router-dom";
 import "./DashboardSidebar.css";
+import DevNav from "../dev-nav/DevNav";
 
 export default function DashboardSidebar() {
   return (
@@ -22,6 +23,7 @@ export default function DashboardSidebar() {
           <Link to="/dashboard/feedback">Feedback</Link>
         </li>
       </ul>
+      <DevNav />
     </div>
   );
 }

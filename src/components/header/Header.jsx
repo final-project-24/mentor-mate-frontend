@@ -18,9 +18,9 @@ const Header = () => {
   const guestLinks = [
     // { to: "/why-we", label: "Why We?" },
     // { to: "/how-it-works", label: "How It Works" },
-    // { to: "/pricing", label: "Pricing" },
     { to: "/", label: "Home" },
     { to: "/about-us", label: "About Us" },
+    { to: "/pricing", label: "Pricing" },
     { to: "/contact", label: "Contact" },
     { to: "/dashboard", label: "Dashboard" },
   ];
@@ -33,6 +33,7 @@ const Header = () => {
     // { to: "/session", label: "Session" },
     // { to: "/feedback", label: "Feedback" },
     { to: "/about-us", label: "About Us" },
+    { to: "/pricing", label: "Pricing" },
     { to: "/contact", label: "Contact" },
     { to: "/dashboard", label: "Dashboard" },
     // { to: "/playground", label: "(Playground)" },
@@ -44,6 +45,7 @@ const Header = () => {
     // { to: "/my-calendar", label: "My Calendar" },
     // { to: "/my-classes", label: "My Classes" },
     { to: "/about-us", label: "About Us" },
+    { to: "/pricing", label: "Pricing" },
     { to: "/contact", label: "Contact" },
     { to: "/dashboard", label: "Dashboard" },
     // { to: "/playground", label: "(Playground)" },
