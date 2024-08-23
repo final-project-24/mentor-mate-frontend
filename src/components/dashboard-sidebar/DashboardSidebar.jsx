@@ -19,9 +19,6 @@ export default function DashboardSidebar() {
         <li>
           <Link to="/dashboard/session">Session</Link>
         </li>
-        <li>
-          <Link to="/dashboard/feedback">Feedback</Link>
-        </li>
       </ul>
       <DevNav />
     </div>
