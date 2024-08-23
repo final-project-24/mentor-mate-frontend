@@ -1,0 +1,14 @@
+.delete-user-button {
+  width: 100%;
+  background-color: var(--accent-color);
+  color: var(--primary-color);
+  border: none;
+  border-radius: var(--border-radius-small);
+  cursor: pointer;
+  margin-bottom: var(--margin-small);
+  padding: var(--padding-small);
+}
+
+.delete-user-button:hover {
+  background-color: var(--accent-color-hover);
+}

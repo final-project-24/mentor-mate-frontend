@@ -1,14 +1,21 @@
-.logout-container button { 
+.login-button-container {
+  width: 200px;
+}
+
+.login-button-container a {
+  display: inline-block;
   width: 100%;
   background-color: var(--accent-color);
   color: var(--primary-color);
   border: none;
   border-radius: var(--border-radius-small);
   cursor: pointer;
-  margin-bottom: var(--margin-small);
+  /* margin-bottom: var(--margin-small); */
   padding: var(--padding-small);
-} 
+  text-align: center; 
+  text-decoration: none;
+}
 
-.logout-container button:hover { 
+.login-button-container a:hover {
   background-color: var(--accent-color-hover);
 }

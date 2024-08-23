@@ -1,10 +1,10 @@
-/* Tailwind styles */
+/* Tailwind styles ===================================== */
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/*  Custom style variables  */
+/*  Custom style variables ============================== */
 /* usage with css: color: var(--primary-color); */
 
 :root {
@@ -12,26 +12,32 @@
   --primary-color: #ffffff;
   --secondary-color: #333333;
   --accent-color: #4caf50;
+  --accent-color-hover: #45a048;
   --neutral-color: #b7792c;
   --error-color: #9f2c2c;
   --card-color: #f9f9f9; /* added */
 
   /* Typography */
   --font-family: "Arial, sans-serif";
-  --font-size-base: 1rem;
   --font-size-xl: 1.6rem;
   --font-size-lg: 1.2rem;
+  --font-size-base: 1rem;
   --font-size-sm: 0.8rem;
   --line-height-base: 1.5;
   --font-weight-normal: 400;
   --font-weight-bold: 700;
 
   /* Spacing */
-  --padding-base: 1rem;
+  --padding-small: 0.6rem; /* added */
+  --padding-base: 1.2rem;
+  --margin-small: 0.6rem;
   --margin-base: 1rem;
+  --margin-lg: 1.4rem; /* added */
+  --margin-avoid-header: 6.5rem; /* added */
   --gap-base: 1rem;
 
   /* Borders */
+  --border-radius-small: 4px; /* added */
   --border-radius-base: 8px;
   --border-width-base: 1px;
   --border-color-base: #dddddd;
@@ -40,7 +46,7 @@
   --box-shadow-base: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Global styles */
+/* Global styles ===================================== */
 
 html,
 body,
@@ -51,86 +57,7 @@ body,
   /* border: 1px solid red; */
 }
 
-/* form styles ======================================== */
-
-.container {
-  width: 100%;
-  min-height: 50vh;
-  /* border: 1px solid red;
-  background-color: blue; */
-  font-family: Arial, sans-serif;
-  background-color: #f0f0f0;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.form-container {
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-}
-
-.error-message {
-  color: #d32f2f;
-  font-size: 14px;
-  margin-bottom: 10px;
-}
-
-form {
-  display: flex;
-  flex-direction: column;
-}
-
-select {
-  height: 40px;
-  margin: 2px;
-  width: 100%;
-  background-color: #ffffff;
-  cursor: pointer;
-  line-height: 30px;
-}
-
-label {
-  display: block;
-  padding: 3px;
-  margin-bottom: 5px;
-  color: #333333;
-}
-
-input,
-select,
-button {
-  margin-bottom: 10px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-button {
-  background-color: #4caf50;
-  color: white;
-  border: none;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #45a048;
-}
-
-input[type="file"] {
-  margin-bottom: 10px;
-}
-
-.column-layout {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-/* container ============================= */
+/* container ===================================== */
 
 .flex-container {
   display: flex;

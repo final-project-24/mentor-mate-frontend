@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Layout from "../../components/layout/Layout.jsx";
 import Login from "../../components/login/Login.jsx";
 import SignUp from "../../components/signup/Signup.jsx";
@@ -34,19 +34,28 @@ const Authentication = () => {
         {resetToken && <ResetPassword token={resetToken} />}
         {!showForgotPassword && !resetToken && (
           <div>
-            {showSignUp ? <SignUp /> : <Login />}
-            <div className="button-container">
+            {showSignUp ? (
+              <SignUp onToggleLogin={handleToggleSignUpLogin} />
+            ) : (
+              <Login
+                onToggleSignUp={handleToggleSignUpLogin}
+                onToggleForgotPassword={handleToggleForgotPassword}
+              />
+            )}
+            {/* <div className="button-container">
               <ToggleButton
                 onToggle={handleToggleSignUpLogin}
                 buttonName={
                   showSignUp ? "Switch to Login" : "Switch to Sign Up"
                 }
+                className="button-type-basic"
               />
               <ToggleButton
                 onToggle={handleToggleForgotPassword}
                 buttonName="Forgot Password"
+                className="button-type-basic"
               />
-            </div>
+            </div> */}
           </div>
         )}
       </section>

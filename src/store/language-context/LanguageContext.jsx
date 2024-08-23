@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useContext, useState } from "react";
 // import englishLayoutData from "../../assets/data/layoutDataEnglish.json";
 // import germanLayoutData from "../../assets/data/layoutDataGerman.json";
 // import englishProfileData from "../../assets/data/profileDataEnglish.json";
@@ -7,6 +7,8 @@ import { createContext, useState } from "react";
 // import germanContactData from "../../assets/data/contactDataGerman.json";
 import englishTermsData from "../../assets/data/termsDataEnglish.json";
 import germanTermsData from "../../assets/data/termsDataGerman.json";
+import englishSettingsData from "../../assets/data/settingsDataEnglish.json";
+import germanSettingsData from "../../assets/data/settingsDataGerman.json";
 
 export const LanguageContext = createContext();
 
@@ -29,16 +31,22 @@ export function LanguageProvider({ children }) {
     initialLanguage === "eng" ? englishTermsData : germanTermsData
   );
 
+  const [settingsData, setSettingsData] = useState(
+    initialLanguage === "eng" ? englishSettingsData : germanSettingsData
+  );
+
   console.log("Initial Language:", initialLanguage); //
   // console.log("Profile Data:", profileData); //
   // console.log("Contact Data:", contactData); //
   console.log("Terms Data:", termsData); //
+  console.log("Settings Data:", settingsData); //
 
   const switchToEnglish = () => {
     // setLayoutData(englishLayoutData);
     // setProfileData(englishProfileData);
     // setContactData(englishContactData);
     setTermsData(englishTermsData);
+    setSettingsData(englishSettingsData);
     localStorage.setItem("language", "eng");
   };
 
@@ -47,6 +55,7 @@ export function LanguageProvider({ children }) {
     // setProfileData(germanProfileData);
     // setContactData(germanContactData);
     setTermsData(germanTermsData);
+    setSettingsData(germanSettingsData);
     localStorage.setItem("language", "ger");
   };
 
@@ -57,6 +66,7 @@ export function LanguageProvider({ children }) {
         // profileData,
         // contactData,
         termsData,
+        settingsData,
         switchToEnglish,
         switchToGerman,
       }}
@@ -65,3 +75,5 @@ export function LanguageProvider({ children }) {
     </LanguageContext.Provider>
   );
 }
+
+export const useLanguageContext = () => useContext(LanguageContext);

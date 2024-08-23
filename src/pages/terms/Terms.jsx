@@ -1,14 +1,15 @@
 import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { useBookingContext } from "../../store/booking-context/BookingContext";
-import { LanguageContext } from "../../store/language-context/LanguageContext";
+import { useLanguageContext } from "../../store/language-context/LanguageContext";
+// import terms from "../../assets/data/terms.json";
 import "./Terms.css";
 import Layout from "../../components/layout/Layout";
 
 const Terms = () => {
-  const { termsData } = useContext(LanguageContext); // Use the language context
-  const { bookingId, isAgreed, setIsAgreed } = useBookingContext(); 
-  const [isChecked, setIsChecked] = useState(isAgreed); 
+  const { termsData } = useLanguageContext(); // Use the language context
+  const { bookingId, isAgreed, setIsAgreed } = useBookingContext(); // Use the booking context
+  const [isChecked, setIsChecked] = useState(isAgreed); // Use the isAgreed state from the context
   const navigate = useNavigate();
 
   useEffect(() => {

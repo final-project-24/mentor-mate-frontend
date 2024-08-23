@@ -1,0 +1,23 @@
+.dashboard-sidebar {
+  width: 200px;
+  height: 100vh;
+  /* margin-top: var(--margin-avoid-header); */
+  background-color: var(--card-color);
+  border-right: var(--border-width-base) solid var(--border-color-base);
+  padding: 20px;
+  position: sticky;
+  top: 0;
+  overflow-y: auto; /* Make the sidebar scrollable */
+}
+
+.dashboard-sidebar a {
+  display: block;
+  padding: 10px;
+  margin-bottom: 10px;
+  color: var(--accent-color);
+  text-decoration: none;
+}
+
+.dashboard-sidebar a:hover {
+  color: var(--accent-color-hover);
+}
