@@ -12,8 +12,9 @@
   cursor: pointer;
   /* margin-bottom: var(--margin-small); */
   padding: var(--padding-small);
-  text-align: center; 
+  text-align: center;
   text-decoration: none;
+  transition: var(--transition-base);
 }
 
 .login-button-container a:hover {

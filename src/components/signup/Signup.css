@@ -1,3 +1,5 @@
+/* container */
+
 .sign-up-container {
   display: flex;
   justify-content: center;
@@ -17,6 +19,8 @@
   margin-bottom: var(--margin-small);
 }
 
+/* button */
+
 .sign-up-container form button {
   width: 100%;
   background-color: var(--accent-color);
@@ -26,11 +30,14 @@
   cursor: pointer;
   margin-bottom: var(--margin-small);
   padding: var(--padding-small);
+  transition: var(--transition-base);
 }
 
 .sign-up-container form button:hover {
   background-color: var(--accent-color-hover);
 }
+
+/* link button */
 
 .button-type-link {
   background: none;
@@ -40,7 +47,7 @@
   padding: 0;
   margin: var(--margin-small) 0;
   font-size: inherit;
-  transition: color 0.3s, font-weight 0.3s;
+  transition: var(--transition-base);
 }
 
 .button-type-link:hover {
@@ -48,6 +55,8 @@
   color: var(--accent-color-hover);
   font-weight: var(--font-weight-bold);
 }
+
+/* form */
 
 .sign-up-container form {
   display: flex;

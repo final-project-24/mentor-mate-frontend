@@ -14,7 +14,7 @@
   --accent-color: #4caf50;
   --accent-color-hover: #45a048;
   --neutral-color: #b7792c;
-  --error-color: #9f2c2c;
+  --error-color: #e50f0f;
   --card-color: #f9f9f9; /* added */
 
   /* Typography */
@@ -44,7 +44,12 @@
 
   /* Shadows */
   --box-shadow-base: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  /* Animations */
+  --transition-base: 0.3s;
 }
+
+/* Animations */
 
 /* Global styles ===================================== */
 
@@ -90,12 +95,12 @@ body,
 
 /* colors */
 
-h1 {
+/* h1 {
   color: var(--accent-color);
   font-size: var(--font-size-xl);
-}
+} */
 
-h2 {
+/* h2 {
   color: var(--accent-color);
   font-size: var(--font-size-lg);
-}
+} */

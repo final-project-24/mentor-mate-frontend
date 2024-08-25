@@ -7,8 +7,9 @@
   cursor: pointer;
   margin-bottom: var(--margin-small);
   padding: var(--padding-small);
+  transition: var(--transition-base);
 }
 
 .delete-user-button:hover {
-  background-color: var(--accent-color-hover);
+  background-color: var(--error-color);
 }
