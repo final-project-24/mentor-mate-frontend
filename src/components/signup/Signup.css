@@ -40,11 +40,13 @@
   padding: 0;
   margin: var(--margin-small) 0;
   font-size: inherit;
+  transition: color 0.3s, font-weight 0.3s;
 }
 
 .button-type-link:hover {
   background: none;
   color: var(--accent-color-hover);
+  font-weight: var(--font-weight-bold);
 }
 
 .sign-up-container form {
