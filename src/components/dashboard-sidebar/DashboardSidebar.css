@@ -16,8 +16,10 @@
   margin-bottom: 10px;
   color: var(--accent-color);
   text-decoration: none;
+  transition: color 0.3s, font-weight 0.3s;
 }
 
 .dashboard-sidebar a:hover {
   color: var(--accent-color-hover);
+  font-weight: var(--font-weight-bold);
 }
