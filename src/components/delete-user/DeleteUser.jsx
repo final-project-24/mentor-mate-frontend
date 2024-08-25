@@ -1,14 +1,13 @@
-// import React from "react";
 import { deleteUser } from "../../utils/api-connector";
 import { useLanguageContext } from "../../store/language-context/LanguageContext";
 import "./DeleteUser.css";
 
-const DeleteUser = ({ userId }) => {
+const DeleteUser = () => {
   const { settingsData } = useLanguageContext(); // Use settingsData from LanguageContext
 
-  const handleDeleteUser = async (id) => {
+  const handleDeleteUser = async () => {
     try {
-      const response = await deleteUser(id);
+      const response = await deleteUser();
       console.log("User deleted: ", response);
     } catch (error) {
       console.error("Error removing user:", error);
@@ -18,7 +17,10 @@ const DeleteUser = ({ userId }) => {
   return (
     <button
       className="delete-user-button"
-      onClick={() => handleDeleteUser(userId)}
+      onClick={() => {
+        console.log("Attempting to delete user");
+        handleDeleteUser();
+      }}
     >
       {settingsData.deleteUserButtonLabel}
     </button>
