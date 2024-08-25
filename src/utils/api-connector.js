@@ -134,8 +134,26 @@ export const updateUserRole = async (newRole) => {
   }
 };
 
-// change password 
-export const changePassword = async (currentPassword, newPassword, confirmPassword) => {
+// change username
+export const changeUserName = async (newUserName) => {
+  try {
+    const res = await axios.post("/user/change-username", { newUserName });
+    if (res.status !== 200) {
+      throw new Error("Unable to change username");
+    }
+    return res.data;
+  } catch (error) {
+    console.error("Error changing username:", error);
+    throw error;
+  }
+};
+
+// change password
+export const changePassword = async (
+  currentPassword,
+  newPassword,
+  confirmPassword
+) => {
   try {
     const res = await axios.put("/user/change-password", {
       currentPassword,
@@ -148,6 +166,20 @@ export const changePassword = async (currentPassword, newPassword, confirmPasswo
     return res.data;
   } catch (error) {
     console.error("Error changing password:", error);
+    throw error;
+  }
+};
+
+// change email
+export const changeEmail = async (newEmail) => {
+  try {
+    const res = await axios.put("/user/change-email", { newEmail });
+    if (res.status !== 200) {
+      throw new Error("Unable to change email");
+    }
+    return res.data;
+  } catch (error) {
+    console.error("Error changing email:", error);
     throw error;
   }
 };
