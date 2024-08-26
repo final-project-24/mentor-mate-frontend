@@ -1,31 +1,31 @@
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 // import { useAuthContext } from "../../store/authentication-context/AuthenticationContext";
-import './Payment.css';
-import StripePayment from '../stripe-payment/StripePayment';
-import PayPalPayment from '../paypal-payment/PayPalPayment';
+import "./Payment.css";
+import StripePayment from "../stripe-payment/StripePayment";
+import PayPalPayment from "../paypal-payment/PayPalPayment";
 
 const Payment = ({ amount, offerDetails = {}, menteeData = {} }) => {
-  // const { user, loading: authLoading } = useAuthContext(); 
+  // const { user, loading: authLoading } = useAuthContext();
   const [isAgreed, setIsAgreed] = useState(false);
   const [stripePending, setStripePending] = useState(false);
   const [paypalPending, setPayPalPending] = useState(false);
   const navigate = useNavigate();
 
-  const { title = 'No Title', description = 'No Description' } = offerDetails;
-  const { menteeName = 'Mentee', menteeEmail = '' } = menteeData;
+  const { title = "No Title", description = "No Description" } = offerDetails;
+  const { menteeName = "Mentee", menteeEmail = "" } = menteeData;
 
   const handleCheckboxChange = (event) => {
     setIsAgreed(event.target.checked);
   };
 
   const handlePaymentSuccess = () => {
-    console.log('Payment successful for:', menteeName, menteeEmail);
-    navigate('/session-page'); // Redirect to the session page after payment success
+    console.log("Payment successful for:", menteeName, menteeEmail);
+    navigate("/session-page"); // Redirect to the session page after payment success
   };
 
   const handlePaymentError = () => {
-    console.error('Payment failed.');
+    console.error("Payment failed.");
   };
 
   const handleStripePaymentStart = () => {
@@ -46,7 +46,9 @@ const Payment = ({ amount, offerDetails = {}, menteeData = {} }) => {
 
   return (
     <div className="payment-container">
-      {(stripePending || paypalPending) && <p className="processing-message">Processing payment...</p>}
+      {(stripePending || paypalPending) && (
+        <p className="processing-message">Processing payment...</p>
+      )}
 
       <h2 className="payment-title">Payment Details</h2>
 
@@ -56,7 +58,8 @@ const Payment = ({ amount, offerDetails = {}, menteeData = {} }) => {
         <p>{description}</p>
         <div className="offer-price">
           <span>Amount: </span>
-          <strong>${(amount / 100).toFixed(2)}</strong>
+          {/* <strong>${(amount / 100).toFixed(2)}</strong> */}
+          <strong>${amount.toFixed(2)}</strong>
         </div>
       </div>
 
@@ -70,8 +73,11 @@ const Payment = ({ amount, offerDetails = {}, menteeData = {} }) => {
       {/* Instructions and Terms and Conditions Link */}
       <div className="terms-conditions-section">
         <p className="instructions">
-          Before proceeding with the payment, please review and accept our{' '}
-          <Link to="/terms" className="terms-link">Terms and Conditions</Link>.
+          Before proceeding with the payment, please review and accept our{" "}
+          <Link to="/terms" className="terms-link">
+            Terms and Conditions
+          </Link>
+          .
         </p>
         <label className="terms-checkbox">
           <input
@@ -136,4 +142,3 @@ const Payment = ({ amount, offerDetails = {}, menteeData = {} }) => {
 };
 
 export default Payment;
-
