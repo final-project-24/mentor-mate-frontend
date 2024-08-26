@@ -9,15 +9,17 @@ export default function InfoCard({
   skills,
   start,
   end,
+  price,
 }) {
-  console.log("ID:", id); //
-  console.log("Image:", image); //
-  console.log("Name:", userName); //
-  console.log("Email:", email); //
-  console.log("Role:", role); //
-  console.log("Skills:", skills); //
-  console.log("Start:", start); //
-  console.log("End:", end); //
+  // console.log("ID:", id); //
+  // console.log("Image:", image); //
+  // console.log("Name:", userName); //
+  // console.log("Email:", email); //
+  // console.log("Role:", role); //
+  // console.log("Skills:", skills); //
+  // console.log("Start:", start); //
+  // console.log("End:", end); //
+  // console.log("Price:", price); //
 
   return (
     <>
@@ -51,6 +53,8 @@ export default function InfoCard({
               {end && <li>End: {end}</li>}
             </ul>
           )}
+
+          {price && <p className="info-card-content">Price: {price} </p>}
         </div>
       </div>
     </>
