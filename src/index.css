@@ -30,9 +30,13 @@
   /* Spacing */
   --padding-small: 0.6rem; /* added */
   --padding-base: 1.2rem;
+  --padding-lg: 1.8rem; /* added */
+  --padding-xl: 2.4rem; /* added */
   --margin-small: 0.6rem;
   --margin-base: 1rem;
   --margin-lg: 1.4rem; /* added */
+  --margin-xl: 2rem; /* added */
+  --margin-xxl: 3rem; /* added */
   --margin-avoid-header: 6.5rem; /* added */
   --gap-base: 1rem;
 
