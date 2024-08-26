@@ -1,10 +1,13 @@
 import "./HomePage.css";
 import { useState } from "react";
 import Layout from "../../components/layout/Layout";
+
+import ReviewSidebar from "../review-sidebar/ReviewSidebar";
 import { useAuthContext } from "../../store/authentication-context/AuthenticationContext";
 import Schedule from "../schedule/Schedule";
 import InfoCard from "../../components/info-card/InfoCard.jsx";
 import ToggleButton from "../../components/toggle-button/ToggleButton.jsx";
+
 
 // Define the SearchComponent separately or before usage
 function SearchComponent({
@@ -33,6 +36,7 @@ function SearchComponent({
 
   return (
     <>
+    
     
       <div className="flex justify-between ">
         <div className="w-1/5 ">
@@ -126,7 +130,10 @@ function SearchComponent({
   );
 }
 
-function HomePage() {
+
+
+const HomePage = () => {
+
   const { user, isLoggedIn } = useAuthContext();
 
   const getWelcomeMessage = () => {
@@ -148,6 +155,7 @@ function HomePage() {
   const titleOptions = ["Option 2A", "Option 2B", "Option 2C"];
   const levelOptions = ["Option 3A", "Option 3B", "Option 3C"];
   const languageOptions = ["Option 4A", "Option 4B", "Option 4C"];
+
 
   return (
     <Layout>
@@ -226,6 +234,7 @@ function HomePage() {
         )}
 
         <p className="text-2xl text-center text-neutral py-4">
+
           {userNameDisplay()}
         </p>
 
@@ -252,6 +261,7 @@ function HomePage() {
               languageOptions={languageOptions}
             />
           </div>
+
         )}
         {isLoggedIn && user.role === "mentee" && (
           <h2 className="text-center pb-2">
@@ -262,8 +272,10 @@ function HomePage() {
         {isLoggedIn && (
           <div className="flex-1 lg:w-3/4 mx-auto border border-red-500 h-[500px]">
             <Schedule />
-          </div>
-        )}
+            </div>
+          
+            )
+        }
       </section>
     </Layout>
   );
@@ -271,22 +283,3 @@ function HomePage() {
 
 export default HomePage;
 
-{
-  /* Uncomment and modify as needed */
-}
-{
-  /* <section className="flex py-10">
-        <div className="border border-red-500 w-1/4 h-[400px] mx-2">
-          Some random comments about platform
-        </div>
-        <div className="border border-red-500 w-1/4 h-[400px] mx-2">
-          Some random comments about platform
-        </div>
-        <div className="border border-red-500 w-1/4 h-[400px] mx-2">
-          Some random comments about platform
-        </div>
-        <div className="border border-red-500 w-1/4 h-[400px] mx-2">
-          Some random comments about platform
-        </div>
-      </section> */
-}
