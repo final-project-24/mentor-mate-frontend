@@ -269,11 +269,13 @@ export const bookSlot = async (eventId) => {
 // payment API calls ==================================================
 
 // Stripe Payment: Create Payment Intent
-export const createStripePaymentIntent = async (amount, currency = "usd") => {
+// export const createStripePaymentIntent = async (amount, currency = "usd") => {
+export const createStripePaymentIntent = async (bookingId) => {
   try {
     const res = await axios.post("/payment/stripe/create-payment-intent", {
-      amount,
-      currency,
+      // amount,
+      // currency,
+      bookingId,
     });
     if (res.status !== 200) {
       throw new Error("Unable to create payment intent");
@@ -286,11 +288,13 @@ export const createStripePaymentIntent = async (amount, currency = "usd") => {
 };
 
 // PayPal Payment: Create Order
-export const createPayPalOrder = async (amount, currency = "USD") => {
+// export const createPayPalOrder = async (amount, currency = "USD") => {
+export const createPayPalOrder = async (bookingId) => {
   try {
     const res = await axios.post("/payment/paypal/create-order", {
-      amount,
-      currency,
+      // amount,
+      // currency,
+      bookingId,
     });
     if (res.status !== 200) {
       throw new Error("Unable to create PayPal order");
