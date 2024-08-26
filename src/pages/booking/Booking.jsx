@@ -85,9 +85,9 @@ const Booking = () => {
           end={bookingDetails.end}
         />
 
-        <TermsAndConditions onAgree={handleAgreeChange} />
+        {/* <TermsAndConditions onAgree={handleAgreeChange} /> */}
 
-        {isAgreed && <Payment />}
+        {/* {isAgreed && <Payment />} */}
       </div>
     </Layout>
   );

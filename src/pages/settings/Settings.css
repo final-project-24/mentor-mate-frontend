@@ -3,10 +3,32 @@
   flex-direction: column;
   align-items: center;
   justify-content: start;
-  height: 100vh;
+  min-height: 100vh;
 }
 
-.delete-user-button-container {
+#settings-container h1 {
+  color: var(--secondary-color);
+  font-size: var(--font-size-xl);
+  margin-bottom: var(--margin-base);
+}
+
+.settings {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: var(--margin-lg);
+  min-width: 50%;
+  margin-top: var(--margin-lg);
+  padding: var(--padding-base);
+  background-color: var(--card-color);
+  border-width: var(--border-width-base);
+  border-radius: var(--border-radius-base);
+  border-color: var(--border-color-base);
+  box-shadow: var(--box-shadow-base);
+}
+
+/* .delete-user-button-container {
   width: 200px;
   margin: var(--margin-base);
-}
+} */

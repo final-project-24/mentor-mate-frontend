@@ -1,4 +1,4 @@
-.logout-container button { 
+.logout-container button {
   width: 100%;
   background-color: var(--accent-color);
   color: var(--primary-color);
@@ -7,8 +7,9 @@
   cursor: pointer;
   margin-bottom: var(--margin-small);
   padding: var(--padding-small);
-} 
+  transition: var(--transition-base);
+}
 
-.logout-container button:hover { 
+.logout-container button:hover {
   background-color: var(--accent-color-hover);
 }

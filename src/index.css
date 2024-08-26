@@ -14,7 +14,7 @@
   --accent-color: #4caf50;
   --accent-color-hover: #45a048;
   --neutral-color: #b7792c;
-  --error-color: #9f2c2c;
+  --error-color: #e50f0f;
   --card-color: #f9f9f9; /* added */
 
   /* Typography */
@@ -30,9 +30,13 @@
   /* Spacing */
   --padding-small: 0.6rem; /* added */
   --padding-base: 1.2rem;
+  --padding-lg: 1.8rem; /* added */
+  --padding-xl: 2.4rem; /* added */
   --margin-small: 0.6rem;
   --margin-base: 1rem;
   --margin-lg: 1.4rem; /* added */
+  --margin-xl: 2rem; /* added */
+  --margin-xxl: 3rem; /* added */
   --margin-avoid-header: 6.5rem; /* added */
   --gap-base: 1rem;
 
@@ -44,7 +48,12 @@
 
   /* Shadows */
   --box-shadow-base: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  /* Animations */
+  --transition-base: 0.3s;
 }
+
+/* Animations */
 
 /* Global styles ===================================== */
 
@@ -90,12 +99,12 @@ body,
 
 /* colors */
 
-h1 {
+/* h1 {
   color: var(--accent-color);
   font-size: var(--font-size-xl);
-}
+} */
 
-h2 {
+/* h2 {
   color: var(--accent-color);
   font-size: var(--font-size-lg);
-}
+} */

@@ -26,6 +26,7 @@
   cursor: pointer;
   margin-bottom: var(--margin-small);
   padding: var(--padding-small);
+  transition: var(--transition-base);
 }
 
 .login-container form button:hover {
@@ -40,11 +41,13 @@
   padding: 0;
   margin: var(--margin-small) 0;
   font-size: inherit;
+  transition: var(--transition-base);
 }
 
 .button-type-link:hover {
   background: none;
   color: var(--accent-color-hover);
+  font-weight: var(--font-weight-bold);
 }
 
 .login-container form {

@@ -92,9 +92,9 @@ export const resetPassword = async (token, password) => {
 };
 
 // delete user
-export const deleteUser = async (id) => {
+export const deleteUser = async () => {
   try {
-    const res = await axios.delete(`/user/${id}`);
+    const res = await axios.delete("/user");
     if (res.status !== 200) {
       throw new Error("Unable to delete user");
     }
@@ -130,6 +130,56 @@ export const updateUserRole = async (newRole) => {
     return res.data;
   } catch (error) {
     console.error("Error updating user role:", error);
+    throw error;
+  }
+};
+
+// change username
+export const changeUserName = async (newUserName) => {
+  try {
+    const res = await axios.post("/user/change-username", { newUserName });
+    if (res.status !== 200) {
+      throw new Error("Unable to change username");
+    }
+    return res.data;
+  } catch (error) {
+    console.error("Error changing username:", error);
+    throw error;
+  }
+};
+
+// change password
+export const changePassword = async (
+  currentPassword,
+  newPassword,
+  confirmPassword
+) => {
+  try {
+    const res = await axios.put("/user/change-password", {
+      currentPassword,
+      newPassword,
+      confirmPassword,
+    });
+    if (res.status !== 200) {
+      throw new Error("Unable to change password");
+    }
+    return res.data;
+  } catch (error) {
+    console.error("Error changing password:", error);
+    throw error;
+  }
+};
+
+// change email
+export const changeEmail = async (newEmail) => {
+  try {
+    const res = await axios.put("/user/change-email", { newEmail });
+    if (res.status !== 200) {
+      throw new Error("Unable to change email");
+    }
+    return res.data;
+  } catch (error) {
+    console.error("Error changing email:", error);
     throw error;
   }
 };
@@ -219,7 +269,7 @@ export const bookSlot = async (eventId) => {
 // payment API calls ==================================================
 
 // Stripe Payment: Create Payment Intent
-export const createStripePaymentIntent = async (amount, currency = 'usd') => {
+export const createStripePaymentIntent = async (amount, currency = "usd") => {
   try {
     const res = await axios.post("/payment/stripe/create-payment-intent", {
       amount,
@@ -236,7 +286,7 @@ export const createStripePaymentIntent = async (amount, currency = 'usd') => {
 };
 
 // PayPal Payment: Create Order
-export const createPayPalOrder = async (amount, currency = 'USD') => {
+export const createPayPalOrder = async (amount, currency = "USD") => {
   try {
     const res = await axios.post("/payment/paypal/create-order", {
       amount,
@@ -245,7 +295,7 @@ export const createPayPalOrder = async (amount, currency = 'USD') => {
     if (res.status !== 200) {
       throw new Error("Unable to create PayPal order");
     }
-    return res.data; 
+    return res.data;
   } catch (error) {
     console.error("Error creating PayPal order:", error);
     throw error;
