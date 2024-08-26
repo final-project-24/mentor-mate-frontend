@@ -1,24 +1,44 @@
 import "./Footer.css";
 import LanguageButton from "../language-button/LanguageButton";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faFacebook } from '@fortawesome/free-brands-svg-icons';
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faFacebook,
+  faInstagram,
+  faLinkedin,
+  faXTwitter,
+} from "@fortawesome/free-brands-svg-icons"; // Ensure these imports are correct
+import iconUrl from "../../assets/images/mentormateLogo.svg"; // Update the path to your logo
 
 export default function Footer() {
   return (
-    <>
-
-
-      <footer id="footer">
-        <div className="flex-container">
-          <LanguageButton />
-          <p>© 2024 Your Mentor Mate. All Rights Reserved.</p>
-          <FontAwesomeIcon icon={faFacebook} />
-  
-          
+    <footer id="footer">
+      <div className="main-flex-container">
+        {/* Logo */}
+        <div className="footer-section">
+          <img src={iconUrl} alt="Logo" className="footer-logo" />
+          <p>Your trusted source to find highly-vetted mentors & industry professionals 
+          <br /> to move your career ahead.</p>
         </div>
 
-      </footer>
-    </>
+        {/* About and Terms Links */}
+        <div className="footer-section">
+          <a href="/about" className="footer-link">About</a>
+          <a href="/terms" className="footer-link">Terms</a>
+        </div>
+
+        {/* Language Button */}
+        <div className="footer-section">
+          <LanguageButton />
+        </div>
+
+        {/* Social Media Icons */}
+        <div className="footer-section footer-social-media">
+          <FontAwesomeIcon icon={faFacebook} className="social-icon" />
+          <FontAwesomeIcon icon={faInstagram} className="social-icon" />
+          <FontAwesomeIcon icon={faLinkedin} className="social-icon" />
+          <FontAwesomeIcon icon={faXTwitter} className="social-icon" />
+        </div>
+      </div>
+    </footer>
   );
 }
