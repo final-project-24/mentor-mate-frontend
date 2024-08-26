@@ -47,7 +47,7 @@ const Booking = () => {
     const fetchBookingDetails = async () => {
       try {
         const response = await axios.get(
-          `/booking/booking-details/${bookingId}`
+          `/calendar/booking-details/${bookingId}`
         );
         console.log("Booking details response:", response.data);
         setBookingDetails(response.data);
@@ -88,7 +88,12 @@ const Booking = () => {
           price={bookingDetails.price}
         />
 
-        <Payment amount={bookingDetails.price} offerDetails={bookingDetails} />
+        <Payment
+          bookingId={bookingId} // Pass bookingId to the Payment component
+          menteeData={bookingDetails.menteeData}
+          amount={bookingDetails.price}
+          offerDetails={bookingDetails}
+        />
 
         {/* <TermsAndConditions onAgree={handleAgreeChange} /> */}
 
