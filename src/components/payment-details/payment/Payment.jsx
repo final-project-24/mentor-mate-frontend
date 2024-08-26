@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-// import { useAuthContext } from "../../store/authentication-context/AuthenticationContext";
+import { useAuthContext } from "../../../store/authentication-context/AuthenticationContext"; // addedd
 import {
   createStripePaymentIntent,
   createPayPalOrder,
@@ -12,13 +12,12 @@ import PayPalPayment from "../paypal-payment/PayPalPayment";
 // comentedd
 // const Payment = ({ amount, offerDetails = {}, menteeData = {} }) => {
 // addedd
-// const Payment = ({ bookingId }) => {
-const Payment = ({ bookingId, menteeData, amount, offerDetails }) => {
+const Payment = ({ bookingId, amount, offerDetails }) => {
   console.log("bookingId:", bookingId); // addedd
   console.log("amount:", amount); // addedd
   console.log("offerDetails:", offerDetails); // addedd
   // console.log("menteeData:", menteeData); // addedd
-  // const { user, loading: authLoading } = useAuthContext();
+  const { user} = useAuthContext();
   const [isAgreed, setIsAgreed] = useState(false);
   const [stripePending, setStripePending] = useState(false);
   const [paypalPending, setPayPalPending] = useState(false);
@@ -48,7 +47,8 @@ const Payment = ({ bookingId, menteeData, amount, offerDetails }) => {
   const handleStripePaymentStart = async () => {
     setStripePending(true);
     try {
-      const { clientSecret } = await createStripePaymentIntent(bookingId);
+      await createStripePaymentIntent(bookingId);
+      // const { clientSecret } = await createStripePaymentIntent(bookingId);
       // Pass clientSecret to StripePayment component
     } catch (error) {
       handlePaymentError();
@@ -64,7 +64,8 @@ const Payment = ({ bookingId, menteeData, amount, offerDetails }) => {
   const handlePayPalPaymentStart = async () => {
     setPayPalPending(true);
     try {
-      const { orderId } = await createPayPalOrder(bookingId);
+      await createPayPalOrder(bookingId);
+      // const { orderId } = await createPayPalOrder(bookingId);
       // Pass orderId to PayPalPayment component
     } catch (error) {
       handlePaymentError();
@@ -102,10 +103,8 @@ const Payment = ({ bookingId, menteeData, amount, offerDetails }) => {
       {/* Mentee Information */}
       <div className="mentee-details">
         <h4>Mentee Information</h4>
-        {/* <p>Name: {menteeName}</p> */}
-        <p>Name: </p>
-        {/* <p>Email: {menteeEmail}</p> */}
-        <p>Email: </p>
+        <p>Name: {user.userName}</p>
+        <p>Email: {user.email}</p>
       </div>
 
       {/* Instructions and Terms and Conditions Link */}
