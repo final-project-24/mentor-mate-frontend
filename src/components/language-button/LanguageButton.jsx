@@ -28,7 +28,7 @@ export default function LanguageButton() {
   };
 
   return (
-    <div>
+    <div className="">
       <div>
         <button
           className={`eng-button ${activeLanguage === "eng" ? "active" : ""}`}

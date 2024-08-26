@@ -54,7 +54,7 @@ const Header = () => {
   const closeMenu = () => setNav(false);
 
   return (
-    <nav className="header-container fixed top-0 w-full h-[80px] xl:h-[100px] flex items-center px-4 md:px-6 z-50">
+    <nav className=" fixed top-0 w-full h-[80px] xl:h-[100px] flex items-center px-4 md:px-6 z-50 ">
       {/* Logo Section */}
       <div
         className={`flex items-center ${nav

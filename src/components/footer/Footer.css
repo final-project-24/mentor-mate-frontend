@@ -3,9 +3,8 @@
     min-height: 100px;
     width: 100%;
     margin-top: 20px;
+    position: bottom fixed;
 
-    position: bottom;
-
-    background-color: rgb(88, 89, 90);
+ 
 
 }
