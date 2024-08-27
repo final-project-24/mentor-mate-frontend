@@ -31,7 +31,8 @@ const StripePayment = ({ amount, onPaymentStart, onPaymentSuccess, onPaymentEnd,
 
     try {
       // Call backend to create a PaymentIntent
-      const response = await axios.post('/api/payment/create-payment-intent', { amount });
+      const response = await axios.post('/payment/stripe/create-payment-intent', { amount });
+      console.log('Payment Intent created:', response.data); // Log payment intent creation
       const { clientSecret } = response.data;
 
       // Use Stripe.js to confirm the payment
@@ -53,7 +54,7 @@ const StripePayment = ({ amount, onPaymentStart, onPaymentSuccess, onPaymentEnd,
         console.log(`Payment status: ${paymentIntent.status}`);
       }
     } catch (error) {
-      console.error('Error processing payment:', error);
+      console.error('Error processing payment:', error.response ? error.response.data : error.message);
       setError('An error occurred while processing your payment.');
     } finally {
       setLoading(false);
