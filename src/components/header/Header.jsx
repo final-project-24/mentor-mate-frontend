@@ -64,7 +64,6 @@ const Header = () => {
   const closeMenu = () => setNav(false);
 
   return (
-
     <nav className=" fixed top-0 w-full h-[80px] xl:h-[100px] flex items-center px-4 md:px-6 z-50 bg-inherit border-b-2 border-accent">
       {/* Logo Section */}
       <div
@@ -110,11 +109,9 @@ const Header = () => {
           <Link
             to="/authentication"
             className="text-primary bg-accent  p-2 hover:bg-neutral"
-
           >
             Mentor Mate
           </Link>
-
         ) : (
           <LogoutButton />
         )}
@@ -151,17 +148,15 @@ const Header = () => {
         ))}
         {!isLoggedIn ? (
           <li onClick={closeMenu}>
-
             <Link
               to="/authentication"
               className="text-primary bg-accent rounded-2xl p-2 hover:bg-neutral"
             >
               Login
             </Link>
-          ) : (
-            <LogoutButton />
-
           </li>
+        ) : (
+          <LogoutButton />
         )}
       </ul>
     </nav>
