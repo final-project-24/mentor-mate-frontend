@@ -1,18 +1,23 @@
-.development-navigation {
-  border: 1px solid red;
+.dev-nav-container {
+  
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 20px;
 }
 
-.development-navigation ul {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.dev-nav-container ul {
+  /* display: flex; */
+  /* justify-content: space-between; */
+  /* align-items: center; */
 }
 
-.development-navigation ul li {
+.dev-nav-container ul li {
   list-style: none;
-  margin-right: 20px;
+  /* color: red; */
+  /* margin-right: 20px; */
+}
+
+.dev-nav-container ul li a {
+  color: red;
 }

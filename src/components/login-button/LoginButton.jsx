@@ -1,11 +1,12 @@
-import React from "react";
+// import React from "react";
 import { Link } from "react-router-dom";
+import "./LoginButton.css";
 
 const LoginButton = () => {
   return (
-    <Link to="/authentication">
-      <button>Login</button>
-    </Link>
+    <div className="login-button-container">
+      <Link to="/authentication">Login</Link>
+    </div>
   );
 };
 

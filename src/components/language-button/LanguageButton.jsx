@@ -1,9 +1,9 @@
-import { useEffect, useState, useContext } from "react";
-import { LanguageContext } from "../../store/language-context/LanguageContext";
+import { useEffect, useState } from "react";
+import { useLanguageContext } from "../../store/language-context/LanguageContext";
 import "./LanguageButton.css";
 
 export default function LanguageButton() {
-  const { switchToEnglish, switchToGerman } = useContext(LanguageContext);
+  const { switchToEnglish, switchToGerman } = useLanguageContext();
   const [activeLanguage, setActiveLanguage] = useState("eng");
 
   console.log("Active Language:", activeLanguage); //
@@ -29,7 +29,7 @@ export default function LanguageButton() {
 
   return (
     <div>
-      <div>
+      <div className="language-button-container">
         <button
           className={`eng-button ${activeLanguage === "eng" ? "active" : ""}`}
           onClick={handleEnglishClick}

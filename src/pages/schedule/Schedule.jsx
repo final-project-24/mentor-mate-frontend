@@ -10,6 +10,9 @@ import Layout from "../../components/layout/Layout";
 import MentorAvailabilityCalendar from "../../components/mentor-availability-calendar/MentorAvailabilityCalendar";
 import ExampleMentorList from "../../components/example-mentor-list/ExampleMentorList.jsx";
 
+
+
+
 export default function Schedule() {
   const { loading, user } = useAuthContext(); // Use useAuthContext hook to access user information
   const [selectedMentorUuid, setSelectedMentorUuid] = useState(null);
@@ -38,11 +41,19 @@ export default function Schedule() {
     
       <section id="schedule">
 
-        <h1>Schedule a Meeting</h1>
-        {user.role === "mentee" && !selectedMentorUuid && (
+
+        <h1 className="text-center">Schedule a Meeting</h1>
+        {user.role === "mentee"  && (
+
+        // <h1>Schedule a Meeting</h1>
+        // {user.role === "mentee" && !selectedMentorUuid && (
+
+       // <h1>Schedule a Meeting</h1>
+        //{user.role === "mentee" && !selectedMentorUuid && (
+
 
           <div>
-            <p>Please select a mentor to view their availability:</p>
+            <p className="text-center">Please select a mentor to view their availability:</p>
             {/* Add a mentor selection component here */}
             {/* For example: <MentorList onSelect={handleMentorSelect} /> */}
             <ExampleMentorList onSelect={handleMentorSelect} />
