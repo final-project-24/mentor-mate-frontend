@@ -1,15 +1,18 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./Login.css";
-import { useAuthContext } from "../../store/authentication-context/AuthenticationContext.jsx";
-import { useNavigate } from "react-router-dom";
+import { useAuthContext } from "../../store/authentication-context/AuthenticationContext.jsx"; //
+import { useNavigate } from "react-router-dom"; //
+import ToggleButton from "../../components/toggle-button/ToggleButton.jsx";
 
-function Login({ onLogin }) {
+// function Login({ onLogin }) {
+function Login({ onToggleSignUp, onToggleForgotPassword }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
-  const { login } = useAuthContext();
-  const navigate = useNavigate();
+  const { login } = useAuthContext(); // Use useAuthContext hook to access login method
+
+  const navigate = useNavigate(); //
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -26,6 +29,7 @@ function Login({ onLogin }) {
   };
 
   return (
+
     <div className="pt-[80px] lg:pt-[100px]">
       <div className="container">
         <div className="form-container">

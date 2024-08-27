@@ -1,4 +1,5 @@
-import  { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   checkUserAuth,
   loginUser,
@@ -14,6 +15,8 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null); // State to hold the current user information
   const [isLoggedIn, setIsLoggedIn] = useState(false); // State to track if the user is logged in
   const [loading, setLoading] = useState(true); // State to track if any async operations are in progress
+
+  const navigate = useNavigate(); // Initialize navigate function
 
   // Effect to check user authentication status on component mount
   useEffect(() => {
@@ -111,6 +114,7 @@ export const AuthProvider = ({ children }) => {
     setIsLoggedIn(false); // Set isLoggedIn to false
     setUser(null); // Clear user data
     setLoading(false); // Set loading to false
+    navigate("/"); // Navigate to home page
     window.location.reload(); // Reload the page to clear any staged data
   };
 
