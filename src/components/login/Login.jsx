@@ -29,6 +29,32 @@ function Login({ onToggleSignUp, onToggleForgotPassword }) {
   };
 
   return (
+
+    <div className="pt-[80px] lg:pt-[100px]">
+      <div className="container ">
+        <div className="form-container">
+          <h2>Login</h2>
+          {errorMessage && <p className="error-message">{errorMessage}</p>}
+          <form onSubmit={handleSubmit}>
+            <input
+              type="text"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+            <input
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+            <button type="submit">Login</button>
+          </form>
+        </div>
+      </div>
+
     <div className="login-container">
       <h2>Login</h2>
       {errorMessage && <p className="login-error-message">{errorMessage}</p>}
@@ -59,6 +85,7 @@ function Login({ onToggleSignUp, onToggleForgotPassword }) {
         buttonName="Forgot Password"
         className="button-type-link"
       />
+
     </div>
   );
 }
