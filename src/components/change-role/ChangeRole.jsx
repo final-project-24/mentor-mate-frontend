@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { updateUserRole } from "../../utils/api-connector.js";
+import "./ChangeRole.css";
 
 const ChangeRole = ({ user }) => {
   const [newRole, setNewRole] = useState(user.role);
@@ -17,19 +18,21 @@ const ChangeRole = ({ user }) => {
   };
 
   return (
-    <form onSubmit={handleRoleChange}>
-      <label htmlFor="role">Change Role:</label>
-      <select
-        id="role"
-        value={newRole}
-        onChange={(e) => setNewRole(e.target.value)}
-      >
-        <option value="admin">Admin</option>
-        <option value="mentor">Mentor</option>
-        <option value="mentee">Mentee</option>
-      </select>
-      <button type="submit">Update Role</button>
-    </form>
+    <div className="change-role-container">
+      <form onSubmit={handleRoleChange}>
+        <label htmlFor="role">Change Role:</label>
+        <select
+          id="role"
+          value={newRole}
+          onChange={(e) => setNewRole(e.target.value)}
+        >
+          <option value="admin">Admin</option>
+          <option value="mentor">Mentor</option>
+          <option value="mentee">Mentee</option>
+        </select>
+        <button type="submit">Update Role</button>
+      </form>
+    </div>
   );
 };
 

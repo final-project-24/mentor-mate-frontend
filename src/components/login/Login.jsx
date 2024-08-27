@@ -8,18 +8,19 @@ function Login({ onLogin }) {
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
-  const { login } = useAuthContext(); /
+  const { login } = useAuthContext(); // Use useAuthContext hook to access login method
+
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      await login(email, password); 
+      await login(email, password); // Use login method from authentication context
 
       setEmail("");
       setPassword("");
-      navigate("/"); 
+      navigate("/"); // Navigate to home page on successful login
     } catch (error) {
       console.error("Login failed:", error);
       setErrorMessage("Login failed. Please try again.");

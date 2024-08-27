@@ -37,79 +37,78 @@ function FeedbackForm({ isMentor, onSubmit }) {
 
   return (
     <>
-      <form className="feedback-form" onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="comment">Comment:</label>
-          <textarea
-            id="comment"
-            value={comment}
-            onChange={(e) => setComment(e.target.value)}
-            placeholder={isMentor ? "Comments (required)" : "Comments (optional)"}
-            required={isMentor}
-          />
-        </div>
-
-        {isMentor && (
-          <>
-            <div className="form-group">
-              <label htmlFor="strengths">Strengths:</label>
-              <textarea
-                id="strengths"
-                value={strengths}
-                onChange={(e) => setStrengths(e.target.value)}
-                placeholder="Strengths"
-                required
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="improvement">Areas of Improvement:</label>
-              <textarea
-                id="improvement"
-                value={improvement}
-                onChange={(e) => setImprovement(e.target.value)}
-                placeholder="Areas of Improvement"
-                required
-              />
-            </div>
-          </>
-        )}
-
-        {!isMentor && (
-          <>
-            <div className="form-group">
-              <label htmlFor="rating">Rating (1 to 5):</label>
-              <select
-                id="rating"
-                value={rating}
-                onChange={(e) => setRating(Number(e.target.value))}
-              >
-                {[1, 2, 3, 4, 5].map(value => (
-                  <option key={value} value={value}>
-                    {value}
-                  </option>
-                ))}
-              </select>
-            </div>
-            <div className="form-group">
-              <label>
-                <input
-                  type="checkbox"
-                  checked={publicFeedback}
-                  onChange={(e) => setPublicFeedback(e.target.checked)}
+      <div className="feedback-form-container">
+        <form className="feedback-form" onSubmit={handleSubmit}>
+          <div className="form-group">
+            <label htmlFor="comment">Comment:</label>
+            <textarea
+              id="comment"
+              value={comment}
+              onChange={(e) => setComment(e.target.value)}
+              placeholder={isMentor ? "Comments (required)" : "Comments (optional)"}
+              required={isMentor}
+            />
+          </div>
+          {isMentor && (
+            <>
+              <div className="form-group">
+                <label htmlFor="strengths">Strengths:</label>
+                <textarea
+                  id="strengths"
+                  value={strengths}
+                  onChange={(e) => setStrengths(e.target.value)}
+                  placeholder="Strengths"
+                  required
                 />
-                Make feedback public
-              </label>
-            </div>
-          </>
+              </div>
+              <div className="form-group">
+                <label htmlFor="improvement">Areas of Improvement:</label>
+                <textarea
+                  id="improvement"
+                  value={improvement}
+                  onChange={(e) => setImprovement(e.target.value)}
+                  placeholder="Areas of Improvement"
+                  required
+                />
+              </div>
+            </>
+          )}
+          {!isMentor && (
+            <>
+              <div className="form-group">
+                <label htmlFor="rating">Rating (1 to 5):</label>
+                <select
+                  id="rating"
+                  value={rating}
+                  onChange={(e) => setRating(Number(e.target.value))}
+                >
+                  {[1, 2, 3, 4, 5].map(value => (
+                    <option key={value} value={value}>
+                      {value}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div className="form-group">
+                <label>
+                  <input
+                    type="checkbox"
+                    checked={publicFeedback}
+                    onChange={(e) => setPublicFeedback(e.target.checked)}
+                  />
+                  Make feedback public
+                </label>
+              </div>
+            </>
+          )}
+          <button type="submit">Submit Feedback</button>
+        </form>
+        {feedbackSubmitted && (
+          <div className="success-message">
+            Thank you for your feedback! It has been successfully submitted.
+          </div>
         )}
-
-        <button type="submit">Submit Feedback</button>
-      </form>
-      {feedbackSubmitted && (
-        <div className="success-message">
-          Thank you for your feedback! It has been successfully submitted.
-        </div>
-      )}
+      </div>
     </>
   );
 }

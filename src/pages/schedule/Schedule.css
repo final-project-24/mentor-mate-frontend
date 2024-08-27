@@ -1,4 +1,9 @@
 /* Schedule.css */
+#schedule{
+  width: 100%;
+  min-height: 100vh;
+}
+
 .calendar-container {
   height: calc(100vh - 200px); /* Adjust based on your layout */
   overflow-y: auto;
