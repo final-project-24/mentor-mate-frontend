@@ -54,9 +54,6 @@ function Login({ onToggleSignUp, onToggleForgotPassword }) {
         </div>
       </div>
     </div>
-);
-
-    </div>
   );
 }
 
