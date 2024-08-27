@@ -1,28 +1,22 @@
 // DevNav.jsx
 
-import "./DevNav.css";
-import React from "react";
+// import React from "react";
 import { Link } from "react-router-dom";
-import { useAuthContext } from "../../store/authentication-context/AuthenticationContext.jsx";
-import LoginButton from "../login-button/LoginButton.jsx";
-import LogoutButton from "../logout/Logout.jsx";
+// import { useAuthContext } from "../../store/authentication-context/AuthenticationContext.jsx";
+import "./DevNav.css";
 
 export default function DevNav() {
-  const { isLoggedIn } = useAuthContext(); // Use useAuthContext hook to access isLoggedIn state
+  // const { isLoggedIn } = useAuthContext(); // Use useAuthContext hook to access isLoggedIn state
 
   return (
-    <div className="development-navigation">
-      <p>dev nav:</p>
-
+    <div className="dev-nav-container">
       <ul>
+        <li>dev nav:</li>
         <li>
-          <Link to="/">Home</Link>
+          <Link to="/playground">Playground</Link>
         </li>
         <li>
-          <Link to="/settings">Settings</Link>
-        </li>
-        <li>
-          <Link to="/match-making">Match Making</Link>
+          <Link to="/match-making">Search</Link>
         </li>
         <li>
           <Link to="/schedule">Schedule</Link>
@@ -31,25 +25,18 @@ export default function DevNav() {
           <Link to="/booking/:id">Booking</Link>
         </li>
         <li>
+          <Link to="/payment">Payment</Link>
+        </li>
+        <li>
           <Link to="/session">Session</Link>
         </li>
         <li>
           <Link to="/feedback">Feedback</Link>
         </li>
         <li>
-          <Link to="/playground">Playground</Link>
+          <Link to="/terms">Terms</Link>
         </li>
       </ul>
-
-      <ul>
-        {!isLoggedIn && (
-          <li>
-            <LoginButton />
-          </li>
-        )}
-      </ul>
-
-      {isLoggedIn && <LogoutButton />}
     </div>
   );
 }

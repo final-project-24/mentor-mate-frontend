@@ -137,7 +137,9 @@ const HomePage = () => {
 
   const getWelcomeMessage = () => {
     if (!isLoggedIn) {
+
       return "Welcome to MentorMate - Your Gateway to Growth and Success!";
+
     }
     return user.role === "mentor" ? "Welcome Mentor" : "Welcome Mentee";
   };
@@ -155,7 +157,6 @@ const HomePage = () => {
   const levelOptions = ["Option 3A", "Option 3B", "Option 3C"];
   const languageOptions = ["Option 4A", "Option 4B", "Option 4C"];
 
-
   return (
     <Layout>
       <section
@@ -165,6 +166,7 @@ const HomePage = () => {
         <h1 className="text-xl text-center text-accent">
           {getWelcomeMessage()}
         </h1>
+
 
         {!isLoggedIn && (
           <div className="mx-20">
@@ -183,6 +185,7 @@ const HomePage = () => {
           </div>
         )}
 
+
         <p className="text-2xl text-center text-neutral py-4">
           {userNameDisplay()}
         </p>
@@ -197,6 +200,11 @@ const HomePage = () => {
                 email={user.email}
               />
             </div>
+
+
+            {/* Keep ReviewSidebar from nacho branch */}
+            <ReviewSidebar />
+
           </div>
         )}
 
@@ -211,21 +219,23 @@ const HomePage = () => {
             />
           </div>
         )}
+
         {isLoggedIn && user.role === "mentee" && (
           <h2 className="text-center pb-2">
             Already know your mentor? 
           </h2>
         )}
 
+
         {isLoggedIn && (
-          <div className="flex-1 lg:w-3/4 mx-auto border border-red-500 h-[500px]">
+          <div className="flex-1 lg:w-3/4 mx-auto border border-red-500">
             <Schedule />
           </div>
         )}
       </section>
     </Layout>
   );
-}
+};
 
 export default HomePage;
 

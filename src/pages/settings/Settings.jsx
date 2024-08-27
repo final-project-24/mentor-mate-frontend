@@ -1,36 +1,37 @@
-import React from "react";
+// import React from "react";
 import { useAuthContext } from "../../store/authentication-context/AuthenticationContext.jsx";
 import "./Settings.css";
 import Loading from "../../components/loading/Loading";
-import Layout from "../../components/layout/Layout";
+// import Layout from "../../components/layout/Layout";
+import ChangeUserName from "../../components/change-user-name/ChangeUserName.jsx";
+import ChangePassword from "../../components/change-password/ChangePassword.jsx";
+import ChangeEmail from "../../components/change-email/ChangeEmail.jsx";
 import DeleteUser from "../../components/delete-user/DeleteUser.jsx";
-import ResetPassword from "../../components/reset-password/ResetPassword.jsx";
-import ChangeRole from "../../components/change-role/ChangeRole.jsx";
+import { changeEmail } from "../../utils/api-connector.js";
+// import ResetPassword from "../../components/reset-password/ResetPassword.jsx";
 
 export default function Settings() {
-  const { loading, isLoggedIn, user } = useAuthContext(); // Use useAuthContext hook to access isLoggedIn and user state
+  const { loading, isLoggedIn } = useAuthContext(); // Use useAuthContext hook to access isLoggedIn and user state
 
   if (loading) {
     return <Loading />;
   } // or any other loading indicator
 
   return (
-    <Layout>
-      <section id="settings" className="pt-[100px]">
-        <p>
-          Settings: Maybe we can add some settings related to the user profile
-          here. eg - change password, change email, change username, etc.
-        </p>
+    <section id="settings-container">
+      
+      <div className="settings">
         {isLoggedIn && (
           <>
-            {(user.role === "admin" || user.originalRole === "admin") && (
-              <ChangeRole user={user} />
-            )}
+            <h1>Settings</h1>
+            <ChangeUserName />
+            <ChangePassword />
+            <ChangeEmail />
             <DeleteUser />
           </>
         )}
         {/* <ResetPassword /> */}
-      </section>
-    </Layout>
+      </div>
+    </section>
   );
 }
