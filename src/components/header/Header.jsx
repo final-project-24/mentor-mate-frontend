@@ -58,13 +58,14 @@ const Header = () => {
   const closeMenu = () => setNav(false);
 
   return (
-    <nav className=" fixed top-0 w-full h-[80px] xl:h-[100px] flex items-center px-4 md:px-6 z-50 ">
+    <nav className=" fixed top-0 w-full h-[80px] xl:h-[100px] flex items-center px-4 md:px-6 z-50 bg-inherit border-b-2 border-accent">
       {/* Logo Section */}
       <div
-        className={`flex items-center ${nav
+        className={`flex items-center ${
+          nav
             ? "absolute w-full top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 border"
             : "lg:justify-start"
-          } flex-grow justify-center`}
+        } flex-grow justify-center`}
       >
         <Link
           to="/"
@@ -83,7 +84,7 @@ const Header = () => {
             <NavLink
               to={to}
               className={({ isActive }) =>
-                isActive ? "text-neutral" : "hover:text-neutral"
+                isActive ? "text-accent" : "hover:text-accent"
               }
             >
               {label}
@@ -94,13 +95,14 @@ const Header = () => {
 
       {/* Login/Logout Button */}
       <div
-        className={`ml-auto flex items-center ${nav ? "block" : "hidden lg:flex"
-          }`}
+        className={`ml-auto flex items-center ${
+          nav ? "block" : "hidden lg:flex"
+        }`}
       >
         {!isLoggedIn ? (
           <Link
             to="/authentication"
-            className="text-primary bg-accent rounded-2xl p-2 hover:bg-neutral"
+            className="text-primary bg-accent  p-2 hover:bg-neutral"
           >
             Login
           </Link>
@@ -110,7 +112,7 @@ const Header = () => {
       </div>
 
       {/* Hamburger Icon */}
-      <div className="lg:hidden flex items-center ml-auto">
+      <div className="lg:hidden flex items-center ml-auto border border-red-500">
         <button
           onClick={handleClick}
           className="z-40 cursor-pointer"
@@ -125,8 +127,9 @@ const Header = () => {
       {/* Mobile Menu */}
       <ul
         id="mobile-menu"
-        className={`${nav ? "flex" : "hidden"
-          } absolute top-0 left-0 w-full h-screen bg-[#fffdfd] text-gray-700 flex-col justify-center items-center z-40`}
+        className={`${
+          nav ? "flex" : "hidden"
+        } absolute top-0 left-0 w-full h-screen bg-[#fffdfd] text-gray-700 flex-col justify-center items-center z-40`}
       >
         {navLinks.map(({ to, label }) => (
           <li
@@ -153,25 +156,8 @@ const Header = () => {
         )}
       </ul>
     </nav>
-  )
+  );
 }
 export default Header
 
 
-// import "./Header.css";
-// import React from "react";
-// import DevNav from "../dev-nav/DevNav";
-
-// export default function Header() {
-//   return (
-//     <>
-//       <header id="header">
-//         <DevNav />
-//         <p>Header: part of layout component</p>
-//       </header>
-//     </>
-
-//   );
-// };
-
-// export default Header;
