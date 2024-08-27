@@ -111,9 +111,11 @@ const Header = () => {
             to="/authentication"
             className="text-primary bg-accent  p-2 hover:bg-neutral"
 
+
           >
             Mentor Mate
           </Link>
+
 
         ) : (
           <LogoutButton />
@@ -121,7 +123,9 @@ const Header = () => {
       </div>
 
       {/* Hamburger Icon */}
-      <div className="lg:hidden flex items-center ml-auto border border-red-500">
+
+      <div className="lg:hidden flex items-center ml-auto">
+
         <button
           onClick={handleClick}
           className="z-40 cursor-pointer"
@@ -158,16 +162,20 @@ const Header = () => {
             >
               Login
             </Link>
+
           ) : (
             <LogoutButton />
 
           </li>
+
         )}
       </ul>
     </nav>
   );
 }
+
 export default Header
+
 
 
 
