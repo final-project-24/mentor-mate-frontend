@@ -1,8 +1,7 @@
 import { useState } from "react";
 import "./Login.css";
-import { useAuthContext } from "../../store/authentication-context/AuthenticationContext.jsx";
-import { useNavigate } from "react-router-dom";
-import ToggleButton from "../../components/toggle-button/ToggleButton.jsx";
+import { useAuthContext } from "../../store/authentication-context/AuthenticationContext.jsx"; 
+import { useNavigate } from "react-router-dom"; //
 
 // function Login({ onLogin }) {
 function Login({ onToggleSignUp, onToggleForgotPassword }) {
@@ -10,18 +9,19 @@ function Login({ onToggleSignUp, onToggleForgotPassword }) {
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
-  const { login } = useAuthContext(); // Use useAuthContext hook to access login method
-  const navigate = useNavigate(); //
+  const { login } = useAuthContext(); 
+
+  const navigate = useNavigate(); 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      await login(email, password); // Use login method from authentication context
+      await login(email, password); 
 
       setEmail("");
       setPassword("");
-      navigate("/"); //
+      navigate("/"); 
     } catch (error) {
       console.error("Login failed:", error);
       setErrorMessage("Login failed. Please try again.");
