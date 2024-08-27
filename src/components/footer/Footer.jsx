@@ -7,7 +7,7 @@ export default function Footer() {
 
       <footer id="footer" className="bottom-0 w-full fixed bg-secondary text-white ">
 
-      <footer id="footer">
+ 
 
         <div className="flex-container">
           <LanguageButton />
