@@ -15,21 +15,32 @@ export default function Footer() {
       <div className="main-flex-container">
         {/* Logo */}
         <div className="footer-section">
-          <img src={iconUrl} alt="Logo" className="footer-logo" />
-          <p>Your trusted source to find highly-vetted mentors & industry professionals 
-          <br /> to move your career ahead.</p>
+          <div className="icon-p">
+            <img src={iconUrl} alt="Logo" className="footer-logo" />
+            <p>
+              Your trusted source to find highly-vetted mentors & industry
+              professionals
+              <br /> to move your career ahead.
+            </p>
+          </div>
         </div>
+
+        
 
         {/* About and Terms Links */}
         <div className="footer-section">
-          <a href="/about" className="footer-link">About</a>
-          <a href="/terms" className="footer-link">Terms</a>
+          <a href="/about" className="footer-link">
+            About
+          </a>
+          <a href="/terms" className="footer-link">
+            Terms
+          </a>
         </div>
 
         {/* Language Button */}
-        <div className="footer-section">
+        <iv className="footer-section">
           <LanguageButton />
-        </div>
+        </iv>
 
         {/* Social Media Icons */}
         <div className="footer-section footer-social-media">
