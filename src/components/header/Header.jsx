@@ -109,9 +109,12 @@ const Header = () => {
           <Link
             to="/authentication"
             className="text-primary bg-accent  p-2 hover:bg-neutral"
+
           >
             Mentor Mate
           </Link>
+
+
         ) : (
           <LogoutButton />
         )}
@@ -148,15 +151,19 @@ const Header = () => {
         ))}
         {!isLoggedIn ? (
           <li onClick={closeMenu}>
+
             <Link
               to="/authentication"
               className="text-primary bg-accent rounded-2xl p-2 hover:bg-neutral"
             >
               Login
             </Link>
+
+          ) : (
+            <LogoutButton />
+
           </li>
-        ) : (
-          <LogoutButton />
+
         )}
       </ul>
     </nav>
