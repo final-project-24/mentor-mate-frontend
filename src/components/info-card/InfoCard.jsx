@@ -29,13 +29,13 @@ export default function InfoCard({
         )}
 
         <div className="info-card-content">
-          {role && <span className="user-status">{role}</span>}
+          {/* {role && <span className="user-status">{role}</span>} */}
 
-          {userName && <h3 className="info-card-header">{userName}</h3>}
+          {userName && <h3 className="info-card-header ">{userName}</h3>}
 
-          {email && <p className="info-card-content">{email}</p>}
+          {email && <p className="info-card-content ">{email}</p>}
 
-          <p className="info-card-content">Topic: English C1.1 - Reading</p>
+          <p className="info-card-content ">Topic: English C1.1 - Reading</p>
 
           {skills && skills.length > 0 && (
             <ul className="skills">

@@ -161,7 +161,7 @@ const HomePage = () => {
     <Layout>
       <section
         id="home"
-        className="mt-[150px] lg:mt-[200px]  border border-blue-500  bg-primary"
+        className="  border border-blue-500  bg-primary"
       >
         <h1 className="text-xl text-center text-accent">
           {getWelcomeMessage()}
@@ -209,7 +209,7 @@ const HomePage = () => {
 
         {isLoggedIn && user.role === "mentee" && (
           <div className="p-10">
-            <h2 className="text-center pb-2">Search your mentor</h2>
+            <h2 className="text-center pb-2 text-accent text-xl">Search your mentor</h2>
             <SearchComponent
               categoryOptions={categoryOptions}
               titleOptions={titleOptions}

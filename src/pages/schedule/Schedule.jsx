@@ -40,27 +40,27 @@ export default function Schedule() {
   return (
     
       <section id="schedule">
-
-
         <h1 className="text-center">Schedule a Meeting</h1>
-        {user.role === "mentee"  && (
+        {user.role === "mentee" && (
+          // <h1>Schedule a Meeting</h1>
+          // {user.role === "mentee" && !selectedMentorUuid && (
 
-        // <h1>Schedule a Meeting</h1>
-        // {user.role === "mentee" && !selectedMentorUuid && (
-
-       // <h1>Schedule a Meeting</h1>
-        //{user.role === "mentee" && !selectedMentorUuid && (
-
+          // <h1>Schedule a Meeting</h1>
+          //{user.role === "mentee" && !selectedMentorUuid && (
 
           <div>
-            <p className="text-center">Please select a mentor to view their availability:</p>
+            <p className="text-center">
+              Please select a mentor to view their availability:
+            </p>
             {/* Add a mentor selection component here */}
             {/* For example: <MentorList onSelect={handleMentorSelect} /> */}
             <ExampleMentorList onSelect={handleMentorSelect} />
           </div>
         )}
         {user.role === "mentor" && (
-          <p className="text-center">Manage your availability on calendar below:</p>
+          <p className="text-center">
+            Manage your availability on calendar below:
+          </p>
         )}
         {(selectedMentorUuid || user.role === "mentor") && (
           <MentorAvailabilityCalendar
