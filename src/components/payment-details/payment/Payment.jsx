@@ -1,29 +1,24 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useAuthContext } from "../../../store/authentication-context/AuthenticationContext"; // addedd
-import {
-  createStripePaymentIntent,
-  createPayPalOrder,
-} from "../../../utils/api-connector"; // addedd
+import { useAuthContext } from "../../../store/authentication-context/AuthenticationContext";
+// import { createStripePaymentIntent } from "../../../utils/api-connector";
 import "./Payment.css";
 import StripePayment from "../stripe-payment/StripePayment";
-import PayPalPayment from "../paypal-payment/PayPalPayment";
+// import PayPalPayment from "../paypal-payment/PayPalPayment"; // paypppal
 
-// comentedd
 // const Payment = ({ amount, offerDetails = {}, menteeData = {} }) => {
-// addedd
 const Payment = ({ bookingId, amount, offerDetails }) => {
-  console.log("bookingId:", bookingId); // addedd
-  console.log("amount:", amount); // addedd
-  console.log("offerDetails:", offerDetails); // addedd
-  // console.log("menteeData:", menteeData); // addedd
-  const { user} = useAuthContext();
+  const { user } = useAuthContext();
+  console.log("bookingId:", bookingId); //
+  console.log("amount:", amount); //
+  console.log("offerDetails:", offerDetails); //
+  // console.log("menteeData:", menteeData); //
+
   const [isAgreed, setIsAgreed] = useState(false);
   const [stripePending, setStripePending] = useState(false);
-  const [paypalPending, setPayPalPending] = useState(false);
+  // const [paypalPending, setPayPalPending] = useState(false); // paypppal
   const navigate = useNavigate();
 
-  // comentedd
   const { title = "No Title", description = "No Description" } = offerDetails;
   // const { menteeName = "Mentee", menteeEmail = "" } = menteeData;
 
@@ -32,8 +27,8 @@ const Payment = ({ bookingId, amount, offerDetails }) => {
   };
 
   const handlePaymentSuccess = () => {
-    // console.log("Payment successful for:", menteeName, menteeEmail); // comentedd
-    console.log("Payment successful for booking ID:", bookingId); // addedd
+    // console.log("Payment successful for:", menteeName, menteeEmail);
+    console.log("Payment successful for booking ID:", bookingId);
     navigate("/session-page"); // Redirect to the session page after payment success
   };
 
@@ -43,36 +38,37 @@ const Payment = ({ bookingId, amount, offerDetails }) => {
 
   // const handleStripePaymentStart = () => {
   //   setStripePending(true);
-  // }; // comentedd
-  const handleStripePaymentStart = async () => {
-    setStripePending(true);
-    try {
-      await createStripePaymentIntent(bookingId);
-      // const { clientSecret } = await createStripePaymentIntent(bookingId);
-      // Pass clientSecret to StripePayment component
-    } catch (error) {
-      handlePaymentError();
-    } finally {
-      setStripePending(false);
-    }
-  }; // addedd
+  // };
+
+  // const handleStripePaymentStart = async () => {
+  //   setStripePending(true);
+  //   try {
+  //     await createStripePaymentIntent(bookingId);
+  //     // const { clientSecret } = await createStripePaymentIntent(bookingId);
+  //     // Pass clientSecret to StripePayment component
+  //   } catch (error) {
+  //     handlePaymentError();
+  //   } finally {
+  //     setStripePending(false);
+  //   }
+  // };
 
   // const handlePayPalPaymentStart = () => {
   //   setPayPalPending(true);
   // }; // comentedd
 
-  const handlePayPalPaymentStart = async () => {
-    setPayPalPending(true);
-    try {
-      await createPayPalOrder(bookingId);
-      // const { orderId } = await createPayPalOrder(bookingId);
-      // Pass orderId to PayPalPayment component
-    } catch (error) {
-      handlePaymentError();
-    } finally {
-      setPayPalPending(false);
-    }
-  }; // addedd
+  // const handlePayPalPaymentStart = async () => {
+  //   setPayPalPending(true);
+  //   try {
+  //     await createPayPalOrder(bookingId);
+  //     // const { orderId } = await createPayPalOrder(bookingId);
+  //     // Pass orderId to PayPalPayment component
+  //   } catch (error) {
+  //     handlePaymentError();
+  //   } finally {
+  //     setPayPalPending(false);
+  //   }
+  // }; // addeddd // paypppal
 
   // const handleStripePaymentEnd = () => {
   //   setStripePending(false);
@@ -84,7 +80,8 @@ const Payment = ({ bookingId, amount, offerDetails }) => {
 
   return (
     <div className="payment-container">
-      {(stripePending || paypalPending) && (
+      {/* {(stripePending || paypalPending) && (  */}
+      {stripePending && (
         <p className="processing-message">Processing payment...</p>
       )}
 
@@ -148,25 +145,29 @@ const Payment = ({ bookingId, amount, offerDetails }) => {
               //     handlePaymentError();
               //     handleStripePaymentEnd();
               //   }}
-              // /> // comenteddd
+              // />
 
               <StripePayment
                 bookingId={bookingId}
                 amount={amount}
-                onPaymentStart={handleStripePaymentStart}
+                // onPaymentStart={handleStripePaymentStart}
+                onPaymentStart={() => setStripePending(true)}
                 onPaymentSuccess={handlePaymentSuccess}
                 onPaymentError={handlePaymentError}
-              /> // addeddd
+                onPaymentEnd={() => setStripePending(false)}
+              />
             )}
           </div>
 
           {/* PayPal Payment Integration */}
-          <div className="paypal-payment-section">
+
+          {/* <div className="paypal-payment-section">
             <h4>Pay with PayPal</h4>
             {paypalPending ? (
               <p>Processing PayPal payment...</p>
-            ) : (
-              // <PayPalPayment
+            ) : ( */}
+
+          {/* // <PayPalPayment
               //   amount={amount}
               //   onPaymentStart={handlePayPalPaymentStart}
               //   onPaymentSuccess={() => {
@@ -177,16 +178,17 @@ const Payment = ({ bookingId, amount, offerDetails }) => {
               //     handlePaymentError();
               //     handlePayPalPaymentEnd();
               //   }}
-              // /> // comenteddd
-              <PayPalPayment
-                bookingId={bookingId}
-                amount={amount}
-                onPaymentStart={handlePayPalPaymentStart}
-                onPaymentSuccess={handlePaymentSuccess}
-                onPaymentError={handlePaymentError}
-              /> // addeddd
-            )}
-          </div>
+              // /> // comenteddd */}
+
+          {/* //     <PayPalPayment
+          //       bookingId={bookingId}
+          //       amount={amount}
+          //       onPaymentStart={handlePayPalPaymentStart}
+          //       onPaymentSuccess={handlePaymentSuccess}
+          //       onPaymentError={handlePaymentError}
+          //     /> // addeddd
+          //   )}
+          // </div> */}
         </div>
       )}
     </div>
