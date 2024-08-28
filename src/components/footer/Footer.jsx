@@ -16,7 +16,9 @@ export default function Footer() {
         {/* Logo */}
         <div className="footer-section">
           <div className="icon-p">
-            <img src={iconUrl} alt="Logo" className="footer-logo" />
+          <a href="#" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
+              <img src={iconUrl} alt="Logo" className="footer-logo" />
+            </a>
             <p>
               Your trusted source to find highly-vetted mentors & industry
               professionals
@@ -25,9 +27,6 @@ export default function Footer() {
           </div>
         </div>
 
-        
-
-        {/* About and Terms Links */}
         <div className="footer-section">
           <a href="/about" className="footer-link">
             About
