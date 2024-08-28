@@ -143,7 +143,7 @@ const Header = () => {
             <Link to={to}>{label}</Link>
           </li>
         ))}
-        {!isLoggedIn ? (
+        {!isLoggedIn && (
           <li onClick={closeMenu}>
             <Link
               to="/authentication"
