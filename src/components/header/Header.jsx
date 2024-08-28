@@ -67,10 +67,11 @@ const Header = () => {
     <nav className="fixed top-0 w-full h-[80px] xl:h-[100px] flex items-center px-4 md:px-6 z-50 bg-inherit border-b-2 border-accent">
       {/* Logo Section */}
       <div
-        className={`flex items-center ${nav
+        className={`flex items-center ${
+          nav
             ? "absolute w-full top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 border"
             : "lg:justify-start"
-          } flex-grow justify-center`}
+        } flex-grow justify-center`}
       >
         <Link
           to="/"
@@ -98,8 +99,9 @@ const Header = () => {
 
       {/* Login/Logout Button */}
       <div
-        className={`ml-auto flex items-center ${nav ? "block" : "hidden lg:flex"
-          }`}
+        className={`ml-auto flex items-center ${
+          nav ? "block" : "hidden lg:flex"
+        }`}
       >
         {!isLoggedIn ? (
           <Link
@@ -108,8 +110,6 @@ const Header = () => {
           >
             Mentor Mate
           </Link>
-
-
         ) : (
           <LogoutButton />
         )}
@@ -131,8 +131,9 @@ const Header = () => {
       {/* Mobile Menu */}
       <ul
         id="mobile-menu"
-        className={`${nav ? "flex" : "hidden"
-          } absolute top-0 left-0 w-full h-screen bg-[#fffdfd] text-gray-700 flex-col justify-center items-center z-40`}
+        className={`${
+          nav ? "flex" : "hidden"
+        } absolute top-0 left-0 w-full h-screen bg-[#fffdfd] text-gray-700 flex-col justify-center items-center z-40`}
       >
         {navLinks.map(({ to, label }) => (
           <li
@@ -152,7 +153,8 @@ const Header = () => {
               Login
             </Link>
           </li>
-
+        ) : (
+          <LogoutButton />
         )}
       </ul>
     </nav>
