@@ -16,8 +16,8 @@ const Header = () => {
 
   // Define navigation links based on user role
   const guestLinks = [
-     { to: "/why-we", label: "Why We?" },
-     { to: "/how-it-works", label: "How It Works" },
+    { to: "/why-we", label: "Why We?" },
+    { to: "/how-it-works", label: "How It Works" },
     { to: "/", label: "Home" },
     { to: "/about-us", label: "About Us" },
     { to: "/pricing", label: "Pricing" },
@@ -64,7 +64,7 @@ const Header = () => {
   const closeMenu = () => setNav(false);
 
   return (
-    <nav className=" fixed top-0 w-full h-[80px] xl:h-[100px] flex items-center px-4 md:px-6 z-50 bg-inherit border-b-2 border-accent">
+    <nav className="fixed top-0 w-full h-[80px] xl:h-[100px] flex items-center px-4 md:px-6 z-50 bg-inherit border-b-2 border-accent">
       {/* Logo Section */}
       <div
         className={`flex items-center ${
@@ -82,9 +82,7 @@ const Header = () => {
       </div>
 
       {/* Navigation Links for Desktop */}
-      <ul
-        className={`hidden lg:flex flex-grow gap-2 text-sm lg:text-lg xl:text-lg 2xl:text-xl lg:gap-3`}
-      >
+      <ul className="hidden lg:flex flex-grow gap-2 text-sm lg:text-lg xl:text-lg 2xl:text-xl lg:gap-3">
         {navLinks.map(({ to, label }) => (
           <li key={to}>
             <NavLink
@@ -161,6 +159,7 @@ const Header = () => {
       </ul>
     </nav>
   );
-}
-export default Header
+};
+
+export default Header;
 
