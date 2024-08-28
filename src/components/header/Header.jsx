@@ -16,43 +16,49 @@ const Header = () => {
 
   // Define navigation links based on user role
   const guestLinks = [
-    { to: "/why-we", label: "Why We?" },
-    { to: "/how-it-works", label: "How It Works" },
+    // { to: "/why-we", label: "Why We?" },
+    // { to: "/how-it-works", label: "How It Works" },
+    { to: "/", label: "Home" },
+    { to: "/about-us", label: "About Us" },
     { to: "/pricing", label: "Pricing" },
+    { to: "/contact", label: "Contact" },
+    { to: "/dashboard", label: "Dashboard" },
   ];
 
   const mentorLinks = [
     { to: "/", label: "Home" },
-    { to: "/my-account", label: "My Account" },
-    { to: "/my-schedule", label: "My Schedule" },
-    { to: "/settings", label: "Settings" },
-
-  
-    
-
-    { to: "/session", label: "Session" },
-    { to: "/feedback", label: "Feedback" },
-    { to: "/playground", label: "Playground" },
-
+    // { to: "/my-account", label: "My Account" },
+    // { to: "/my-schedule", label: "My Schedule" },
+    // { to: "/settings", label: "Settings" },
+    // { to: "/session", label: "Session" },
+    // { to: "/feedback", label: "Feedback" },
+    { to: "/about-us", label: "About Us" },
+    { to: "/pricing", label: "Pricing" },
+    { to: "/contact", label: "Contact" },
+    { to: "/dashboard", label: "Dashboard" },
+    // { to: "/playground", label: "(Playground)" },
   ];
 
   const menteeLinks = [
     { to: "/", label: "Home" },
-    { to: "/my-account", label: "My Account" },
-    { to: "/my-calendar", label: "My Calendar" },
-    { to: "/my-classes", label: "My Classes" },
-    { to: "/playground", label: "Playground" },
-    
+    // { to: "/my-account", label: "My Account" },
+    // { to: "/my-calendar", label: "My Calendar" },
+    // { to: "/my-classes", label: "My Classes" },
+    { to: "/about-us", label: "About Us" },
+    { to: "/pricing", label: "Pricing" },
+    { to: "/contact", label: "Contact" },
+    { to: "/dashboard", label: "Dashboard" },
+    // { to: "/playground", label: "(Playground)" },
   ];
 
   // Determine the navigation links to display
   const navLinks = !isLoggedIn
     ? guestLinks
     : user?.role === "mentor"
-      ? mentorLinks
-      : user?.role === "mentee"
-        ? menteeLinks
-        : [];
+    ? mentorLinks
+    : user?.role === "mentee"
+    ? menteeLinks
+    : [];
 
   const handleClick = () => setNav(!nav);
   const closeMenu = () => setNav(false);
@@ -103,9 +109,11 @@ const Header = () => {
           <Link
             to="/authentication"
             className="text-primary bg-accent  p-2 hover:bg-neutral"
+
           >
-            Login
+            Mentor Mate
           </Link>
+
         ) : (
           <LogoutButton />
         )}
@@ -142,16 +150,16 @@ const Header = () => {
         ))}
         {!isLoggedIn ? (
           <li onClick={closeMenu}>
+
             <Link
               to="/authentication"
-              className="text-primary bg-accent rounded-2xl p-2"
+              className="text-primary bg-accent rounded-2xl p-2 hover:bg-neutral"
             >
               Login
             </Link>
-          </li>
-        ) : (
-          <li>
+          ) : (
             <LogoutButton />
+
           </li>
         )}
       </ul>

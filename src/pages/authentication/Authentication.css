@@ -1,7 +1,7 @@
 #authentication {
   width: 100%;
-  /* border: 1px solid red; */
-  /* background-color: aqua; */
+  min-height: 80vh;
+  margin-top: var(--margin-avoid-header);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -12,5 +12,20 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin: 20px;
+  margin: var(--margin-lg);
 }
+
+/* .button-type-basic {
+  width: 100%;
+  background-color: var(--accent-color);
+  color: var(--primary-color);
+  border: none;
+  border-radius: var(--border-radius-small);
+  cursor: pointer;
+  margin-bottom: var(--margin-small);
+  padding: var(--padding-small);
+}
+
+.button-type-basic:hover {
+  background-color: var(--accent-color-hover);
+} */
