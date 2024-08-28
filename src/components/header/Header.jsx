@@ -64,6 +64,7 @@ const Header = () => {
   const closeMenu = () => setNav(false);
 
   return (
+
     <div id="header">
       <nav className="header-container fixed top-0 w-full h-[80px] xl:h-[100px] flex items-center px-4 md:px-6 z-50">
         {/* Logo Section */}
@@ -105,12 +106,14 @@ const Header = () => {
           }`}
         >
           {!isLoggedIn ? (
+
             <Link
               to="/authentication"
               className="text-primary bg-accent rounded-2xl p-2 hover:bg-neutral"
             >
               Login
             </Link>
+
           ) : (
             <LogoutButton />
           )}
@@ -162,4 +165,5 @@ const Header = () => {
     </div>
   );
 };
+
 export default Header;
