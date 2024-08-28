@@ -16,8 +16,8 @@ const Header = () => {
 
   // Define navigation links based on user role
   const guestLinks = [
-    // { to: "/why-we", label: "Why We?" },
-    // { to: "/how-it-works", label: "How It Works" },
+     { to: "/why-we", label: "Why We?" },
+     { to: "/how-it-works", label: "How It Works" },
     { to: "/", label: "Home" },
     { to: "/about-us", label: "About Us" },
     { to: "/pricing", label: "Pricing" },
@@ -114,6 +114,7 @@ const Header = () => {
             Mentor Mate
           </Link>
 
+
         ) : (
           <LogoutButton />
         )}
@@ -157,15 +158,16 @@ const Header = () => {
             >
               Login
             </Link>
+
           ) : (
             <LogoutButton />
 
           </li>
+
         )}
       </ul>
     </nav>
   );
 }
 export default Header
-
 
