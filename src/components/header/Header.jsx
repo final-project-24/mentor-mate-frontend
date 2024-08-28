@@ -16,8 +16,8 @@ const Header = () => {
 
   // Define navigation links based on user role
   const guestLinks = [
-    // { to: "/why-we", label: "Why We?" },
-    // { to: "/how-it-works", label: "How It Works" },
+    { to: "/why-we", label: "Why We?" },
+    { to: "/how-it-works", label: "How It Works" },
     { to: "/", label: "Home" },
     { to: "/about-us", label: "About Us" },
     { to: "/pricing", label: "Pricing" },
@@ -55,23 +55,22 @@ const Header = () => {
   const navLinks = !isLoggedIn
     ? guestLinks
     : user?.role === "mentor"
-    ? mentorLinks
-    : user?.role === "mentee"
-    ? menteeLinks
-    : [];
+      ? mentorLinks
+      : user?.role === "mentee"
+        ? menteeLinks
+        : [];
 
   const handleClick = () => setNav(!nav);
   const closeMenu = () => setNav(false);
 
   return (
-    <nav className=" fixed top-0 w-full h-[80px] xl:h-[100px] flex items-center px-4 md:px-6 z-50 bg-inherit border-b-2 border-accent">
+    <nav className="fixed top-0 w-full h-[80px] xl:h-[100px] flex items-center px-4 md:px-6 z-50 bg-inherit border-b-2 border-accent">
       {/* Logo Section */}
       <div
-        className={`flex items-center ${
-          nav
+        className={`flex items-center ${nav
             ? "absolute w-full top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 border"
             : "lg:justify-start"
-        } flex-grow justify-center`}
+          } flex-grow justify-center`}
       >
         <Link
           to="/"
@@ -82,9 +81,7 @@ const Header = () => {
       </div>
 
       {/* Navigation Links for Desktop */}
-      <ul
-        className={`hidden lg:flex flex-grow gap-2 text-sm lg:text-lg xl:text-lg 2xl:text-xl lg:gap-3`}
-      >
+      <ul className="hidden lg:flex flex-grow gap-2 text-sm lg:text-lg xl:text-lg 2xl:text-xl lg:gap-3">
         {navLinks.map(({ to, label }) => (
           <li key={to}>
             <NavLink
@@ -101,19 +98,16 @@ const Header = () => {
 
       {/* Login/Logout Button */}
       <div
-        className={`ml-auto flex items-center ${
-          nav ? "block" : "hidden lg:flex"
-        }`}
+        className={`ml-auto flex items-center ${nav ? "block" : "hidden lg:flex"
+          }`}
       >
         {!isLoggedIn ? (
           <Link
             to="/authentication"
             className="text-primary bg-accent  p-2 hover:bg-neutral"
-
           >
             Mentor Mate
           </Link>
-
         ) : (
           <LogoutButton />
         )}
@@ -135,9 +129,8 @@ const Header = () => {
       {/* Mobile Menu */}
       <ul
         id="mobile-menu"
-        className={`${
-          nav ? "flex" : "hidden"
-        } absolute top-0 left-0 w-full h-screen bg-[#fffdfd] text-gray-700 flex-col justify-center items-center z-40`}
+        className={`${nav ? "flex" : "hidden"
+          } absolute top-0 left-0 w-full h-screen bg-[#fffdfd] text-gray-700 flex-col justify-center items-center z-40`}
       >
         {navLinks.map(({ to, label }) => (
           <li
@@ -150,22 +143,19 @@ const Header = () => {
         ))}
         {!isLoggedIn ? (
           <li onClick={closeMenu}>
-
             <Link
               to="/authentication"
               className="text-primary bg-accent rounded-2xl p-2 hover:bg-neutral"
             >
               Login
             </Link>
-          ) : (
-            <LogoutButton />
-
           </li>
+        ) : (
+          <LogoutButton />
         )}
       </ul>
     </nav>
   );
 }
-export default Header
 
-
+export default Header;
