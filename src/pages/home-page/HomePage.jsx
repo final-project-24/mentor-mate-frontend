@@ -137,7 +137,9 @@ const HomePage = () => {
 
   const getWelcomeMessage = () => {
     if (!isLoggedIn) {
+
       return "Welcome to MentorMate - Your Gateway to Growth and Success!";
+
     }
     return user.role === "mentor" ? "Welcome Mentor" : "Welcome Mentee";
   };
@@ -165,6 +167,7 @@ const HomePage = () => {
           {getWelcomeMessage()}
         </h1>
 
+
         {!isLoggedIn && (
           <div className="mx-20">
             <div>
@@ -181,6 +184,7 @@ const HomePage = () => {
             </div>
           </div>
         )}
+
 
         <p className="text-2xl text-center text-neutral py-4">
           {userNameDisplay()}
@@ -212,11 +216,13 @@ const HomePage = () => {
             />
           </div>
         )}
+
         {isLoggedIn && user.role === "mentee" && (
           <h2 className="text-center pb-2">
             Already know your mentor? 
           </h2>
         )}
+
 
         {isLoggedIn && (
           <div className="flex-1 lg:w-3/4 mx-auto border border-red-500">

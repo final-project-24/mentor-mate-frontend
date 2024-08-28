@@ -1,11 +1,8 @@
-#footer{
- 
-    min-height: 100px;
-    width: 100%;
-    margin-top: 20px;
-background-color: var(--card-color);
+
+#footer {
+  width: 100%;
+  min-height: 80px;
+  background-color: var(--card-color);
   border-top: var(--border-width-base) solid var(--border-color-base);
-    position: bottom fixed;
-
-
+  position: bottom fixed;
 }
