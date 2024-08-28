@@ -1,8 +1,7 @@
-/* .debug-booking-details {
-    display: block;
-    margin-top: 20px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    background-color: #f9f9f9;
-    color: #333;
-  } */
+.booking-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+}
