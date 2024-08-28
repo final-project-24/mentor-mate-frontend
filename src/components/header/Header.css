@@ -1,6 +1,7 @@
 
 #header {
-  min-height: 80px;
+  border-bottom: 1px solid green;
+  min-height: 100px;
   width: 100%;
   border-bottom-width: var(--border-width-base);
   border-bottom-color: var(--border-color-base);

@@ -200,11 +200,8 @@ const HomePage = () => {
                 email={user.email}
               />
             </div>
-
-
             {/* Keep ReviewSidebar from nacho branch */}
             <ReviewSidebar />
-
           </div>
         )}
 

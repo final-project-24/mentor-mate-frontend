@@ -1,6 +1,4 @@
 
-
-
 #footer {
   width: 100%;
   min-height: 80px;
@@ -8,4 +6,3 @@
   border-top: var(--border-width-base) solid var(--border-color-base);
   position: bottom fixed;
 }
-
