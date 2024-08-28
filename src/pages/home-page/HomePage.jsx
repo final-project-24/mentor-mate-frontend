@@ -155,7 +155,6 @@ const HomePage = () => {
   const levelOptions = ["Option 3A", "Option 3B", "Option 3C"];
   const languageOptions = ["Option 4A", "Option 4B", "Option 4C"];
 
-
   return (
     <Layout>
       <section
@@ -197,6 +196,8 @@ const HomePage = () => {
                 email={user.email}
               />
             </div>
+            {/* Keep ReviewSidebar from nacho branch */}
+            <ReviewSidebar />
           </div>
         )}
 
@@ -218,14 +219,14 @@ const HomePage = () => {
         )}
 
         {isLoggedIn && (
-          <div className="flex-1 lg:w-3/4 mx-auto border border-red-500 h-[500px]">
+          <div className="flex-1 lg:w-3/4 mx-auto border border-red-500">
             <Schedule />
           </div>
         )}
       </section>
     </Layout>
   );
-}
+};
 
 export default HomePage;
 

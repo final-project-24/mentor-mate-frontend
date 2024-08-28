@@ -3,11 +3,13 @@ import Layout from "../../components/layout/Layout";
 import axios from "axios";
 import { useAuthContext } from "../../store/authentication-context/AuthenticationContext";
 import { useBookingContext } from "../../store/booking-context/BookingContext";
+import "./Booking.css";
 import Loading from "../../components/loading/Loading";
 import InfoCard from "../../components/info-card/InfoCard";
+import Payment from "../../components/payment-details/payment/Payment";
 // import BookingDetails from "../../components/booking-details/BookingDetails";
-import TermsAndConditions from "../../components/terms-and-conditions/TermsAndConditions";
-import Payment from "../../components/payment/Payment";
+// import Terms from "../pages/terms/Terms";
+// import Payment from "../../components/payment/Payment";
 import { useParams, useLocation } from "react-router-dom";
 
 const Booking = () => {
@@ -45,7 +47,7 @@ const Booking = () => {
     const fetchBookingDetails = async () => {
       try {
         const response = await axios.get(
-          `/booking/booking-details/${bookingId}`
+          `/calendar/booking-details/${bookingId}`
         );
         console.log("Booking details response:", response.data);
         setBookingDetails(response.data);
@@ -83,11 +85,19 @@ const Booking = () => {
           userName={bookingDetails.mentorId.userName} // Use mentorId instead of userId
           start={bookingDetails.start}
           end={bookingDetails.end}
+          price={bookingDetails.price}
         />
 
-        <TermsAndConditions onAgree={handleAgreeChange} />
+        <Payment
+          bookingId={bookingId} // Pass bookingId to the Payment component
+          menteeData={bookingDetails.menteeData}
+          amount={bookingDetails.price}
+          offerDetails={bookingDetails}
+        />
 
-        {isAgreed && <Payment />}
+        {/* <TermsAndConditions onAgree={handleAgreeChange} /> */}
+
+        {/* {isAgreed && <Payment />} */}
       </div>
     </Layout>
   );
