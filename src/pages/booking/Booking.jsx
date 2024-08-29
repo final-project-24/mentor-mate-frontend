@@ -5,7 +5,6 @@ import { useAuthContext } from "../../store/authentication-context/Authenticatio
 import { useBookingContext } from "../../store/booking-context/BookingContext";
 import "./Booking.css";
 import Loading from "../../components/loading/Loading";
-import InfoCard from "../../components/info-card/InfoCard";
 import Payment from "../../components/payment-details/payment/Payment";
 // import BookingDetails from "../../components/booking-details/BookingDetails";
 // import Terms from "../pages/terms/Terms";
@@ -77,20 +76,10 @@ const Booking = () => {
 
   return (
     <Layout>
-      <div className="parent-container">
-        <h1>Booking Details</h1>
-
-        <InfoCard
-          image={bookingDetails.mentorId.image} // Use mentorId instead of userId
-          userName={bookingDetails.mentorId.userName} // Use mentorId instead of userId
-          start={bookingDetails.start}
-          end={bookingDetails.end}
-          price={bookingDetails.price}
-        />
-
+      <div className="booking-container">
         <Payment
           bookingId={bookingId} // Pass bookingId to the Payment component
-          menteeData={bookingDetails.menteeData}
+          // menteeData={bookingDetails.menteeData}
           amount={bookingDetails.price}
           offerDetails={bookingDetails}
         />
