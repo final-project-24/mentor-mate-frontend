@@ -10,9 +10,6 @@ import Layout from "../../components/layout/Layout";
 import MentorAvailabilityCalendar from "../../components/mentor-availability-calendar/MentorAvailabilityCalendar";
 import ExampleMentorList from "../../components/example-mentor-list/ExampleMentorList.jsx";
 
-
-
-
 export default function Schedule() {
   const { loading, user } = useAuthContext(); // Use useAuthContext hook to access user information
   const [selectedMentorUuid, setSelectedMentorUuid] = useState(null);
@@ -38,38 +35,36 @@ export default function Schedule() {
   }
 
   return (
-    
-      <section id="schedule">
-        {/* <h1 className="text-center">Schedule a Meeting</h1> */}
-        {user.role === "mentee" && (
-          // <h1>Schedule a Meeting</h1>
-          // {user.role === "mentee" && !selectedMentorUuid && (
+    <section id="schedule">
+      <h1 className="text-center">Schedule a Meeting</h1>
+      {user.role === "mentee" && (
+        // <h1>Schedule a Meeting</h1>
+        // {user.role === "mentee" && !selectedMentorUuid && (
 
-          // <h1>Schedule a Meeting</h1>
-          //{user.role === "mentee" && !selectedMentorUuid && (
+        // <h1>Schedule a Meeting</h1>
+        //{user.role === "mentee" && !selectedMentorUuid && (
 
-          <div>
-            {/* <p className="text-center">
-              Please select a mentor to view their availability:
-            </p> */}
-            {/* Add a mentor selection component here */}
-            {/* For example: <MentorList onSelect={handleMentorSelect} /> */}
-            <ExampleMentorList onSelect={handleMentorSelect} />
-          </div>
-        )}
-        {user.role === "mentor" && (
+        <div>
           <p className="text-center">
-            Manage your availability on calendar below:
+            Please select a mentor to view their availability:
           </p>
-        )}
-        {(selectedMentorUuid || user.role === "mentor") && (
-          <MentorAvailabilityCalendar
-            mentorUuid={selectedMentorUuid || user.id}
-            userRole={user.role}
-          />
-        )}
-        {/* <p>end of page</p> */}
-      </section>
-    
+          {/* Add a mentor selection component here */}
+          {/* For example: <MentorList onSelect={handleMentorSelect} /> */}
+          <ExampleMentorList onSelect={handleMentorSelect} />
+        </div>
+      )}
+      {user.role === "mentor" && (
+        <p className="text-center">
+          Manage your availability on calendar below:
+        </p>
+      )}
+      {(selectedMentorUuid || user.role === "mentor") && (
+        <MentorAvailabilityCalendar
+          mentorUuid={selectedMentorUuid || user.id}
+          userRole={user.role}
+        />
+      )}
+      {/* <p>end of page</p> */}
+    </section>
   );
 }
