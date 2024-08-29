@@ -77,6 +77,7 @@ const StripePayment = ({
       if (paymentIntent.status === "succeeded") {
         // Notify parent component of successful payment
         if (onPaymentSuccess) onPaymentSuccess();
+        console.log("Payment succeeded, navigating to /session");
         navigate("/session"); // Redirect to the session page after payment successsss
       } else {
         console.log(`Payment status: ${paymentIntent.status}`);

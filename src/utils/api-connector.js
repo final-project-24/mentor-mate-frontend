@@ -387,3 +387,4 @@ export const bookSlot = async (eventId) => {
 //     throw error;
 //   }
 // };
+
