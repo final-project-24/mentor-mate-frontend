@@ -11,14 +11,6 @@
     "start": "vite preview --port $PORT"
   },
   "dependencies": {
-<<<<<<< HEAD
-    "@fortawesome/fontawesome-svg-core": "^6.6.0",
-    "@fortawesome/free-brands-svg-icons": "^6.6.0",
-    "@fortawesome/free-regular-svg-icons": "^6.6.0",
-    "@fortawesome/free-solid-svg-icons": "^6.6.0",
-    "@fortawesome/react-fontawesome": "^0.2.2",
-=======
->>>>>>> origin/main
     "@stripe/react-stripe-js": "^2.8.0",
     "axios": "^1.7.4",
     "cors": "^2.8.5",
