@@ -16,8 +16,8 @@ const Header = () => {
 
   // Define navigation links based on user role
   const guestLinks = [
-    // { to: "/why-we", label: "Why We?" },
-    // { to: "/how-it-works", label: "How It Works" },
+    { to: "/why-we", label: "Why We?" },
+    { to: "/how-it-works", label: "How It Works" },
     { to: "/", label: "Home" },
     { to: "/about-us", label: "About Us" },
     { to: "/pricing", label: "Pricing" },
@@ -64,6 +64,7 @@ const Header = () => {
   const closeMenu = () => setNav(false);
 
   return (
+
     <div id="header">
       <nav className="header-container fixed top-0 w-full h-[80px] xl:h-[100px] flex items-center px-4 md:px-6 z-50">
         {/* Logo Section */}
@@ -105,12 +106,14 @@ const Header = () => {
           }`}
         >
           {!isLoggedIn ? (
+
             <Link
               to="/authentication"
               className="text-primary bg-accent rounded-2xl p-2 hover:bg-neutral"
             >
               Login
             </Link>
+
           ) : (
             <LogoutButton />
           )}
@@ -162,22 +165,5 @@ const Header = () => {
     </div>
   );
 };
+
 export default Header;
-
-// import "./Header.css";
-// import React from "react";
-// import DevNav from "../dev-nav/DevNav";
-
-// export default function Header() {
-//   return (
-//     <>
-//       <header id="header">
-//         <DevNav />
-//         <p>Header: part of layout component</p>
-//       </header>
-//     </>
-
-//   );
-// };
-
-// export default Header;
