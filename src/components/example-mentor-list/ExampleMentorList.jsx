@@ -26,7 +26,7 @@ const ExampleMentorList = ({ onSelect }) => {
       <h2 className="text-center">Select a Mentor</h2>
 
       <select onChange={(e) => onSelect(e.target.value)}
-        className="w-1/2 p-1 "
+        className="w-full md:w-1/2  lg:w-1/2 p-1 "
         defaultValue=""
       >
         <option
