@@ -186,7 +186,7 @@ const HomePage = () => {
         </p>
 
         {isLoggedIn && (
-          <div className=" lg:mx-auto">
+          <div className=" lg:mx-auto"><p>test</p>
             <div className="flex flex-col-reverse lg:px-20  ">
               <InfoCard
                 image={user.image}
