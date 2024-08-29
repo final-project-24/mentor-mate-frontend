@@ -40,7 +40,7 @@ export default function Schedule() {
   return (
     
       <section id="schedule">
-        <h1 className="text-center">Schedule a Meeting</h1>
+        {/* <h1 className="text-center">Schedule a Meeting</h1> */}
         {user.role === "mentee" && (
           // <h1>Schedule a Meeting</h1>
           // {user.role === "mentee" && !selectedMentorUuid && (
@@ -49,9 +49,9 @@ export default function Schedule() {
           //{user.role === "mentee" && !selectedMentorUuid && (
 
           <div>
-            <p className="text-center">
+            {/* <p className="text-center">
               Please select a mentor to view their availability:
-            </p>
+            </p> */}
             {/* Add a mentor selection component here */}
             {/* For example: <MentorList onSelect={handleMentorSelect} /> */}
             <ExampleMentorList onSelect={handleMentorSelect} />

@@ -36,15 +36,15 @@ function SearchComponent({
   };
 
   return (
-    <>
-      <div className="flex flex-col md:grid grid-cols-2 md:gap-2 lg:justify-between ">
-        <div className="w-full   lg:w-1/5 ">
+    <div className="">
+      <div className=" w-full flex flex-col md:grid grid-cols-2 md:gap-2 lg:justify-between ">
+        <div className=" mb-3 border  ">
           <label htmlFor="dropdown1"></label>
           <select
             id="dropdown1"
             value={category}
             onChange={(e) => setCategory(e.target.value)}
-            className="p-1"
+            className="p-1 text-base w-full"
           >
             <option value="">Search by Category:</option>
             {categoryOptions.map((option) => (
@@ -55,13 +55,13 @@ function SearchComponent({
           </select>
         </div>
 
-        <div className="w-full lg:w-1/5 ">
+        <div className=" mb-3 border  ">
           <label htmlFor="dropdown2"></label>
           <select
             id="dropdown2"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            className="p-1"
+            className="p-1 text-base w-full"
           >
             <option value="">Search by Title:</option>
             {titleOptions.map((option) => (
@@ -72,13 +72,13 @@ function SearchComponent({
           </select>
         </div>
 
-        <div className="w-full  lg:w-1/5 ">
+        <div className=" mb-3 border  ">
           <label htmlFor="dropdown3"></label>
           <select
             id="dropdown3"
             value={level}
             onChange={(e) => setLevel(e.target.value)}
-            className="p-1"
+            className="p-1 text-base w-full"
           >
             <option value="">Search by Level:</option>
             {levelOptions.map((option) => (
@@ -89,13 +89,13 @@ function SearchComponent({
           </select>
         </div>
 
-        <div className="w-full  lg:w-1/5 ">
+        <div className=" mb-3 border  ">
           <label htmlFor="dropdown4"></label>
           <select
             id="dropdown4"
             value={language}
             onChange={(e) => setLanguage(e.target.value)}
-            className="p-1"
+            className="p-1 text-base w-full"
           >
             <option value="">Search by Language:</option>
             {languageOptions.map((option) => (
@@ -122,10 +122,10 @@ function SearchComponent({
         <ToggleButton
           onToggle={handleSearch}
           buttonName="Search Mentor"
-          className="mx-auto"
+          className="p-1 border border-accent bg-accent rounded-lg"
         />
       </div>
-    </>
+    </div>
   );
 }
 
@@ -159,14 +159,10 @@ const HomePage = () => {
 
   return (
     <Layout>
-      <section
-        id="home"
-        className="  border border-blue-500  bg-primary"
-      >
+      <section id="home" className="h-full bg-primary">
         <h1 className="text-xl text-center text-accent">
           {getWelcomeMessage()}
         </h1>
-
 
         {!isLoggedIn && (
           <div className="mx-20">
@@ -185,14 +181,13 @@ const HomePage = () => {
           </div>
         )}
 
-
         <p className="text-2xl text-center text-neutral py-4">
           {userNameDisplay()}
         </p>
 
         {isLoggedIn && (
-          <div className=" lg:mx-auto border border-red-500">
-            <div className="flex flex-col-reverse lg:px-20  border border-red-500">
+          <div className=" lg:mx-auto">
+            <div className="flex flex-col-reverse lg:px-20  ">
               <InfoCard
                 image={user.image}
                 userName={user.userName}
@@ -203,13 +198,14 @@ const HomePage = () => {
 
             {/* Keep ReviewSidebar from nacho branch */}
             <ReviewSidebar />
-
           </div>
         )}
 
         {isLoggedIn && user.role === "mentee" && (
-          <div className="p-10">
-            <h2 className="text-center pb-2 text-accent text-xl">Search your mentor</h2>
+          <div className="p-">
+            <h2 className="text-center pb-2 text-accent text-xl">
+              Search your mentor
+            </h2>
             <SearchComponent
               categoryOptions={categoryOptions}
               titleOptions={titleOptions}
@@ -220,11 +216,13 @@ const HomePage = () => {
         )}
 
         {isLoggedIn && user.role === "mentee" && (
-          <h2 className="text-center pb-2">
-            Already know your mentor? 
-          </h2>
+          <div>
+            <h2 className="text-center text-accent mt-4 pb-3">
+              Already know your mentor?
+            </h2>
+            <p className="text-center text-lg text-accent mb-2">Schedule a Meeting</p>
+          </div>
         )}
-
 
         {isLoggedIn && (
           <div className="flex-1 lg:w-3/4 mx-auto border border-red-500">
