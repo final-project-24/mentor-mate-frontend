@@ -365,6 +365,25 @@ export const bookSlot = async (eventId) => {
   }
 };
 
+// Update Payment Status ----------------------------
+export const updatePaymentStatus = async (paymentIntentId) => {
+  try {
+    const res = await axios.post('/payment/update-payment-status', {
+      paymentIntentId,
+    });
+
+    console.log("res:", res);
+
+    if (res.status !== 200) {
+      throw new Error("Unable to update payment status");
+    }
+    return res.data; // This should return the updated payment data
+  } catch (error) {
+    console.error("Error updating payment status:", error);
+    throw error;
+  }
+};
+
 // // Create PayPal Payment ----------------------------
 // export const createPayPalPayment = async (amount, currency, userId, isMentee, paypalPaymentId, bookingId, eventId) => {
 //   try {

@@ -8,7 +8,10 @@ import {
 } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 // import axios from "axios";
-import { createStripePaymentIntent } from "../../../utils/api-connector";
+import {
+  createStripePaymentIntent,
+  updatePaymentStatus,
+} from "../../../utils/api-connector";
 import "./StripePayment.css";
 
 const stripePublicKeyId = import.meta.env.VITE_STRIPE_PUBLIC_KEY;
@@ -74,6 +77,10 @@ const StripePayment = ({
         return;
       }
 
+      // Update payment status in the backend addeddd
+      const updatedPayment = await updatePaymentStatus(paymentIntent.id);
+      console.log("Updated payment status:", updatedPayment);
+
       if (paymentIntent.status === "succeeded") {
         // Notify parent component of successful payment
         if (onPaymentSuccess) onPaymentSuccess();
@@ -83,7 +90,7 @@ const StripePayment = ({
         console.log(`Payment status: ${paymentIntent.status}`);
       }
     } catch (error) {
-      console.error("Error processing payment:", error);
+      console.error("Error processing payment:", error); // this is the error
       setError("An error occurred while processing your payment.");
     } finally {
       setLoading(false);
