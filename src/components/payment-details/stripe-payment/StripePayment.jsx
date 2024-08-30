@@ -53,9 +53,9 @@ const StripePayment = ({ bookingId, onPaymentSuccess }) => {
       const { error: paymentMethodError, paymentMethod } = await stripe.createPaymentMethod({
         type: "card",
         card: elements.getElement(CardNumberElement),
-        billing_details: {
-          name: "Your Name", // Update as necessary
-        },
+        // billing_details: {
+        //   name: "Your Name", // Update as necessary
+        // },
       });
 
       if (paymentMethodError) {
@@ -100,7 +100,6 @@ const StripePayment = ({ bookingId, onPaymentSuccess }) => {
       </div>
 
       <div className="popup-instruction-payment">
-        {/* <h2>Subscribe to Our Service</h2> */}
         <p>Enter your card details below to complete the payment.</p>
       </div>
 
@@ -128,10 +127,6 @@ const StripePayment = ({ bookingId, onPaymentSuccess }) => {
       >
         {loading ? "Processing..." : "Pay Now"}
       </button>
-
-      <div className="powered-by-stripe">
-        <img src="/path/to/stripe/logo" alt="Powered by Stripe" />
-      </div>
 
       {error && <div className="payment-error">{error}</div>}
     </div>
