@@ -4,4 +4,5 @@
   background-color: var(--card-color);
   border-top: var(--border-width-base) solid var(--border-color-base);
   position: bottom;
+  z-index: 1001;
 }
