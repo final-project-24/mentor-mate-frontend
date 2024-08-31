@@ -6,7 +6,7 @@ export default function Footer() {
     <>
       <footer id="footer">
         <div className="flex-container">
-          <LanguageButton />
+          {/* <LanguageButton /> */}
         </div>
       </footer>
     </>

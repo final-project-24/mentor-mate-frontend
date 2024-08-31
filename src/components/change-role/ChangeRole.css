@@ -1,16 +1,25 @@
 .change-role-container {
-  width: 200px;
-  margin: var(--margin-base);
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  gap: var(--margin-lg);
+  width: 100%;
+  margin-top: var(--margin-lg);
+  /* margin-right: var(--margin-lg); */
+  /* margin-left: 50px; */
   padding: var(--padding-base);
   background-color: var(--card-color);
   border-width: var(--border-width-base);
   border-radius: var(--border-radius-base);
   border-color: var(--border-color-base);
   box-shadow: var(--box-shadow-base);
+}
+
+.change-role-container form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 
 .change-role-container form button {
@@ -61,4 +70,18 @@
 
 .change-role-container input[type="file"] {
   margin-bottom: var(--margin-small);
+}
+
+@media (min-width: 350px) {
+  .change-role-container {
+    width: 90%;
+    margin-left: var(--mini-sidebar-margin-left);
+  }
+}
+
+@media (min-width: 768px) {
+  .change-role-container {
+    width: 50%;
+    margin-left: var(--sidebar-width);
+  }
 }
