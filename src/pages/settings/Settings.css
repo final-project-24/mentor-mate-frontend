@@ -41,6 +41,9 @@
     width: 90%;
     margin-left: var(--mini-sidebar-margin-left);
   }
+  /* #settings-container {
+    margin-left: var(--mini-sidebar-margin-left);
+  } */
 }
 
 @media (min-width: 768px) {
@@ -48,4 +51,7 @@
     width: 50%;
     margin-left: var(--sidebar-width);
   }
+  /* #settings-container {
+    margin-left: var(--sidebar-width);
+  } */
 }

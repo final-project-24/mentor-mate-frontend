@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
 import LogoutButton from "../logout/Logout.jsx";
+import LoginButton from "../login-button/LoginButton.jsx";
 import { useAuthContext } from "../../store/authentication-context/AuthenticationContext.jsx";
 import { FaBars, FaTimes } from "react-icons/fa";
 import "./Header.css";
@@ -123,6 +124,7 @@ const Header = () => {
             >
               Login
             </Link>
+            // <LoginButton />
           ) : (
             <LogoutButton />
           )}
