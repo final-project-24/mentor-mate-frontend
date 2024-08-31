@@ -72,14 +72,6 @@ body {
   --sidebar-width: 250px; /* added */
   --sidebar-slide-width: -200px; /* added */
   --mini-sidebar-margin-left: 50px; /* added */
-
-  /* Breakpoints */
-  --breakpoint-xxs: 0px; /* added */
-  --breakpoint-xs: 350px; /* added */
-  --breakpoint-sm: 576px; /* added */
-  --breakpoint-md: 768px; /* added */
-  --breakpoint-lg: 992px; /* added */
-  --breakpoint-xl: 1200px; /* added */
 }
 
 [data-theme="dark"] {

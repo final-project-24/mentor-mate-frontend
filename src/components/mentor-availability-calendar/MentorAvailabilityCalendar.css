@@ -1,8 +1,8 @@
 /* MentorAvailabilityCalendar.css */
 
-/* .calendar-container {
+.calendar-container {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   height: calc(100vh - var(--margin-avoid-header));
 }
 
@@ -52,4 +52,30 @@
 
 .selected-slot-info button:hover {
   background-color: var(--accent-color-hover);
-} */
+}
+
+/* Custom styles for calendar events */
+.rbc-event {
+  background-color: var(--accent-color) !important;
+  color: var(--primary-color) !important;
+  border-radius: var(--border-radius-small);
+}
+
+/* Custom styles for event labels */
+.rbc-event-label {
+  color: var(--accent-color) !important;
+}
+
+/* Additional styles to ensure no blue text */
+.rbc-event-content {
+  color: var(--primary-color) !important;
+}
+
+.rbc-addons-dnd-resize-ns-anchor {
+  color: var(--accent-color) !important;
+}
+
+/* Ensure no blue text for more spots available */
+.rbc-show-more {
+  color: var(--accent-color) !important;
+}

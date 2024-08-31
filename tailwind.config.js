@@ -18,8 +18,8 @@ export default {
         accent: "var(--accent-color)",
         neutral: "var(--neutral-color)",
         error: "var(--error-color)",
-        card: "var(--card-color)", // added
-        cardHover: "var(--card-color-hover)", // added
+        card: "var(--card-color)",
+        cardHover: "var(--card-color-hover)",
       },
       fontFamily: {
         base: "var(--font-family)",
@@ -38,20 +38,20 @@ export default {
         bold: "var(--font-weight-bold)",
       },
       spacing: {
-        small: "var(--padding-small)", // added
+        small: "var(--padding-small)",
         base: "var(--padding-base)",
-        lg: "var(--padding-lg)", // added
-        xl: "var(--padding-xl)", // added
+        lg: "var(--padding-lg)",
+        xl: "var(--padding-xl)",
         marginSmall: "var(--margin-small)",
-        marginBase: "var(--margin-base)",
-        marginLg: "var(--margin-lg)", // added
-        marginXl: "var(--margin-xl)", // added
-        marginXxl: "var(--margin-xxl)", // added
-        marginAvoidHeader: "var(--margin-avoid-header)", // added
+        margin: "var(--margin-base)",
+        marginLg: "var(--margin-lg)",
+        marginXl: "var(--margin-xl)",
+        marginXxl: "var(--margin-xxl)",
+        marginAvoidHeader: "var(--margin-avoid-header)",
         gap: "var(--gap-base)",
       },
       borderRadius: {
-        small: "var(--border-radius-small)", // added
+        small: "var(--border-radius-small)",
         base: "var(--border-radius-base)",
       },
       borderWidth: {
@@ -59,26 +59,18 @@ export default {
       },
       borderColor: {
         base: "var(--border-color-base)",
-        hover: "var(--border-color-hover)", // added
+        hover: "var(--border-color-hover)",
       },
       boxShadow: {
         base: "var(--box-shadow-base)",
       },
       transitionDuration: {
-        base: "var(--transition-base)", // added
+        base: "var(--transition-base)",
       },
       width: {
-        sidebar: "var(--sidebar-width)", // added
-        sidebarSlide: "var(--sidebar-slide-width)", // added
-        miniSidebarMarginLeft: "var(--mini-sidebar-margin-left)", // added
-      },
-      screens: {
-        xxs: "var(--breakpoint-xxs)", // added
-        xs: "var(--breakpoint-xs)", // added
-        sm: "var(--breakpoint-sm)",
-        md: "var(--breakpoint-md)",
-        lg: "var(--breakpoint-lg)",
-        xl: "var(--breakpoint-xl)",
+        sidebar: "var(--sidebar-width)",
+        sidebarSlide: "var(--sidebar-slide-width)",
+        miniSidebarMarginLeft: "var(--mini-sidebar-margin-left)",
       },
     },
   },

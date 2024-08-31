@@ -20,8 +20,9 @@ export default function Settings() {
 
   return (
     <section id="settings-container">
+      <h1>Settings</h1>
       <div className="settings-card">
-        <h1>App Settings</h1>
+        <h1>Preferences</h1>
         <ChangeAppearance />
         <LanguageButton />
       </div>
@@ -29,7 +30,7 @@ export default function Settings() {
       <div className="settings-card">
         {isLoggedIn && (
           <>
-            <h1>Account Settings</h1>
+            <h1>Account</h1>
             <ChangeUserName />
             <ChangePassword />
             <ChangeEmail />
