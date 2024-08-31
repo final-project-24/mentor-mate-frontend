@@ -1,4 +1,4 @@
-/* .session-details-container {
+.session-details-container {
   max-width: 600px;
   margin: 0 auto;
   padding: 20px;
@@ -75,37 +75,18 @@
 
 .disclaimer a:hover {
   text-decoration: none;
-} */
+}
 
 /* ======================================== */
 
-.session-details-container {
+/* .session-details-container {
   max-width: 600px;
   margin: 0 auto;
   padding: 20px;
-  /* border: 1px solid #ddd; */
   border: 1px solid var(--border-color-base);
   border-radius: 8px;
-  /* background-color: #f9f9f9; */
   background-color: var(--card-color);
 }
-
-/* adeddd */
-.session-details-container h2 {
-  color: var(--secondary-color);
-  /* font-size: var(--font-size-lg); */
-}
-
-/* adedddd */
-.session-details-container p {
-  color: var(--secondary-color);
-}
-
-/* adeddddd */
-.session-details-container ul {
-  color: var(--secondary-color);
-}
-
 
 .meeting-link-container {
   margin-top: 20px;
@@ -119,9 +100,7 @@
   display: inline-block;
   margin-right: 10px;
   padding: 10px 20px;
-  /* background-color: #4caf50; */
   background-color: var(--accent-color);
-  /* color: #fff; */
   color: var(--primary-color);
   text-decoration: none;
   border-radius: 4px;
@@ -129,12 +108,10 @@
 }
 
 .meeting-link:hover {
-  /* background-color: #36b300; */
   background-color: var(--accent-color-hover);
 }
 
 .copy-link {
-  /* color: #4caf50; */
   color: var(--accent-color);
   text-decoration: underline;
   cursor: pointer;
@@ -147,7 +124,6 @@
 
 .copy-message {
   margin-top: 15px;
-  /* color: #4caf50; */
   color: var(--accent-color);
   font-weight: bold;
 }
@@ -157,14 +133,13 @@
   padding: 10px;
   border: 1px solid #ddd;
   border-radius: 8px;
-  /* background-color: #f1f1f1; */
   background-color: var(--primary-color);
 }
 
 .disclaimer p,
 .disclaimer li {
   margin-bottom: 10px;
-  font-size: 0.875rem; 
+  font-size: 0.875rem;
 }
 
 .disclaimer ul {
@@ -175,7 +150,6 @@
 }
 
 .disclaimer a {
-  /* color: #4caf50; */
   color: var(--accent-color);
   text-decoration: underline;
 }
@@ -184,3 +158,16 @@
   text-decoration: none;
 }
 
+.session-details-container h2 {
+  color: var(--secondary-color);
+}
+
+
+.session-details-container p {
+  color: var(--secondary-color);
+}
+
+
+.session-details-container ul {
+  color: var(--secondary-color);
+} */
