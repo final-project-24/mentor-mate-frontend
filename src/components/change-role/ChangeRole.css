@@ -75,13 +75,11 @@
 @media (min-width: 350px) {
   .change-role-container {
     width: 90%;
-    margin-left: var(--mini-sidebar-margin-left);
   }
 }
 
 @media (min-width: 768px) {
   .change-role-container {
     width: 50%;
-    margin-left: var(--sidebar-width);
   }
 }

@@ -26,7 +26,7 @@ const ChangeEmail = () => {
     <ToggleButton
       onToggle={() => setShowForm(true)}
       buttonName="Change Email"
-      className="change-email-button"
+      className="button-type-standard"
     />
   ) : (
     <div className="change-email-container">

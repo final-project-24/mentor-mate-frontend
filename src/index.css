@@ -4,6 +4,19 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Global  Styles ===================================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* border: 1px solid red; */
+}
+
+body {
+  background-color: var(--primary-color);
+}
+
 /*  Custom style variables ============================== */
 /* usage with css: color: var(--primary-color); */
 
@@ -59,20 +72,27 @@
   --sidebar-width: 250px; /* added */
   --sidebar-slide-width: -200px; /* added */
   --mini-sidebar-margin-left: 50px; /* added */
+
+  /* Breakpoints */
+  --breakpoint-xxs: 0px; /* added */
+  --breakpoint-xs: 350px; /* added */
+  --breakpoint-sm: 576px; /* added */
+  --breakpoint-md: 768px; /* added */
+  --breakpoint-lg: 992px; /* added */
+  --breakpoint-xl: 1200px; /* added */
 }
 
-/* Animations */
-
-/* Global styles ===================================== */
-
-html,
-body,
-#root {
-  /* width: 100%; */
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  /* border: 1px solid red; */
+[data-theme="dark"] {
+  --primary-color: #333333;
+  --secondary-color: #ffffff;
+  --accent-color: #4caf50;
+  --accent-color-hover: #2ecc71;
+  --neutral-color: #b7792c;
+  --error-color: #e50f0f;
+  --card-color: #444444;
+  --card-color-hover: #555555;
+  --border-color-base: #555555;
+  --box-shadow-base: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 /* container ===================================== */

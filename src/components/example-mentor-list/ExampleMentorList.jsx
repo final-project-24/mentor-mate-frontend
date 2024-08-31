@@ -23,7 +23,7 @@ const ExampleMentorList = ({ onSelect }) => {
 
   return (
     <div className="flex flex-col items-center ">
-      <h2 className="text-center">Select a Mentor</h2>
+      <h2 className="text-center">Please select a mentor to view their availability:</h2>
 
       <select onChange={(e) => onSelect(e.target.value)}
         className="w-1/2 p-1 "

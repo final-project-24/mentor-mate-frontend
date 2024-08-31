@@ -1,17 +1,15 @@
 import { useState, useEffect } from "react";
 import { Calendar, momentLocalizer } from "react-big-calendar";
 import moment from "moment";
-
-
 import { useNavigate } from "react-router-dom";
 import { useBookingContext } from "../../store/booking-context/BookingContext";
-
 import {
   fetchAvailability,
   addAvailability,
   bookSlot,
 } from "../../utils/api-connector";
 import "react-big-calendar/lib/css/react-big-calendar.css";
+// import "./MentorAvailabilityCalendar.css";
 
 const localizer = momentLocalizer(moment);
 

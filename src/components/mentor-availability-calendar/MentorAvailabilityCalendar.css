@@ -1,0 +1,55 @@
+/* MentorAvailabilityCalendar.css */
+
+/* .calendar-container {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - var(--margin-avoid-header));
+}
+
+.calendar {
+  flex: 1;
+  transition: all var(--transition-base);
+}
+
+.calendar-lg {
+  width: 70%;
+}
+
+.calendar-full {
+  width: 100%;
+}
+
+.selected-slot-info {
+  width: 30%;
+  margin-top: var(--margin-small);
+  padding: var(--padding-base);
+  background-color: var(--card-color);
+  border-radius: var(--border-radius-base);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-base);
+}
+
+.selected-slot-info h3 {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+}
+
+.selected-slot-info p {
+  margin: var(--margin-small) 0;
+}
+
+.selected-slot-info button {
+  margin-top: var(--margin-small);
+  background-color: var(--accent-color);
+  color: var(--primary-color);
+  padding: var(--padding-small) var(--padding-base);
+  border-radius: var(--border-radius-small);
+  transition: background-color var(--transition-base);
+}
+
+.selected-slot-info button:hover {
+  background-color: var(--accent-color-hover);
+} */

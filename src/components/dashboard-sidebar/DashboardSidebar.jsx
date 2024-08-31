@@ -91,7 +91,7 @@ export default function DashboardSidebar() {
                 onClick={closeSidebar}
                 className={activeLink === "/dashboard/settings" ? "active" : ""}
               >
-                Account Settings
+                Settings
                 <FontAwesomeIcon icon={faCog} className="fa-icon" />
               </Link>
             </li>

@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "./store/authentication-context/AuthenticationContext.jsx";
 import { LanguageProvider } from "./store/language-context/LanguageContext.jsx";
 import { BookingProvider } from "./store/booking-context/BookingContext";
+import { DarkModeProvider } from "./store/dark-mode-context/DarkModeContext";
 import HomePage from "./pages/home-page/HomePage.jsx";
 import Authentication from "./pages/authentication/Authentication.jsx";
 import DashboardLayout from "./components/dashboard-layout/DashboardLayout";
@@ -24,28 +25,30 @@ export default function App() {
       <AuthProvider>
         <LanguageProvider>
           <BookingProvider>
-            <Routes>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/authentication" element={<Authentication />} />
-              <Route path="/dashboard" element={<DashboardLayout />}>
-                <Route index element={<DashboardHome />} />
-                <Route path="admin-tools" element={<AdminTools />} />
-                <Route path="settings" element={<Settings />} />
-                <Route path="schedule" element={<Schedule />} />
-                <Route path="session" element={<Session />} />
-                <Route path="feedback" element={<Feedback />} />
-              </Route>
-              <Route path="/settings" element={<Settings />} />
-              <Route path="/match-making" element={<MatchMaking />} />
-              <Route path="/schedule" element={<Schedule />} />
-              <Route path="/booking/:id" element={<Booking />} />
-              <Route path="/payment" element={<Payment />} />
-              <Route path="/terms" element={<Terms />} />
-              <Route path="/session" element={<Session />} />
-              <Route path="/feedback" element={<Feedback />} />
-              <Route path="/playground" element={<Playground />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
+            <DarkModeProvider>
+              <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/authentication" element={<Authentication />} />
+                <Route path="/dashboard" element={<DashboardLayout />}>
+                  <Route index element={<DashboardHome />} />
+                  <Route path="admin-tools" element={<AdminTools />} />
+                  <Route path="settings" element={<Settings />} />
+                  <Route path="schedule" element={<Schedule />} />
+                  <Route path="session" element={<Session />} />
+                  <Route path="feedback" element={<Feedback />} />
+                </Route>
+                <Route path="/settings" element={<Settings />} />
+                <Route path="/match-making" element={<MatchMaking />} />
+                <Route path="/schedule" element={<Schedule />} />
+                <Route path="/booking/:id" element={<Booking />} />
+                <Route path="/payment" element={<Payment />} />
+                <Route path="/terms" element={<Terms />} />
+                <Route path="/session" element={<Session />} />
+                <Route path="/feedback" element={<Feedback />} />
+                <Route path="/playground" element={<Playground />} />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </DarkModeProvider>
           </BookingProvider>
         </LanguageProvider>
       </AuthProvider>
