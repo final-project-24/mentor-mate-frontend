@@ -4,6 +4,7 @@ import { Link, useLocation } from "react-router-dom";
 import {
   faBars,
   faTimes,
+  faSearch,
   faCalendarAlt,
   faChalkboardTeacher,
   faCog,
@@ -62,6 +63,16 @@ export default function DashboardSidebar() {
         />
         <nav className="dashboard-sidebar-nav">
           <ul>
+            <li>
+              <Link
+                to="/dashboard/search"
+                onClick={closeSidebar}
+                className={activeLink === "/dashboard/search" ? "active" : ""}
+              >
+                Search for a Mentor
+                <FontAwesomeIcon icon={faSearch} className="fa-icon" />
+              </Link>
+            </li>
             <li>
               <Link
                 to="/dashboard/schedule"

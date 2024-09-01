@@ -16,7 +16,7 @@ export default function DevNav() {
           <Link to="/playground">Playground</Link>
         </li>
         <li>
-          <Link to="/match-making">Search</Link>
+          <Link to="/search">Search</Link>
         </li>
         <li>
           <Link to="/schedule">Schedule</Link>

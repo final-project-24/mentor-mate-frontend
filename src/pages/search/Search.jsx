@@ -1,4 +1,4 @@
-import "./MatchMaking.css";
+import "./Search.css";
 import Layout from "../../components/layout/Layout";
 
 export default function MatchMaking() {
