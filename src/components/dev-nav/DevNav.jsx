@@ -15,12 +15,12 @@ export default function DevNav() {
         <li>
           <Link to="/playground">Playground</Link>
         </li>
-        <li>
+        {/* <li>
           <Link to="/search">Search</Link>
-        </li>
-        <li>
+        </li> */}
+        {/* <li>
           <Link to="/schedule">Schedule</Link>
-        </li>
+        </li> */}
         <li>
           <Link to="/booking/:id">Booking</Link>
         </li>

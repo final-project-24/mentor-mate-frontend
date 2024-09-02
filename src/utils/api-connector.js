@@ -342,9 +342,9 @@ export const bookSlot = async (eventId) => {
 
 // Create Stripe Payment Intent ----------------------------
 // export const createStripePaymentIntent = async (amount, currency, userId, isMentee, bookingId, eventId) => {
-  export const createStripePaymentIntent = async (bookingId) => {
+export const createStripePaymentIntent = async (bookingId) => {
   try {
-    const res = await axios.post('/payment/stripe/create-payment-intent', {
+    const res = await axios.post("/payment/stripe/create-payment-intent", {
       // amount,
       // currency,
       // userId,
@@ -368,7 +368,7 @@ export const bookSlot = async (eventId) => {
 // Update Payment Status ----------------------------
 export const updatePaymentStatus = async (paymentIntentId) => {
   try {
-    const res = await axios.post('/payment/update-payment-status', {
+    const res = await axios.post("/payment/update-payment-status", {
       paymentIntentId,
     });
 
@@ -406,4 +406,72 @@ export const updatePaymentStatus = async (paymentIntentId) => {
 //     throw error;
 //   }
 // };
+
+// Search API calls ====================================================
+
+// fetch mentors
+// export const fetchMentors = async (query) => {
+//   const response = await fetch(`/search?query=${query}`);
+//   if (!response.ok) {
+//     throw new Error('Failed to fetch mentors');
+//   }
+//   return response.json();
+// };
+
+// export const fetchMentors = async (query) => {
+//   try {
+//     const response = await fetch(`/search?query=${query}`);
+//     if (!response.ok) {
+//       throw new Error(`HTTP error! status: ${response.status}`);
+//     }
+//     const data = await response.json();
+//     return data;
+//   } catch (error) {
+//     console.error('Error fetching mentors:', error);
+//     throw error;
+//   }
+// };
+
+// =====================================================================
+
+// export const fetchMentors = async (query) => {
+//   try {
+//     const res = await axios.get(`/search`, {
+//       params: { query: query.toString() }, // Ensure query is a string
+//       headers: {
+//         "Content-Type": "application/json",
+//       },
+//     });
+//     if (res.status !== 200) {
+//       throw new Error(`HTTP error! status: ${res.status}`);
+//     }
+//     const data = res.data;
+//     console.log("Fetched mentors:", data); // Log fetched mentors
+//     return data;
+//   } catch (error) {
+//     console.error("Error fetching mentors:", error);
+//     throw error;
+//   }
+// };
+
+
+export const fetchMentors = async (query) => {
+  try {
+    const res = await axios.get(`/search`, {
+      params: query, // Send query as an object
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    if (res.status !== 200) {
+      throw new Error(`HTTP error! status: ${res.status}`);
+    }
+    const data = res.data;
+    console.log("Fetched mentors:", data); // Log fetched mentors
+    return data;
+  } catch (error) {
+    console.error("Error fetching mentors:", error);
+    throw error;
+  }
+};
 
