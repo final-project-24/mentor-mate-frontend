@@ -26,32 +26,31 @@ const Review = ({ name, topic, feedback, rating, profilePic }) => {
 };
 
 // Componente Sidebar para manejar la barra lateral y su lógica
-const Sidebar = ({ isOpen, toggleSidebar, reviews, scrollSidebar }) => {
-    return (
-      <div className={`sidebar ${isOpen ? "" : "closed"}`}>
-        <button className="scrollButton up" onClick={() => scrollSidebar('up')}>▲</button>
-        <button className="scrollButton down" onClick={() => scrollSidebar('down')}>▼</button>
-        <h2 className="user-feedbacks-heading">
-          User feedbacks
-          <img src={iconUrl} alt="Icon" className="feedback-icon" />
-        </h2>
-  
-        {reviews.map((review, index) => (
-          <Review
-            key={index}
-            name={review.name}
-            topic={review.topic}
-            feedback={review.feedback}
-            rating={review.rating}
-            profilePic={review.profilePic}
-          />
-        ))}
-        <Link to="/feedback" className="feedbackButton">
-          Go to Feedback
-        </Link>
-      </div>
-    );
-  };
+const Sidebar = ({ isOpen, toggleSidebar, reviews }) => {
+  return (
+    <div className={`sidebar ${isOpen ? "" : "closed"}`}>
+      <h2 className="user-feedbacks-heading">
+        User feedbacks
+        <img src={iconUrl} alt="Icon" className="feedback-icon" />
+      </h2>
+
+      {reviews.map((review, index) => (
+        <Review
+          key={index}
+          name={review.name}
+          topic={review.topic}
+          feedback={review.feedback}
+          rating={review.rating}
+          profilePic={review.profilePic}
+        />
+      ))}
+      <Link to="/feedback" className="feedbackButton">
+        Go to Feedback
+      </Link>
+    </div>
+  );
+};
+
 
 // Componente principal ReviewSidebar que integra Sidebar y maneja su estado
 
@@ -112,7 +111,7 @@ const ReviewSidebar = () => {
         isOpen={isOpen}
         toggleSidebar={toggleSidebar}
         reviews={reviews}
-        scrollSidebar={scrollSidebar}
+        // scrollSidebar={scrollSidebar}
       />
       <button className="smallOpenBtn" onClick={toggleSidebar}>
         {isOpen ? '×' : '➤'}

@@ -1,149 +1,172 @@
 /* Sidebar container */
 .sidebar {
-    max-height: 100vh;
-    margin-top: 100px;
-    width: 300px;
-    position: fixed;
-    right: 0;
-    top: 0;
-    background-color: #f9f6f6;
-    padding: 20px;
-    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
-    transition: transform 0.3s ease;
-    overflow-y: auto;
-    z-index: 1000;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    transform: translateX(0); /* Sidebar visible state */
+  max-height: 90vh;
+  margin-top: 100px;
+  width: 300px;
+  position: fixed;
+  right: 0;
+  top: 0;
+  background-color: #f9f6f6;
+  padding: 20px;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease;
+  overflow-y: auto;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transform: translateX(0); /* Sidebar visible state */
+  direction: ltr;
 }
 
 /* Sidebar closed state */
 .sidebar.closed {
-    transform: translateX(100%); /* Move sidebar off screen */
+  transform: translateX(100%); /* Move sidebar off screen */
+}
+
+.sidebar::-webkit-scrollbar {
+  width: 12px; /* Ancho de la barra de desplazamiento */
+  background-color: #f9f6f6; /* Color de fondo de la barra de desplazamiento */
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background-color: #000; /* Color del thumb (mango) de la barra de desplazamiento */
+  border-radius: 6px; /* Bordes redondeados para el thumb */
+}
+
+/* Opcional: Estilo del hover en el thumb de la barra de desplazamiento */
+.sidebar::-webkit-scrollbar-thumb:hover {
+  background-color: #333; /* Color del thumb al pasar el mouse */
+}
+
+/* Estilos para Firefox */
+.sidebar {
+  scrollbar-width: thin; /* Grosor de la barra de desplazamiento para Firefox */
+  scrollbar-color: #1e1e1f #f9f6f6; /* Color del thumb y del track en Firefox */
 }
 
 /* Scroll buttons styling */
 .scrollButton {
-    position: absolute;
-    left: -40px; /* Posiciona los botones en el lado izquierdo de la barra lateral */
-    width: 30px;
-    height: 30px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1002; /* Asegura que esté encima de la barra lateral */
-    transition: background-color 0.3s ease;
+  position: absolute;
+  left: -40px;
+  width: 330px;
+  height: 30px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1002;
+  transition: background-color 0.3s ease;
 }
 
 .scrollButton.up {
-    top: 20px; /* Posiciona el botón de desplazamiento hacia arriba cerca de la parte superior */
+  top: 20px;
 }
 
 .scrollButton.down {
-    bottom: 20px; /* Posiciona el botón de desplazamiento hacia abajo cerca de la parte inferior */
+  bottom: 200px;
 }
 
 .scrollButton:hover {
-    background-color: #0056b3; /* Oscurece el color del botón al pasar el mouse */
+  background-color: #0056b3;
 }
 
 /* Small open/close button */
 .smallOpenBtn {
-    position: fixed;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 24px; /* Increased font size to fit the '×' character */
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    border-radius: 5px 0 0 5px;
-    z-index: 1001;
+  position: fixed;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 24px; /* Increased font size to fit the '×' character */
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 5px 0 0 5px;
+  z-index: 1001;
 }
 
 .smallOpenBtn:hover {
-    background-color: #0056b3; /* Color de fondo al hacer hover */
-    color: #f0f0f0; /* Color del texto al hacer hover (opcional) */
+  background-color: #0056b3; /* Color de fondo al hacer hover */
+  color: #f0f0f0; /* Color del texto al hacer hover (opcional) */
 }
 
 /* Profile picture */
 .profile-pic {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    margin-right: 10px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin-right: 15px;
 }
 
 /* Review container */
 .review {
-    display: flex;
-    margin-bottom: 30px; /* Increase space between reviews */
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px; /* Increase space between reviews */
 }
 
 /* Review content */
 .review-content {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Name styling */
 .review-name {
-    color: #1a1a1a;
-    margin: 0;
+  color: #1a1a1a;
+  margin: 0;
 }
 
 /* Topic styling */
 .review-topic {
-    color: #333;
-    margin: 5px 0;
+  color: #333;
+  margin: 5px 0;
 }
 
 /* Feedback styling */
 .review-feedback {
-    color: #666;
-    margin: 5px 0;
+  color: #666;
+  margin: 5px 0;
 }
 
 .rating {
-    color: #ffcc00;
+  color: #ffcc00;
 }
 
 .feedbackButton {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #151414;
-    color: white;
-    text-align: center;
-    text-decoration: none;
-    border-radius: 5px;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #151414;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
 }
 
 .feedbackButton:hover {
-    background-color: #0056b3;
+  background-color: #0056b3;
 }
 
 .feedback-icon {
-    width: 60px; /* Adjust the size of the icon */
-    height: 60px;
-    margin-left: 20px; /* Space between the text and the icon */
-    vertical-align: middle; /* Align the icon vertically with the text */
+  width: 60px; /* Adjust the size of the icon */
+  height: 60px;
+  margin-left: 20px; /* Space between the text and the icon */
+  vertical-align: middle; /* Align the icon vertically with the text */
 }
 
 .user-feedbacks-heading {
-    color: #151414;
-    font-size: 1.5em;
-    display: inline-flex; /* Ensures elements are aligned on the same line */
-    align-items: center;  /* Vertically centers the icon with the text */
+  color: #151414;
+  font-size: 1.5em;
+  display: inline-flex; /* Ensures elements are aligned on the same line */
+  align-items: center; /* Vertically centers the icon with the text */
 }
