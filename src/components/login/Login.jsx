@@ -21,7 +21,7 @@ function Login({ onToggleSignUp, onToggleForgotPassword }) {
       await login(email, password);
       setEmail("");
       setPassword("");
-      navigate("/");
+      navigate("/dashboard"); //
     } catch (error) {
       console.error("Login failed:", error);
       setErrorMessage("Login failed. Please try again.");

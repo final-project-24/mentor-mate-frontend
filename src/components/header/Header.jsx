@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
 import LogoutButton from "../logout/Logout.jsx";
+import LoginButton from "../login-button/LoginButton.jsx";
 import { useAuthContext } from "../../store/authentication-context/AuthenticationContext.jsx";
 import { FaBars, FaTimes } from "react-icons/fa";
 import "./Header.css";
@@ -22,7 +23,7 @@ const Header = () => {
     { to: "/about-us", label: "About Us" },
     { to: "/pricing", label: "Pricing" },
     { to: "/contact", label: "Contact" },
-    { to: "/dashboard", label: "Dashboard" },
+    // { to: "/dashboard", label: "Dashboard" },
   ];
 
   const mentorLinks = [
@@ -51,14 +52,26 @@ const Header = () => {
     // { to: "/playground", label: "(Playground)" },
   ];
 
-  // Determine the navigation links to display
-  const navLinks = !isLoggedIn
-    ? guestLinks
-    : user?.role === "mentor"
-    ? mentorLinks
-    : user?.role === "mentee"
-    ? menteeLinks
-    : [];
+  const adminLinks = [
+    { to: "/", label: "Home" },
+    { to: "/about-us", label: "About Us" },
+    { to: "/pricing", label: "Pricing" },
+    { to: "/contact", label: "Contact" },
+    { to: "/dashboard", label: "Dashboard" },
+    // { to: "/admin-tools", label: "Admin Tools" },
+    // { to: "/user-management", label: "User Management" },
+  ];
+
+ // Determine the navigation links to display
+ const navLinks = !isLoggedIn
+ ? guestLinks
+ : user?.role === "admin"
+ ? adminLinks
+ : user?.role === "mentor"
+ ? mentorLinks
+ : user?.role === "mentee"
+ ? menteeLinks
+ : [];
 
   const handleClick = () => setNav(!nav);
   const closeMenu = () => setNav(false);
@@ -113,7 +126,7 @@ const Header = () => {
             >
               Login
             </Link>
-
+            // <LoginButton />
           ) : (
             <LogoutButton />
           )}

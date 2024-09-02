@@ -37,7 +37,7 @@ const ChangePassword = () => {
     <ToggleButton
       onToggle={() => setShowForm(true)}
       buttonName="Change Password"
-      className="change-password-button"
+      className="button-type-standard"
     />
   ) : (
     <div className="change-password-container">

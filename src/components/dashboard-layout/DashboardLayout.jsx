@@ -8,7 +8,9 @@ export default function DashboardLayout() {
   return (
     <Layout>
       <div className="dashboard-layout">
-        <DashboardSidebar />
+        <div className="dashboard-sidebar">
+          <DashboardSidebar />
+        </div>
         <div className="main-content">
           <Outlet />
         </div>

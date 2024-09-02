@@ -26,7 +26,7 @@ const ChangeUserName = () => {
     <ToggleButton
       onToggle={() => setShowForm(true)}
       buttonName="Change Username"
-      className="change-user-name-button"
+      className="button-type-standard"
     />
   ) : (
     <div className="change-user-name-container">

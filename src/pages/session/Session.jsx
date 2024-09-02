@@ -46,7 +46,7 @@ const Session = () => {
 
   return (
     <div>
-      <h1>Session Page</h1>
+      {/* <h1>Session Page</h1> */}
       <SessionDetails data={sessionData} />
     </div>
   );

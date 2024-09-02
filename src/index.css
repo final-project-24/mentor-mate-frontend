@@ -4,6 +4,19 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Global  Styles ===================================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* border: 1px solid red; */
+}
+
+body {
+  background-color: var(--primary-color);
+}
+
 /*  Custom style variables ============================== */
 /* usage with css: color: var(--primary-color); */
 
@@ -12,10 +25,12 @@
   --primary-color: #ffffff;
   --secondary-color: #333333;
   --accent-color: #4caf50;
-  --accent-color-hover: #45a048;
+  /* --accent-color-hover: #45a048; */
+  --accent-color-hover: #2ecc71;
   --neutral-color: #b7792c;
   --error-color: #e50f0f;
   --card-color: #f9f9f9; /* added */
+  --card-color-hover: #f0f0f0; /* added */
 
   /* Typography */
   --font-family: "Arial, sans-serif";
@@ -37,7 +52,7 @@
   --margin-lg: 1.4rem; /* added */
   --margin-xl: 2rem; /* added */
   --margin-xxl: 3rem; /* added */
-  --margin-avoid-header: 6.5rem; /* added */
+  --margin-avoid-header: 80px; /* added */
   --gap-base: 1rem;
 
   /* Borders */
@@ -45,46 +60,52 @@
   --border-radius-base: 8px;
   --border-width-base: 1px;
   --border-color-base: #dddddd;
+  --border-color-hover: #2ecc71;
 
   /* Shadows */
   --box-shadow-base: 0 2px 4px rgba(0, 0, 0, 0.1);
 
   /* Animations */
   --transition-base: 0.3s;
+
+  /* Elements */
+  --sidebar-width: 250px; /* added */
+  --sidebar-slide-width: -200px; /* added */
+  --mini-sidebar-margin-left: 50px; /* added */
 }
 
-/* Animations */
-
-/* Global styles ===================================== */
-
-html,
-body,
-#root {
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  /* border: 1px solid red; */
+[data-theme="dark"] {
+  --primary-color: #333333;
+  --secondary-color: #ffffff;
+  --accent-color: #4caf50;
+  --accent-color-hover: #2ecc71;
+  --neutral-color: #b7792c;
+  --error-color: #e50f0f;
+  --card-color: #444444;
+  --card-color-hover: #555555;
+  --border-color-base: #555555;
+  --box-shadow-base: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 /* container ===================================== */
 
-.flex-container {
+/* .flex-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   margin-top: 20px;
-}
+} */
 
-.parent-container {
+/* .parent-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   margin-top: 20px;
-}
+} */
 
-.component-container {
+/* .component-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -95,7 +116,7 @@ body,
   padding: 20px;
   min-width: 100px;
   max-width: 600px;
-}
+} */
 
 /* colors */
 

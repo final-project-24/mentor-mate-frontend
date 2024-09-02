@@ -33,7 +33,7 @@
   background-color: var(--accent-color-hover);
 }
 
-.button-type-link {
+/* .button-type-link {
   background: none;
   border: none;
   color: var(--accent-color);
@@ -42,13 +42,13 @@
   margin: var(--margin-small) 0;
   font-size: inherit;
   transition: var(--transition-base);
-}
+} */
 
-.button-type-link:hover {
+/* .button-type-link:hover {
   background: none;
   color: var(--accent-color-hover);
   font-weight: var(--font-weight-bold);
-}
+} */
 
 .login-container form {
   display: flex;
