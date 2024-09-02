@@ -1,6 +1,6 @@
 /* Sidebar container */
 .sidebar {
-    height: 100%;
+    max-height: 100vh;
     margin-top: 100px;
     width: 300px;
     position: fixed;
@@ -21,6 +21,36 @@
 /* Sidebar closed state */
 .sidebar.closed {
     transform: translateX(100%); /* Move sidebar off screen */
+}
+
+/* Scroll buttons styling */
+.scrollButton {
+    position: absolute;
+    left: -40px; /* Posiciona los botones en el lado izquierdo de la barra lateral */
+    width: 30px;
+    height: 30px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1002; /* Asegura que esté encima de la barra lateral */
+    transition: background-color 0.3s ease;
+}
+
+.scrollButton.up {
+    top: 20px; /* Posiciona el botón de desplazamiento hacia arriba cerca de la parte superior */
+}
+
+.scrollButton.down {
+    bottom: 20px; /* Posiciona el botón de desplazamiento hacia abajo cerca de la parte inferior */
+}
+
+.scrollButton:hover {
+    background-color: #0056b3; /* Oscurece el color del botón al pasar el mouse */
 }
 
 /* Small open/close button */
@@ -117,5 +147,3 @@
     display: inline-flex; /* Ensures elements are aligned on the same line */
     align-items: center;  /* Vertically centers the icon with the text */
 }
-
-
