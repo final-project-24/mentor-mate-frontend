@@ -37,9 +37,9 @@ export default function Footer() {
         </div>
 
         {/* Language Button */}
-        <iv className="footer-section">
+        <div className="footer-section">
           {/* <LanguageButton /> */}
-        </iv>
+        </div>
 
         {/* Social Media Icons */}
         <div className="footer-section footer-social-media">
