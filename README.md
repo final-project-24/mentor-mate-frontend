@@ -268,3 +268,7 @@ The main application component that integrates all the above components and mana
 
     Hooks: Uses useState to manage authentication status, feedback messages, and conditional rendering of components, and useEffect to verify user authentication status on component mount.
     Conditional Rendering: Renders SignUp, Login, Logout, and DeleteUser components based on the user's login status.
+
+## To Do
+
+- terms: go back

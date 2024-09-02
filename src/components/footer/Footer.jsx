@@ -1,5 +1,5 @@
 import "./Footer.css";
-import LanguageButton from "../language-button/LanguageButton";
+// import LanguageButton from "../language-button/LanguageButton";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faFacebook,
@@ -38,7 +38,7 @@ export default function Footer() {
 
         {/* Language Button */}
         <iv className="footer-section">
-          <LanguageButton />
+          {/* <LanguageButton /> */}
         </iv>
 
         {/* Social Media Icons */}

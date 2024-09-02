@@ -1,0 +1,80 @@
+.change-language-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: var(--margin-base);
+  /* margin-top: var(--margin-lg); */
+  padding: var(--padding-base);
+  background-color: var(--card-color);
+  border-top-width: var(--border-width-base);
+  /* border-bottom-width: var(--border-width-base); */
+  border-top-color: var(--border-color-base);
+  /* border-bottom-color: var(--border-color-base); */
+  border-top-style: solid;
+  /* border-bottom-style: solid; */
+}
+
+/* .change-language-button {
+  width: 100%;
+  background-color: var(--accent-color);
+  color: var(--primary-color);
+  border: none;
+  border-radius: var(--border-radius-small);
+  cursor: pointer;
+  margin-bottom: var(--margin-small);
+  padding: var(--padding-small);
+  transition: var(--transition-base);
+} */
+
+/* .change-language-button:hover {
+  background-color: var(--accent-color-hover);
+} */
+
+.change-language-container h2 {
+  color: var(--secondary-color);
+  font-size: var(--font-size-lg);
+  margin-bottom: var(--margin-small);
+}
+
+/* .change-language-error-message {
+  color: var(--error-color);
+  font-size: var(--font-size-sm);
+  margin-bottom: var(--margin-small);
+} */
+
+/* .change-language-success-message {
+  color: var(--accent-color);
+  font-size: var(--font-size-sm);
+  margin-bottom: var(--margin-small);
+} */
+
+.change-language-dropdown {
+  width: 100%;
+  margin-top: var(--margin-small);
+  padding: var(--padding-small);
+  font-size: var(--font-size-base);
+  border-radius: var(--border-radius-small);
+  border-width: var(--border-width-base);
+  border-color: var(--border-color-base);
+  /* appearance: none; */
+  /* background-color: var(--primary-color);  */
+  /* color: var(--secondary-color);  */
+}
+
+/* .change-language-dropdown:focus {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 2px var(--accent-color);
+  outline: none;
+} */
+
+/* .change-language-dropdown option {
+  background-color: var(--primary-color); 
+  color: var(--secondary-color); 
+} */
+
+/* .change-language-dropdown option:hover {
+  background-color: var(--accent-color); 
+  color: var(--primary-color); 
+} */
