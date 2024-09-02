@@ -65,7 +65,7 @@ const SessionDetails = ({ data }) => {
 
   return (
     <div className="session-details-container">
-      <h2>Details of your upcoming session</h2>
+      <h1>🥳 WELCOME! These are the details of your upcoming session!</h1> <br />
       <p className="session-id">Session ID: {data.id}</p>
       <p className="session-name">Session Name: {data.name}</p>
       <p className="session-description">Description: {data.description}</p>

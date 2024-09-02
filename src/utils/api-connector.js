@@ -268,171 +268,42 @@ export const bookSlot = async (eventId) => {
 
 // // payment API calls ==================================================
 
-// // Stripe Payment: Create Payment Intent ----------------------------
-// // export const createStripePaymentIntent = async (amount, currency = "usd") => {
-// export const createStripePaymentIntent = async (bookingId) => {
-//   try {
-//     const res = await axios.post("/payment/stripe/create-payment-intent", {
-//       // amount,
-//       // currency,
-//       bookingId,
-//     });
-//     if (res.status !== 200) {
-//       throw new Error("Unable to create payment intent");
-//     }
-//     return res.data; // This should return the clientSecret and any other relevant data
-//   } catch (error) {
-//     console.error("Error creating Stripe payment intent:", error);
-//     throw error;
-//   }
-// };
-
-// // PayPal Payment: Create Order ----------------------------
-// // export const createPayPalOrder = async (amount, currency = "USD") => {
-// export const createPayPalOrder = async (bookingId) => {
-//   try {
-//     const res = await axios.post("/payment/paypal/create-order", {
-//       // amount,
-//       // currency,
-//       bookingId,
-//     });
-//     if (res.status !== 200) {
-//       throw new Error("Unable to create PayPal order");
-//     }
-//     return res.data;
-//   } catch (error) {
-//     console.error("Error creating PayPal order:", error);
-//     throw error;
-//   }
-// };
-
-// // PayPal Payment: Capture Order ----------------------------
-// export const capturePayPalOrder = async (orderId) => {
-//   try {
-//     const res = await axios.post(`/payment/paypal/capture-order`, {
-//       orderId,
-//     });
-//     if (res.status !== 200) {
-//       throw new Error("Unable to capture PayPal order");
-//     }
-//     return res.data; // This should confirm the payment success
-//   } catch (error) {
-//     console.error("Error capturing PayPal order:", error);
-//     throw error;
-//   }
-// };
-
-// // Stripe Payment: Capture Payment (if needed) ----------------------------
-// export const captureStripePayment = async (paymentIntentId) => {
-//   try {
-//     const res = await axios.post(`/payment/stripe/capture-payment`, {
-//       paymentIntentId,
-//     });
-//     if (res.status !== 200) {
-//       throw new Error("Unable to capture Stripe payment");
-//     }
-//     return res.data; // This should confirm the payment success
-//   } catch (error) {
-//     console.error("Error capturing Stripe payment:", error);
-//     throw error;
-//   }
-// };
-
-// payment API calls --------------------------------------------
-
 // Create Stripe Payment Intent ----------------------------
 // export const createStripePaymentIntent = async (amount, currency, userId, isMentee, bookingId, eventId) => {
-export const createStripePaymentIntent = async (bookingId) => {
-  try {
-    const res = await axios.post("/payment/stripe/create-payment-intent", {
-      // amount,
-      // currency,
-      // userId,
-      // isMentee,
-      bookingId,
-      // eventId
-    });
-
-    console.log("res:", res);
-
-    if (res.status !== 200) {
-      throw new Error("Unable to create Stripe payment intent");
+  export const createStripePaymentIntent = async (bookingId) => {
+    try {
+      // Ensure all required parameters are included
+      const res = await axios.post('/payment/stripe/create-payment-intent', {
+        // amount,
+        // currency,
+        // userId,
+        // isMentee,
+        bookingId,
+        // eventId
+      });
+  
+      console.log("Response from server:", res);
+  
+      if (res.status !== 200) {
+        throw new Error("Unable to create Stripe payment intent");
+      }
+  
+      return res.data; // Return the clientSecret or any other relevant data
+    } catch (error) {
+      console.error("Error creating Stripe payment intent:", error);
+      throw error; // Re-throw the error to be handled by calling code
     }
-    return res.data; // This should return the clientSecret or any other relevant data
-  } catch (error) {
-    console.error("Error creating Stripe payment intent:", error);
-    throw error;
-  }
-};
+  };
+  
+  
 
-// Update Payment Status ----------------------------
-export const updatePaymentStatus = async (paymentIntentId) => {
-  try {
-    const res = await axios.post("/payment/update-payment-status", {
-      paymentIntentId,
-    });
 
-    console.log("res:", res);
 
-    if (res.status !== 200) {
-      throw new Error("Unable to update payment status");
-    }
-    return res.data; // This should return the updated payment data
-  } catch (error) {
-    console.error("Error updating payment status:", error);
-    throw error;
-  }
-};
 
-// // Create PayPal Payment ----------------------------
-// export const createPayPalPayment = async (amount, currency, userId, isMentee, paypalPaymentId, bookingId, eventId) => {
-//   try {
-//     const res = await axios.post('/payment/paypal/create-payment', {
-//       amount,
-//       currency,
-//       userId,
-//       isMentee,
-//       paypalPaymentId,
-//       // bookingId,
-//       eventId
-//     });
 
-//     if (res.status !== 200) {
-//       throw new Error("Unable to create PayPal payment");
-//     }
-//     return res.data; // This should return any relevant data or success confirmation
-//   } catch (error) {
-//     console.error("Error creating PayPal payment:", error);
-//     throw error;
-//   }
-// };
+
 
 // Search API calls ====================================================
-
-// fetch mentors
-// export const fetchMentors = async (query) => {
-//   const response = await fetch(`/search?query=${query}`);
-//   if (!response.ok) {
-//     throw new Error('Failed to fetch mentors');
-//   }
-//   return response.json();
-// };
-
-// export const fetchMentors = async (query) => {
-//   try {
-//     const response = await fetch(`/search?query=${query}`);
-//     if (!response.ok) {
-//       throw new Error(`HTTP error! status: ${response.status}`);
-//     }
-//     const data = await response.json();
-//     return data;
-//   } catch (error) {
-//     console.error('Error fetching mentors:', error);
-//     throw error;
-//   }
-// };
-
-// =====================================================================
 
 // export const fetchMentors = async (query) => {
 //   try {
@@ -474,4 +345,5 @@ export const fetchMentors = async (query) => {
     throw error;
   }
 };
+
 
