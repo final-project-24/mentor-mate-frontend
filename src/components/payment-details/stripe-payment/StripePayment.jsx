@@ -1,106 +1,135 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   Elements,
   useStripe,
   useElements,
-  CardElement,
+  CardNumberElement,
+  CardExpiryElement,
+  CardCvcElement,
 } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
-// import axios from "axios";
 import { createStripePaymentIntent } from "../../../utils/api-connector";
-import "./StripePayment.css";
+import "./StripePayment.css"; 
 
 const stripePublicKeyId = import.meta.env.VITE_STRIPE_PUBLIC_KEY;
-console.log("Stripe Public Key:", stripePublicKeyId);
 
 // Initialize Stripe with public key
 const stripePromise = loadStripe(stripePublicKeyId);
 
-const StripePayment = ({
-  bookingId,
-  amount,
-  onPaymentStart,
-  onPaymentSuccess,
-  onPaymentEnd,
-  // menteeData,
-}) => {
+const StripePayment = ({ bookingId, onPaymentSuccess }) => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
-  // const [pending, setPending] = useState(false);
+  const [clientSecret, setClientSecret] = useState(null);
   const stripe = useStripe();
   const elements = useElements();
   const navigate = useNavigate();
+  const modalRef = useRef(null);
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
+  useEffect(() => {
+    // Fetch client secret from backend
+    const fetchClientSecret = async () => {
+      try {
+        const response = await createStripePaymentIntent(bookingId);
+        setClientSecret(response.clientSecret);
+      } catch (error) {
+        console.error("Error fetching client secret:", error);
+        setError("An error occurred while initializing the payment.");
+      }
+    };
 
-    if (!stripe || !elements) {
-      return;
-    }
+    fetchClientSecret();
+  }, [bookingId]);
 
+  const createSubscription = async () => {
     setLoading(true);
-    // setPending(true);
-
-    if (onPaymentStart) onPaymentStart();
-
+    setError(null); // Clear previous errors
     try {
-      // Call backend to create a PaymentIntent
-      const response = await createStripePaymentIntent(bookingId); // Use the imported function
-      const { clientSecret } = response;
-      // const response = await axios.post("/api/payment/create-payment-intent", {
-      //   amount,
-      // });
-      // const { clientSecret } = response.data;
-
-      // Retrieve the CardElement addeddd
-      const cardElement = elements.getElement(CardElement);
-
-      if (!cardElement) {
-        throw new Error("CardElement not found");
+      if (!stripe || !elements || !clientSecret) {
+        throw new Error("Stripe or Elements not loaded or clientSecret not available");
       }
 
-      // Use Stripe.js to confirm the payment
-      const { error: stripeError, paymentIntent } =
-        await stripe.confirmCardPayment(clientSecret, {
-          payment_method: {
-            // card: elements.getElement(CardElement),
-            card: cardElement, // addeddd
-          },
-        });
+      // Create a payment method
+      const { error: paymentMethodError, paymentMethod } = await stripe.createPaymentMethod({
+        type: "card",
+        card: elements.getElement(CardNumberElement),
+        // billing_details: {
+        //   name: "Your Name", // Update as necessary
+        // },
+      });
 
-      if (stripeError) {
-        setError(stripeError.message);
+      if (paymentMethodError) {
+        setError(paymentMethodError.message);
         return;
       }
 
-      if (paymentIntent.status === "succeeded") {
-        // Notify parent component of successful payment
+      // Confirm the payment
+      const { error: paymentError, paymentIntent } = await stripe.confirmCardPayment(
+        clientSecret,
+        {
+          payment_method: paymentMethod.id,
+        }
+      );
+
+      if (paymentError) {
+        setError(paymentError.message);
+      } else if (paymentIntent.status === "succeeded") {
         if (onPaymentSuccess) onPaymentSuccess();
-        navigate("/session"); // Redirect to the session page after payment successsss
+        navigate("/session"); // Redirect to the session page after payment success
       } else {
         console.log(`Payment status: ${paymentIntent.status}`);
       }
     } catch (error) {
-      console.error("Error processing payment:", error);
+      console.error("Error creating payment method or confirming payment:", error);
       setError("An error occurred while processing your payment.");
     } finally {
       setLoading(false);
-      // setPending(false);
-      if (onPaymentEnd) onPaymentEnd();
     }
   };
 
   return (
-    <form onSubmit={handleSubmit} className="payment-form">
-      <h6>You can enter here your credit card details</h6>
-      <CardElement />
-      {/* <button type="submit" disabled={loading || pending || !stripe}> */}
-      <button type="submit" disabled={loading || !stripe}>
+    <div className="popup-container-payment" ref={modalRef}>
+      <div className="popup-header">
+        <button
+          className="popup-close-icon"
+          onClick={() => console.log("Close popup")}
+          aria-label="Close popup"
+        >
+          &times;
+        </button>
+      </div>
+
+      <div className="popup-instruction-payment">
+        <p>Enter your card details below to complete the payment.</p>
+      </div>
+
+      <div className="card-entry">
+        <label>Card Number</label>
+        <CardNumberElement className="stripe-element" />
+      </div>
+
+      <div className="expiry-cvc-entry">
+        <div className="card-entry">
+          <label>Expiry Date</label>
+          <CardExpiryElement className="stripe-element" />
+        </div>
+
+        <div className="card-entry">
+          <label>CVC</label>
+          <CardCvcElement className="stripe-element" />
+        </div>
+      </div>
+
+      <button
+        disabled={!stripe || loading || !clientSecret}
+        className="subscribe-button"
+        onClick={createSubscription}
+      >
         {loading ? "Processing..." : "Pay Now"}
       </button>
+
       {error && <div className="payment-error">{error}</div>}
-    </form>
+    </div>
   );
 };
 

@@ -84,7 +84,7 @@ const PayPalPayment = ({ amount, onPaymentStart, onPaymentSuccess, onPaymentErro
 };
 
 PayPalPayment.propTypes = {
-  amount: PropTypes.number.isRequired,
+  // amount: PropTypes.number.isRequired,
   onPaymentStart: PropTypes.func.isRequired,
   onPaymentSuccess: PropTypes.func.isRequired,
   onPaymentError: PropTypes.func.isRequired,
