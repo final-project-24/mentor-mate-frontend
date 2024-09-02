@@ -1,6 +1,7 @@
 
 import "./HomePage.css";
 import { useState } from "react";
+import axios from 'axios'
 import Layout from "../../components/layout/Layout";
 
 import ReviewSidebar from "../review-sidebar/ReviewSidebar";
@@ -10,13 +11,13 @@ import InfoCard from "../../components/info-card/InfoCard.jsx";
 import ToggleButton from "../../components/toggle-button/ToggleButton.jsx";
 
 
-// Define the SearchComponent separately or before usage
+
 function SearchComponent({
   categoryOptions,
   titleOptions,
   levelOptions,
   languageOptions,
-  descriptionOptions,
+  onSearchResults,
 }) {
   const [category, setCategory] = useState("");
   const [title, setTitle] = useState("");
@@ -24,15 +25,24 @@ function SearchComponent({
   const [language, setLanguage] = useState("");
   const [description, setDescription] = useState("");
 
-  const handleSearch = () => {
+  const handleSearch = async () => {
     const searchCriteria = {
-      category,
-      title,
-      level,
+      skillCategoryTitle: category,
+      skillTitle: title,
+      proficiency: level,
       language,
       description,
     };
-    onSearch(searchCriteria);
+    
+    try {
+      
+      const response = await axios.get("/app/user-skill/get-user-skills", {
+        params: searchCriteria,
+      });
+      onSearchResults(response.data.skills); // Pass the results to a parent component or handle it within this component
+    } catch (error) {
+      console.error("Error fetching skills:", error);
+    }
   };
 
   return (
@@ -186,7 +196,7 @@ const HomePage = () => {
         </p>
 
         {isLoggedIn && (
-          <div className=" lg:mx-auto"><p>test</p>
+          <div className=" lg:mx-auto">
             <div className="flex flex-col-reverse lg:px-20  ">
               <InfoCard
                 image={user.image}
@@ -197,7 +207,7 @@ const HomePage = () => {
             </div>
 
             {/* Keep ReviewSidebar from nacho branch */}
-            <ReviewSidebar />
+            {/* <ReviewSidebar /> */}
           </div>
         )}
 
@@ -225,7 +235,7 @@ const HomePage = () => {
         )}
 
         {isLoggedIn && (
-          <div className="flex-1 lg:w-3/4 mx-auto border border-red-500">
+          <div className="flex-1 lg:w-3/4 mx-auto h-auto">
             <Schedule />
           </div>
         )}

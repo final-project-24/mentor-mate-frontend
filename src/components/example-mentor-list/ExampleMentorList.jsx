@@ -1,18 +1,20 @@
 import { useEffect, useState } from "react";
 import { fetchUsers } from "../../utils/api-connector";
+import MentorAvailabilityCalendar from "../../components/mentor-availability-calendar/MentorAvailabilityCalendar";
+
 
 const ExampleMentorList = ({ onSelect }) => {
   const [mentors, setMentors] = useState([]);
+  const [selectedMentor, setSelectedMentor] = useState(null);
 
   useEffect(() => {
-    // Fetch users from the API and filter mentors
     const getMentors = async () => {
       try {
         const users = await fetchUsers();
-        console.log("Fetched users in ExampleMentorList:", users); // Log fetched users in component
-        const mentorsData = users.filter((user) => user.role === "mentor"); // Adjust the filter condition as needed
+        console.log("Fetched users in ExampleMentorList:", users);
+        const mentorsData = users.filter((user) => user.role === "mentor");
         setMentors(mentorsData);
-        console.log("Filtered mentors:", mentorsData); // Log filtered mentors
+        console.log("Filtered mentors:", mentorsData);
       } catch (error) {
         console.error("❌ Error retrieving mentors:", error);
       }
@@ -21,47 +23,39 @@ const ExampleMentorList = ({ onSelect }) => {
     getMentors();
   }, []);
 
-  return (
-    <div className="flex flex-col items-center ">
-      <h2 className="text-center">Select a Mentor</h2>
+  const handleSelectMentor = (mentorId) => {
+    const mentor = mentors.find((m) => m.uuid === mentorId);
+    setSelectedMentor(mentor);
+    onSelect(mentorId);
+  };
 
-      <select onChange={(e) => onSelect(e.target.value)}
-        className="w-full md:w-1/2  lg:w-1/2 p-1 "
+  return (
+    <div
+      className={`dropdown-container ${
+        selectedMentor ? "expanded-height" : "default-height"
+      }`}
+    >
+      <select
+        onChange={(e) => handleSelectMentor(e.target.value)}
+        className="dropdown-select"
         defaultValue=""
       >
-        <option
-          value="" disabled 
-          className="text-center"
-        >
+        <option value="" disabled className="text-center">
           Choose a mentor
         </option>
         {mentors.map((mentor, index) => (
-          <option key={`${mentor.uuid}-${index}`}
+          <option
+            key={`${mentor.uuid}-${index}`}
             value={mentor.uuid}
-          className="text-center">
+            className="text-center"
+          >
             {mentor.userName}
-          
           </option>
         ))}
       </select>
+
     </div>
   );
 };
-
-      {/* <ul>
-        {mentors.map((mentor, index) => (
-          <li
-            key={`${mentor.uuid}-${index}`}
-            onClick={() => {
-              console.log(`🔎 Selected mentor object:`, mentor); // Debugging log
-              onSelect(mentor.uuid);
-            }}
-          >
-            {mentor.userName}
-          </li>
-        ))}
-      </ul> */}
-    
-
 
 export default ExampleMentorList;
