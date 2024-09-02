@@ -166,26 +166,10 @@ const Booking = () => {
 
   return (
     <Layout>
-<<<<<<< HEAD
       <div className="booking-container">
         <Payment
           bookingId={bookingId} // Pass bookingId to the Payment component
           // menteeData={bookingDetails.menteeData}
-=======
-      <div className="parent-container">
-        <h1>Booking Details</h1>
-
-        <InfoCard
-          image={bookingDetails.mentorId.image}
-          userName={bookingDetails.mentorId.userName}
-          start={bookingDetails.start}
-          end={bookingDetails.end}
-          price={bookingDetails.price}
-        />
-
-        <Payment
-          bookingId={bookingId}
->>>>>>> 1a88ba7aeed5eb9caa16d1bad2225abb72dbaf66
           amount={bookingDetails.price}
           offerDetails={bookingDetails}
         />
