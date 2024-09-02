@@ -1,0 +1,42 @@
+.search-bar-container {
+  width: 100%;
+}
+
+.search-bar-container form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.search-bar-container form input {
+  width: 100%;
+  padding: var(--padding-small);
+  border: var(--border-width-base) solid var(--border-color-base);
+  border-right: none; /* Remove right border to blend with button */
+  border-top-left-radius: var(--border-radius-base);
+  border-bottom-left-radius: var(--border-radius-base);
+}
+
+.search-bar-container form input:focus {
+  outline: none; /* Remove default focus outline */
+  box-shadow: none; /* Remove any box-shadow */
+  border-color: var(--border-color-base); /* Reset border color */
+}
+
+.search-bar-container form button {
+    width: 75px;
+  background-color: var(--accent-color);
+  color: var(--primary-color);
+  border: var(--border-width-base) solid var(--border-color-base);
+  border-left: none; /* Remove left border to blend with input */
+  border-top-right-radius: var(--border-radius-base);
+  border-bottom-right-radius: var(--border-radius-base);
+  cursor: pointer;
+  padding: var(--padding-small);
+  transition: var(--transition-base);
+}
+
+.search-bar-container form button:hover {
+  background-color: var(--accent-color-hover);
+}

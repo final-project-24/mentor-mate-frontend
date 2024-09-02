@@ -1,0 +1,6 @@
+.mentor-list-error-message {
+  color: var(--error-color);
+  font-size: var(--font-size-sm);
+  margin: var(--margin-small);
+  text-align: center;
+}

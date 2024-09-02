@@ -1,21 +1,10 @@
-/* SessionDetails.css */
-
 .session-details-container {
   max-width: 600px;
   margin: 0 auto;
   padding: 20px;
-  border: 1px solid #ddd;
+  border: 1px solid var(--border-color-base);
   border-radius: 8px;
-  background-color: #f9f9f9;
-  color: rgb(65, 62, 62);
-}
-
-.session-details-container h1 {
-  color: #0f6b12;
-}
-
-.session-details-container p {
-  color: rgb(58, 56, 56);
+  background-color: var(--card-color);
 }
 
 .meeting-link-container {
@@ -30,19 +19,19 @@
   display: inline-block;
   margin-right: 10px;
   padding: 10px 20px;
-  background-color: #1a931e;
-  color: #fff;
+  background-color: var(--accent-color);
+  color: var(--primary-color);
   text-decoration: none;
   border-radius: 4px;
   cursor: pointer;
 }
 
 .meeting-link:hover {
-  background-color: #36b300;
+  background-color: var(--accent-color-hover);
 }
 
 .copy-link {
-  color: #4caf50;
+  color: var(--accent-color);
   text-decoration: underline;
   cursor: pointer;
   margin-left: 10px;
@@ -54,7 +43,7 @@
 
 .copy-message {
   margin-top: 15px;
-  color: #4caf50;
+  color: var(--accent-color);
   font-weight: bold;
 }
 
@@ -63,7 +52,7 @@
   padding: 10px;
   border: 1px solid #ddd;
   border-radius: 8px;
-  background-color: #f1f1f1;
+  background-color: var(--primary-color);
 }
 
 .disclaimer p,
@@ -80,10 +69,22 @@
 }
 
 .disclaimer a {
-  color: #4caf50;
+  color: var(--accent-color);
   text-decoration: underline;
 }
 
 .disclaimer a:hover {
   text-decoration: none;
+}
+
+.session-details-container h2 {
+  color: var(--secondary-color);
+}
+
+.session-details-container p {
+  color: var(--secondary-color);
+}
+
+.session-details-container ul {
+  color: var(--secondary-color);
 }

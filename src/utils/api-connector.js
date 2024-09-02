@@ -297,3 +297,53 @@ export const bookSlot = async (eventId) => {
   
   
 
+
+
+
+
+
+
+// Search API calls ====================================================
+
+// export const fetchMentors = async (query) => {
+//   try {
+//     const res = await axios.get(`/search`, {
+//       params: { query: query.toString() }, // Ensure query is a string
+//       headers: {
+//         "Content-Type": "application/json",
+//       },
+//     });
+//     if (res.status !== 200) {
+//       throw new Error(`HTTP error! status: ${res.status}`);
+//     }
+//     const data = res.data;
+//     console.log("Fetched mentors:", data); // Log fetched mentors
+//     return data;
+//   } catch (error) {
+//     console.error("Error fetching mentors:", error);
+//     throw error;
+//   }
+// };
+
+
+export const fetchMentors = async (query) => {
+  try {
+    const res = await axios.get(`/search`, {
+      params: query, // Send query as an object
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    if (res.status !== 200) {
+      throw new Error(`HTTP error! status: ${res.status}`);
+    }
+    const data = res.data;
+    console.log("Fetched mentors:", data); // Log fetched mentors
+    return data;
+  } catch (error) {
+    console.error("Error fetching mentors:", error);
+    throw error;
+  }
+};
+
+

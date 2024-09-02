@@ -23,11 +23,11 @@ dist-ssr
 *.sln
 *.sw?
 
+# env
+.env
+.env-prod
+
 #
 NOTES.md
 backup/
 test/
-
-# env
-.env
-.env-prod

@@ -1,7 +1,36 @@
 /* Schedule.css */
-#schedule{
+#booking-container {
   width: 100%;
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#booking-container h1 {
+  color: var(--secondary-color);
+  font-size: var(--font-size-xl);
+  margin-bottom: var(--margin-base);
+}
+
+#booking-container a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--padding-small);
+  /* margin-bottom: var(--margin-small); */
+  color: var(--accent-color);
+  text-decoration: none;
+  transition: var(--transition-base);
+  /* border-top: var(--border-width-base) solid var(--border-color-base); */
+  /* border-bottom: var(--border-width-base) solid var(--border-color-base); */
+}
+
+#booking-container a:hover {
+  color: var(--accent-color-hover);
+  /* background-color: var(--card-color-hover); */
+  /* font-weight: var(--font-weight-bold); */
+  /* border-color: var(--border-color-hover); */
 }
 
 .calendar-container {

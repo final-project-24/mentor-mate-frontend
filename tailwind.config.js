@@ -18,6 +18,8 @@ export default {
         accent: "var(--accent-color)",
         neutral: "var(--neutral-color)",
         error: "var(--error-color)",
+        card: "var(--card-color)",
+        cardHover: "var(--card-color-hover)",
       },
       fontFamily: {
         base: "var(--font-family)",
@@ -36,11 +38,20 @@ export default {
         bold: "var(--font-weight-bold)",
       },
       spacing: {
+        small: "var(--padding-small)",
         base: "var(--padding-base)",
+        lg: "var(--padding-lg)",
+        xl: "var(--padding-xl)",
+        marginSmall: "var(--margin-small)",
         margin: "var(--margin-base)",
+        marginLg: "var(--margin-lg)",
+        marginXl: "var(--margin-xl)",
+        marginXxl: "var(--margin-xxl)",
+        marginAvoidHeader: "var(--margin-avoid-header)",
         gap: "var(--gap-base)",
       },
       borderRadius: {
+        small: "var(--border-radius-small)",
         base: "var(--border-radius-base)",
       },
       borderWidth: {
@@ -48,9 +59,18 @@ export default {
       },
       borderColor: {
         base: "var(--border-color-base)",
+        hover: "var(--border-color-hover)",
       },
       boxShadow: {
         base: "var(--box-shadow-base)",
+      },
+      transitionDuration: {
+        base: "var(--transition-base)",
+      },
+      width: {
+        sidebar: "var(--sidebar-width)",
+        sidebarSlide: "var(--sidebar-slide-width)",
+        miniSidebarMarginLeft: "var(--mini-sidebar-margin-left)",
       },
     },
   },

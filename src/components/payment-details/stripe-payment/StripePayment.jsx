@@ -10,7 +10,7 @@ import {
 } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import { createStripePaymentIntent } from "../../../utils/api-connector";
-import "./StripePayment.css"; 
+import "./StripePayment.css";
 
 const stripePublicKeyId = import.meta.env.VITE_STRIPE_PUBLIC_KEY;
 
@@ -46,17 +46,20 @@ const StripePayment = ({ bookingId, onPaymentSuccess }) => {
     setError(null); // Clear previous errors
     try {
       if (!stripe || !elements || !clientSecret) {
-        throw new Error("Stripe or Elements not loaded or clientSecret not available");
+        throw new Error(
+          "Stripe or Elements not loaded or clientSecret not available"
+        );
       }
 
       // Create a payment method
-      const { error: paymentMethodError, paymentMethod } = await stripe.createPaymentMethod({
-        type: "card",
-        card: elements.getElement(CardNumberElement),
-        // billing_details: {
-        //   name: "Your Name", // Update as necessary
-        // },
-      });
+      const { error: paymentMethodError, paymentMethod } =
+        await stripe.createPaymentMethod({
+          type: "card",
+          card: elements.getElement(CardNumberElement),
+          // billing_details: {
+          //   name: "Your Name", // Update as necessary
+          // },
+        });
 
       if (paymentMethodError) {
         setError(paymentMethodError.message);
@@ -64,12 +67,10 @@ const StripePayment = ({ bookingId, onPaymentSuccess }) => {
       }
 
       // Confirm the payment
-      const { error: paymentError, paymentIntent } = await stripe.confirmCardPayment(
-        clientSecret,
-        {
+      const { error: paymentError, paymentIntent } =
+        await stripe.confirmCardPayment(clientSecret, {
           payment_method: paymentMethod.id,
-        }
-      );
+        });
 
       if (paymentError) {
         setError(paymentError.message);
@@ -80,7 +81,11 @@ const StripePayment = ({ bookingId, onPaymentSuccess }) => {
         console.log(`Payment status: ${paymentIntent.status}`);
       }
     } catch (error) {
-      console.error("Error creating payment method or confirming payment:", error);
+      console.error(
+        "Error creating payment method or confirming payment:",
+        error
+      );
+
       setError("An error occurred while processing your payment.");
     } finally {
       setLoading(false);
