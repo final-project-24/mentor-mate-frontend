@@ -128,11 +128,12 @@ const MentorList = ({ mentors = [] }) => {
               <InfoCard
                 image={mentor.image}
                 userName={mentor.userName}
-                email={mentor.email}
-                role={mentor.role}
-                start={mentor.start}
-                end={mentor.end}
-                price={mentor.price}
+                skills={mentor.skills}
+                // email={mentor.email}
+                // role={mentor.role}
+                // start={mentor.start}
+                // end={mentor.end}
+                // price={mentor.price}
               />
             </div>
           ))}

@@ -19,10 +19,12 @@ const MentorAvailabilityCalendar = ({ mentorUuid, userRole }) => {
   const { setBookingId } = useBookingContext(); // Use the booking context to set the event ID
   const navigate = useNavigate();
 
+  // Fetch availability data when the mentor ID or user role changes
   useEffect(() => {
     fetchAvailabilityData();
-  }, [mentorUuid, userRole]); // Fetch availability data when the mentor ID or user role changes
+  }, [mentorUuid, userRole]);
 
+  // Fetch availability data from the API
   const fetchAvailabilityData = async () => {
     try {
       const response = await fetchAvailability(mentorUuid); // efgef the id should be fetched in the backend
@@ -36,14 +38,16 @@ const MentorAvailabilityCalendar = ({ mentorUuid, userRole }) => {
     } catch (error) {
       console.error("Error fetching availability:", error);
     }
-  }; // Fetch availability data from the API
+  };
 
+  // Handle slot selection
   const handleSelectSlot = (slotInfo) => {
     if (userRole === "mentor") {
       setSelectedSlot(slotInfo);
     }
-  }; // Handle slot selection
+  };
 
+  // Handle adding availability
   const handleAddAvailability = async () => {
     if (!selectedSlot) return; // Return if no slot is selected
 
@@ -54,8 +58,9 @@ const MentorAvailabilityCalendar = ({ mentorUuid, userRole }) => {
     } catch (error) {
       console.error("Error adding availability:", error);
     }
-  }; // Handle adding availability
+  };
 
+  // Handle booking a slot
   const handleBookSlot = async (event) => {
     if (userRole !== "mentee") return; // Return if the user is not a mentee
 
@@ -67,7 +72,7 @@ const MentorAvailabilityCalendar = ({ mentorUuid, userRole }) => {
     } catch (error) {
       console.error("Error booking slot:", error);
     }
-  }; // Handle booking a slot
+  };
 
   //   return (
   //     <div
