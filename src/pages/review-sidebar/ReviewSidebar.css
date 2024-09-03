@@ -1,6 +1,5 @@
-/* Sidebar container */
 .sidebar {
-  max-height: 90vh;
+  max-height: 100vh;
   margin-top: 100px;
   width: 300px;
   position: fixed;
@@ -10,7 +9,7 @@
   padding: 20px;
   box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
   transition: transform 0.3s ease;
-  overflow-y: auto;
+  overflow: hidden; /* Hide overflow to prevent multiple reviews from showing */
   z-index: 1000;
   display: flex;
   flex-direction: column;
@@ -19,7 +18,6 @@
   direction: ltr;
 }
 
-/* Sidebar closed state */
 .sidebar.closed {
   transform: translateX(100%); /* Move sidebar off screen */
 }
@@ -104,11 +102,15 @@
   margin-right: 15px;
 }
 
-/* Review container */
+
 .review {
   display: flex;
   align-items: center;
   margin-bottom: 30px; /* Increase space between reviews */
+  transition: opacity 0.5s ease-in-out; /* Smooth transition for fading effect */
+  width: 100%;
+  justify-content: center;
+  opacity: 1; /* Add opacity to allow for smooth fade effect */
 }
 
 /* Review content */

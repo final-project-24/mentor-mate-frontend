@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./ReviewSidebar.css";
 import { Link } from "react-router-dom";
 import iconUrl from "../../assets/images/icon.svg";
@@ -7,6 +7,10 @@ import profilePic1 from "../../assets/images/profile1.jpeg";
 import profilePic2 from "../../assets/images/profile2.jpeg";
 import profilePic3 from "../../assets/images/profile3.jpg";
 import profilePic4 from "../../assets/images/profile4.jpeg";
+import profilePic5 from "../../assets/images/profile5.jpg";
+import profilePic6 from "../../assets/images/profile6.jpeg";
+import profilePic7 from "../../assets/images/profile7.jpg";
+
 
 const Review = ({ name, topic, feedback, rating, profilePic }) => {
   return (
@@ -26,7 +30,7 @@ const Review = ({ name, topic, feedback, rating, profilePic }) => {
 };
 
 // Componente Sidebar para manejar la barra lateral y su lógica
-const Sidebar = ({ isOpen, toggleSidebar, reviews }) => {
+const Sidebar = ({ isOpen, toggleSidebar, reviews, currentIndex }) => {
   return (
     <div className={`sidebar ${isOpen ? "" : "closed"}`}>
       <h2 className="user-feedbacks-heading">
@@ -34,16 +38,19 @@ const Sidebar = ({ isOpen, toggleSidebar, reviews }) => {
         <img src={iconUrl} alt="Icon" className="feedback-icon" />
       </h2>
 
-      {reviews.map((review, index) => (
-        <Review
-          key={index}
-          name={review.name}
-          topic={review.topic}
-          feedback={review.feedback}
-          rating={review.rating}
-          profilePic={review.profilePic}
-        />
-      ))}
+      <div className="carousel">
+        {reviews.slice(currentIndex, currentIndex + 1).map((review, index) => (
+          <Review
+            key={index}
+            name={review.name}
+            topic={review.topic}
+            feedback={review.feedback}
+            rating={review.rating}
+            profilePic={review.profilePic}
+          />
+        ))}
+      </div> {/* Added closing div for .carousel */}
+
       <Link to="/feedback" className="feedbackButton">
         Go to Feedback
       </Link>
@@ -52,16 +59,11 @@ const Sidebar = ({ isOpen, toggleSidebar, reviews }) => {
 };
 
 
-// Componente principal ReviewSidebar que integra Sidebar y maneja su estado
+
 
 const ReviewSidebar = () => {
   const [isOpen, setIsOpen] = useState(true);
-  const sidebarRef = useRef(null); // Reference to the sidebar
-
-  const toggleSidebar = () => {
-    setIsOpen((prevIsOpen) => !prevIsOpen);
-  };
-
+  const [currentIndex, setCurrentIndex] = useState(0); // State to manage the current review index
   const reviews = [
     {
       name: "John Doe",
@@ -91,19 +93,41 @@ const ReviewSidebar = () => {
       rating: 5,
       profilePic: profilePic4,
     },
+    {
+      name: "Susan Saharan",
+      topic: "Python",
+      feedback: "The mentor was patient and answered all my questions.",
+      rating: 5,
+      profilePic: profilePic5,
+    },
+    {
+      name: "Romina Chloe",
+      topic: "English",
+      feedback: "Great class, I'll book another one for sure!.",
+      rating: 5,
+      profilePic: profilePic6,
+    },
+    {
+      name: "Carlos Villagran",
+      topic: "React",
+      feedback: "Absolutely wonderful, I'll book another one for sure!.",
+      rating: 5,
+      profilePic: profilePic7,
+    },
   ];
 
-  // Function to handle scrolling
-  const scrollSidebar = (direction) => {
-    if (sidebarRef.current) {
-      const scrollAmount = 100; // Amount of pixels to scroll
-      if (direction === 'up') {
-        sidebarRef.current.scrollTop -= scrollAmount;
-      } else if (direction === 'down') {
-        sidebarRef.current.scrollTop += scrollAmount;
-      }
-    }
+  const toggleSidebar = () => {
+    setIsOpen((prevIsOpen) => !prevIsOpen);
   };
+
+  // Automatically cycle through reviews
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % reviews.length);
+    }, 3000); // Change review every 3 seconds
+
+    return () => clearInterval(intervalId); // Cleanup interval on component unmount
+  }, [reviews.length]);
 
   return (
     <div>
@@ -111,10 +135,10 @@ const ReviewSidebar = () => {
         isOpen={isOpen}
         toggleSidebar={toggleSidebar}
         reviews={reviews}
-        // scrollSidebar={scrollSidebar}
+        currentIndex={currentIndex}
       />
       <button className="smallOpenBtn" onClick={toggleSidebar}>
-        {isOpen ? '×' : '➤'}
+        {isOpen ? "×" : "➤"}
       </button>
     </div>
   );
