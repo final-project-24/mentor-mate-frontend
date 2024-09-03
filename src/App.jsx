@@ -17,6 +17,7 @@ import Terms from "./pages/terms/Terms.jsx";
 import Session from "./pages/session/Session.jsx";
 import Feedback from "./pages/feedback/Feedback.jsx";
 import Playground from "./pages/playground/Playground.jsx";
+import WhyWe from "./pages/why-we/WhyWe.jsx";
 import NotFound from "./pages/not-found/NotFound.jsx";
 
 export default function App() {
@@ -28,6 +29,7 @@ export default function App() {
             <DarkModeProvider>
               <Routes>
                 <Route path="/" element={<HomePage />} />
+                <Route path="/why-we?" element={<WhyWe />} />
                 <Route path="/authentication" element={<Authentication />} />
                 <Route path="/dashboard" element={<DashboardLayout />}>
                   <Route index element={<DashboardHome />} />
