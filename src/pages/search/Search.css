@@ -1,0 +1,51 @@
+#search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: var(--margin-lg);
+  width: 100%;
+  margin-top: var(--margin-lg);
+  margin-bottom: var(--margin-lg);
+}
+
+#search h2 {
+  color: var(--secondary-color);
+  font-size: var(--font-size-lg);
+  text-align: center;
+}
+
+.search-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: var(--margin-lg);
+  width: 100%;
+  margin-top: var(--margin-lg);
+  /* margin-right: var(--margin-lg); */
+  /* margin-left: 50px; */
+  padding: var(--padding-base);
+  background-color: var(--card-color);
+  border-width: var(--border-width-base);
+  border-radius: var(--border-radius-base);
+  border-color: var(--border-color-base);
+  box-shadow: var(--box-shadow-base);
+}
+
+.mentor-list-container {
+  /* border: 1px solid red; */
+  width: 100%;
+}
+
+@media (min-width: 350px) {
+  .search-card {
+    width: 90%;
+  }
+}
+
+@media (min-width: 768px) {
+  .search-card {
+    width: 50%;
+  }
+}

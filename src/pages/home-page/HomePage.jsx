@@ -1,6 +1,7 @@
 
 import "./HomePage.css";
 import { useState } from "react";
+import axios from 'axios'
 import Layout from "../../components/layout/Layout";
 
 import ReviewSidebar from "../review-sidebar/ReviewSidebar";
@@ -10,13 +11,13 @@ import InfoCard from "../../components/info-card/InfoCard.jsx";
 import ToggleButton from "../../components/toggle-button/ToggleButton.jsx";
 
 
-// Define the SearchComponent separately or before usage
+
 function SearchComponent({
   categoryOptions,
   titleOptions,
   levelOptions,
   languageOptions,
-  descriptionOptions,
+  onSearchResults,
 }) {
   const [category, setCategory] = useState("");
   const [title, setTitle] = useState("");
@@ -24,15 +25,24 @@ function SearchComponent({
   const [language, setLanguage] = useState("");
   const [description, setDescription] = useState("");
 
-  const handleSearch = () => {
+  const handleSearch = async () => {
     const searchCriteria = {
-      category,
-      title,
-      level,
+      skillCategoryTitle: category,
+      skillTitle: title,
+      proficiency: level,
       language,
       description,
     };
-    onSearch(searchCriteria);
+    
+    try {
+      
+      const response = await axios.get("/app/user-skill/get-user-skills", {
+        params: searchCriteria,
+      });
+      onSearchResults(response.data.skills); // Pass the results to a parent component or handle it within this component
+    } catch (error) {
+      console.error("Error fetching skills:", error);
+    }
   };
 
   return (
@@ -159,74 +169,86 @@ const HomePage = () => {
 
   return (
     <Layout>
-      <section id="home" className="h-full bg-primary">
-        <h1 className="text-xl text-center text-accent">
-          {getWelcomeMessage()}
-        </h1>
+      <section id="home" className="bg-primary min-h-60">
+        <div className="min-h-60">
+          <h1 className="text-xl text-center text-accent">
+            {getWelcomeMessage()}
+          </h1>
 
-        {!isLoggedIn && (
-          <div className="mx-20">
-            <div>
-              <h2 className="text-xl text-center pt-5 pb-2">
-                Enjoy Your Journey
-              </h2>
+          {!isLoggedIn && (
+            <div className="">
+              <div>
+                <h2 className="text-lg text-center pt-5 pb-2   ">
+                  Join us and connect with top industry experts to elevate your
+                  skills and achieve your goals
+                </h2>
+                {/* <p className="text-center">we are offering you:</p>
               <ul className="list-disc list-inside text-center">
                 <li>Personalized mentorship matching</li>
                 <li>Expert guidance from vetted professionals</li>
                 <li>Flexible scheduling options</li>
                 <li>Access to a vibrant community</li>
                 <li>Extensive library of resources</li>
-              </ul>
+              </ul> */}
+              </div>
             </div>
-          </div>
-        )}
-
-        <p className="text-2xl text-center text-neutral py-4">
-          {userNameDisplay()}
-        </p>
+          )}
+        </div>
 
         {isLoggedIn && (
-          <div className=" lg:mx-auto"><p>test</p>
-            <div className="flex flex-col-reverse lg:px-20  ">
-              <InfoCard
-                image={user.image}
-                userName={user.userName}
-                role={user.role}
-                email={user.email}
-              />
-            </div>
-
-            {/* Keep ReviewSidebar from nacho branch */}
-            <ReviewSidebar />
-          </div>
-        )}
-
-        {isLoggedIn && user.role === "mentee" && (
-          <div className="p-">
-            <h2 className="text-center pb-2 text-accent text-xl">
-              Search your mentor
-            </h2>
-            <SearchComponent
-              categoryOptions={categoryOptions}
-              titleOptions={titleOptions}
-              levelOptions={levelOptions}
-              languageOptions={languageOptions}
-            />
-          </div>
-        )}
-
-        {isLoggedIn && user.role === "mentee" && (
           <div>
-            <h2 className="text-center text-accent mt-4 pb-3">
-              Already know your mentor?
-            </h2>
-            <p className="text-center text-lg text-accent mb-2">Schedule a Meeting</p>
-          </div>
-        )}
+            {isLoggedIn && (
+              <p className="text-2xl text-center text-neutral py-4">
+                {userNameDisplay()}
+              </p>
+            )}
 
-        {isLoggedIn && (
-          <div className="flex-1 lg:w-3/4 mx-auto border border-red-500">
-            <Schedule />
+            {isLoggedIn && (
+              <div className=" lg:mx-auto">
+                <div className="flex flex-col-reverse lg:px-20  ">
+                  <InfoCard
+                    image={user.image}
+                    userName={user.userName}
+                    role={user.role}
+                    email={user.email}
+                  />
+                </div>
+
+                {/* Keep ReviewSidebar from nacho branch */}
+                {/* <ReviewSidebar /> */}
+              </div>
+            )}
+
+            {isLoggedIn && user.role === "mentee" && (
+              <div className="p-">
+                <h2 className="text-center pb-2 text-accent text-xl">
+                  Search your mentor
+                </h2>
+                <SearchComponent
+                  categoryOptions={categoryOptions}
+                  titleOptions={titleOptions}
+                  levelOptions={levelOptions}
+                  languageOptions={languageOptions}
+                />
+              </div>
+            )}
+
+            {isLoggedIn && user.role === "mentee" && (
+              <div>
+                <h2 className="text-center text-accent mt-4 pb-3">
+                  Already know your mentor?
+                </h2>
+                <p className="text-center text-lg text-accent mb-2">
+                  Schedule a Meeting
+                </p>
+              </div>
+            )}
+
+            {isLoggedIn && (
+              <div className="flex-1 lg:w-3/4 mx-auto h-auto">
+                <Schedule />
+              </div>
+            )}
           </div>
         )}
       </section>

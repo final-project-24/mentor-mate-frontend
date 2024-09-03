@@ -1,7 +1,9 @@
-#admin-tools {
+#admin-dashboard-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content:start;
-  height: 100vh;
+  justify-content: start;
+  min-height: 100vh;
+  width: 100%;
 }
+

@@ -2,8 +2,8 @@
 
 #home {
     width: 100%;          /* Full width of its container */
-    height: 100vh;        /* Full viewport height */
-    padding: 20px;        /* Padding inside the section */
+    height: ;        /* Full viewport height */
+    padding: 20px 20px 0 20px ;        /* Padding inside the section */
     box-sizing: border-box; /* Include padding in width and height */
     background-color: #f8f5f5; /* Optional: background color */
   }

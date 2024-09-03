@@ -21,7 +21,7 @@ function Login({ onToggleSignUp, onToggleForgotPassword }) {
       await login(email, password);
       setEmail("");
       setPassword("");
-      navigate("/");
+      navigate("/dashboard"); //
     } catch (error) {
       console.error("Login failed:", error);
       setErrorMessage("Login failed. Please try again.");
@@ -31,8 +31,8 @@ function Login({ onToggleSignUp, onToggleForgotPassword }) {
   return (
 
 
-    <div className="login-container">
-      <h2>Login</h2>
+    <div className="login-container px-2 min-h-10">
+      <h2 className="text-accent text-lg pb-4">Login</h2>
       {errorMessage && <p className="login-error-message">{errorMessage}</p>}
       <form onSubmit={handleSubmit}>
         <input
@@ -49,12 +49,12 @@ function Login({ onToggleSignUp, onToggleForgotPassword }) {
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-        <button type="submit">Login</button>
+        <button type="submit" className="">Login</button>
       </form>
       <ToggleButton
         onToggle={onToggleSignUp}
         buttonName="Switch to Sign Up"
-        className="button-type-link"
+        className="button-type-link "
       />
       <ToggleButton
         onToggle={onToggleForgotPassword}

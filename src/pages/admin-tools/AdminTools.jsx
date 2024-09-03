@@ -5,8 +5,8 @@ import ChangeRole from "../../components/change-role/ChangeRole";
 export default function AdminTools() {
   const { isLoggedIn, user } = useAuthContext(); // Use useAuthContext hook to access isLoggedIn and user state
   return (
-    <section id="admin-tools">
-      <h1>Admin Tools</h1>
+    <section id="admin-dashboard-container">
+      {/* <h1>Admin Dashboard</h1> */}
     
       {isLoggedIn &&
         (user.role === "admin" || user.originalRole === "admin") && (
