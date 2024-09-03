@@ -253,9 +253,11 @@ export const addAvailability = async (start, end) => {
 };
 
 // MentorAvailabilityCalendar.jsx
-export const bookSlot = async (eventId) => {
+export const bookSlot = async (eventId, skillId) => {
   try {
-    const res = await axios.post(`/calendar/book/${eventId}`);
+    const res = await axios.post(`/calendar/book/${eventId}`, {
+      skillId,
+    });
     if (res.status !== 200) {
       throw new Error("Unable to book slot");
     }

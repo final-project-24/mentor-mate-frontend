@@ -16,7 +16,7 @@ const localizer = momentLocalizer(moment);
 const MentorAvailabilityCalendar = ({ mentorUuid, userRole }) => {
   const [events, setEvents] = useState([]); // State to store the availability events
   const [selectedSlot, setSelectedSlot] = useState(null); // State to store the selected slot
-  const { setBookingId } = useBookingContext(); // Use the booking context to set the event ID
+  const { setBookingId, selectedSkill } = useBookingContext(); // Use the booking context to set the event ID
   const navigate = useNavigate();
 
   // Fetch availability data when the mentor ID or user role changes
@@ -31,7 +31,7 @@ const MentorAvailabilityCalendar = ({ mentorUuid, userRole }) => {
       const formattedEvents = response.map((slot) => ({
         start: new Date(slot.start),
         end: new Date(slot.end),
-        title: slot.title || "Available",
+        title: slot.title || "30 min session", 
         id: slot._id,
       }));
       setEvents(formattedEvents);
@@ -65,7 +65,7 @@ const MentorAvailabilityCalendar = ({ mentorUuid, userRole }) => {
     if (userRole !== "mentee") return; // Return if the user is not a mentee
 
     try {
-      await bookSlot(event.id);
+      await bookSlot(event.id, selectedSkill._id); // Include selectedMentorUuid and selectedSkill in the request);
       fetchAvailabilityData();
       setBookingId(event.id); // Set the booking ID in the context
       navigate(`/booking/${event.id}`); // Redirect to BookingDetails page with event ID dhfdf

@@ -85,8 +85,9 @@ const MentorList = ({ mentors = [] }) => {
     return <p className="mentor-list-error-message">No mentors found.</p>;
   }
 
-  const uniqueMentors = Array.from(new Set(mentors.map(mentor => mentor.uuid)))
-    .map(uuid => mentors.find(mentor => mentor.uuid === uuid));
+  const uniqueMentors = Array.from(
+    new Set(mentors.map((mentor) => mentor.uuid))
+  ).map((uuid) => mentors.find((mentor) => mentor.uuid === uuid));
 
   console.log("Unique Mentors:", uniqueMentors); // Debugging line
 
@@ -122,22 +123,23 @@ const MentorList = ({ mentors = [] }) => {
 
   return (
     <div className="mentor-list-container">
-        <Slider {...settings}>
-          {uniqueMentors.map((mentor) => (
-            <div key={mentor.uuid} className="mentor-item">
-              <InfoCard
-                image={mentor.image}
-                userName={mentor.userName}
-                skills={mentor.skills}
-                // email={mentor.email}
-                // role={mentor.role}
-                // start={mentor.start}
-                // end={mentor.end}
-                // price={mentor.price}
-              />
-            </div>
-          ))}
-        </Slider>
+      <Slider {...settings}>
+        {uniqueMentors.map((mentor) => (
+          <div key={mentor.uuid} className="mentor-item">
+            <InfoCard
+              mentorUuid={mentor.uuid}
+              image={mentor.image}
+              userName={mentor.userName}
+              skills={mentor.skills}
+              // email={mentor.email}
+              // role={mentor.role}
+              // start={mentor.start}
+              // end={mentor.end}
+              // price={mentor.price}
+            />
+          </div>
+        ))}
+      </Slider>
     </div>
   );
 };

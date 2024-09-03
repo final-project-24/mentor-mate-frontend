@@ -1,8 +1,11 @@
+import { Link, useNavigate } from "react-router-dom";
+import { useBookingContext } from "../../store/booking-context/BookingContext";
 import "./InfoCard.css";
 
 export default function InfoCard({
-  id,
+  // _id,
   uuid,
+  mentorUuid,
   image,
   userName,
   email,
@@ -12,7 +15,8 @@ export default function InfoCard({
   end,
   price,
 }) {
-  // console.log("ID:", id); //
+  // console.log("ID:", _id); //
+  // console.log("UUID:",  mentorUuid); //
   // console.log("Image:", image); //
   // console.log("Name:", userName); //
   // console.log("Email:", email); //
@@ -21,6 +25,17 @@ export default function InfoCard({
   // console.log("Start:", start); //
   // console.log("End:", end); //
   // console.log("Price:", price); //
+
+  const navigate = useNavigate();
+  const { setSelectedMentorUuid, setSelectedSkill } = useBookingContext();
+
+  const handleSkillClick = (mentorUuid, skill) => {
+    console.log("Mentor UUID:", mentorUuid); // Debugging log
+    console.log("Skill:", skill); // Debugging log
+    setSelectedMentorUuid(mentorUuid); // Set the selected mentor UUID in the booking context
+    setSelectedSkill(skill); // Set the selected skill in the booking context
+    navigate("/schedule"); // Navigate to the schedule page
+  };
 
   return (
     <>
@@ -46,31 +61,14 @@ export default function InfoCard({
               {skills.map((skill, index) => (
                 <li key={index}>
                   <p>
-                    {/* <strong>Title:</strong>{" "} */}
-                    {skill.protoSkillId.skillCategoryId.skillCategoryTitle} {" / "}
-                    {skill.protoSkillId.protoSkillTitle}
+                    <Link
+                      to="/dashboard/schedule"
+                      onClick={() => handleSkillClick(mentorUuid, skill)}
+                      className="info-card-link"
+                    >
+                      {skill.protoSkillId.protoSkillTitle}
+                    </Link>
                   </p>
-                  {/* <p>
-                    <strong>Description:</strong>{" "}
-                    {skill.protoSkillId.protoSkillDescription}
-                  </p> */}
-                  {/* <p>
-                    <strong>Category:</strong>{" "}
-                    {skill.protoSkillId.skillCategoryId.skillCategoryTitle}
-                  </p> */}
-                  {/* <p>
-                    <strong>Category Description:</strong>{" "}
-                    {
-                      skill.protoSkillId.skillCategoryId
-                        .skillCategoryDescription
-                    }
-                  </p> */}
-                  {/* <p>
-                    <strong>Proficiency:</strong> {skill.proficiency}
-                  </p> */}
-                  {/* <p>
-                    <strong>Notes:</strong> {skill.notes}
-                  </p> */}
                 </li>
               ))}
             </ul>
