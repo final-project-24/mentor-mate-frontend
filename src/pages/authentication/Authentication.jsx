@@ -27,7 +27,7 @@ const Authentication = () => {
 
   return (
     <Layout>
-      <section id="authentication">
+      <section id="authentication" className="my-5">
         {showForgotPassword && !resetToken && (
           <ForgotPassword onResetRequest={handleResetPassword} />
         )}

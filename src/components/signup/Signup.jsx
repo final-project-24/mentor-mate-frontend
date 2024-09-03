@@ -44,62 +44,66 @@ function SignUp({ onToggleLogin }) {
   };
 
   return (
-    // <div className="container">
-    <div className="sign-up-container">
-      <h2 className="pt-10">Sign Up</h2>
-      {errorMessage && <p className="sign-up-error-message">{errorMessage}</p>}
-      <form onSubmit={handleSubmit}>
-        <input
-          name="userName"
-          type="text"
-          placeholder="Username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          required
-        />
-        <input
-          name="email"
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-        <input
-          name="password"
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-        <input
-          name="confirmPassword"
-          type="password"
-          placeholder="Confirm Password"
-          value={confirmPassword}
-          onChange={(e) => setConfirmPassword(e.target.value)}
-          required
-        />
+    <div className="container border border-red-600  ">
+      <div className="sign-up-container mx-auto w-3/4">
+        <h2 className="pt-10 text-accent text-lg pb-4">Sign Up</h2>
+        {errorMessage && (
+          <p className="sign-up-error-message">{errorMessage}</p>
+        )}
+        
+        <form onSubmit={handleSubmit}>
+          <input
+            name="userName"
+            type="text"
+            placeholder="Username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            required
+          />
+          <input
+            name="email"
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+          <input
+            name="password"
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+          <input
+            name="confirmPassword"
+            type="password"
+            placeholder="Confirm Password"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            required
+          />
 
-        <label>
-          Role:
-          <select value={role} onChange={(e) => setRole(e.target.value)}>
-            <option value="mentor">Mentor</option>
-            <option value="mentee">Mentee</option>
-          </select>
-        </label>
-        <FileBase64
-          multiple={false}
-          onDone={({ base64 }) => setImage(base64)}
+          <label>
+            Role:
+            <select value={role} onChange={(e) => setRole(e.target.value)}>
+              <option value="mentor">Mentor</option>
+              <option value="mentee">Mentee</option>
+            </select>
+          </label>
+          <FileBase64
+            multiple={false}
+            onDone={({ base64 }) => setImage(base64)}
+          />
+          <button type="submit">Sign Up</button>
+        </form>
+        <ToggleButton
+          onToggle={onToggleLogin}
+          buttonName="Go back to Login"
+          className="button-type-link"
         />
-        <button type="submit">Sign Up</button>
-      </form>
-      <ToggleButton
-        onToggle={onToggleLogin}
-        buttonName="Go back to Login"
-        className="button-type-link"
-      />
+      </div>
     </div>
   );
 }
