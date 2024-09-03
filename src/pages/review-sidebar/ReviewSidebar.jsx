@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import "./ReviewSidebar.css";
 import { Link } from "react-router-dom";
 import iconUrl from "../../assets/images/icon.svg";
@@ -26,9 +26,11 @@ const Review = ({ name, topic, feedback, rating, profilePic }) => {
 };
 
 // Componente Sidebar para manejar la barra lateral y su lógica
-const Sidebar = ({ isOpen, toggleSidebar, reviews }) => {
+const Sidebar = ({ isOpen, toggleSidebar, reviews, scrollSidebar }) => {
     return (
       <div className={`sidebar ${isOpen ? "" : "closed"}`}>
+        <button className="scrollButton up" onClick={() => scrollSidebar('up')}>▲</button>
+        <button className="scrollButton down" onClick={() => scrollSidebar('down')}>▼</button>
         <h2 className="user-feedbacks-heading">
           User feedbacks
           <img src={iconUrl} alt="Icon" className="feedback-icon" />
@@ -50,62 +52,73 @@ const Sidebar = ({ isOpen, toggleSidebar, reviews }) => {
       </div>
     );
   };
-  
-  
 
 // Componente principal ReviewSidebar que integra Sidebar y maneja su estado
 
 const ReviewSidebar = () => {
-    const [isOpen, setIsOpen] = useState(true);
-  
-    const toggleSidebar = () => {
-      setIsOpen(prevIsOpen => !prevIsOpen);
-    };
-  
-    const reviews = [
-      {
-        name: "John Doe",
-        topic: "Web Development",
-        feedback: "Great mentor, very knowledgeable and helpful!",
-        rating: 4,
-        profilePic: profilePic1,
-      },
-      {
-        name: "Jane Smith",
-        topic: "React",
-        feedback: "I learned a lot, the sessions were very interactive!",
-        rating: 5,
-        profilePic: profilePic2,
-      },
-      {
-        name: "Tom Brown",
-        topic: "CSS",
-        feedback: "Good explanations and examples, highly recommend.",
-        rating: 4,
-        profilePic: profilePic3,
-      },
-      {
-        name: "Emily White",
-        topic: "C++",
-        feedback: "The mentor was patient and answered all my questions.",
-        rating: 5,
-        profilePic: profilePic4,
-      },
-    ];
-  
-    return (
-      <div>
-        <Sidebar
-          isOpen={isOpen}
-          toggleSidebar={toggleSidebar}
-          reviews={reviews}
-        />
-        <button className="smallOpenBtn" onClick={toggleSidebar}>
-          {isOpen ? '×' : '➤'}
-        </button>
-      </div>
-    );
+  const [isOpen, setIsOpen] = useState(true);
+  const sidebarRef = useRef(null); // Reference to the sidebar
+
+  const toggleSidebar = () => {
+    setIsOpen((prevIsOpen) => !prevIsOpen);
   };
-  
-  export default ReviewSidebar;
-  
+
+  const reviews = [
+    {
+      name: "John Doe",
+      topic: "Web Development",
+      feedback: "Great mentor, very knowledgeable and helpful!",
+      rating: 4,
+      profilePic: profilePic1,
+    },
+    {
+      name: "Jane Smith",
+      topic: "React",
+      feedback: "I learned a lot, the sessions were very interactive!",
+      rating: 5,
+      profilePic: profilePic2,
+    },
+    {
+      name: "Tom Brown",
+      topic: "CSS",
+      feedback: "Good explanations and examples, highly recommend.",
+      rating: 4,
+      profilePic: profilePic3,
+    },
+    {
+      name: "Emily White",
+      topic: "C++",
+      feedback: "The mentor was patient and answered all my questions.",
+      rating: 5,
+      profilePic: profilePic4,
+    },
+  ];
+
+  // Function to handle scrolling
+  const scrollSidebar = (direction) => {
+    if (sidebarRef.current) {
+      const scrollAmount = 100; // Amount of pixels to scroll
+      if (direction === 'up') {
+        sidebarRef.current.scrollTop -= scrollAmount;
+      } else if (direction === 'down') {
+        sidebarRef.current.scrollTop += scrollAmount;
+      }
+    }
+  };
+
+  return (
+    <div>
+      <Sidebar
+        isOpen={isOpen}
+        toggleSidebar={toggleSidebar}
+        reviews={reviews}
+        scrollSidebar={scrollSidebar}
+      />
+      <button className="smallOpenBtn" onClick={toggleSidebar}>
+        {isOpen ? '×' : '➤'}
+      </button>
+    </div>
+  );
+};
+
+export default ReviewSidebar;
