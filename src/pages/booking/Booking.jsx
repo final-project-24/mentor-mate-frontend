@@ -21,8 +21,7 @@
 //   const [bookingDetails, setBookingDetails] = useState(null);
 
 //   const handleAgreeChange = (agreed) => {
-
-//     console.log('Agreement status changed:', agreed); // Debug log
+//     console.log("Agreement status changed:", agreed); // debug log
 //     setIsAgreed(agreed);
 //   };
 
@@ -118,10 +117,10 @@ import { useParams, useLocation } from "react-router-dom";
 
 const Booking = () => {
   const { loading } = useAuthContext();
-  const { bookingId, setBookingId, isAgreed, setIsAgreed } = useBookingContext();
+  const { bookingId, setBookingId, isAgreed, setIsAgreed } =
+    useBookingContext();
   const { id } = useParams();
   const location = useLocation();
-  const navigate = useNavigate();
   const [bookingDetails, setBookingDetails] = useState(null);
 
   // Handle agreement status change
@@ -142,39 +141,30 @@ const Booking = () => {
   useEffect(() => {
     const fetchBookingDetails = async () => {
       try {
-        const response = await axios.get(`/calendar/booking-details/${bookingId}`);
+        const response = await axios.get(
+          `/calendar/booking-details/${bookingId}`
+        );
         setBookingDetails(response.data);
       } catch (error) {
         console.error("Error fetching booking details:", error);
       }
     };
 
-    fetchDetails();
-  }, [id]);
-
-  const handlePayment = async () => {
-    try {
-      // Step 1: Create a booking if needed
-      const booking = await createBooking(bookingDetails.mentorId, bookingDetails.menteeId, bookingDetails.eventId, bookingDetails.start, bookingDetails.end);
-      
-      // Step 2: Create payment intent
-      const { clientSecret } = await createPaymentIntent(amount, booking._id);
-      setPaymentIntent(clientSecret);
-      
-      // Step 3: Handle Stripe payment confirmation
-      // You would need to integrate Stripe's payment handling code here
-      // After successful payment:
-      await confirmPayment(paymentIntent.id, booking._id);
-      
-      // Navigate to session page or show success message
-      navigate(`/session/${booking._id}`);
-    } catch (error) {
-      console.error('Error handling payment:', error);
+    if (bookingId) {
+      fetchBookingDetails();
     }
-  };
+  }, [bookingId]);
+
+  if (loading) {
+    return <Loading />;
+  }
 
   if (!bookingDetails) {
-    return <Loading />;
+    return (
+      <Layout>
+        <div>No booking details found.</div>
+      </Layout>
+    );
   }
 
   return (
