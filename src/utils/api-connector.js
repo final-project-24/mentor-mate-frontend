@@ -296,13 +296,6 @@ export const bookSlot = async (eventId) => {
   };
   
   
-
-
-
-
-
-
-
 // Search API calls ====================================================
 
 // export const fetchMentors = async (query) => {
