@@ -23,14 +23,16 @@
   cursor: pointer;
   padding: 0;
   margin: var(--margin-small) 0;
-  font-size: inherit;
+  /* font-size: inherit; */
+  font-size: var(--font-size-lg);
   transition: var(--transition-base);
 }
 
 .button-type-link:hover {
   background: none;
   color: var(--accent-color-hover);
-  font-weight: var(--font-weight-bold);
+  text-decoration: underline;
+/* var(--font-weight-); */
 }
 
 /* ======================================= */

@@ -1,6 +1,7 @@
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useBookingContext } from "../../store/booking-context/BookingContext";
 import "./InfoCard.css";
+import ToggleButton from "../toggle-button/ToggleButton";
 
 export default function InfoCard({
   // _id,
@@ -34,7 +35,7 @@ export default function InfoCard({
     console.log("Skill:", skill); // Debugging log
     setSelectedMentorUuid(mentorUuid); // Set the selected mentor UUID in the booking context
     setSelectedSkill(skill); // Set the selected skill in the booking context
-    navigate("/schedule"); // Navigate to the schedule page
+    navigate("/dashboard/schedule"); // Navigate to the schedule page
   };
 
   return (
@@ -57,17 +58,15 @@ export default function InfoCard({
           {/* skills */}
           {skills && skills.length > 0 && (
             <ul className="skills">
-              <li>Skills:</li>
+              <li>Book a session</li>
               {skills.map((skill, index) => (
                 <li key={index}>
                   <p>
-                    <Link
-                      to="/dashboard/schedule"
-                      onClick={() => handleSkillClick(mentorUuid, skill)}
-                      className="info-card-link"
-                    >
-                      {skill.protoSkillId.protoSkillTitle}
-                    </Link>
+                    <ToggleButton
+                      onToggle={() => handleSkillClick(mentorUuid, skill)}
+                      buttonName={skill.protoSkillId.protoSkillTitle}
+                      className="button-type-standard"
+                    />
                   </p>
                 </li>
               ))}

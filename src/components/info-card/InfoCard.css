@@ -1,8 +1,12 @@
 .info-card {
-  min-width: 300px;
+  min-width: 400px;
   max-width: 400px;
-  min-height: 500px;
+  min-height: 600px;
   max-height: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   background-color: var(--card-color);
   /* background: rgba(239, 236, 236, 0.15); */
   /* backdrop-filter: blur(5px); */
@@ -21,11 +25,12 @@
 }
 
 .info-card-image {
-  margin: 0 auto;
-  width: 30%;
-  height: 30%;
+  /* margin: 0 auto; */
+  margin-top: var(--margin-xl);
+  width: 40%;
+  height: 40%;
   border-radius: 50%;
-  padding-top: 10px;
+  /* padding-top: 10px; */
   /* object-fit: contain; */
   object-fit: cover; /* Ensure the image covers the container */
   aspect-ratio: 1 / 1; /* Ensure the width and height are equal */
@@ -33,6 +38,7 @@
 
 .info-card-header {
   color: var(--secondary-color);
+  font-size: var(--font-size-xl);
   font-weight: var(--font-weight-bold);
   padding: 1rem;
 }
@@ -49,6 +55,7 @@
   /* height: 65%; */
   display: flex;
   justify-content: center;
+  align-items: center;
   flex-direction: column;
   padding: 1rem;
   box-sizing: border-box;
@@ -62,6 +69,34 @@
   100% {
     opacity: 1;
   }
+}
+
+.skills {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: var(--padding-base);
+  color: var(--secondary-color);
+  font-size: var(--font-size-lg);
+}
+
+.skills li {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.skills li:first-child {
+  margin-bottom: 1rem; /* Adjust the value as needed */
+  font-size: var(--font-size-xl);
+}
+
+.skills p {
+  width: 100%; /* Ensure each paragraph takes up 100% width */
+  margin: 0; /* Remove default margin */
 }
 
 .user-header {
@@ -84,5 +119,3 @@
   text-shadow: 2px 2px 4px rgba(83, 82, 82, 0.2);
   text-align: center;
 }
-
-
