@@ -12,7 +12,11 @@ import Settings from "./pages/settings/Settings.jsx";
 import Search from "./pages/search/Search.jsx";
 import Schedule from "./pages/schedule/Schedule.jsx";
 import Booking from "./pages/booking/Booking.jsx";
+<<<<<<< HEAD
 import Payment from "./components/payment-details/payment/Payment.jsx";
+=======
+import Payment from "./components/payment/payment-details/Payment.jsx";
+>>>>>>> main
 import Terms from "./pages/terms/Terms.jsx";
 import Session from "./pages/session/Session.jsx";
 import Feedback from "./pages/feedback/Feedback.jsx";

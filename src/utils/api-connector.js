@@ -339,4 +339,3 @@ export const fetchMentors = async (query) => {
   }
 };
 
-
