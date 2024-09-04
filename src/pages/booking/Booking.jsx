@@ -21,7 +21,8 @@
 //   const [bookingDetails, setBookingDetails] = useState(null);
 
 //   const handleAgreeChange = (agreed) => {
-//     console.log("Agreement status changed:", agreed); // debug log
+
+//     console.log('Agreement status changed:', agreed); // Debug log
 //     setIsAgreed(agreed);
 //   };
 
@@ -120,6 +121,7 @@ const Booking = () => {
   const { bookingId, setBookingId, isAgreed, setIsAgreed } = useBookingContext();
   const { id } = useParams();
   const location = useLocation();
+  const navigate = useNavigate();
   const [bookingDetails, setBookingDetails] = useState(null);
 
   // Handle agreement status change
@@ -147,21 +149,32 @@ const Booking = () => {
       }
     };
 
-    if (bookingId) {
-      fetchBookingDetails();
-    }
-  }, [bookingId]);
+    fetchDetails();
+  }, [id]);
 
-  if (loading) {
-    return <Loading />;
-  }
+  const handlePayment = async () => {
+    try {
+      // Step 1: Create a booking if needed
+      const booking = await createBooking(bookingDetails.mentorId, bookingDetails.menteeId, bookingDetails.eventId, bookingDetails.start, bookingDetails.end);
+      
+      // Step 2: Create payment intent
+      const { clientSecret } = await createPaymentIntent(amount, booking._id);
+      setPaymentIntent(clientSecret);
+      
+      // Step 3: Handle Stripe payment confirmation
+      // You would need to integrate Stripe's payment handling code here
+      // After successful payment:
+      await confirmPayment(paymentIntent.id, booking._id);
+      
+      // Navigate to session page or show success message
+      navigate(`/session/${booking._id}`);
+    } catch (error) {
+      console.error('Error handling payment:', error);
+    }
+  };
 
   if (!bookingDetails) {
-    return (
-      <Layout>
-        <div>No booking details found.</div>
-      </Layout>
-    );
+    return <Loading />;
   }
 
   return (

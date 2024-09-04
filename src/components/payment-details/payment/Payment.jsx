@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuthContext } from "../../../store/authentication-context/AuthenticationContext";
 import StripePayment from "../stripe-payment/StripePayment";
-import Loading from "../../../components/loading/Loading"; 
 import "./Payment.css";
 
 const Payment = ({ bookingId, amount, offerDetails }) => {
@@ -51,10 +50,10 @@ const Payment = ({ bookingId, amount, offerDetails }) => {
 
   return (
     <div className="payment-container">
-      {stripePending && <Loading />} {/* Show loading during payment */}
+      {stripePending} 
 
       {/* Debugging: Render paymentStatus directly */}
-      {paymentStatus === "success" && (
+      {/* {paymentStatus === "success" && (
         <p className="status-message success">
           Payment was successful! Redirecting to your session page...
         </p>
@@ -64,7 +63,7 @@ const Payment = ({ bookingId, amount, offerDetails }) => {
         <p className="status-message error">
           Payment failed. Please try again or contact support.
         </p>
-      )}
+      )} */}
 
       {!paymentStatus && !stripePending && (
         <>
