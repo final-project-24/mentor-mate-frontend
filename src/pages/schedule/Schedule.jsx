@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useAuthContext } from "../../store/authentication-context/AuthenticationContext.jsx";
 import { useBookingContext } from "../../store/booking-context/BookingContext";
@@ -39,7 +39,7 @@ export default function Schedule() {
 
   return (
     <section id="booking-container">
-      <h1>Booking</h1>
+      {/* <h1>Booking</h1> */}
       {user.role === "admin" && (
         <div>
           <p>Please change your role to mentee or mentor to view this page.</p>

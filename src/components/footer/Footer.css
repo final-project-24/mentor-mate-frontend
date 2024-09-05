@@ -3,7 +3,7 @@
   height:; /* Adjusted height to better fit a single row */
   width: 100%;
   margin-top: 20px;
-  position: fi7 ;
+  position:fixed;
   bottom: 0;
   background-color: #4caf50;
   display:;

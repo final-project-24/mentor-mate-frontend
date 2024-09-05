@@ -40,7 +40,7 @@ export default function InfoCard({
 
   return (
     <>
-      <div className="info-card w-1/2">
+      <div className="info-card w-3/4">
         {image && (
           <img className="info-card-image" src={image} alt={userName} />
         )}

@@ -11,11 +11,11 @@ import iconUrl from "../../assets/images/mentormateLogo.svg"; // Update the path
 
 export default function Footer() {
   return (
-    <footer id="footer" className="sm:bottom-0 left-0 w-full sticky">
-      <div className="main-flex-container border border-red-600 h-auto">
+    <footer id="footer" className="sm:bottom-0 h-10 left-0 w-full z-50">
+      <div className="main-flex-container  h-auto">
         {/* Logo */}
-        <div className="footer-section border border-red-600 ">
-          <div className="icon-p border border-red-600">
+        <div className="footer-section  ">
+          <div className="icon-p ">
             <a
               href="#"
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
@@ -23,10 +23,10 @@ export default function Footer() {
               <img
                 src={iconUrl}
                 alt="Logo"
-                className="footer-logo border border-blue-600 w-48 mx-auto"
+                className="footer-logo w-48 mx-auto"
               />
             </a>
-            <p className="text-center text-sm pt-2">
+            <p className="hidden md:block text-center text-sm pt-2">
               Your trusted source to find highly-vetted mentors & industry
               professionals
               <br /> to move your career ahead.
@@ -34,7 +34,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="footer-section text-center text-sm pt-4 ">
+        <div className="footer-section text-center text-sm ">
           <a href="/about" className="footer-link px-2 ">
             About
           </a>
