@@ -95,7 +95,7 @@ const useApiConnectors = () => {
 
         logIfNodeDev('createSkillCategory res: ', res)
 
-        if (res.statusText === 'Created') {
+        if (res.status === 201) {
           dispatch(set_skill_category_title(''))
           dispatch(set_skill_category_description(''))
           dispatch(set_add_form(false))
@@ -132,7 +132,7 @@ const useApiConnectors = () => {
         logIfNodeDev('editSkillCategory res: ', res)
         // res.data.updatedCategory
   
-        if (res.statusText === 'OK') {
+        if (res.status === 200) {
           dispatch(update_skill_category(res.data.updatedCategory))
           dispatch(set_current_skill_category(null))
           dispatch(set_show_skill_category_form(false))
@@ -161,7 +161,7 @@ const useApiConnectors = () => {
   
         logIfNodeDev('deleteSkillCategory res: ', res)
   
-        if (res.statusText === 'OK') {
+        if (res.status === 200) {
           dispatch(delete_skill_category(skillCategoryId))
           toast.success('Category deleted!')
           getSkillCategories()

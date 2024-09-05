@@ -55,7 +55,7 @@ body {
   --margin-xl: 2rem; /* added */
   --margin-xxl: 3rem; /* added */
   --margin-avoid-header: 80px; /* added */
-  
+  --margin-avoid-footer: 300px; /* added */
   --gap-base: 1rem;
 
   /* Borders */
@@ -75,6 +75,14 @@ body {
   --sidebar-width: 250px; /* added */
   --sidebar-slide-width: -200px; /* added */
   --mini-sidebar-margin-left: 50px; /* added */
+
+  /* z-index */
+  --z-index-xs: 1; /* added */
+  --z-index-sm: 2; /* added */
+  --z-index-md: 1000; /* added */
+  --z-index-lg: 1100; /* added */
+  --z-index-xl: 1200; /* added */
+  --z-index-xxl: 1300; /* added */
 }
 
 [data-theme="dark"] {
