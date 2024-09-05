@@ -1,0 +1,84 @@
+.form-container {
+    width: 100%;
+    max-width: 400px;
+    margin: 40px auto;
+    padding: 30px;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+.form-container:hover {
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.card-element {
+    margin-bottom: 25px;
+}
+
+.card-element-placeholder {
+    padding: 15px;
+    border-radius: 6px;
+    background-color: #f8f8f8;
+    border: 1px solid #dcdcdc;
+    transition: border-color 0.3s ease;
+}
+
+.card-element-placeholder:hover {
+    border-color: #bbb;
+}
+
+.card-element-placeholder p {
+    margin: 0 0 10px;
+    font-weight: 600;
+    color: #333;
+}
+
+.card-element-placeholder input {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background-color: #fafafa;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.card-element-placeholder input:focus {
+    border-color: #007bff;
+    background-color: #ffffff;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+button:disabled {
+    background-color: #aaa;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.error-message {
+    color: #e74c3c;
+    margin-top: 15px;
+    font-weight: 500;
+    font-size: 14px;
+}

@@ -253,9 +253,11 @@ export const addAvailability = async (start, end) => {
 };
 
 // MentorAvailabilityCalendar.jsx
-export const bookSlot = async (eventId) => {
+export const bookSlot = async (eventId, skillId) => {
   try {
-    const res = await axios.post(`/calendar/book/${eventId}`);
+    const res = await axios.post(`/calendar/book/${eventId}`, {
+      skillId,
+    });
     if (res.status !== 200) {
       throw new Error("Unable to book slot");
     }
@@ -270,38 +272,30 @@ export const bookSlot = async (eventId) => {
 
 // Create Stripe Payment Intent ----------------------------
 // export const createStripePaymentIntent = async (amount, currency, userId, isMentee, bookingId, eventId) => {
-  export const createStripePaymentIntent = async (bookingId) => {
-    try {
-      // Ensure all required parameters are included
-      const res = await axios.post('/payment/stripe/create-payment-intent', {
-        // amount,
-        // currency,
-        // userId,
-        // isMentee,
-        bookingId,
-        // eventId
-      });
-  
-      console.log("Response from server:", res);
-  
-      if (res.status !== 200) {
-        throw new Error("Unable to create Stripe payment intent");
-      }
-  
-      return res.data; // Return the clientSecret or any other relevant data
-    } catch (error) {
-      console.error("Error creating Stripe payment intent:", error);
-      throw error; // Re-throw the error to be handled by calling code
+export const createStripePaymentIntent = async (bookingId) => {
+  try {
+    // Ensure all required parameters are included
+    const res = await axios.post("/payment/stripe/create-payment-intent", {
+      // amount,
+      // currency,
+      // userId,
+      // isMentee,
+      bookingId,
+      // eventId
+    });
+
+    console.log("Response from server:", res);
+
+    if (res.status !== 200) {
+      throw new Error("Unable to create Stripe payment intent");
     }
-  };
-  
-  
 
-
-
-
-
-
+    return res.data; // Return the clientSecret or any other relevant data
+  } catch (error) {
+    console.error("Error creating Stripe payment intent:", error);
+    throw error; // Re-throw the error to be handled by calling code
+  }
+};
 
 // Search API calls ====================================================
 
@@ -325,7 +319,7 @@ export const bookSlot = async (eventId) => {
 //   }
 // };
 
-
+// fetch mentors
 export const fetchMentors = async (query) => {
   try {
     const res = await axios.get(`/search`, {
@@ -346,4 +340,24 @@ export const fetchMentors = async (query) => {
   }
 };
 
+// fetch mentor details
+export const getMentorSkills = async (mentorUuid) => {
+  try {
+    const res = await axios.get(`/search/mentors/${mentorUuid}/skills`, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
 
+    if (res.status !== 200) {
+      throw new Error(`HTTP error! status: ${res.status}`);
+    }
+
+    const data = res.data;
+    console.log(`Fetched skills for mentor ${mentorUuid}:`, data); // Log fetched skills
+    return data;
+  } catch (error) {
+    console.error(`Error fetching skills for mentor ${mentorUuid}:`, error);
+    throw error;
+  }
+};

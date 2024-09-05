@@ -1,7 +1,12 @@
+import { useNavigate } from "react-router-dom";
+import { useBookingContext } from "../../store/booking-context/BookingContext";
 import "./InfoCard.css";
+import ToggleButton from "../toggle-button/ToggleButton";
 
 export default function InfoCard({
-  id,
+  // _id,
+  uuid,
+  mentorUuid,
   image,
   userName,
   email,
@@ -11,7 +16,8 @@ export default function InfoCard({
   end,
   price,
 }) {
-  // console.log("ID:", id); //
+  // console.log("ID:", _id); //
+  // console.log("UUID:",  mentorUuid); //
   // console.log("Image:", image); //
   // console.log("Name:", userName); //
   // console.log("Email:", email); //
@@ -21,6 +27,17 @@ export default function InfoCard({
   // console.log("End:", end); //
   // console.log("Price:", price); //
 
+  const navigate = useNavigate();
+  const { setSelectedMentorUuid, setSelectedSkill } = useBookingContext();
+
+  const handleSkillClick = (mentorUuid, skill) => {
+    console.log("Mentor UUID:", mentorUuid); // Debugging log
+    console.log("Skill:", skill); // Debugging log
+    setSelectedMentorUuid(mentorUuid); // Set the selected mentor UUID in the booking context
+    setSelectedSkill(skill); // Set the selected skill in the booking context
+    navigate("/dashboard/schedule"); // Navigate to the schedule page
+  };
+
   return (
     <>
       <div className="info-card w-3/4">
@@ -29,23 +46,34 @@ export default function InfoCard({
         )}
 
         <div className="info-card-content">
-          {/* {role && <span className="user-status">{role}</span>} */}
+          {/* user role */}
+          {role && <span className="user-status">{role}</span>}
 
-          {userName && <h3 className="info-card-header ">{userName}</h3>}
+          {/* user name */}
+          {userName && <h3 className="info-card-header">{userName}</h3>}
 
-          {email && <p className="info-card-content ">{email}</p>}
+          {/* mail */}
+          {email && <p className="info-card-content">{email}</p>}
 
-          <p className="info-card-content "> English C1.1 - Reading</p>
-
+          {/* skills */}
           {skills && skills.length > 0 && (
             <ul className="skills">
-              <li>Skills:</li>
+              <li>Book a session</li>
               {skills.map((skill, index) => (
-                <li key={index}>{skill}</li>
+                <li key={index}>
+                  <p>
+                    <ToggleButton
+                      onToggle={() => handleSkillClick(mentorUuid, skill)}
+                      buttonName={skill.protoSkillId.protoSkillTitle}
+                      className="button-type-standard"
+                    />
+                  </p>
+                </li>
               ))}
             </ul>
           )}
 
+          {/* session dates */}
           {(start || end) && (
             <ul className="info-card-content">
               <li>Date and Time:</li>
@@ -54,6 +82,7 @@ export default function InfoCard({
             </ul>
           )}
 
+          {/* price */}
           {price && <p className="info-card-content">Price: {price} </p>}
         </div>
       </div>

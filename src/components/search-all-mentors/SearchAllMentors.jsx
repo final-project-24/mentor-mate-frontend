@@ -62,7 +62,7 @@ const SearchAllMentors = ({ onResults, onSelect }) => {
     const getMentors = async () => {
       try {
         const users = await fetchUsers();
-        console.log("Fetched users in ExampleMentorList:", users); // Log fetched users in component
+        console.log("All Mentors:", users); // Log fetched users in component
         const mentorsData = users.filter((user) => user.role === "mentor"); // Adjust the filter condition as needed
         setMentors(mentorsData);
         onResults(mentorsData); // Send the mentors data to the parent component
