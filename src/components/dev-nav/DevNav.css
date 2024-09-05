@@ -1,25 +1,31 @@
 .dev-nav-container {
-  
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 20px;
-  color: var(--secondary-color);
-  margin-top: 30px;
+  margin: var(--margin-small);
+  padding: var(--padding-small);
+  position: relative;
+  display: inline-block;
 }
 
-.dev-nav-container ul {
-  /* display: flex; */
-  /* justify-content: space-between; */
-  /* align-items: center; */
+.dropdown-menu {
+  display: block;
+  position: absolute;
+  background-color: var(--primary-color);
+  min-width: 160px;
+  /* box-shadow: var(--box-shadow-base); */
+  z-index: var(--z-index-xs);
 }
 
-.dev-nav-container ul li {
-  list-style: none;
-  /* color: red; */
-  /* margin-right: 20px; */
+.dropdown-menu li {
+  padding: var(--padding-small);
+  text-align: left;
 }
 
-.dev-nav-container ul li a {
-  color: red;
+.dropdown-menu li a {
+  color: var(--accent-color);
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-menu li a:hover {
+  background-color: var(--card-color-hover);
+  /* text-decoration: none; */
 }
