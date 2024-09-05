@@ -59,8 +59,9 @@ const useApiConnectors = () => {
           }
         })
   
-        logIfNodeDev('getSkillCategories res: ', res)
+        // logIfNodeDev('getSkillCategories res: ', res)
         // res.data.categories
+        console.log('getSkillCategories res: ', res)
   
         if (res.statusText === 'OK') {
           dispatch(set_skill_categories(res.data.categories))
@@ -68,7 +69,8 @@ const useApiConnectors = () => {
           dispatch(set_total_pages(res.data.totalPages))
         }
       } catch (error) {
-        logIfNodeDev('getSkillCategories error: ', error)
+        // logIfNodeDev('getSkillCategories error: ', error)
+        console.log('getSkillCategories error: ', error)
         toast.error(error.response.data.error)
       } finally {
         dispatch(set_categories_loading(false))
