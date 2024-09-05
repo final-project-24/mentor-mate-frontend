@@ -63,7 +63,7 @@ const useApiConnectors = () => {
         // res.data.categories
         console.log('getSkillCategories res: ', res)
   
-        if (res.statusText === 'OK') {
+        if (res.status === 200) {
           dispatch(set_skill_categories(res.data.categories))
           dispatch(set_page(res.data.page))
           dispatch(set_total_pages(res.data.totalPages))
