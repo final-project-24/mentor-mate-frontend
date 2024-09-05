@@ -117,8 +117,7 @@ import { useParams, useLocation } from "react-router-dom";
 
 const Booking = () => {
   const { loading } = useAuthContext();
-  const { bookingId, setBookingId, isAgreed, setIsAgreed } =
-    useBookingContext();
+  const { bookingId, setBookingId, isAgreed, setIsAgreed } = useBookingContext();
   const { id } = useParams();
   const location = useLocation();
   const [bookingDetails, setBookingDetails] = useState(null);
@@ -141,9 +140,7 @@ const Booking = () => {
   useEffect(() => {
     const fetchBookingDetails = async () => {
       try {
-        const response = await axios.get(
-          `/calendar/booking-details/${bookingId}`
-        );
+        const response = await axios.get(`/calendar/booking-details/${bookingId}`);
         setBookingDetails(response.data);
       } catch (error) {
         console.error("Error fetching booking details:", error);

@@ -12,7 +12,15 @@ const Payment = ({ bookingId, amount, offerDetails }) => {
   const [redirect, setRedirect] = useState(false); // State to control redirect timing
   const navigate = useNavigate();
 
-  const { title = "No Title", description = "No Description" } = offerDetails;
+  // Destructure offerDetails
+  const {
+    title = "No Title",
+    description = "No Description",
+    start,
+    end,
+    price,
+    selectedSkill = [],
+  } = offerDetails || {};
 
   const handleCheckboxChange = (event) => {
     setIsAgreed(event.target.checked);
@@ -22,7 +30,7 @@ const Payment = ({ bookingId, amount, offerDetails }) => {
     if (redirect) {
       // Perform the redirect after delay
       const timer = setTimeout(() => {
-        navigate("/session-page");
+        navigate("/dashboard/session");
       }, 6000);
 
       return () => clearTimeout(timer); // Cleanup on component unmount
@@ -30,7 +38,7 @@ const Payment = ({ bookingId, amount, offerDetails }) => {
   }, [redirect, navigate]);
 
   const handlePaymentCompletion = (status) => {
-    console.log("Payment status:", status); 
+    console.log("Payment status:", status);
     setPaymentStatus(status); // Set payment status ("success" or "error")
     setStripePending(false); // Stop showing the loading state
     if (status === "success") {
@@ -50,7 +58,7 @@ const Payment = ({ bookingId, amount, offerDetails }) => {
 
   return (
     <div className="payment-container">
-      {stripePending} 
+      {stripePending}
 
       {/* Debugging: Render paymentStatus directly */}
       {/* {paymentStatus === "success" && (
@@ -71,10 +79,17 @@ const Payment = ({ bookingId, amount, offerDetails }) => {
 
           <div className="offer-details">
             <h3>{title}</h3>
-            <p>{description}</p>
             <div className="offer-price">
               <span>Amount: </span>
               <strong>${(amount / 100).toFixed(2)}</strong>
+            </div>
+            <div className="offer-start-end">
+              <p>Start: {new Date(start).toLocaleString()}</p>
+              <p>End: {new Date(end).toLocaleString()}</p>
+            </div>
+            <div className="offer-selected-skill">
+              <p>Selected Skill: {selectedSkill[0].protoSkillTitle}</p>
+              <p>Description: {selectedSkill[0].protoSkillDescription}</p>
             </div>
           </div>
 
@@ -104,12 +119,18 @@ const Payment = ({ bookingId, amount, offerDetails }) => {
 
           {isAgreed && (
             <div className="payment-methods-section">
-              <h3 className="payment-methods-title">Select Your Payment Method</h3>
+              <h3 className="payment-methods-title">
+                Select Your Payment Method
+              </h3>
 
               {/* Stripe Payment Integration */}
               <div className="stripe-payment-section">
                 <h4>Pay with Stripe</h4>
-                <h6>If your payment is successful, you'll be redirected to your session page. There, you'll find a link to join your meeting with the mentor!</h6>
+                <h6>
+                  If your payment is successful, you'll be redirected to your
+                  session page. There, you'll find a link to join your meeting
+                  with the mentor!
+                </h6>
                 <StripePayment
                   bookingId={bookingId}
                   amount={amount}

@@ -240,7 +240,7 @@ export const addAvailability = async (start, end) => {
     const res = await axios.post("/calendar", {
       start,
       end,
-      title: "Available",
+      title: "1 Hour Session",
     });
     if (res.status !== 200 && res.status !== 201) {
       throw new Error("Unable to add availability");
