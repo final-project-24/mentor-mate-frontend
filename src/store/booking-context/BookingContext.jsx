@@ -7,6 +7,7 @@ export const BookingProvider = ({ children }) => {
   const [isAgreed, setIsAgreed] = useState(false);
   const [selectedMentorUuid, setSelectedMentorUuid] = useState(null);
   const [selectedSkill, setSelectedSkill] = useState(null);
+  const [mentors, setMentors] = useState([]);
 
   // Debug logs ========================================
 
@@ -30,6 +31,10 @@ export const BookingProvider = ({ children }) => {
     console.log("selectedSkill changed:", selectedSkill);
   }, [selectedSkill]);
 
+  useEffect(() => {
+    console.log("mentors changed:", mentors);
+  }, [mentors]);
+
   // ==================================================
 
   return (
@@ -43,6 +48,8 @@ export const BookingProvider = ({ children }) => {
         setSelectedMentorUuid,
         selectedSkill,
         setSelectedSkill,
+        mentors,
+        setMentors,
       }}
     >
       {children}

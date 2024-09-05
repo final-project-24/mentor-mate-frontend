@@ -10,9 +10,10 @@
   align-items: ;
   justify-content:;
   padding: 0 20px;
-  box-sizing:;
-  font-size:; /* Adjust size as needed */
-  
+  box-sizing: border-box;
+  font-size: larger; /* Adjust size as needed */
+  z-index: var(--z-index-lg); 
+  position: relative; /* Ensure z-index works */
 }
 
 .main-flex-container {

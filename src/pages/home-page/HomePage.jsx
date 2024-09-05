@@ -197,28 +197,19 @@ const HomePage = () => {
         </div>
 
         {isLoggedIn && (
-          <div>
-            {isLoggedIn && (
-              <p className="text-2xl text-center text-neutral">
-                {userNameDisplay()}
-              </p>
-            )}
-
-            {isLoggedIn && (
-              <div className="mx-auto">
-                <div className="flex flex-col-reverse  lg:px-20  ">
-                  <InfoCard
-                    image={user.image}
-                    userName={user.userName}
-                    role={user.role}
-                    email={user.email}
-                  />
-                </div>
-
-                {/* Keep ReviewSidebar from nacho branch */}
-                {/* <ReviewSidebar /> */}
-              </div>
-            )}
+          <div className="items-center w-full lg:mx-auto border border-red-500">
+            <div className="flex flex-col-reverse px-20 lg:w-1/2 lg:mx-auto justify-center border border-red-500">
+              <InfoCard
+                image={user.image}
+                userName={user.userName}
+                role={user.role}
+                email={user.email}
+              />
+            </div>
+            {/* Keep ReviewSidebar from nacho branch */}
+            {/* <ReviewSidebar /> */}
+          </div>
+        )}
 
             {isLoggedIn && user.role === "mentee" && (
               <div className="p-">
