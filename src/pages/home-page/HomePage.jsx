@@ -176,7 +176,7 @@ const HomePage = () => {
               />
             </div>
             {/* Keep ReviewSidebar from nacho branch */}
-            <ReviewSidebar />
+            {/* <ReviewSidebar /> */}
           </div>
         )}
 

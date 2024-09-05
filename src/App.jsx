@@ -4,11 +4,11 @@ import { LanguageProvider } from "./store/language-context/LanguageContext.jsx";
 import { BookingProvider } from "./store/booking-context/BookingContext";
 import { DarkModeProvider } from "./store/dark-mode-context/DarkModeContext";
 import { ToastContainer } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
 import HomePage from "./pages/home-page/HomePage.jsx";
 import Authentication from "./pages/authentication/Authentication.jsx";
 import DashboardLayout from "./components/dashboard-layout/DashboardLayout";
-import DashboardHome from "./components/dashboard-home/DashboardHome";
+import DashboardHome from "./pages/dashboard-home/DashboardHome.jsx";
 import AdminTools from "./pages/admin-tools/AdminTools.jsx";
 import Settings from "./pages/settings/Settings.jsx";
 import Search from "./pages/search/Search.jsx";
@@ -24,7 +24,7 @@ import NotFound from "./pages/not-found/NotFound.jsx";
 export default function App() {
   return (
     <>
-      <ToastContainer theme="colored"/>
+      <ToastContainer theme="colored" />
       <Router>
         <AuthProvider>
           <LanguageProvider>
