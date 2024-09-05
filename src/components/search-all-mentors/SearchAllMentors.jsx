@@ -76,14 +76,14 @@ const SearchAllMentors = ({ onResults, onSelect }) => {
   }, [onResults]);
 
   return (
-    <div className="flex flex-col items-center">
-      <h2 className="text-center">
+    <div className="flex flex-col items-center ">
+      <h2 className="text-center pb-2">
         Please select a mentor to view their availability:
       </h2>
 
       <select
         onChange={(e) => onSelect(e.target.value)}
-        className="w-1/2 p-1"
+        className="w-2/3 p-1"
         defaultValue=""
       >
         <option value="" disabled className="text-center">

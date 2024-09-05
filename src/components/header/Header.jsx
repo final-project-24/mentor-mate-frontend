@@ -78,7 +78,7 @@ const Header = () => {
 
   return (
     <div id="header">
-      <nav className="header-container fixed top-0 w-full h-[80px] xl:h-[100px] flex items-center px-4 md:px-6 z-50 ">
+      <nav className="header-container bg-primary fixed top-0 w-full h-[80px] lg:h-[100px] flex items-center px-4 md:px-6 z-50  border-b-2 border-accent ">
         {/* Logo Section */}
         <div
           className={`flex items-center ${
@@ -113,9 +113,7 @@ const Header = () => {
         </ul>
         {/* Login/Logout Button */}
         <div
-          className={`ml-auto flex items-center ${
-            nav ? "block" : "hidden lg:flex"
-          }`}
+          className={`ml-auto flex items-center ${nav ? "hidden" : "lg:flex"}`}
         >
           {!isLoggedIn ? (
             <Link
@@ -125,7 +123,9 @@ const Header = () => {
               Login
             </Link>
           ) : (
-            <LogoutButton />
+              <div className="hidden lg:flex">
+                <LogoutButton />
+                </div>
           )}
         </div>
         {/* Hamburger Icon */}
@@ -145,13 +145,13 @@ const Header = () => {
           <div className="fixed top-[80px] left-0 w-full h-[calc(100vh-80px)] flex z-40">
             {/* Blurred 1/4 screen overlay */}
             <div
-              className="w-1/4 backdrop-blur-sm"
+              className="w-1/4 backdrop-blur-sm z-40"
               onClick={closeMenu} // Close menu on click
             ></div>
             {/* Menu taking up 3/4 of the screen */}
             <ul
               id="mobile-menu"
-              className="w-3/4 h-screen bg-[#fffdfd] text-gray-700 flex flex-col justify-center items-center "
+              className="w-3/4  bg-[#fffdfd] text-gray-700 flex flex-col pt-[100px] items-center "
             >
               {navLinks.map(({ to, label }) => (
                 <li
@@ -166,7 +166,7 @@ const Header = () => {
                 <li onClick={closeMenu}>
                   <Link
                     to="/authentication"
-                    className="text-primary bg-accent rounded-2xl p-2"
+                    className=" text-primary bg-accent rounded-2xl p-2"
                   >
                     Login
                   </Link>

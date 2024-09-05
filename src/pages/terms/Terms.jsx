@@ -41,19 +41,19 @@ const Terms = () => {
         <p className="terms-text">
           By agreeing to these terms, you acknowledge and accept the following conditions:
           <br /><br />
-          <strong>1. Cancellation by Mentor:</strong>
+          <strong className="text-accent">1. Cancellation by Mentor:</strong>
           <br />
           If the mentor needs to cancel a scheduled session, you will receive a credit equivalent to the value of the session. This credit can be used to reschedule the session at a time that suits you. The credit will be applied automatically to your account.
           <br /><br />
-          <strong>2. Cancellation by Mentee:</strong>
+          <strong className="text-accent">2. Cancellation by Mentee:</strong>
           <br />
           Please note that all payments are non-refundable. If you choose to cancel a session, no refund will be issued due to our non-refundable policy. We encourage you to reschedule if you are unable to attend the scheduled session.
           <br /><br />
-          <strong>3. Rescheduling:</strong>
+          <strong className="text-accent">3. Rescheduling:</strong>
           <br />
           To reschedule a session, please provide at least 24 hours’ notice. For cancellation or rescheduling requests, please contact our support team as soon as possible.
           <br /><br />
-          <strong>4. Support:</strong>
+          <strong className="text-accent">4. Support:</strong>
           <br />
           For any questions or concerns about your session or our cancellation policy, please reach out to our support team at <a href="mailto:support@example.com">support@example.com</a>.
           <br /><br />

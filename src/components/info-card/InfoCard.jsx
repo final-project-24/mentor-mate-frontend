@@ -23,7 +23,7 @@ export default function InfoCard({
 
   return (
     <>
-      <div className="info-card w-1/2">
+      <div className="info-card w-3/4">
         {image && (
           <img className="info-card-image" src={image} alt={userName} />
         )}
@@ -35,7 +35,7 @@ export default function InfoCard({
 
           {email && <p className="info-card-content ">{email}</p>}
 
-          <p className="info-card-content ">Topic: English C1.1 - Reading</p>
+          <p className="info-card-content "> English C1.1 - Reading</p>
 
           {skills && skills.length > 0 && (
             <ul className="skills">

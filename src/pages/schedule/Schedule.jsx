@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useAuthContext } from "../../store/authentication-context/AuthenticationContext.jsx";
 // import { ClipLoader } from "react-spinners";
@@ -37,7 +37,7 @@ export default function Schedule() {
 
   return (
     <section id="booking-container">
-      <h1>Booking</h1>
+      {/* <h1>Booking</h1> */}
       {user.role === "admin" && (
         <div>
           <p>Please change your role to mentee or mentor to view this page.</p>
@@ -57,11 +57,11 @@ export default function Schedule() {
             </p> */}
             {/* Add a mentor selection component here */}
             {/* For example: <MentorList onSelect={handleMentorSelect} /> */}
-            <ExampleMentorList onSelect={handleMentorSelect} />
+            <SearchAllMentors onSelect={handleMentorSelect} />
           </div>
         )}
         {user.role === "mentor" && (
-          <p className="text-center">
+          <p className="text-center ">
             Manage your availability on calendar below:
           </p>
         )}
