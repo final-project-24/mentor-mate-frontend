@@ -35,6 +35,8 @@ const SkillCategory = () => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user])
 
+  useEffect(() => {console.log('skillCategories: ', skillCategories)}, [skillCategories])
+
   const pSpanClass = 'font-bold'
 
   const btnWrapperClass = classNames('', {
