@@ -3,6 +3,8 @@ import { AuthProvider } from "./store/authentication-context/AuthenticationConte
 import { LanguageProvider } from "./store/language-context/LanguageContext.jsx";
 import { BookingProvider } from "./store/booking-context/BookingContext";
 import { DarkModeProvider } from "./store/dark-mode-context/DarkModeContext";
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 import HomePage from "./pages/home-page/HomePage.jsx";
 import Authentication from "./pages/authentication/Authentication.jsx";
 import DashboardLayout from "./components/dashboard-layout/DashboardLayout";
@@ -22,40 +24,43 @@ import NotFound from "./pages/not-found/NotFound.jsx";
 
 export default function App() {
   return (
-    <Router>
-      <AuthProvider>
-        <LanguageProvider>
-          <BookingProvider>
-            <DarkModeProvider>
-              <Routes>
-                <Route path="/" element={<HomePage />} />
-                <Route path="/why-we?" element={<WhyWe />} />
+    <>
+      <ToastContainer theme="colored"/>
+      <Router>
+        <AuthProvider>
+          <LanguageProvider>
+            <BookingProvider>
+              <DarkModeProvider>
+                <Routes>
+                  <Route path="/" element={<HomePage />} />
+                  <Route path="/why-we?" element={<WhyWe />} />
                 <Route path="/authentication" element={<Authentication />} />
-                <Route path="/dashboard" element={<DashboardLayout />}>
-                  <Route index element={<DashboardHome />} />
-                  <Route path="search" element={<Search />} />
-                  <Route path="schedule" element={<Schedule />} />
-                  <Route path="session" element={<Session />} />
-                  {/* <Route path="past-sessions" element={<PastSessions />} /> */}
-                  <Route path="settings" element={<Settings />} />
-                  <Route path="admin-tools" element={<AdminTools />} />
-                  {/* <Route path="feedback" element={<Feedback />} /> */}
-                </Route>
-                <Route path="/booking/:id" element={<Booking />} />
-                <Route path="/payment" element={<Payment />} />
-                <Route path="/terms" element={<Terms />} />
-                <Route path="/feedback" element={<Feedback />} />
-                {/* <Route path="/settings" element={<Settings />} /> */}
-                {/* <Route path="/search" element={<Search />} /> */}
-                {/* <Route path="/schedule" element={<Schedule />} /> */}
-                <Route path="/session" element={<Session />} />
-                <Route path="/playground" element={<Playground />} />
-                <Route path="*" element={<NotFound />} />
-              </Routes>
-            </DarkModeProvider>
-          </BookingProvider>
-        </LanguageProvider>
-      </AuthProvider>
-    </Router>
+                  <Route path="/dashboard" element={<DashboardLayout />}>
+                    <Route index element={<DashboardHome />} />
+                    <Route path="search" element={<Search />} />
+                    <Route path="schedule" element={<Schedule />} />
+                    <Route path="session" element={<Session />} />
+                    {/* <Route path="past-sessions" element={<PastSessions />} /> */}
+                    <Route path="settings" element={<Settings />} />
+                    <Route path="admin-tools" element={<AdminTools />} />
+                    {/* <Route path="feedback" element={<Feedback />} /> */}
+                  </Route>
+                  <Route path="/booking/:id" element={<Booking />} />
+                  <Route path="/payment" element={<Payment />} />
+                  <Route path="/terms" element={<Terms />} />
+                  <Route path="/feedback" element={<Feedback />} />
+                  {/* <Route path="/settings" element={<Settings />} /> */}
+                  {/* <Route path="/search" element={<Search />} /> */}
+                  {/* <Route path="/schedule" element={<Schedule />} /> */}
+                  <Route path="/session" element={<Session />} />
+                  <Route path="/playground" element={<Playground />} />
+                  <Route path="*" element={<NotFound />} />
+                </Routes>
+              </DarkModeProvider>
+            </BookingProvider>
+          </LanguageProvider>
+        </AuthProvider>
+      </Router>
+    </>
   );
 }
