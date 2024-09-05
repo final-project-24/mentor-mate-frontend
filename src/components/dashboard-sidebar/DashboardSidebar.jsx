@@ -9,6 +9,7 @@ import {
   faChalkboardTeacher,
   faCog,
   faTools,
+  faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useAuthContext } from "../../store/authentication-context/AuthenticationContext";
@@ -63,6 +64,19 @@ export default function DashboardSidebar() {
         />
         <nav className="dashboard-sidebar-nav">
           <ul>
+            <li>
+              <Link
+                to="/dashboard"
+                onClick={closeSidebar}
+                className={activeLink === "/dashboard" ? "active" : ""}
+              >
+                Your Profile
+                <FontAwesomeIcon
+                  icon={faUser}
+                  className="fa-icon"
+                />
+              </Link>
+            </li>
             <li>
               <Link
                 to="/dashboard/search"
