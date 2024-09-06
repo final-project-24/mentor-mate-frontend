@@ -9,7 +9,7 @@ import useApiConnectors from "../../../hooks/useApiConnectors"
 import {useAuthContext} from "../../../store/authentication-context/AuthenticationContext"
 
 // components
-import ButtonConfirmRejectCategory from "../buttons/ButtonConfirmRejectCategory"
+// import ButtonConfirmRejectCategory from "../buttons/ButtonConfirmRejectCategory"
 import classNames from "classnames"
 import ButtonEditCategory from "../buttons/ButtonEditCategory"
 import SkillCategoryForm from "../skill-category-form/SkillCategoryForm"
@@ -17,14 +17,14 @@ import PaginationControls from "../pagination-controls/PaginationControls"
 import ButtonDeleteCategory from "../buttons/ButtonDeleteCategory"
 import ButtonOpenForm from "../buttons/ButtonOpenForm"
 
-const SkillCategory = () => {
+const SkillCategories = () => {
   const {user} = useAuthContext()
   const {
-    skillCategory,
     skillCategories, 
     currentSkillCategory,
     showSkillCategoryForm,
     addForm,
+    pagination,
     categoriesLoading
   } = useStateSelectors()
   const {getSkillCategories} = useApiConnectors()
@@ -44,23 +44,24 @@ const SkillCategory = () => {
 
   const generateParaText = () => {
     if (addForm) {
-      return 'Add Category'
+      return 'Add Skill Category'
     } else if (showSkillCategoryForm) {
-      return 'Edit Category'
+      return 'Edit Skill Category'
     } else if (!currentSkillCategory) {
-      return 'Select Category'
-    } else if (currentSkillCategory && !showSkillCategoryForm) {
-      return 'Category'
-    }
+      return 'Skill Categories'
+    } 
+    // else if (currentSkillCategory && !showSkillCategoryForm) {
+    //   return 'Category'
+    // }
   }
 
   return (
-    <div className="relative w-full md:w-[80%] xl:w-[50%] border-2 mt-10 p-3 rounded-lg shadow-lg bg-card">
+    <div className="relative w-full md:w-[80%] xl:w-[50%] border-2 p-3 rounded-lg shadow-lg bg-card">
       <p className="text-center text-xl mb-3">
         {generateParaText()}
       </p>
       <>
-        {!currentSkillCategory &&
+        {!currentSkillCategory && !addForm &&
           <ButtonOpenForm />
         }
       </>
@@ -68,7 +69,7 @@ const SkillCategory = () => {
         <>
           {!currentSkillCategory && !showSkillCategoryForm &&
             <div className="flex flex-col items-center gap-3">
-              <PaginationControls state={skillCategory}/>
+              <PaginationControls state={pagination}/>
               <>
                 {categoriesLoading &&
                   <div className="flex justify-center items-center min-h-[436px]">
@@ -117,7 +118,7 @@ const SkillCategory = () => {
                           </p>
                         </div>
                         <div className={btnWrapperClass}>
-                          <ButtonConfirmRejectCategory confirm={'true'} skillCategory={c} />
+                          {/* <ButtonConfirmRejectCategory confirm={'true'} skillCategory={c} /> */}
                           <ButtonEditCategory skillCategory={c} />
                           <ButtonDeleteCategory skillCategory={c} />
                         </div>
@@ -129,14 +130,14 @@ const SkillCategory = () => {
             </div>
           }
         </>
-        <>
+        {/* <>
           {currentSkillCategory && !showSkillCategoryForm &&
             <p className="flex justify-between items-center rounded-md p-3 text-lg bg-stone-300">
               {currentSkillCategory.skillCategoryTitle}
               <ButtonConfirmRejectCategory />
             </p>
           }
-        </>
+        </> */}
         <>
           {showSkillCategoryForm &&
             <SkillCategoryForm />
@@ -147,4 +148,4 @@ const SkillCategory = () => {
   )
 }
 
-export default SkillCategory
+export default SkillCategories
