@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux"
 import { isMobile } from "react-device-detect"
 
 // reducer actions
-import { set_show_skill_category_form, set_skill_category_description, set_skill_category_title } from "../../../store/skills-store/slices/forms/skillCategoryFormSlice"
+import { set_show_skill_category_form, set_skill_category_description, set_skill_category_title } from "../../../store/skills-store/slices/skillCategoryFormSlice"
 import { set_current_skill_category } from "../../../store/skills-store/slices/skillCategorySlice"
 
 // hooks

@@ -5,7 +5,7 @@ import { faCaretLeft, faCaretRight } from "@fortawesome/free-solid-svg-icons"
 import { useDispatch } from "react-redux"
 
 // reducer actions
-import { set_page } from "../../../store/skills-store/slices/skillCategorySlice"
+import { set_page } from "../../../store/skills-store/slices/paginationSlice"
 
 // hooks
 import useApiConnectors from "../../../hooks/useApiConnectors"
