@@ -9,6 +9,10 @@ const useStateSelectors = () => {
   const skillCategoryForm = useSelector(state => state.skillCategoryForm)
   const showSkillCategoryForm = useSelector(state => state.skillCategoryForm.showSkillCategoryForm)
   const addForm = useSelector(state => state.skillCategoryForm.addForm)
+  // skillError
+  const errorsArray = useSelector(state => state.errors.errorsArray)
+  // pagination
+  const pagination = useSelector(state => state.pagination)
   // loading
   const categoriesLoading = useSelector(state => state.loading.categoriesLoading)
   const categoriesDeleteLoading = useSelector(state => state.loading.categoriesDeleteLoading)
@@ -20,6 +24,8 @@ const useStateSelectors = () => {
     skillCategoryForm,
     showSkillCategoryForm,
     addForm,
+    errorsArray,
+    pagination,
     categoriesLoading,
     categoriesDeleteLoading
   } 
