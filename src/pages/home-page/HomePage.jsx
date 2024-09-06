@@ -241,8 +241,7 @@ const HomePage = () => {
                 <Schedule />
               </div>
             )}
-          </div>
-        )}
+          
       </section>
     </Layout>
   );
