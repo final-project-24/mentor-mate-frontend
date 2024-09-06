@@ -4,19 +4,25 @@ import { useDispatch } from 'react-redux'
 
 // reducer actions
 import { 
-  delete_skill_category,
+  set_skill_categories,
   set_current_skill_category,
-  set_page,
-  set_skill_categories, 
-  set_total_pages, 
-  update_skill_category
+  // add_skill_category,
+  update_skill_category,
+  delete_skill_category
 } from '../store/skills-store/slices/skillCategorySlice'
 import { 
-  set_add_form, 
   set_show_skill_category_form,
-  set_skill_category_description,
-  set_skill_category_title
-} from '../store/skills-store/slices/forms/skillCategoryFormSlice'
+  set_add_form,
+  set_skill_category_title,
+  set_skill_category_description
+} from '../store/skills-store/slices/skillCategoryFormSlice'
+import { 
+  set_errors_array
+} from '../store/skills-store/slices/errorsSlice'
+import { 
+  set_page, 
+  set_total_pages
+} from '../store/skills-store/slices/paginationSlice'
 import { 
   set_categories_loading, 
   set_category_delete_loading 
@@ -27,15 +33,16 @@ import useStateSelectors from './useStateSelectors'
 
 // utils
 import logIfNodeDev from '../utils/logIfNodeDev'
+import isArray from '../utils/isArray'
 
 const useApiConnectors = () => {
   const dispatch = useDispatch()
   const {
     currentSkillCategory, 
-    skillCategoryForm,
+    skillCategoryForm
   } = useStateSelectors()
 
-  // ! GENERATE OPTIONAL FIELDS IS VALUE IS PROVIDED IN THE FORM
+  // ! GENERATE OPTIONAL FIELDS IF VALUE IS PROVIDED IN THE FORM
   const generateSkillCategoryDescription = () => {
     if (skillCategoryForm.skillCategoryDescription.length > 0) {
       return {
@@ -69,7 +76,13 @@ const useApiConnectors = () => {
         }
       } catch (error) {
         logIfNodeDev('getSkillCategories error: ', error)
-        toast.error(error.response.data.error)
+
+        const err = error.response.data.error
+        if (!isArray(err)) {
+          toast.error(err)
+        } else {
+          dispatch(set_errors_array(err))
+        }
       } finally {
         dispatch(set_categories_loading(false))
       }
@@ -94,6 +107,7 @@ const useApiConnectors = () => {
         logIfNodeDev('createSkillCategory res: ', res)
 
         if (res.status === 201) {
+          // dispatch(add_skill_category(res.data.category))
           dispatch(set_skill_category_title(''))
           dispatch(set_skill_category_description(''))
           dispatch(set_add_form(false))
@@ -103,9 +117,14 @@ const useApiConnectors = () => {
         }
       } catch (error) {
         logIfNodeDev('createSkillCategory err: ', error)
-        // TODO: when validator returns an array, I need to iterate via array elements to fish out the error message
-        // error.response.data.error[0].msg
-        toast.error('Something went wrong!')
+
+        const err = error.response.data.error
+        if (!isArray(err)) {
+          toast.error(err)
+        } else {
+          console.log('err in else: ', err)
+          dispatch(set_errors_array(err))
+        }
       } finally {
         dispatch(set_categories_loading(false))
       }
@@ -139,7 +158,13 @@ const useApiConnectors = () => {
   
       } catch (error) {
         logIfNodeDev('editSkillCategory error: ', error)
-        toast.error(error.response.data.error)
+
+        const err = error.response.data.error
+        if (!isArray(err)) {
+          toast.error(err)
+        } else {
+          dispatch(set_errors_array(err))
+        }
       } finally {
         dispatch(set_categories_loading(false))
       }
@@ -167,7 +192,13 @@ const useApiConnectors = () => {
   
       } catch (error) {
         logIfNodeDev('deleteSkillCategory error: ', error)
-        toast.error(error.response.data.error)
+
+        const err = error.response.data.error
+        if (!isArray(err)) {
+          toast.error(err)
+        } else {
+          dispatch(set_errors_array(err))
+        }
       } finally {
         dispatch(set_category_delete_loading(false))
       }
