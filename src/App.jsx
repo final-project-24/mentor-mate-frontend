@@ -20,6 +20,8 @@ import Session from "./pages/session/Session.jsx";
 import Feedback from "./pages/feedback/Feedback.jsx";
 import Playground from "./pages/playground/Playground.jsx";
 import NotFound from "./pages/not-found/NotFound.jsx";
+import SkillCategories from "./components/skills/skill-categories/SkillCategories.jsx"
+import Skills from "./components/skills/skills/Skills.jsx";
 
 export default function App() {
   return (
@@ -40,7 +42,11 @@ export default function App() {
                     <Route path="session" element={<Session />} />
                     {/* <Route path="past-sessions" element={<PastSessions />} /> */}
                     <Route path="settings" element={<Settings />} />
-                    <Route path="admin-tools" element={<AdminTools />} />
+                    <Route path="admin-tools" element={<AdminTools />}>
+                      {/* <Route index element={<AdminTools />} /> */}
+                      <Route path="skill-categories" element={<SkillCategories />} />
+                      <Route path="skills" element={<Skills />} />
+                    </Route>
                     {/* <Route path="feedback" element={<Feedback />} /> */}
                   </Route>
                   <Route path="/booking/:id" element={<Booking />} />
