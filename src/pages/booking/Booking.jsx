@@ -108,6 +108,7 @@
 import { useState, useEffect } from "react";
 import Layout from "../../components/layout/Layout";
 import axios from "axios";
+import { fetchBookingDetails } from "../../utils/api-connector";
 import { useAuthContext } from "../../store/authentication-context/AuthenticationContext";
 import { useBookingContext } from "../../store/booking-context/BookingContext";
 import "./Booking.css";
@@ -138,17 +139,17 @@ const Booking = () => {
 
   // Fetch booking details based on bookingId
   useEffect(() => {
-    const fetchBookingDetails = async () => {
+    const getBookingDetails = async () => {
       try {
-        const response = await axios.get(`/calendar/booking-details/${bookingId}`);
-        setBookingDetails(response.data);
+        const data = await fetchBookingDetails(bookingId);
+        setBookingDetails(data);
       } catch (error) {
         console.error("Error fetching booking details:", error);
       }
     };
 
     if (bookingId) {
-      fetchBookingDetails();
+      getBookingDetails();
     }
   }, [bookingId]);
 

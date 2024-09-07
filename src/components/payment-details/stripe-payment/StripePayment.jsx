@@ -76,7 +76,8 @@ const StripePayment = ({ bookingId, onPaymentSuccess }) => {
         setError(paymentError.message);
       } else if (paymentIntent.status === "succeeded") {
         if (onPaymentSuccess) onPaymentSuccess();
-        navigate("/session"); // Redirect to the session page after payment success
+        navigate("/dashboard/session"); // Redirect to the session page after payment success
+        window.scrollTo(0, 0); // Scroll to the top of the page
       } else {
         console.log(`Payment status: ${paymentIntent.status}`);
       }

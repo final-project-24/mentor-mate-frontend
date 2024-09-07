@@ -43,14 +43,14 @@ export default function App() {
                     <Route path="admin-tools" element={<AdminTools />} />
                     {/* <Route path="feedback" element={<Feedback />} /> */}
                   </Route>
+                  <Route path="/search" element={<Search />} />
+                  <Route path="/schedule" element={<Schedule />} />
                   <Route path="/booking/:id" element={<Booking />} />
-                  <Route path="/payment" element={<Payment />} />
                   <Route path="/terms" element={<Terms />} />
                   <Route path="/feedback" element={<Feedback />} />
                   {/* <Route path="/settings" element={<Settings />} /> */}
                   {/* <Route path="/search" element={<Search />} /> */}
-                  {/* <Route path="/schedule" element={<Schedule />} /> */}
-                  <Route path="/session" element={<Session />} />
+                  {/* <Route path="/session" element={<Session />} /> */}
                   <Route path="/playground" element={<Playground />} />
                   <Route path="*" element={<NotFound />} />
                 </Routes>

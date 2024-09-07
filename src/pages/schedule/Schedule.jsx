@@ -23,6 +23,7 @@ export default function Schedule() {
 
   const handleToggle = () => {
     navigate("/dashboard/search");
+    window.scrollTo(0, 0); // Scroll to the top of the page
   };
 
   // // Function to handle mentor selection

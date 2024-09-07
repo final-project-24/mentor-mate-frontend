@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { HashLink as Link } from "react-router-hash-link";
 import { useAuthContext } from "../../../store/authentication-context/AuthenticationContext";
 import StripePayment from "../stripe-payment/StripePayment";
 import "./Payment.css";
 
-const Payment = ({ bookingId, amount, offerDetails }) => {
+// const Payment = ({ bookingId, amount, offerDetails }) => {
+const Payment = ({ bookingId, offerDetails }) => {
   const { user } = useAuthContext();
   const [isAgreed, setIsAgreed] = useState(false);
   const [stripePending, setStripePending] = useState(false);
@@ -22,6 +24,9 @@ const Payment = ({ bookingId, amount, offerDetails }) => {
     selectedSkill = [],
   } = offerDetails || {};
 
+  // Format the amount
+  const amount = price * 100; // Convert dollars to cents
+
   const handleCheckboxChange = (event) => {
     setIsAgreed(event.target.checked);
   };
@@ -30,7 +35,7 @@ const Payment = ({ bookingId, amount, offerDetails }) => {
     if (redirect) {
       // Perform the redirect after delay
       const timer = setTimeout(() => {
-        navigate("/dashboard/session");
+        navigate("/dashboard/session"); // NOT WORKING -  redirect happens inside stripe-payment
       }, 6000);
 
       return () => clearTimeout(timer); // Cleanup on component unmount
@@ -102,7 +107,7 @@ const Payment = ({ bookingId, amount, offerDetails }) => {
           <div className="terms-conditions-section">
             <p className="instructions">
               Before proceeding with the payment, please review and accept our{" "}
-              <Link to="/terms" className="terms-link">
+              <Link to="/terms#top" className="terms-link">
                 Terms and Conditions
               </Link>
               .

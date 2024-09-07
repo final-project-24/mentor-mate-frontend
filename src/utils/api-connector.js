@@ -213,7 +213,7 @@ export const fetchSessionData = async () => {
   }
 };
 
-// calendar API calls ==================================================
+// calendar / booking API calls ==================================================
 
 // MentorAvailabilityCalendar.jsx
 export const fetchAvailability = async (mentorUuid) => {
@@ -264,6 +264,18 @@ export const bookSlot = async (eventId, skillId) => {
     return res.data;
   } catch (error) {
     console.error("Error booking slot:", error);
+    throw error;
+  }
+};
+
+// BookingDetails.jsx
+export const fetchBookingDetails = async (bookingId) => {
+  try {
+    const response = await axios.get(`/calendar/booking-details/${bookingId}`);
+    console.log("Booking details:", response.data); // Log booking details
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching booking details:", error);
     throw error;
   }
 };

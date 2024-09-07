@@ -114,7 +114,8 @@ export const AuthProvider = ({ children }) => {
     setIsLoggedIn(false); // Set isLoggedIn to false
     setUser(null); // Clear user data
     setLoading(false); // Set loading to false
-    navigate("/"); // Navigate to home page
+    navigate("/authentication"); // Navigate to home page
+    window.scrollTo(0, 0); // Scroll to the top of the page
     window.location.reload(); // Reload the page to clear any staged data
   };
 

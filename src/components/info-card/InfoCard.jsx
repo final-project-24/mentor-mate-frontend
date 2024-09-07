@@ -31,11 +31,13 @@ export default function InfoCard({
   const { setSelectedMentorUuid, setSelectedSkill } = useBookingContext();
 
   const handleSkillClick = (mentorUuid, skill) => {
-    console.log("Mentor UUID:", mentorUuid); // Debugging log
-    console.log("Skill:", skill); // Debugging log
+    // console.log("Mentor UUID:", mentorUuid); // Debugging log
+    // console.log("Skill:", skill); // Debugging log
+    console.log("Hey there! I'm the InfoCard component!"); // Debugging log
     setSelectedMentorUuid(mentorUuid); // Set the selected mentor UUID in the booking context
     setSelectedSkill(skill); // Set the selected skill in the booking context
     navigate("/dashboard/schedule"); // Navigate to the schedule page
+    window.scrollTo(0, 0); // Scroll to the top of the page
   };
 
   return (
