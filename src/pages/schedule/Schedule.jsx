@@ -49,8 +49,8 @@ export default function Schedule() {
   }
 
   return (
-    <section id="booking-container ">
-      {/* <h1>Booking</h1> */}
+    <section id="booking-container">
+      <h1>Booking</h1>
       {user.role === "admin" && (
         <div>
           <p className="booking-content">
