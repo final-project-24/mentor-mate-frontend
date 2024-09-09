@@ -7,7 +7,7 @@ import SearchBySkill from '../../components/search-by-skill/SearchBySkill.jsx'
 
 const Search = () => {
   return (
-    <section id="search" className="pt-[80px]">
+    <section id="search" className="pt-[100px]">
       <h2 className="text-accent">Search for a Mentor </h2>
       <div className="search-card">
         <SearchBar />

@@ -60,7 +60,7 @@ const SearchBar = ({ onResults }) => {
   };
 
   return (
-    <div className="search-bar-container">
+    <div className="search-bar-container ">
       <form onSubmit={handleSearch} className="search-bar flex flex-col ">
         <input
           type="text"
