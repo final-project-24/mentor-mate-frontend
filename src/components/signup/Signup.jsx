@@ -36,7 +36,8 @@ function SignUp({ onToggleLogin }) {
       setImage("");
       setRole("mentor");
       setErrorMessage("");
-      navigate("/"); // Redirect to home page after successful sign up
+      navigate("/dashboard"); // Redirect to home page after successful sign up
+      window.scrollTo(0, 0); // Scroll to the top of the page
     } catch (error) {
       console.error("Sign up failed:", error);
       setErrorMessage("Sign up failed. Please try again.");

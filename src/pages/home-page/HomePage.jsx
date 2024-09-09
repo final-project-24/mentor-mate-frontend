@@ -4,7 +4,7 @@ import { useState } from "react";
 import axios from 'axios'
 import Layout from "../../components/layout/Layout";
 
-import ReviewSidebar from "../review-sidebar/ReviewSidebar";
+import ReviewSidebar from "../../components/review-sidebar/ReviewSidebar.jsx";
 import { useAuthContext } from "../../store/authentication-context/AuthenticationContext";
 import Schedule from "../schedule/Schedule";
 import InfoCard from "../../components/info-card/InfoCard.jsx";
@@ -203,21 +203,20 @@ const HomePage = () => {
               </p>
             )}
 
-            {isLoggedIn && (
-              <div className=" lg:mx-auto">
-                <div className="flex flex-col-reverse lg:px-20  ">
-                  <InfoCard
-                    image={user.image}
-                    userName={user.userName}
-                    role={user.role}
-                    email={user.email}
-                  />
-                </div>
-
-                {/* Keep ReviewSidebar from nacho branch */}
-                {/* <ReviewSidebar /> */}
-              </div>
-            )}
+        {isLoggedIn && (
+          <div className="items-center w-full lg:mx-auto border border-red-500">
+            <div className="flex flex-col-reverse px-20 lg:w-1/2 lg:mx-auto justify-center border border-red-500">
+              <InfoCard
+                image={user.image}
+                userName={user.userName}
+                role={user.role}
+                email={user.email}
+              />
+            </div>
+            {/* Keep ReviewSidebar from nacho branch */}
+            {/* <ReviewSidebar /> */}
+          </div>
+        )}
 
             {isLoggedIn && user.role === "mentee" && (
               <div className="p-">

@@ -9,29 +9,16 @@ import Layout from "../../components/layout/Layout";
 const Terms = () => {
   const { termsData } = useLanguageContext(); // Use the language context
   const { bookingId, isAgreed, setIsAgreed } = useBookingContext(); // Use the booking context
-  const [isChecked, setIsChecked] = useState(isAgreed); // Use the isAgreed state from the context
   const navigate = useNavigate();
 
   useEffect(() => {
-    setIsChecked(isAgreed);
-  }, [isAgreed]);
-
-  const handleCheckboxChange = () => {
-    const newCheckedStatus = !isChecked;
-    setIsChecked(newCheckedStatus);
-    setIsAgreed(newCheckedStatus);
-    if (newCheckedStatus) {
-      if (bookingId) {
-        navigate(`/booking/${bookingId}`, { state: { agreed: true } });
-      } else {
-        console.error("Booking ID not found in context");
-      }
-    }
-  };
+    setIsAgreed(isAgreed); // Sync the context state with local state
+  }, [isAgreed, setIsAgreed]);
 
   const handleGoBack = () => {
     // Navigate to the payment page instead of the booking page
-    navigate('/payment', { state: { agreed: isChecked } });
+    // navigate('/payment', { state: { agreed: isChecked } });
+    navigate('/booking/' + bookingId);
   };
 
   return (
@@ -66,3 +53,4 @@ const Terms = () => {
 };
 
 export default Terms;
+

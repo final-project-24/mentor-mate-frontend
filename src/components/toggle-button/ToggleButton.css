@@ -14,6 +14,11 @@
   background-color: var(--accent-color-hover);
 }
 
+.button-type-standard .button-name {
+  margin-right: var(--margin-small);
+  margin-left: var(--margin-small);
+}
+
 /* ======================================== */
 
 .button-type-link {
@@ -23,14 +28,21 @@
   cursor: pointer;
   padding: 0;
   margin: var(--margin-small) 0;
-  font-size: inherit;
+  /* font-size: inherit; */
+  font-size: var(--font-size-lg);
   transition: var(--transition-base);
 }
 
 .button-type-link:hover {
   background: none;
   color: var(--accent-color-hover);
-  font-weight: var(--font-weight-bold);
+  text-decoration: underline;
+  /* var(--font-weight-); */
+}
+
+.button-type-link .button-name {
+  margin-right: var(--margin-small);
+  margin-left: var(--margin-small);
 }
 
 /* ======================================= */

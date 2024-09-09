@@ -187,15 +187,34 @@ export const changeEmail = async (newEmail) => {
 // feedback API calls ==================================================
 
 // submit feedback
-export const submitFeedback = async (feedbackData) => {
+export const submitFeedback = async (feedbackData, bookingId, mentorUuid, menteeUuid) => {
   try {
-    const res = await axios.post("/feedback", feedbackData);
+    const res = await axios.post("/feedback", feedbackData, bookingId, mentorUuid, menteeUuid);
+    console.log("Feedback submitted:", res.data); // Log submitted feedback
     if (res.status !== 201) {
       throw new Error("Unable to submit feedback");
     }
     return res.data;
   } catch (error) {
     console.error("Error submitting feedback:", error);
+    throw error;
+  }
+};
+
+// fetch feedbacks
+export const fetchFeedbacks = async (bookingId, mentorUuid, menteeUuid) => {
+  try {
+    const res = await axios.get("/feedback", {
+      params: { bookingId, mentorUuid, menteeUuid },
+    });
+    console.log("Fetched feedbacks:", res.data); // Log fetched feedbacks
+    if (res.status !== 200) {
+      throw new Error("Unable to fetch feedbacks");
+    }
+    console.log("Fetched feedbacks:", res.data); // Log fetched feedbacks
+    return res.data;
+  } catch (error) {
+    console.error("Error fetching feedbacks:", error);
     throw error;
   }
 };
@@ -213,7 +232,7 @@ export const fetchSessionData = async () => {
   }
 };
 
-// calendar API calls ==================================================
+// calendar / booking API calls ==================================================
 
 // MentorAvailabilityCalendar.jsx
 export const fetchAvailability = async (mentorUuid) => {
@@ -240,7 +259,7 @@ export const addAvailability = async (start, end) => {
     const res = await axios.post("/calendar", {
       start,
       end,
-      title: "Available",
+      title: "1 Hour Session",
     });
     if (res.status !== 200 && res.status !== 201) {
       throw new Error("Unable to add availability");
@@ -253,9 +272,11 @@ export const addAvailability = async (start, end) => {
 };
 
 // MentorAvailabilityCalendar.jsx
-export const bookSlot = async (eventId) => {
+export const bookSlot = async (eventId, skillId) => {
   try {
-    const res = await axios.post(`/calendar/book/${eventId}`);
+    const res = await axios.post(`/calendar/book/${eventId}`, {
+      skillId,
+    });
     if (res.status !== 200) {
       throw new Error("Unable to book slot");
     }
@@ -266,42 +287,76 @@ export const bookSlot = async (eventId) => {
   }
 };
 
+// BookingDetails.jsx
+export const fetchBookingDetails = async (bookingId) => {
+  try {
+    const response = await axios.get(`/calendar/booking-details/${bookingId}`);
+    console.log("Booking details:", response.data); // Log booking details
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching booking details:", error);
+    throw error;
+  }
+};
+
+// Fetch upcoming sessions
+export const fetchUpcomingSessions = async () => {
+  try {
+    const res = await axios.get("/calendar/upcoming-sessions");
+    console.log("Fetched upcoming sessions:", res.data); // Log fetched upcoming sessions
+    if (res.status !== 200) {
+      throw new Error("Unable to fetch upcoming sessions");
+    }
+    return res.data;
+  } catch (error) {
+    console.error("Error fetching upcoming sessions:", error);
+    throw error;
+  }
+};
+
+// Fetch past sessions
+export const fetchPastSessions = async () => {
+  try {
+    const res = await axios.get("/calendar/past-sessions");
+    console.log("Fetched past sessions:", res.data); // Log fetched past sessions
+    if (res.status !== 200) {
+      throw new Error("Unable to fetch past sessions");
+    }
+    return res.data;
+  } catch (error) {
+    console.error("Error fetching past sessions:", error);
+    throw error;
+  }
+};
+
 // // payment API calls ==================================================
 
 // Create Stripe Payment Intent ----------------------------
 // export const createStripePaymentIntent = async (amount, currency, userId, isMentee, bookingId, eventId) => {
-  export const createStripePaymentIntent = async (bookingId) => {
-    try {
-      // Ensure all required parameters are included
-      const res = await axios.post('/payment/stripe/create-payment-intent', {
-        // amount,
-        // currency,
-        // userId,
-        // isMentee,
-        bookingId,
-        // eventId
-      });
-  
-      console.log("Response from server:", res);
-  
-      if (res.status !== 200) {
-        throw new Error("Unable to create Stripe payment intent");
-      }
-  
-      return res.data; // Return the clientSecret or any other relevant data
-    } catch (error) {
-      console.error("Error creating Stripe payment intent:", error);
-      throw error; // Re-throw the error to be handled by calling code
+export const createStripePaymentIntent = async (bookingId) => {
+  try {
+    // Ensure all required parameters are included
+    const res = await axios.post("/payment/stripe/create-payment-intent", {
+      // amount,
+      // currency,
+      // userId,
+      // isMentee,
+      bookingId,
+      // eventId
+    });
+
+    console.log("Response from server:", res);
+
+    if (res.status !== 200) {
+      throw new Error("Unable to create Stripe payment intent");
     }
-  };
-  
-  
 
-
-
-
-
-
+    return res.data; // Return the clientSecret or any other relevant data
+  } catch (error) {
+    console.error("Error creating Stripe payment intent:", error);
+    throw error; // Re-throw the error to be handled by calling code
+  }
+};
 
 // Search API calls ====================================================
 
@@ -325,7 +380,7 @@ export const bookSlot = async (eventId) => {
 //   }
 // };
 
-
+// fetch mentors
 export const fetchMentors = async (query) => {
   try {
     const res = await axios.get(`/search`, {
@@ -346,4 +401,24 @@ export const fetchMentors = async (query) => {
   }
 };
 
+// fetch mentor details
+export const getMentorSkills = async (mentorUuid) => {
+  try {
+    const res = await axios.get(`/search/mentors/${mentorUuid}/skills`, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
 
+    if (res.status !== 200) {
+      throw new Error(`HTTP error! status: ${res.status}`);
+    }
+
+    const data = res.data;
+    console.log(`Fetched skills for mentor ${mentorUuid}:`, data); // Log fetched skills
+    return data;
+  } catch (error) {
+    console.error(`Error fetching skills for mentor ${mentorUuid}:`, error);
+    throw error;
+  }
+};

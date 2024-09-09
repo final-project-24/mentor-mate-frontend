@@ -71,24 +71,28 @@
 
 // export default MentorList;
 
-import React from "react";
+import React, { useEffect } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./MentorList.css";
+import { useBookingContext } from "../../store/booking-context/BookingContext";
 import InfoCard from "../info-card/InfoCard";
 
-const MentorList = ({ mentors = [] }) => {
-  console.log("Mentors prop:", mentors); // Debugging line
+const MentorList = () => {
+  const { mentors } = useBookingContext();
+
+  console.log("Hey there! I'm the MentorList component!"); // Debugging log
 
   if (!mentors.length) {
     return <p className="mentor-list-error-message">No mentors found.</p>;
   }
 
-  const uniqueMentors = Array.from(new Set(mentors.map(mentor => mentor.uuid)))
-    .map(uuid => mentors.find(mentor => mentor.uuid === uuid));
+  const uniqueMentors = Array.from(
+    new Set(mentors.map((mentor) => mentor.uuid))
+  ).map((uuid) => mentors.find((mentor) => mentor.uuid === uuid));
 
-  console.log("Unique Mentors:", uniqueMentors); // Debugging line
+  // console.log("Unique Mentors:", uniqueMentors); // Debugging line
 
   const slidesToShow = Math.min(uniqueMentors.length, 3);
 
@@ -122,21 +126,23 @@ const MentorList = ({ mentors = [] }) => {
 
   return (
     <div className="mentor-list-container">
-        <Slider {...settings}>
-          {uniqueMentors.map((mentor) => (
-            <div key={mentor.uuid} className="mentor-item">
-              <InfoCard
-                image={mentor.image}
-                userName={mentor.userName}
-                email={mentor.email}
-                role={mentor.role}
-                start={mentor.start}
-                end={mentor.end}
-                price={mentor.price}
-              />
-            </div>
-          ))}
-        </Slider>
+      <Slider {...settings}>
+        {uniqueMentors.map((mentor) => (
+          <div key={mentor.uuid} className="mentor-item">
+            <InfoCard
+              mentorUuid={mentor.uuid}
+              image={mentor.image}
+              userName={mentor.userName}
+              skills={mentor.skills}
+              // email={mentor.email}
+              // role={mentor.role}
+              // start={mentor.start}
+              // end={mentor.end}
+              // price={mentor.price}
+            />
+          </div>
+        ))}
+      </Slider>
     </div>
   );
 };

@@ -22,6 +22,7 @@ function Login({ onToggleSignUp, onToggleForgotPassword }) {
       setEmail("");
       setPassword("");
       navigate("/dashboard"); //
+      window.scrollTo(0, 0); // Scroll to the top of the page
     } catch (error) {
       console.error("Login failed:", error);
       setErrorMessage("Login failed. Please try again.");

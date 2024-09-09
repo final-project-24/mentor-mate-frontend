@@ -13,6 +13,11 @@
   margin-bottom: var(--margin-base);
 }
 
+.booking-content {
+  color: var(--secondary-color);
+  margin-bottom: var(--margin-base);
+}
+
 #booking-container a {
   display: flex;
   align-items: center;
