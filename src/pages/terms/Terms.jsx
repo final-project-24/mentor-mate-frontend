@@ -23,7 +23,7 @@ const Terms = () => {
 
   return (
     <Layout>
-      <div className="terms-container">
+      <div className="terms-container mt-[80px] mb-[200px] h-full">
         <h1 className="terms-title">Terms and Conditions</h1>
         <p className="terms-text">
           By agreeing to these terms, you acknowledge and accept the following conditions:

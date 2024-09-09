@@ -4,12 +4,12 @@ import Layout from '../../components/layout/Layout'
 function WhyWe() {
   return (
     <Layout>
-      <article className="mt-[100px] lg:pt-[150px] h-[100vh] ">
+      <article className="mt-[100px] lg:pt-[150px]  ">
         <h2 className="text-center text-accent font-bold text-xl pt-2 pb-10">
           Why MentorMate?
         </h2>
         <div className="pt-5 text-center">
-          <p className="pb-5 text-lg  ">
+          <div className="pb-5 text-lg  ">
             <strong className="text-lg md:text-xl  text-secondary md:text-accent">
               Tailored Mentorship
             </strong>
@@ -18,18 +18,18 @@ function WhyWe() {
               industry, ensuring you receive guidance that's relevant and
               impactful.
             </p>
-          </p>
-          <p className="pb-5 text-lg ">
+          </div>
+          <div className="pb-5 text-lg ">
             <strong className="text-lg md:text-xl  text-secondary md:text-accent">
               Flexible Learning
-            </strong>{" "}
+            </strong>
             <p className="hidden md:block text-lg">
               OWhether you're a student, a career switcher, or a professional
               looking to upskill, our platform offers flexible learning paths
               that fit your schedule and needs.
             </p>
-          </p>
-          <p className="pb-5 text-lg ">
+          </div>
+          <div className="pb-5 text-lg ">
             <strong className="text-lg md:text-xl  text-secondary md:text-accent">
               Community-Driven Growth
             </strong>
@@ -38,8 +38,8 @@ function WhyWe() {
               dedicated to mutual growth and success, providing you with a
               support network that extends beyond your mentorship sessions.
             </p>
-          </p>
-          <p className="pb-5 text-lg ">
+          </div>
+          <div className="pb-5 text-lg ">
             <strong className="text-lg md:text-xl  text-secondary md:text-accent">
               Continuous Improvement
             </strong>
@@ -48,7 +48,7 @@ function WhyWe() {
               provide ongoing feedback (and resources?) to ensure you're always
               moving forward in your career.
             </p>
-          </p>
+          </div>
           {/* <p className="pb-10 text-lg ">
             <strong className="text-lg text-accent">
               Comprehensive Support:

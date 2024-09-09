@@ -12,7 +12,9 @@
 
 .main-content {
   flex-grow: 1;
-  padding: var(--padding-base);
+  height: auto;
+  
+  /* padding: var(--padding-base); */
   /* Ensure the main content can scroll */
   overflow-y: auto;
 }
@@ -20,11 +22,14 @@
 @media (min-width: 350px) {
   .main-content {
     margin-left: var(--mini-sidebar-margin-left);
+    height: 100%;
+    
   }
 }
 
 @media (min-width: 768px) {
   .main-content {
     margin-left: var(--sidebar-width);
+    
   }
 }
