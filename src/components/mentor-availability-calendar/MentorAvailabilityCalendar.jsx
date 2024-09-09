@@ -11,6 +11,8 @@ import {
 import "react-big-calendar/lib/css/react-big-calendar.css";
 // import "./MentorAvailabilityCalendar.css";
 
+
+
 const localizer = momentLocalizer(moment);
 
 const MentorAvailabilityCalendar = ({ mentorUuid, userRole }) => {
@@ -76,7 +78,7 @@ const MentorAvailabilityCalendar = ({ mentorUuid, userRole }) => {
 
      return (
        <div
-         className="calendar-container flex flex-col lg:flex-row"
+         className="calendar-container flex flex-col lg:flex-row "
          style={{ height: "calc(100vh)" }}
        >
          <div
@@ -84,24 +86,31 @@ const MentorAvailabilityCalendar = ({ mentorUuid, userRole }) => {
              selectedSlot ? "lg:w-[70%]" : "w-full"
            }`}
          >
-           <Calendar
-             localizer={localizer}
-             events={events}
-             startAccessor="start"
-             endAccessor="end"
-             style={{ height: "100vh", width: "100%" }}
-             selectable={userRole === "mentor"}
-             onSelectSlot={handleSelectSlot}
-             onSelectEvent={handleBookSlot}
-           />
+           <div className="">
+             <Calendar
+               localizer={localizer}
+               events={events}
+               startAccessor="start"
+               endAccessor="end"
+               //  style={{ height: "100vh", width: "100%" }}
+               className="w-[95%] h-[100vh] flex flex-row"
+               selectable={userRole === "mentor"}
+               onSelectSlot={handleSelectSlot}
+               onSelectEvent={handleBookSlot}
+              
+             />
+           </div>
          </div>
          {userRole === "mentor" && selectedSlot && (
            <div className="selected-slot-info lg:w-[30%] mt-4 p-4 bg-blue-100 rounded flex flex-col items-center justify-center transition-all duration-300">
              <h3 className="text-lg font-semibold">Add Availability</h3>
              <p>
-               Start: {moment(selectedSlot.start).format("MMMM Do YYYY, h:mm a")}
+               Start:{" "}
+               {moment(selectedSlot.start).format("MMMM Do YYYY, h:mm a")}
              </p>
-             <p>End: {moment(selectedSlot.end).format("MMMM Do YYYY, h:mm a")}</p>
+             <p>
+               End: {moment(selectedSlot.end).format("MMMM Do YYYY, h:mm a")}
+             </p>
              <button
                className="mt-2 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
                onClick={handleAddAvailability}
