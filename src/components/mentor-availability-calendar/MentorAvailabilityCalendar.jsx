@@ -76,11 +76,11 @@ const MentorAvailabilityCalendar = ({ mentorUuid, userRole }) => {
 
   return (
     <div
-      className="calendar-container flex flex-col lg:flex-row"
+      className="calendar-container flex flex-col lg:flex-row pt-96 pb-96"
       style={{ height: "calc(100vh)" }}
     >
       <div
-        className={`calendar flex flex-col lg:flex transition-all duration-300 ${
+        className={`calendar flex flex-col lg:flex transition-all duration-300 border border-red-600 ml-1  ${
           selectedSlot ? "lg:w-[70%]" : "w-full"
         }`}
       >
@@ -90,7 +90,7 @@ const MentorAvailabilityCalendar = ({ mentorUuid, userRole }) => {
             events={events}
             startAccessor="start"
             endAccessor="end"
-            className="w-[95%] h-[100vh] flex flex-row"
+            className="w-[100%] h-[100vh] flex overflow-hidden  "
             selectable={userRole === "mentor"}
             onSelectSlot={handleSelectSlot}
             onSelectEvent={handleBookSlot}
