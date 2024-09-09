@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
-import { useAuthContext } from "../../store/authentication-context/AuthenticationContext";
-import SessionDetailsHistory from "../../components/session-details-history/SessionDetailsHistory";
 import { fetchPastSessions } from "../../utils/api-connector";
+import { useAuthContext } from "../../store/authentication-context/AuthenticationContext";
+import Loading from "../../components/loading/Loading";
+import SessionDetailsHistory from "../../components/session-details-history/SessionDetailsHistory";
+
 
 const Session = () => {
   const { user, loading: authLoading } = useAuthContext();
@@ -35,12 +37,13 @@ const Session = () => {
     return <p>Loading authentication...</p>;
   }
 
+    // If the page is still loading, display a loading indicator
+    if (loading) {
+      return <Loading />;
+    }
+
   if (!user) {
     return <p>Please log in to view this page.</p>;
-  }
-
-  if (loading) {
-    return <p>Loading session data...</p>;
   }
 
   if (error) {

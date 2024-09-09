@@ -1,13 +1,29 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./SessionDetailsHistory.css";
+import { fetchFeedbacks } from "../../utils/api-connector";
 import ToggleButton from "../toggle-button/ToggleButton";
 import FeedbackPreview from "../feedback-preview/FeedbackPreview";
 
 const SessionDetailsHistory = ({ data }) => {
   const navigate = useNavigate(); // Initialize useNavigate
+  const [feedback, setFeedback] = useState(null); // State to store feedback
 
-  console.log("data:", data); // Debug log
+console.log("Hey there! I'm the Session Details History component.");
+  // console.log("data:", data); // Debug log
+
+  useEffect(() => {
+    if (data) {
+      fetchFeedbacks(data._id, data.mentorUuid, data.menteeUuid)
+        .then((fetchedFeedback) => {
+          setFeedback(fetchedFeedback);
+          // console.log("fetchedFeedback:", fetchedFeedback); // Log the fetched feedback
+        })
+        .catch((error) => {
+          console.error("Error fetching feedback:", error);
+        });
+    }
+  }, [data]);
 
   const onToggleSubmitFeedback = () => {
     navigate("/feedback", {
@@ -37,7 +53,7 @@ const SessionDetailsHistory = ({ data }) => {
         buttonName="Submit Feedback"
         className="button-type-standard"
       />
-      <FeedbackPreview feedback={data.feedback} />
+     <FeedbackPreview feedback={feedback} />
     </div>
   );
 };
