@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useAuthContext } from '../../store/authentication-context/AuthenticationContext';
 import SessionDetails from '../../components/session-details/SessionDetails';
-import { fetchSessionData } from '../../utils/api-connector';
+// import { fetchSessionData } from '../../utils/api-connector';
+import { fetchUpcomingSessions } from '../../utils/api-connector';
 
 const Session = () => {
   const { user, loading: authLoading } = useAuthContext();
@@ -9,10 +10,13 @@ const Session = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  console.log("Hey there! I'm the Session Page."); // Debug log
+
   useEffect(() => {
     const getSessionData = async () => {
       try {
-        const data = await fetchSessionData();
+        // const data = await fetchSessionData();
+        const data = await fetchUpcomingSessions();
         setSessionData(data);
       } catch (err) {
         setError(err.message);
@@ -44,10 +48,17 @@ const Session = () => {
     return <p>Error: {error}</p>;
   }
 
+  if (!sessionData.length) {
+    return <p>No upcoming sessions available.</p>;
+  } // added
+
   return (
     <div>
       {/* <h1>Session Page</h1> */}
-      <SessionDetails data={sessionData} />
+      {/* <SessionDetails data={sessionData} /> */}
+      {sessionData.map((session) => (
+        <SessionDetails key={session._id} data={session} />
+      ))}
     </div>
   );
 };

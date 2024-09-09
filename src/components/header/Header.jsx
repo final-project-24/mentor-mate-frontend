@@ -10,10 +10,10 @@ const Header = () => {
   const [nav, setNav] = useState(false);
   const { isLoggedIn, user } = useAuthContext(); // Use user object from context
 
-  useEffect(() => {
-    console.log("Header - isLoggedIn:", isLoggedIn);
-    console.log("Header - userRole:", user?.role); // Ensure user object exists before accessing role
-  }, [isLoggedIn, user]);
+  // useEffect(() => {
+  //   console.log("Header - isLoggedIn:", isLoggedIn);
+  //   console.log("Header - userRole:", user?.role); // Ensure user object exists before accessing role
+  // }, [isLoggedIn, user]);
 
   // Define navigation links based on user role
   const guestLinks = [
