@@ -27,6 +27,12 @@ export default function DevNav() {
             <Link to="/playground">Playground</Link>
           </li>
           <li>
+            <Link to="/booking/:id">Booking</Link>
+          </li>
+          <li>
+            <Link to="/session-preview">Session Preview</Link>
+          </li>
+          <li>
             <Link to="/feedback">Feedback</Link>
           </li>
           <li>

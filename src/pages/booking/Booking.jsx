@@ -123,6 +123,8 @@ const Booking = () => {
   const location = useLocation();
   const [bookingDetails, setBookingDetails] = useState(null);
 
+  console.log("Hey there! I'm the Booking Page."); // Debug log
+
   // Handle agreement status change
   const handleAgreeChange = (agreed) => {
     setIsAgreed(agreed);

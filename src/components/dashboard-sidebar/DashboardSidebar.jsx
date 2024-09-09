@@ -11,6 +11,7 @@ import {
   faCog,
   faTools,
   faUser,
+  faChartLine,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useAuthContext } from "../../store/authentication-context/AuthenticationContext";
@@ -102,7 +103,22 @@ export default function DashboardSidebar() {
                 className={activeLink === "/dashboard/session" ? "active" : ""}
               >
                 Upcoming Sessions
-                <FontAwesomeIcon icon={faChalkboardTeacher} className="fa-icon" />
+                <FontAwesomeIcon
+                  icon={faChalkboardTeacher}
+                  className="fa-icon"
+                />
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/dashboard/session-history#top"
+                onClick={closeSidebar}
+                className={
+                  activeLink === "/dashboard/session-history" ? "active" : ""
+                }
+              >
+                Your Progress
+                <FontAwesomeIcon icon={faChartLine} className="fa-icon" />
               </Link>
             </li>
             <li>
