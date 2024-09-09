@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./Login.css";
-import { useAuthContext } from "../../store/authentication-context/AuthenticationContext.jsx";
-import { useNavigate } from "react-router-dom";
+import { useAuthContext } from "../../store/authentication-context/AuthenticationContext.jsx"; //
+import { useNavigate } from "react-router-dom"; //
 import ToggleButton from "../../components/toggle-button/ToggleButton.jsx";
 
 // function Login({ onLogin }) {
@@ -11,14 +11,14 @@ function Login({ onToggleSignUp, onToggleForgotPassword }) {
   const [errorMessage, setErrorMessage] = useState("");
 
   const { login } = useAuthContext(); // Use useAuthContext hook to access login method
+
   const navigate = useNavigate(); //
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      await login(email, password); // Use login method from authentication context
-
+      await login(email, password);
       setEmail("");
       setPassword("");
       navigate("/dashboard"); //
@@ -30,8 +30,10 @@ function Login({ onToggleSignUp, onToggleForgotPassword }) {
   };
 
   return (
-    <div className="login-container">
-      <h2>Login</h2>
+
+
+    <div className="login-container px-2 min-h-10 mt-[100px]  border border-red-600">
+      <h2 className="text-accent text-lg pb-4">Login</h2>
       {errorMessage && <p className="login-error-message">{errorMessage}</p>}
       <form onSubmit={handleSubmit}>
         <input
@@ -48,18 +50,19 @@ function Login({ onToggleSignUp, onToggleForgotPassword }) {
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-        <button type="submit">Login</button>
+        <button type="submit" className="">Login</button>
       </form>
       <ToggleButton
         onToggle={onToggleSignUp}
         buttonName="Switch to Sign Up"
-        className="button-type-link"
+        className="button-type-link "
       />
       <ToggleButton
         onToggle={onToggleForgotPassword}
         buttonName="Forgot Password"
         className="button-type-link"
       />
+
     </div>
   );
 }

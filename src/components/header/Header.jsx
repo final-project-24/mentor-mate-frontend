@@ -17,13 +17,13 @@ const Header = () => {
 
   // Define navigation links based on user role
   const guestLinks = [
-    // { to: "/why-we", label: "Why We?" },
-    // { to: "/how-it-works", label: "How It Works" },
-    { to: "/", label: "Home" },
-    { to: "/about-us", label: "About Us" },
+    { to: "/why-we", label: "Why We?" },
+    { to: "/how-it-works", label: "How It Works" },
+    // { to: "/", label: "Home" },
+    // { to: "/about-us", label: "About Us" },
     { to: "/pricing", label: "Pricing" },
     { to: "/contact", label: "Contact" },
-    // { to: "/dashboard", label: "Dashboard" },
+    //{ to: "/dashboard", label: "Dashboard" },
   ];
 
   const mentorLinks = [
@@ -78,12 +78,12 @@ const Header = () => {
 
   return (
     <div id="header">
-      <nav className="header-container fixed top-0 w-full h-[80px] xl:h-[100px] flex items-center px-4 md:px-6 z-50">
+      <nav className="header-container bg-primary fixed top-0 w-full h-[80px] lg:h-[100px] flex items-center px-4 md:px-6 z-50  border-b-2 border-accent ">
         {/* Logo Section */}
         <div
           className={`flex items-center ${
             nav
-              ? "absolute w-full top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 border"
+              ? "absolute w-full top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 "
               : "lg:justify-start"
           } flex-grow justify-center`}
         >
@@ -113,27 +113,26 @@ const Header = () => {
         </ul>
         {/* Login/Logout Button */}
         <div
-          className={`ml-auto flex items-center ${
-            nav ? "block" : "hidden lg:flex"
-          }`}
+          className={`ml-auto flex items-center ${nav ? "hidden" : "lg:flex"}`}
         >
           {!isLoggedIn ? (
             <Link
               to="/authentication"
-              className="text-primary bg-accent rounded-2xl p-2 hover:bg-neutral"
+              className="hidden lg:block text-primary rounded-xl p-2 hover:bg-accent hover:text-primary"
             >
               Login
             </Link>
-            // <LoginButton />
           ) : (
-            <LogoutButton />
+              <div className="hidden lg:flex">
+                <LogoutButton />
+                </div>
           )}
         </div>
         {/* Hamburger Icon */}
         <div className="lg:hidden flex items-center ml-auto">
           <button
             onClick={handleClick}
-            className="z-40 cursor-pointer"
+            className="z-50 cursor-pointer text-accent"
             aria-controls="mobile-menu"
             aria-expanded={nav ? "true" : "false"}
             aria-label="Toggle navigation menu"
@@ -142,56 +141,47 @@ const Header = () => {
           </button>
         </div>
         {/* Mobile Menu */}
-        <ul
-          id="mobile-menu"
-          className={`${
-            nav ? "flex" : "hidden"
-          } absolute top-0 left-0 w-full h-screen bg-[#fffdfd] text-gray-700 flex-col justify-center items-center z-40`}
-        >
-          {navLinks.map(({ to, label }) => (
-            <li
-              key={to}
-              onClick={closeMenu}
-              className="text-lg text-center py-2 hover:text-gray-700 mb-2 w-screen px-6 border-b border-gray-300"
+        {nav && (
+          <div className="fixed top-[80px] left-0 w-full h-[calc(100vh-80px)] flex z-40">
+            {/* Blurred 1/4 screen overlay */}
+            <div
+              className="w-1/4 backdrop-blur-sm z-40"
+              onClick={closeMenu} // Close menu on click
+            ></div>
+            {/* Menu taking up 3/4 of the screen */}
+            <ul
+              id="mobile-menu"
+              className="w-3/4  bg-[#fffdfd] text-gray-700 flex flex-col pt-[100px] items-center "
             >
-              <Link to={to}>{label}</Link>
-            </li>
-          ))}
-          {!isLoggedIn ? (
-            <li onClick={closeMenu}>
-              <Link
-                to="/authentication"
-                className="text-primary bg-accent rounded-2xl p-2"
-              >
-                Login
-              </Link>
-            </li>
-          ) : (
-            <li>
-              <LogoutButton />
-            </li>
-          )}
-        </ul>
+              {navLinks.map(({ to, label }) => (
+                <li
+                  key={to}
+                  className="text-lg text-center py-2 hover:text-gray-700 mb-2 w-full px-6 "
+                  onClick={closeMenu} // Close menu on click
+                >
+                  <Link to={to}>{label}</Link>
+                </li>
+              ))}
+              {!isLoggedIn ? (
+                <li onClick={closeMenu}>
+                  <Link
+                    to="/authentication"
+                    className=" text-primary bg-accent rounded-2xl p-2"
+                  >
+                    Login
+                  </Link>
+                </li>
+              ) : (
+                <li>
+                  <LogoutButton />
+                </li>
+              )}
+            </ul>
+          </div>
+        )}
       </nav>
     </div>
   );
 };
+
 export default Header;
-
-// import "./Header.css";
-// import React from "react";
-// import DevNav from "../dev-nav/DevNav";
-
-// export default function Header() {
-//   return (
-//     <>
-//       <header id="header">
-//         <DevNav />
-//         <p>Header: part of layout component</p>
-//       </header>
-//     </>
-
-//   );
-// };
-
-// export default Header;

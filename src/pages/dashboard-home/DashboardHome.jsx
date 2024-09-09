@@ -8,20 +8,18 @@ import InfoCard from "../../components/info-card/InfoCard.jsx";
 export default function DashboardHome() {
   const { isLoggedIn, user } = useAuthContext();
   return (
-    <div id="dashboard-home-container">
-      {isLoggedIn ? (
-        <>
-          <h1>Welcome {user.userName}</h1>
-        </>
-      ) : (
-        <div className="login-message-container">
-          <p>Please log in to access the dashboard.</p>
-          <LoginButton />
+    <div id="dashboard-home-container  ">
+      {isLoggedIn && (
+        <div className="mt-[80px] text-center text-xl pb-2 md:pb-5 ">
+          <h1>
+            Welcome
+            <p className="text-accent"> {user.userName}</p>
+          </h1>
         </div>
       )}
       {isLoggedIn && (
-        <div>
-          <div>
+        <div className="">
+          <div className="p-3 md:h-[500px]">
             <InfoCard
               image={user.image}
               userName={user.userName}

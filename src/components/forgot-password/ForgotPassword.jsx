@@ -19,8 +19,8 @@ function ForgotPassword({ onResetRequest }) {
   };
 
   return (
-    <div className="forgot-password-container">
-      <h2>Forgot Password</h2>
+    <div className="forgot-password-container border mx-2 mt-[180px]">
+      <h2 className="pb-4 text-accent md:text-lg">Forgot Password</h2>
       <form onSubmit={handleSubmit}>
         <input
           type="email"
@@ -29,7 +29,7 @@ function ForgotPassword({ onResetRequest }) {
           onChange={(e) => setEmail(e.target.value)}
           required
         />
-        <button type="submit">Send Reset Link</button>
+        <button type="submit" className="md:text-lg">Send Reset Link</button>
       </form>
       {message && <p>{message}</p>}
     </div>
