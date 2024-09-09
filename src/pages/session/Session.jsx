@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { useAuthContext } from '../../store/authentication-context/AuthenticationContext';
-import SessionDetails from '../../components/session-details/SessionDetails';
+import React, { useState, useEffect } from "react";
+import { useAuthContext } from "../../store/authentication-context/AuthenticationContext";
+import Loading from "../../components/loading/Loading";
+import NotLoggedInMessage from "../../components/not-logged-in-message/NotLoggedInMessage";
+import SessionDetails from "../../components/session-details/SessionDetails";
 // import { fetchSessionData } from '../../utils/api-connector';
-import { fetchUpcomingSessions } from '../../utils/api-connector';
+import { fetchUpcomingSessions } from "../../utils/api-connector";
 
 const Session = () => {
   const { user, loading: authLoading } = useAuthContext();
@@ -33,24 +35,27 @@ const Session = () => {
   }, [user]);
 
   if (authLoading) {
-    return <p>Loading authentication...</p>;
+    return <Loading />;
   }
 
   if (!user) {
-    return <p>Please log in to view this page.</p>;
+    return <NotLoggedInMessage />;
   }
 
   if (loading) {
-    return <p>Loading session data...</p>;
+    return <Loading />;
   }
 
   if (error) {
     return <p>Error: {error}</p>;
   }
 
-  if (!sessionData.length) {
+  // if (!sessionData.length) {
+  //   return <p>No upcoming sessions available.</p>;
+  // } // added
+  if (!sessionData || sessionData.length === 0) {
     return <p>No upcoming sessions available.</p>;
-  } // added
+  }
 
   return (
     <div>
@@ -64,6 +69,3 @@ const Session = () => {
 };
 
 export default Session;
-
-
-

@@ -9,7 +9,7 @@ const SessionDetailsHistory = ({ data }) => {
   const navigate = useNavigate(); // Initialize useNavigate
   const [feedback, setFeedback] = useState(null); // State to store feedback
 
-console.log("Hey there! I'm the Session Details History component.");
+  console.log("Hey there! I'm the Session Details History component.");
   // console.log("data:", data); // Debug log
 
   useEffect(() => {
@@ -39,6 +39,10 @@ console.log("Hey there! I'm the Session Details History component.");
     return <p>No session data available.</p>;
   }
 
+  const formattedStartDate = new Date(data.start).toLocaleDateString();
+  const formattedStartTime = new Date(data.start).toLocaleTimeString();
+  const formattedEndTime = new Date(data.end).toLocaleTimeString();
+
   return (
     <div className="session-details-container">
       <h1>🥳 WELCOME! These are the details of your finished session!</h1>{" "}
@@ -48,12 +52,16 @@ console.log("Hey there! I'm the Session Details History component.");
         Session Name: {data.selectedSkill[0].protoSkillTitle}
       </p>
       <p className="session-description">Description: {data.title}</p>
+      <p className="session-date">Date: {formattedStartDate}</p>
+      <p className="session-time">
+        Time: {formattedStartTime} - {formattedEndTime}
+      </p>
       <ToggleButton
         onToggle={onToggleSubmitFeedback}
         buttonName="Submit Feedback"
         className="button-type-standard"
       />
-     <FeedbackPreview feedback={feedback} />
+      <FeedbackPreview feedback={feedback} />
     </div>
   );
 };

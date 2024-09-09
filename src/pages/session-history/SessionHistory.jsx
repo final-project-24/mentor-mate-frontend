@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import { fetchPastSessions } from "../../utils/api-connector";
 import { useAuthContext } from "../../store/authentication-context/AuthenticationContext";
 import Loading from "../../components/loading/Loading";
+import NotLoggedInMessage from "../../components/not-logged-in-message/NotLoggedInMessage";
 import SessionDetailsHistory from "../../components/session-details-history/SessionDetailsHistory";
-
 
 const Session = () => {
   const { user, loading: authLoading } = useAuthContext();
@@ -34,25 +34,27 @@ const Session = () => {
   }, [user]);
 
   if (authLoading) {
-    return <p>Loading authentication...</p>;
+    return <Loading />;
   }
 
-    // If the page is still loading, display a loading indicator
-    if (loading) {
-      return <Loading />;
-    }
-
   if (!user) {
-    return <p>Please log in to view this page.</p>;
+    return <NotLoggedInMessage />;
+  }
+
+  if (loading) {
+    return <Loading />;
   }
 
   if (error) {
     return <p>Error: {error}</p>;
   }
 
-  if (!sessionData.length) {
+  // if (!sessionData.length) {
+  //   return <p>No upcoming sessions available.</p>;
+  // } // added
+  if (!sessionData || sessionData.length === 0) {
     return <p>No upcoming sessions available.</p>;
-  } // added
+  }
 
   return (
     <div>
