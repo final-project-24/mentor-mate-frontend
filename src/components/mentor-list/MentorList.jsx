@@ -79,37 +79,20 @@ import "./MentorList.css";
 import { useBookingContext } from "../../store/booking-context/BookingContext";
 import InfoCard from "../info-card/InfoCard";
 
-const MentorList = ({ mentors = [] }) => {
-  // console.log("Mentors prop:", mentors); // Debugging line
-  const { mentors: contextMentors, setMentors } = useBookingContext();
+const MentorList = () => {
+  const { mentors } = useBookingContext();
 
-  // if mentors are passed as props, set them in the context
-  useEffect(() => {
-    if (mentors.length > 0) {
-      setMentors(mentors);
-    }
-  }, [mentors, setMentors]);
+  console.log("Hey there! I'm the MentorList component!"); // Debugging log
 
-  //  if mentors are not passed as props, use the context mentors
-  const effectiveMentors = mentors.length > 0 ? mentors : contextMentors;
-
-  // if (!mentors.length) {
-  //   return <p className="mentor-list-error-message">No mentors found.</p>;
-  // }
-
-  if (!effectiveMentors.length) {
+  if (!mentors.length) {
     return <p className="mentor-list-error-message">No mentors found.</p>;
   }
 
-  // const uniqueMentors = Array.from(
-  //   new Set(mentors.map((mentor) => mentor.uuid))
-  // ).map((uuid) => mentors.find((mentor) => mentor.uuid === uuid));
-
   const uniqueMentors = Array.from(
-    new Set(effectiveMentors.map((mentor) => mentor.uuid))
-  ).map((uuid) => effectiveMentors.find((mentor) => mentor.uuid === uuid));
+    new Set(mentors.map((mentor) => mentor.uuid))
+  ).map((uuid) => mentors.find((mentor) => mentor.uuid === uuid));
 
-  console.log("Unique Mentors:", uniqueMentors); // Debugging line
+  // console.log("Unique Mentors:", uniqueMentors); // Debugging line
 
   const slidesToShow = Math.min(uniqueMentors.length, 3);
 

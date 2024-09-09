@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { HashLink as Link } from "react-router-hash-link";
 import { useAuthContext } from "../../../store/authentication-context/AuthenticationContext";
 import StripePayment from "../stripe-payment/StripePayment";
 import "./Payment.css";
 
-const Payment = ({ bookingId, amount, offerDetails }) => {
+// const Payment = ({ bookingId, amount, offerDetails }) => {
+const Payment = ({ bookingId, offerDetails }) => {
   const { user } = useAuthContext();
   const [isAgreed, setIsAgreed] = useState(false);
   const [stripePending, setStripePending] = useState(false);
@@ -12,7 +14,18 @@ const Payment = ({ bookingId, amount, offerDetails }) => {
   const [redirect, setRedirect] = useState(false); // State to control redirect timing
   const navigate = useNavigate();
 
-  const { title = "No Title", description = "No Description" } = offerDetails;
+  // Destructure offerDetails
+  const {
+    title = "No Title",
+    description = "No Description",
+    start,
+    end,
+    price,
+    selectedSkill = [],
+  } = offerDetails || {};
+
+  // Format the amount
+  const amount = price * 100; // Convert dollars to cents
 
   const handleCheckboxChange = (event) => {
     setIsAgreed(event.target.checked);
@@ -22,7 +35,7 @@ const Payment = ({ bookingId, amount, offerDetails }) => {
     if (redirect) {
       // Perform the redirect after delay
       const timer = setTimeout(() => {
-        navigate("/session-page");
+        navigate("/dashboard/session"); // NOT WORKING -  redirect happens inside stripe-payment
       }, 6000);
 
       return () => clearTimeout(timer); // Cleanup on component unmount
@@ -30,7 +43,7 @@ const Payment = ({ bookingId, amount, offerDetails }) => {
   }, [redirect, navigate]);
 
   const handlePaymentCompletion = (status) => {
-    console.log("Payment status:", status); 
+    console.log("Payment status:", status);
     setPaymentStatus(status); // Set payment status ("success" or "error")
     setStripePending(false); // Stop showing the loading state
     if (status === "success") {
@@ -50,7 +63,7 @@ const Payment = ({ bookingId, amount, offerDetails }) => {
 
   return (
     <div className="payment-container">
-      {stripePending} 
+      {stripePending}
 
       {/* Debugging: Render paymentStatus directly */}
       {/* {paymentStatus === "success" && (
@@ -71,10 +84,17 @@ const Payment = ({ bookingId, amount, offerDetails }) => {
 
           <div className="offer-details">
             <h3>{title}</h3>
-            <p>{description}</p>
             <div className="offer-price">
               <span>Amount: </span>
               <strong>${(amount / 100).toFixed(2)}</strong>
+            </div>
+            <div className="offer-start-end">
+              <p>Start: {new Date(start).toLocaleString()}</p>
+              <p>End: {new Date(end).toLocaleString()}</p>
+            </div>
+            <div className="offer-selected-skill">
+              <p>Selected Skill: {selectedSkill[0].protoSkillTitle}</p>
+              <p>Description: {selectedSkill[0].protoSkillDescription}</p>
             </div>
           </div>
 
@@ -87,7 +107,7 @@ const Payment = ({ bookingId, amount, offerDetails }) => {
           <div className="terms-conditions-section">
             <p className="instructions">
               Before proceeding with the payment, please review and accept our{" "}
-              <Link to="/terms" className="terms-link">
+              <Link to="/terms#top" className="terms-link">
                 Terms and Conditions
               </Link>
               .
@@ -104,12 +124,18 @@ const Payment = ({ bookingId, amount, offerDetails }) => {
 
           {isAgreed && (
             <div className="payment-methods-section">
-              <h3 className="payment-methods-title">Select Your Payment Method</h3>
+              <h3 className="payment-methods-title">
+                Select Your Payment Method
+              </h3>
 
               {/* Stripe Payment Integration */}
               <div className="stripe-payment-section">
                 <h4>Pay with Stripe</h4>
-                <h6>If your payment is successful, you'll be redirected to your session page. There, you'll find a link to join your meeting with the mentor!</h6>
+                <h6>
+                  If your payment is successful, you'll be redirected to your
+                  session page. There, you'll find a link to join your meeting
+                  with the mentor!
+                </h6>
                 <StripePayment
                   bookingId={bookingId}
                   amount={amount}

@@ -17,7 +17,8 @@ const Terms = () => {
 
   const handleGoBack = () => {
     // Navigate to the payment page instead of the booking page
-    navigate('/payment', { state: { agreed: isChecked } });
+    // navigate('/payment', { state: { agreed: isChecked } });
+    navigate('/booking/' + bookingId);
   };
 
   return (

@@ -21,8 +21,11 @@ export default function Schedule() {
   const { selectedMentorUuid } = useBookingContext();
   const navigate = useNavigate();
 
+  console.log("Hey there! I'm the Schedule Page."); // Debug log
+
   const handleToggle = () => {
     navigate("/dashboard/search");
+    window.scrollTo(0, 0); // Scroll to the top of the page
   };
 
   // // Function to handle mentor selection

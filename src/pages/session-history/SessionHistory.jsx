@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { useAuthContext } from '../../store/authentication-context/AuthenticationContext';
-import SessionDetails from '../../components/session-details/SessionDetails';
-// import { fetchSessionData } from '../../utils/api-connector';
-import { fetchUpcomingSessions } from '../../utils/api-connector';
+import { useState, useEffect } from "react";
+import { useAuthContext } from "../../store/authentication-context/AuthenticationContext";
+import SessionDetailsHistory from "../../components/session-details-history/SessionDetailsHistory";
+import { fetchPastSessions } from "../../utils/api-connector";
 
 const Session = () => {
   const { user, loading: authLoading } = useAuthContext();
@@ -16,7 +15,7 @@ const Session = () => {
     const getSessionData = async () => {
       try {
         // const data = await fetchSessionData();
-        const data = await fetchUpcomingSessions();
+        const data = await fetchPastSessions();
         setSessionData(data);
       } catch (err) {
         setError(err.message);
@@ -55,15 +54,11 @@ const Session = () => {
   return (
     <div>
       {/* <h1>Session Page</h1> */}
-      {/* <SessionDetails data={sessionData} /> */}
       {sessionData.map((session) => (
-        <SessionDetails key={session._id} data={session} />
+        <SessionDetailsHistory key={session._id} data={session} />
       ))}
     </div>
   );
 };
 
 export default Session;
-
-
-

@@ -1,4 +1,8 @@
-.test{
-    color: green;
-    /* width: 100%; */
+#not-found-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--error-color);
+  background-color: var(--primary-color);
 }

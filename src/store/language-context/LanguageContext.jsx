@@ -35,11 +35,11 @@ export function LanguageProvider({ children }) {
     initialLanguage === "eng" ? englishSettingsData : germanSettingsData
   );
 
-  console.log("Initial Language:", initialLanguage); //
+  // console.log("Initial Language:", initialLanguage); //
   // console.log("Profile Data:", profileData); //
   // console.log("Contact Data:", contactData); //
-  console.log("Terms Data:", termsData); //
-  console.log("Settings Data:", settingsData); //
+  // console.log("Terms Data:", termsData); //
+  // console.log("Settings Data:", settingsData); //
 
   const switchToEnglish = () => {
     // setLayoutData(englishLayoutData);
