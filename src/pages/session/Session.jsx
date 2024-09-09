@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useAuthContext } from '../../store/authentication-context/AuthenticationContext';
 import SessionDetails from '../../components/session-details/SessionDetails';
-// import { fetchSessionData } from '../../utils/api-connector';
 import { fetchUpcomingSessions } from '../../utils/api-connector';
+import './Session.css';
 
 const Session = () => {
   const { user, loading: authLoading } = useAuthContext();
-  const [sessionData, setSessionData] = useState(null);
+  const [sessionData, setSessionData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -15,7 +15,6 @@ const Session = () => {
   useEffect(() => {
     const getSessionData = async () => {
       try {
-        // const data = await fetchSessionData();
         const data = await fetchUpcomingSessions();
         setSessionData(data);
       } catch (err) {
@@ -50,12 +49,18 @@ const Session = () => {
 
   if (!sessionData.length) {
     return <p>No upcoming sessions available.</p>;
-  } // added
+  }
+
+  const freeSessionTokens = user?.freeSessionTokens || 0; // Static rendering for demo purposes
 
   return (
     <div>
-      {/* <h1>Session Page</h1> */}
-      {/* <SessionDetails data={sessionData} /> */}
+      <div className="free-tokens">
+        <h3>Your free Session Tokens:</h3>
+        <h4>{freeSessionTokens}</h4>
+        <br />
+        <h6>Here you can find the credits you have collected and that you can use to rebook a session for free!</h6>
+      </div>
       {sessionData.map((session) => (
         <SessionDetails key={session._id} data={session} />
       ))}
@@ -64,6 +69,7 @@ const Session = () => {
 };
 
 export default Session;
+
 
 
 

@@ -251,6 +251,22 @@ export const fetchPastSessions = async () => {
   }
 };
 
+//cancel a session
+
+export const cancelSession = async (sessionId) => {
+  try {
+    const res = await axios.delete(`/session/cancel-session/${sessionId}`);
+    if (res.status !== 200) {
+      throw new Error("Unable to cancel session");
+    }
+    return res.data;
+  } catch (error) {
+    console.error("Error canceling session:", error);
+    throw error;
+  }
+};
+
+
 // calendar / booking API calls ==================================================
 
 // MentorAvailabilityCalendar.jsx
