@@ -221,14 +221,33 @@ export const fetchFeedbacks = async (bookingId, mentorUuid, menteeUuid) => {
 
 // session API calls ===================================================
 
-// fetch session data
-export const fetchSessionData = async () => {
+// Fetch upcoming sessions
+export const fetchUpcomingSessions = async () => {
   try {
-    const response = await axios.get("/session");
-    return response.data;
+    const res = await axios.get("/session/upcoming-sessions");
+    console.log("Fetched upcoming sessions:", res.data); // Log fetched upcoming sessions
+    if (res.status !== 200) {
+      throw new Error("Unable to fetch upcoming sessions");
+    }
+    return res.data;
   } catch (error) {
-    console.error("Error fetching session data:", error);
-    throw new Error("Failed to fetch session data");
+    console.error("Error fetching upcoming sessions:", error);
+    throw error;
+  }
+};
+
+// Fetch past sessions
+export const fetchPastSessions = async () => {
+  try {
+    const res = await axios.get("/session/past-sessions");
+    console.log("Fetched past sessions:", res.data); // Log fetched past sessions
+    if (res.status !== 200) {
+      throw new Error("Unable to fetch past sessions");
+    }
+    return res.data;
+  } catch (error) {
+    console.error("Error fetching past sessions:", error);
+    throw error;
   }
 };
 
@@ -299,35 +318,35 @@ export const fetchBookingDetails = async (bookingId) => {
   }
 };
 
-// Fetch upcoming sessions
-export const fetchUpcomingSessions = async () => {
-  try {
-    const res = await axios.get("/calendar/upcoming-sessions");
-    console.log("Fetched upcoming sessions:", res.data); // Log fetched upcoming sessions
-    if (res.status !== 200) {
-      throw new Error("Unable to fetch upcoming sessions");
-    }
-    return res.data;
-  } catch (error) {
-    console.error("Error fetching upcoming sessions:", error);
-    throw error;
-  }
-};
+// // Fetch upcoming sessions
+// export const fetchUpcomingSessions = async () => {
+//   try {
+//     const res = await axios.get("/calendar/upcoming-sessions");
+//     console.log("Fetched upcoming sessions:", res.data); // Log fetched upcoming sessions
+//     if (res.status !== 200) {
+//       throw new Error("Unable to fetch upcoming sessions");
+//     }
+//     return res.data;
+//   } catch (error) {
+//     console.error("Error fetching upcoming sessions:", error);
+//     throw error;
+//   }
+// };
 
-// Fetch past sessions
-export const fetchPastSessions = async () => {
-  try {
-    const res = await axios.get("/calendar/past-sessions");
-    console.log("Fetched past sessions:", res.data); // Log fetched past sessions
-    if (res.status !== 200) {
-      throw new Error("Unable to fetch past sessions");
-    }
-    return res.data;
-  } catch (error) {
-    console.error("Error fetching past sessions:", error);
-    throw error;
-  }
-};
+// // Fetch past sessions
+// export const fetchPastSessions = async () => {
+//   try {
+//     const res = await axios.get("/calendar/past-sessions");
+//     console.log("Fetched past sessions:", res.data); // Log fetched past sessions
+//     if (res.status !== 200) {
+//       throw new Error("Unable to fetch past sessions");
+//     }
+//     return res.data;
+//   } catch (error) {
+//     console.error("Error fetching past sessions:", error);
+//     throw error;
+//   }
+// };
 
 // // payment API calls ==================================================
 
