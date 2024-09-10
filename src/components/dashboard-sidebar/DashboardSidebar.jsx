@@ -62,9 +62,11 @@ export default function DashboardSidebar() {
           isClicked={isClicked}
           iconClicked={faTimes}
           iconUnClicked={faBars}
-          className={`sidebar-toggle-button ${isClicked ? "open" : ""}`}
+          className={`sidebar-toggle-button   ${
+            isClicked ? "open" : ""
+          }`}
         />
-        <nav className="dashboard-sidebar-nav">
+        <nav className="dashboard-sidebar-nav ">
           <ul>
             <li>
               <Link

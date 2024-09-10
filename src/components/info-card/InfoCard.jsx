@@ -42,9 +42,9 @@ export default function InfoCard({
 
   return (
     <>
-      <div className="info-card w-1/2">
+      <div className="info-card  ">
         {image && (
-          <img className="info-card-image" src={image} alt={userName} />
+          <img className="info-card-image " src={image} alt={userName} />
         )}
 
         <div className="info-card-content">
@@ -60,7 +60,7 @@ export default function InfoCard({
           {/* skills */}
           {skills && skills.length > 0 && (
             <ul className="skills">
-              <li>Book a session</li>
+              <li className="text-lg">Book a session</li>
               {skills.map((skill, index) => (
                 <li key={index}>
                   <p>

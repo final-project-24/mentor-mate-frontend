@@ -9,6 +9,7 @@ import { useAuthContext } from "../../store/authentication-context/Authenticatio
 import Schedule from "../schedule/Schedule";
 import InfoCard from "../../components/info-card/InfoCard.jsx";
 import ToggleButton from "../../components/toggle-button/ToggleButton.jsx";
+import WhyWe from '../why-we/WhyWe.jsx'
 
 
 
@@ -169,16 +170,16 @@ const HomePage = () => {
 
   return (
     <Layout>
-      <section id="home" className="bg-primary min-h-60">
-        <div className="min-h-60">
-          <h1 className="text-xl text-center text-accent">
+      <section id="home" className="bg-primary mt-[80px]">
+        <div className="">
+          <h1 className="text-xl md:text-2xl  text-center text-accent">
             {getWelcomeMessage()}
           </h1>
 
           {!isLoggedIn && (
             <div className="">
               <div>
-                <h2 className="text-lg text-center pt-5 pb-2   ">
+                <h2 className="text-lg md:text- text-center pt-5 pb-2   ">
                   Join us and connect with top industry experts to elevate your
                   skills and achieve your goals
                 </h2>
@@ -194,14 +195,6 @@ const HomePage = () => {
             </div>
           )}
         </div>
-
-        {isLoggedIn && (
-          <div>
-            {isLoggedIn && (
-              <p className="text-2xl text-center text-neutral py-4">
-                {userNameDisplay()}
-              </p>
-            )}
 
         {isLoggedIn && (
           <div className="items-center w-full lg:mx-auto border border-red-500">
@@ -248,8 +241,7 @@ const HomePage = () => {
                 <Schedule />
               </div>
             )}
-          </div>
-        )}
+          
       </section>
     </Layout>
   );

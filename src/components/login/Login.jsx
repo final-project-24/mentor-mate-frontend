@@ -32,7 +32,7 @@ function Login({ onToggleSignUp, onToggleForgotPassword }) {
   return (
 
 
-    <div className="login-container px-2 min-h-10">
+    <div className="login-container px-2 min-h-10 mt-[100px]  border border-red-600">
       <h2 className="text-accent text-lg pb-4">Login</h2>
       {errorMessage && <p className="login-error-message">{errorMessage}</p>}
       <form onSubmit={handleSubmit}>

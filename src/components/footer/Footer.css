@@ -1,14 +1,14 @@
 #footer {
   border-top: 1px solid green;
-  height:; /* Adjusted height to better fit a single row */
-  width: 100%;
+  
+  /* width: 100%;
   margin-top: 20px;
-  position: fi7 ;
-  bottom: 0;
+  position:fixed;
+  bottom: 0; */
   background-color: #4caf50;
-  display:;
+  /* display:;
   align-items: ;
-  justify-content:;
+  justify-content:; */
   padding: 0 20px;
   box-sizing: border-box;
   font-size: larger; /* Adjust size as needed */
@@ -18,13 +18,11 @@
 
 .main-flex-container {
   /* background-color: #b8f10a; */
-  display: ;
+ 
   
   width: 100%;
-  max-width: 1600px; /* To ensure the footer is not too wide */
-  align-items:;
-  justify-content:; /* Ensures elements are spaced evenly */
-  column-gap:;
+  max-width: 1600px; 
+  
 }
 
 .footer-section {
