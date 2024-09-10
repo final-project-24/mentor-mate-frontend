@@ -26,10 +26,10 @@ export default function Settings() {
   }
 
   return (
-    <section id="settings-container">
-      <h1>Settings</h1>
+    <section id="settings-container" className="mt-[100px] mb-[120px] ">
+      <h1 className="text-accent">Settings</h1>
       <div className="settings-card">
-        <h1>Preferences</h1>
+        <h1 className="text-accent">Preferences</h1>
         <ChangeAppearance />
         <LanguageButton />
       </div>

@@ -70,8 +70,10 @@ const SessionDetails = ({ data }) => {
   const formattedEndTime = new Date(data.end).toLocaleTimeString();
 
   return (
-    <div className="session-details-container">
-      <h1>🥳 WELCOME! These are the details of your upcoming session!</h1>{" "}
+    <div className="session-details-container mx-2 mb-10 ">
+      <h1 className="text-lg text-accent">
+        🥳 WELCOME! <p> These are the details of your upcoming session!</p>
+      </h1>
       <br />
       <p className="session-id">Session ID: {data._id}</p>
       <p className="session-name">
@@ -93,17 +95,18 @@ const SessionDetails = ({ data }) => {
           >
             Join via Jitsi
           </a>
-          <a
-            href="#"
-            className="copy-link"
-            onClick={(e) => {
-              e.preventDefault();
-              // handleLinkClick(jitsiLink);
-              handleLinkClick(data.jitsiLink); // added
-            }}
-          >
-            Copy Jitsi Link
-          </a>
+          <p className="pt-1">
+            <a
+              href="#"
+              className="copy-link"
+              onClick={(e) => {
+                e.preventDefault();
+                handleLinkClick(jitsiLink);
+              }}
+            >
+              Copy Jitsi Link
+            </a>
+          </p>
         </div>
 
         <div className="meeting-option">
@@ -116,20 +119,21 @@ const SessionDetails = ({ data }) => {
           >
             Join via Google Meet
           </a>
-          <a
-            href="#"
-            className="copy-link"
-            onClick={(e) => {
-              e.preventDefault();
-              // handleLinkClick(googleMeetLink);
-              handleLinkClick(data.googleMeetLink); // added
-            }}
-          >
-            Copy Google Meet Link
-          </a>
+          <p className='pt-1'> 
+            <a
+              href="#"
+              className="copy-link"
+              onClick={(e) => {
+                e.preventDefault();
+                handleLinkClick(googleMeetLink);
+              }}
+            >
+              Copy Google Meet Link
+            </a>
+          </p>
         </div>
       </div>
-      {copyMessage && <p className="copy-message">{copyMessage}</p>}
+      {copyMessage && <p className="copy-message ">{copyMessage}</p>}
       <div className="disclaimer">
         <p>
           For the best experience, use a desktop or laptop computer. If you are
@@ -142,11 +146,10 @@ const SessionDetails = ({ data }) => {
             Google Meet: Download the Google Meet app from your app store.
           </li>
         </ul>
-        <div>
-          <p>
-            You can also join via phone. For Jitsi, use the following dial-in
-            numbers:
-          </p>
+        <p>
+          You can also join via phone. For Jitsi, use the following dial-in
+          numbers:
+        </p>
           <ul>
             <li>
               <a href="tel:+11234567890">+1-123-456-7890</a>{" "}
@@ -166,7 +169,7 @@ const SessionDetails = ({ data }) => {
           </p>
         </div>
       </div>
-    </div>
+    
   );
 };
 

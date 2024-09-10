@@ -49,10 +49,10 @@ export default function Schedule() {
   }
 
   return (
-    <section id="booking-container">
-      <h1>Booking</h1>
+    <section id="booking-container" className="mt-[100px]">
+      <h1 className="text-accent">Booking</h1>
       {user.role === "admin" && (
-        <div>
+        <div className="">
           <p className="booking-content">
             Please change your role to mentee or mentor to view this page.
           </p>
@@ -74,7 +74,7 @@ export default function Schedule() {
             onToggle={handleToggle}
             buttonName={<span className="button-name">Search for Mentors</span>}
             icon={faSearch}
-            className="button-type-standard"
+            className="button-type-standard mt-[50px] ml-[2.5%] w-[95%]"
           />
         </div>
       )}
@@ -86,7 +86,7 @@ export default function Schedule() {
       {/* </div> */}
       {/* )} */}
       {user.role === "mentor" && (
-        <p className="booking-content">
+        <p className="booking-content mt-[100px] text-center w-[95%] ">
           Manage your availability on calendar below:
         </p>
       )}

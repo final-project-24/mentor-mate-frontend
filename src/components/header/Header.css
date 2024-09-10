@@ -1,14 +1,23 @@
-#header {
-  min-height: 80px;
+
+
+/* #header {
+  border-bottom: 1px solid green;
+  min-height: 100px;
   width: 100%;
-  border-bottom-width: var(--border-width-base);
-  border-bottom-color: var(--border-color-base);
+  margin-bottom: 20px;
+} */
+
+#header {
+  /* border-bottom:var(--accent-color); */
+ 
+  width: 100%;
+  /* border-bottom-width: var(--border-width-base); */
+  /* border-bottom-color: var(--border-color-base); */
   background-color: var(--card-color);
   position: sticky;
   top: 0;
   z-index: 1001;
 }
-
 #header a {
   color: var(--accent-color);
 }
@@ -16,3 +25,4 @@
 #header a:hover {
   color: var(--accent-color-hover);
 }
+

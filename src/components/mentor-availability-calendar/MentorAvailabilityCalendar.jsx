@@ -27,11 +27,11 @@ const MentorAvailabilityCalendar = ({ mentorUuid, userRole }) => {
   // Fetch availability data from the API
   const fetchAvailabilityData = async () => {
     try {
-      const response = await fetchAvailability(mentorUuid); // efgef the id should be fetched in the backend
+      const response = await fetchAvailability(mentorUuid); // Fetch the availability data from the API
       const formattedEvents = response.map((slot) => ({
         start: new Date(slot.start),
         end: new Date(slot.end),
-        title: slot.title || "30 min session", 
+        title: slot.title || "30 min session",
         id: slot._id,
       }));
       setEvents(formattedEvents);
@@ -65,58 +65,71 @@ const MentorAvailabilityCalendar = ({ mentorUuid, userRole }) => {
     if (userRole !== "mentee") return; // Return if the user is not a mentee
 
     try {
-      await bookSlot(event.id, selectedSkill._id); // Include selectedMentorUuid and selectedSkill in the request);
+      await bookSlot(event.id, selectedSkill._id); // Include selectedSkill in the request
       fetchAvailabilityData();
       setBookingId(event.id); // Set the booking ID in the context
-      navigate(`/booking/${event.id}`); // Redirect to BookingDetails page with event ID dhfdf
+      navigate(`/booking/${event.id}`); // Redirect to BookingDetails page with event ID
     } catch (error) {
       console.error("Error booking slot:", error);
     }
   };
 
-  //   return (
-  //     <div
-  //       className="calendar-container flex flex-col lg:flex-row"
-  //       style={{ height: "calc(100vh)" }}
-  //     >
-  //       <div
-  //         className={`calendar flex   transition-all duration-300 ${
-  //           selectedSlot ? "lg:w-[70%]" : "w-full"
-  //         }`}
-  //       >
-  //         <Calendar
-  //           localizer={localizer}
-  //           events={events}
-  //           startAccessor="start"
-  //           endAccessor="end"
-  //           style={{ height: "100vh", width: "100%" }}
-  //           selectable={userRole === "mentor"}
-  //           onSelectSlot={handleSelectSlot}
-  //           onSelectEvent={handleBookSlot}
-  //         />
-  //       </div>
-  //       {userRole === "mentor" && selectedSlot && (
-  //         <div className="selected-slot-info lg:w-[30%] mt-4 p-4 bg-blue-100 rounded flex flex-col items-center justify-center transition-all duration-300">
-  //           <h3 className="text-lg font-semibold">Add Availability</h3>
-  //           <p>
-  //             Start: {moment(selectedSlot.start).format("MMMM Do YYYY, h:mm a")}
-  //           </p>
-  //           <p>End: {moment(selectedSlot.end).format("MMMM Do YYYY, h:mm a")}</p>
-  //           <button
-  //             className="mt-2 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-  //             onClick={handleAddAvailability}
-  //           >
-  //             Add Availability
-  //           </button>
-  //         </div>
-  //       )}
-  //     </div>
-  //   );
-  // };
   return (
-    <div className="calendar-container">
+    <div
+      className="calendar-container flex flex-col lg:flex-row pt-96 pb-96"
+      style={{ height: "calc(100vh)" }}
+    >
       <div
-        className={`calendar ${selectedSlot ? "calendar-lg" : "calendar-full"}`}
+        className={`calendar flex flex-col lg:flex transition-all duration-300 border border-red-600 ml-1  ${
+          selectedSlot ? "lg:w-[70%]" : "w-full"
+        }`}
+      >
+        <div>
+          <Calendar
+            localizer={localizer}
+            events={events}
+            startAccessor="start"
+            endAccessor="end"
+            className="w-[100%] h-[100vh] flex overflow-hidden  "
+            selectable={userRole === "mentor"}
+            onSelectSlot={handleSelectSlot}
+            onSelectEvent={handleBookSlot}
+          />
+        </div>
+      </div>
+      {userRole === "mentor" && selectedSlot && (
+        <div className="selected-slot-info lg:w-[30%] mt-4 p-4 bg-blue-100 rounded flex flex-col items-center justify-center transition-all duration-300">
+          <h3 className="text-lg font-semibold">Add Availability</h3>
+          <p>
+            Start: {moment(selectedSlot.start).format("MMMM Do YYYY, h:mm a")}
+          </p>
+          <p>End: {moment(selectedSlot.end).format("MMMM Do YYYY, h:mm a")}</p>
+          <button
+            className="mt-2 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+            onClick={handleAddAvailability}
+          >
+            Add Availability
+          </button>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default MentorAvailabilityCalendar;
+
+/*
+  The following is the commented-out code:
+  
+  return (
+    <div
+      className="calendar-container flex flex-col lg:flex-row"
+      style={{ height: "calc(100vh)" }}
+    >
+      <div
+        className={`calendar flex transition-all duration-300 ${
+          selectedSlot ? "lg:w-[70%]" : "w-full"
+        }`}
       >
         <Calendar
           localizer={localizer}
@@ -130,17 +143,20 @@ const MentorAvailabilityCalendar = ({ mentorUuid, userRole }) => {
         />
       </div>
       {userRole === "mentor" && selectedSlot && (
-        <div className="selected-slot-info">
-          <h3>Add Availability</h3>
+        <div className="selected-slot-info lg:w-[30%] mt-4 p-4 bg-blue-100 rounded flex flex-col items-center justify-center transition-all duration-300">
+          <h3 className="text-lg font-semibold">Add Availability</h3>
           <p>
             Start: {moment(selectedSlot.start).format("MMMM Do YYYY, h:mm a")}
           </p>
           <p>End: {moment(selectedSlot.end).format("MMMM Do YYYY, h:mm a")}</p>
-          <button onClick={handleAddAvailability}>Add Availability</button>
+          <button
+            className="mt-2 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+            onClick={handleAddAvailability}
+          >
+            Add Availability
+          </button>
         </div>
       )}
     </div>
   );
-};
-
-export default MentorAvailabilityCalendar;
+*/

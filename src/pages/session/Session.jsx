@@ -58,8 +58,8 @@ const Session = () => {
   }
 
   return (
-    <div>
-      {/* <h1>Session Page</h1> */}
+    <div className='mt-[100px] mb-[150px]'>
+       <h1 className='text-accent text-center text-xl'>Upcoming Session</h1> 
       {/* <SessionDetails data={sessionData} /> */}
       {sessionData.map((session) => (
         <SessionDetails key={session._id} data={session} />

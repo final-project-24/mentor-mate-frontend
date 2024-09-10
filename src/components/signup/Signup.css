@@ -5,7 +5,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  padding: var(--padding-base);
+  /* padding: var(--padding-base); */
   background-color: var(--card-color);
   border-width: var(--border-width-base);
   border-radius: var(--border-radius-base);
@@ -22,7 +22,7 @@
 /* button */
 
 .sign-up-container form button {
-  width: 100%;
+  /* width: 100%; */
   background-color: var(--accent-color);
   color: var(--primary-color);
   border: none;
@@ -39,16 +39,16 @@
 
 /* link button */
 
-/* .button-type-link {
+ /* .button-type-link {
   background: none;
-  border: none;
+  border: solid 2px accent;
   color: var(--accent-color);
   cursor: pointer;
   padding: 0;
   margin: var(--margin-small) 0;
   font-size: inherit;
   transition: var(--transition-base);
-} */
+}  */
 
 /* .button-type-link:hover {
   background: none;
@@ -65,8 +65,8 @@
 
 .sign-up-container select {
   height: 40px;
-  margin: 2px;
-  width: 100%;
+  /* margin: 2px; */
+  /* width: 100%; */
   background-color: var(--primary-color);
   cursor: pointer;
   line-height: 30px;
@@ -74,20 +74,21 @@
 
 .sign-up-container label {
   display: block;
-  padding: 3px;
-  margin-bottom: 5px;
-  color: var(--secondary-color);
+  padding: ;
+  /* margin-bottom: 5px; */
+  /* color: var(--secondary-color); */
 }
 
 .sign-up-container input,
 .sign-up-container select {
   margin-bottom: var(--margin-small);
-  padding: var(--padding-small);
+  /* padding: var(--padding-small); */
   border-width: var(--border-width-base);
   border-radius: var(--border-radius-small);
   border-color: var(--border-color-base);
 }
 
-.sign-up-container input[type="file"] {
+/* .sign-up-container input[type="file"] {
   margin-bottom: var(--margin-small);
-}
+} */
+
