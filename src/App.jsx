@@ -24,6 +24,7 @@ import WhyWe from "./pages/why-we/WhyWe.jsx";
 import NotFound from "./pages/not-found/NotFound.jsx";
 import SkillCategories from "./components/skills/skill-categories/SkillCategories.jsx"
 import Skills from "./components/skills/skills/Skills.jsx";
+import Pricing from "./pages/pricing/Pricing.jsx";
 
 export default function App() {
   return (
@@ -64,6 +65,7 @@ export default function App() {
                   {/* <Route path="/session" element={<Session />} /> */}
                   <Route path="/playground" element={<Playground />} />
                   <Route path="*" element={<NotFound />} />
+                  <Route path="/pricing" element={<Pricing />} />
                 </Routes>
               </DarkModeProvider>
             </BookingProvider>

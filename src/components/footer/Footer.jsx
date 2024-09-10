@@ -43,8 +43,8 @@ export default function Footer() {
               </a>
             </div>
 
-            {/* Language Button */}
-            <div className="footer-section">{/* <LanguageButton /> */}</div>
+        {/* Language Button */}
+        <div className="footer-section">{/* <LanguageButton /> */}</div>
 
             {/* Social Media Icons */}
             <div className="footer-section footer-social-media flex justify-around pt-4 pb-4 ">
