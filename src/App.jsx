@@ -20,6 +20,7 @@ import Session from "./pages/session/Session.jsx";
 import SessionHistory from "./pages/session-history/SessionHistory.jsx";
 import Feedback from "./pages/feedback/Feedback.jsx";
 import Playground from "./pages/playground/Playground.jsx";
+import WhyWe from "./pages/why-we/WhyWe.jsx";
 import NotFound from "./pages/not-found/NotFound.jsx";
 import SkillCategories from "./components/skills/skill-categories/SkillCategories.jsx"
 import Skills from "./components/skills/skills/Skills.jsx";
@@ -35,6 +36,7 @@ export default function App() {
               <DarkModeProvider>
                 <Routes>
                   <Route path="/" element={<HomePage />} />
+                  <Route path="/why-we" element={<WhyWe />} />
                   <Route path="/authentication" element={<Authentication />} />
                   <Route path="/dashboard" element={<DashboardLayout />}>
                     <Route index element={<DashboardHome />} />

@@ -39,14 +39,12 @@ const SearchAllMentors = () => {
         className="w-1/2 p-1"
         defaultValue=""
       >
-        <option
-          value="" disabled 
-          className="text-center"
-        >
+        <option value="" disabled className="text-center">
           Choose a mentor
         </option>
         {mentors.map((mentor, index) => (
-          <option key={`${mentor.uuid}-${index}`}
+          <option
+            key={`${mentor.uuid}-${index}`}
             value={mentor.uuid}
             className="text-center"
           >

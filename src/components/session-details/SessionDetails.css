@@ -1,10 +1,11 @@
 .session-details-container {
   max-width: 600px;
   margin: 20px auto 0;
-  padding: 20px;
+  padding: 0 20px 0 20px;
   border: 1px solid var(--border-color-base);
   border-radius: 8px;
   background-color: var(--card-color);
+  
 }
 
 .meeting-link-container {

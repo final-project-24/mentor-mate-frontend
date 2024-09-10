@@ -71,11 +71,12 @@
 // export default Session;
 
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
+import Loading from "../../components/loading/Loading";
+import NotLoggedInMessage from "../../components/not-logged-in-message/NotLoggedInMessage";
+import SessionDetails from "../../components/session-details/SessionDetails";
 import { useAuthContext } from '../../store/authentication-context/AuthenticationContext';
-import SessionDetails from '../../components/session-details/SessionDetails';
 import { fetchUpcomingSessions } from '../../utils/api-connector';
-import { useNavigate } from 'react-router-dom'; 
 import './Session.css';
 
 const Session = () => {
@@ -83,8 +84,6 @@ const Session = () => {
   const [sessionData, setSessionData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
-  const navigate = useNavigate(); // Initialize useNavigate
 
   useEffect(() => {
     const getSessionData = async () => {
@@ -106,32 +105,31 @@ const Session = () => {
   }, [user]);
 
   if (authLoading) {
-    return <p>Loading authentication...</p>;
+    return <Loading message="Loading authentication..." />;
   }
 
   if (!user) {
-    return <p>Please log in to view this page.</p>;
+    return <NotLoggedInMessage message="Please log in to view this page." />;
   }
 
   if (loading) {
-    return <p>Loading session data...</p>;
+    return <Loading message="Loading session data..." />;
   }
 
   if (error) {
-    return <p>Error: {error}</p>;
+    return <p className="error-message">Error: {error}</p>;
   }
 
   if (!sessionData.length) {
     return <p>No upcoming sessions available.</p>;
   }
 
+  const freeSessionTokens = user?.freeSessionTokens || 0;
+
   return (
     <div>
       {sessionData.map((session) => (
-        <SessionDetails
-          key={session._id}
-          data={session}
-        />
+        <SessionDetails key={session._id} data={session} />
       ))}
     </div>
   );

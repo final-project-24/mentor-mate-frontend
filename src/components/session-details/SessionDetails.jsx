@@ -69,13 +69,23 @@ const SessionDetails = ({ data }) => {
     return <p>No session data available.</p>;
   }
 
+  const formattedStartDate = new Date(data.start).toLocaleDateString();
+  const formattedStartTime = new Date(data.start).toLocaleTimeString();
+  const formattedEndTime = new Date(data.end).toLocaleTimeString();
+
   return (
-    <div className="session-details-container">
-      <h1>🥳 WELCOME! These are the details of your upcoming session!</h1>
+    <div className="session-details-container mx-2 mb-10 ">
+      <h1 className="text-lg text-accent">
+        🥳 WELCOME! <p> These are the details of your upcoming session!</p>
+      </h1>
       <br />
       <p className="session-id">Session ID: {data._id}</p>
       <p className="session-name">Session Name: {data.selectedSkill[0].protoSkillTitle}</p>
       <p className="session-description">Description: {data.title}</p>
+      <p className="session-date">Date: {formattedStartDate}</p>
+      <p className="session-time">
+        Time: {formattedStartTime} - {formattedEndTime}
+      </p>
       <div className="meeting-link-container">
         <div className="meeting-option">
           <a
@@ -86,16 +96,19 @@ const SessionDetails = ({ data }) => {
           >
             Join via Jitsi
           </a>
-          <a
-            href="#"
-            className="copy-link"
-            onClick={(e) => {
-              e.preventDefault();
-              handleLinkClick(data.jitsiLink);
-            }}
-          >
-            Copy Jitsi Link
-          </a>
+
+          <p className="pt-1">
+            <a
+              href="#"
+              className="copy-link"
+              onClick={(e) => {
+                e.preventDefault();
+                handleLinkClick(jitsiLink);
+              }}
+            >
+              Copy Jitsi Link
+            </a>
+          </p>
         </div>
 
         <div className="meeting-option">
@@ -107,21 +120,22 @@ const SessionDetails = ({ data }) => {
           >
             Join via Google Meet
           </a>
-          <a
-            href="#"
-            className="copy-link"
-            onClick={(e) => {
-              e.preventDefault();
-              handleLinkClick(data.googleMeetLink);
-            }}
-          >
-            Copy Google Meet Link
-          </a>
+
+          <p className='pt-1'> 
+            <a
+              href="#"
+              className="copy-link"
+              onClick={(e) => {
+                e.preventDefault();
+                handleLinkClick(googleMeetLink);
+              }}
+            >
+              Copy Google Meet Link
+            </a>
+          </p>
         </div>
       </div>
-
-      {copyMessage && <p className="copy-message">{copyMessage}</p>}
-
+      {copyMessage && <p className="copy-message ">{copyMessage}</p>}
       <div className="disclaimer">
         <p>
           For the best experience, use a desktop or laptop computer. If you are
@@ -169,6 +183,7 @@ const SessionDetails = ({ data }) => {
         <strong>Cancellation Policy:</strong> You can cancel your session up to 24 hours in advance. No refund will be processed, but you will be eligible to book another session for free.
       </p>
     </div>
+
   );
 };
 
