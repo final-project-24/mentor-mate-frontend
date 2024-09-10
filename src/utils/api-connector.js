@@ -187,9 +187,20 @@ export const changeEmail = async (newEmail) => {
 // feedback API calls ==================================================
 
 // submit feedback
-export const submitFeedback = async (feedbackData, bookingId, mentorUuid, menteeUuid) => {
+export const submitFeedback = async (
+  feedbackData,
+  bookingId,
+  mentorUuid,
+  menteeUuid
+) => {
   try {
-    const res = await axios.post("/feedback", feedbackData, bookingId, mentorUuid, menteeUuid);
+    const res = await axios.post(
+      "/feedback",
+      feedbackData,
+      bookingId,
+      mentorUuid,
+      menteeUuid
+    );
     console.log("Feedback submitted:", res.data); // Log submitted feedback
     if (res.status !== 201) {
       throw new Error("Unable to submit feedback");
@@ -247,6 +258,36 @@ export const fetchPastSessions = async () => {
     return res.data;
   } catch (error) {
     console.error("Error fetching past sessions:", error);
+    throw error;
+  }
+};
+
+//cancel a session
+
+export const cancelSession = async (sessionId) => {
+  try {
+    const res = await axios.delete(`/session/cancel-session/${sessionId}`);
+    if (res.status !== 200) {
+      throw new Error("Unable to cancel session");
+    }
+    return res.data;
+  } catch (error) {
+    console.error("Error canceling session:", error);
+    throw error;
+  }
+};
+
+// Confirm Free Slot Booking
+export const confirmFreeSlotBooking = async (bookingId) => {
+  try {
+    // Assuming you have an endpoint for confirming free slot bookings
+    const res = await axios.post(`/session/confirm-free-slot`, { bookingId });
+    if (res.status !== 200) {
+      throw new Error("Unable to confirm free slot booking");
+    }
+    return res.data;
+  } catch (error) {
+    console.error("Error confirming free slot booking:", error);
     throw error;
   }
 };

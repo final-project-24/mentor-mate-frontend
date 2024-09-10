@@ -5,13 +5,13 @@ import { useAuthContext } from "../../../store/authentication-context/Authentica
 import StripePayment from "../stripe-payment/StripePayment";
 import "./Payment.css";
 
-// const Payment = ({ bookingId, amount, offerDetails }) => {
 const Payment = ({ bookingId, offerDetails }) => {
   const { user } = useAuthContext();
   const [isAgreed, setIsAgreed] = useState(false);
   const [stripePending, setStripePending] = useState(false);
   const [paymentStatus, setPaymentStatus] = useState(null); // State to store payment status
   const [redirect, setRedirect] = useState(false); // State to control redirect timing
+  const [isFreeSlot, setIsFreeSlot] = useState(false); // State to manage free slot condition
   const navigate = useNavigate();
 
   // Destructure offerDetails
@@ -25,17 +25,21 @@ const Payment = ({ bookingId, offerDetails }) => {
   } = offerDetails || {};
 
   // Format the amount
-  const amount = price * 100; // Convert dollars to cents
+  const amount = isFreeSlot ? 0 : price * 100; // Convert dollars to cents
 
   const handleCheckboxChange = (event) => {
     setIsAgreed(event.target.checked);
+  };
+
+  const handleFreeSlotClick = () => {
+    setIsFreeSlot(!isFreeSlot); // Toggle the free slot condition
   };
 
   useEffect(() => {
     if (redirect) {
       // Perform the redirect after delay
       const timer = setTimeout(() => {
-        navigate("/dashboard/session"); // NOT WORKING -  redirect happens inside stripe-payment
+        navigate("/dashboard/session"); // Redirect to session page
       }, 6000);
 
       return () => clearTimeout(timer); // Cleanup on component unmount
@@ -104,48 +108,65 @@ const Payment = ({ bookingId, offerDetails }) => {
             <p>Email: {user.email}</p>
           </div>
 
-          <div className="terms-conditions-section">
-            <p className="instructions">
-              Before proceeding with the payment, please review and accept our{" "}
-              <Link to="/terms#top" className="terms-link">
-                Terms and Conditions
-              </Link>
-              .
-            </p>
-            <label className="terms-checkbox">
-              <input
-                type="checkbox"
-                checked={isAgreed}
-                onChange={handleCheckboxChange}
-              />
-              I agree to the Terms and Conditions
-            </label>
-          </div>
+          {!isFreeSlot && (
+            <div className="terms-conditions-section">
+              <p className="instructions">
+                Before proceeding with the payment, please review and accept our{" "}
+                <Link to="/terms#top" className="terms-link">
+                  Terms and Conditions
+                </Link>
+                .
+              </p>
+              <label className="terms-checkbox">
+                <input
+                  type="checkbox"
+                  checked={isAgreed}
+                  onChange={handleCheckboxChange}
+                />
+                I agree to the Terms and Conditions
+              </label>
+            </div>
+          )}
 
           {isAgreed && (
             <div className="payment-methods-section">
               <h3 className="payment-methods-title">
                 Select Your Payment Method
               </h3>
+              <h6>IMPORTANT: If you have a free spot token, please scroll down the page and click the appropriate button to select your free slot.</h6><br />
+              
 
               {/* Stripe Payment Integration */}
               <div className="stripe-payment-section">
                 <h4>Pay with Stripe</h4>
-                <h6>
+                <h5>
                   If your payment is successful, you'll be redirected to your
                   session page. There, you'll find a link to join your meeting
                   with the mentor!
-                </h6>
+                </h5>
                 <StripePayment
                   bookingId={bookingId}
                   amount={amount}
+                  isFreeSlot={isFreeSlot}
                   onPaymentStart={() => setStripePending(true)}
                   onPaymentSuccess={handlePaymentSuccess}
                   onPaymentError={handlePaymentError}
                   onPaymentEnd={() => setStripePending(false)}
                 />
               </div>
+              <div className="free-slot-section">
+            <p className="instructions">
+              This is a free slot. Click below to proceed without payment.
+            </p>
+            <button
+              className={`free-slot-button ${isFreeSlot ? 'selected' : ''}`}
+              onClick={handleFreeSlotClick}
+            >
+              {isFreeSlot ? 'Free Slot Selected' : 'Select Free Slot'}
+            </button>
+          </div>
             </div>
+            
           )}
         </>
       )}
@@ -154,3 +175,5 @@ const Payment = ({ bookingId, offerDetails }) => {
 };
 
 export default Payment;
+
+
