@@ -127,7 +127,7 @@ const Session = () => {
   const freeSessionTokens = user?.freeSessionTokens || 0;
 
   return (
-    <div>
+    <div className="upcoming-sessions-container">
       {sessionData.map((session) => (
         <SessionDetails key={session._id} data={session} />
       ))}

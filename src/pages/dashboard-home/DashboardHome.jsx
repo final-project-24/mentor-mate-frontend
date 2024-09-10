@@ -21,7 +21,7 @@ export default function DashboardHome() {
   }
 
   return (
-    <div id="dashboard-home-container  ">
+    <div id="dashboard-home-container">
       {isLoggedIn && (
         <div className="mt-[80px] text-center text-xl pb-2 md:pb-5 ">
           <h1>
