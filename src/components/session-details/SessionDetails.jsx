@@ -1,17 +1,32 @@
-import React, { useState } from "react";
-import "./SessionDetails.css";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from 'axios';
+import "./SessionDetails.css";
 
 const SessionDetails = ({ data }) => {
   const [copyMessage, setCopyMessage] = useState("");
   const [loading, setLoading] = useState(false);
   const [cancelMessage, setCancelMessage] = useState("");
+  const [isFreeSlot, setIsFreeSlot] = useState(false);
+  const [canCancel, setCanCancel] = useState(true); // New state for cancellation validity
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (data && data.start) {
+      const sessionStartTime = new Date(data.start);
+      const now = new Date();
+      const hoursUntilStart = (sessionStartTime - now) / (1000 * 60 * 60);
+
+      // Check if the session is within 24 hours
+      setCanCancel(hoursUntilStart > 24);
+    }
+  }, [data]);
 
   const handleLinkClick = (link) => {
     if (link) {
       navigator.clipboard.writeText(link);
       setCopyMessage("Link copied to clipboard!");
-      setTimeout(() => setCopyMessage(""), 3000); // Clear message after 3 seconds
+      setTimeout(() => setCopyMessage(""), 3000);
     } else {
       setCopyMessage("No link available to copy.");
     }
@@ -24,6 +39,7 @@ const SessionDetails = ({ data }) => {
         const response = await axios.delete(`/session/cancel-session/${data._id}`);
         console.log("Response:", response.data);
         setCancelMessage("Your session has been canceled successfully!");
+        setIsFreeSlot(true);
       } else {
         setCancelMessage("No session ID available.");
       }
@@ -34,7 +50,21 @@ const SessionDetails = ({ data }) => {
       setLoading(false);
     }
   };
-  
+
+  const handleRebookSession = async () => {
+    setLoading(true);
+    try {
+      navigate("/dashboard/search");
+      window.scrollTo(0, 0);
+      setCancelMessage("Your session has been successfully rebooked. Please select a new slot.");
+    } catch (error) {
+      console.error('Error processing rebooking:', error);
+      setCancelMessage("Failed to rebook the session. Please try again later.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   if (!data) {
     return <p>No session data available.</p>;
   }
@@ -118,18 +148,29 @@ const SessionDetails = ({ data }) => {
       {cancelMessage && <p className="cancel-message">{cancelMessage}</p>}
       
       <button
-        className="cancel-button"
+        className={`cancel-button ${!canCancel ? 'disabled' : ''}`} // Apply 'disabled' class if cancellation is not allowed
         onClick={handleCancelSession}
-        disabled={loading}
+        disabled={!canCancel || loading} // Disable button if cancellation is not allowed or loading
       >
         {loading ? 'Cancelling...' : 'Cancel Session'}
       </button>
       
+      {isFreeSlot && (
+        <button
+          className="rebook-button"
+          onClick={handleRebookSession}
+          disabled={loading}
+        >
+          {loading ? 'Processing Rebooking...' : 'Rebook Session for Free'}
+        </button>
+      )}
+      
       <p className="cancellation-policy">
-        <strong>Cancellation Policy:</strong> You can cancel your session up to 24 hours in advance. No refund will be processed, but you will be eligible to book another session using a credit.
+        <strong>Cancellation Policy:</strong> You can cancel your session up to 24 hours in advance. No refund will be processed, but you will be eligible to book another session for free.
       </p>
     </div>
   );
 };
 
 export default SessionDetails;
+

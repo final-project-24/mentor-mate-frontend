@@ -1,7 +1,7 @@
 .payment-container {
   width: 100%;
   max-width: 600px;
-  margin: 40px auto;
+  margin: 0px auto;
   padding: 40px; 
   border-radius: 12px; 
   background-color: #ffffff;
@@ -121,8 +121,14 @@
   color: #408a5f;
 }
 
-.stripe-payment-section h6 {
+.stripe-payment-section h5 {
   color: #666;
+  font-weight: 500;
+  font-style: italic;
+}
+
+.payment-methods-section h6 {
+  color: #a24646;
   font-weight: 500;
   font-style: italic;
 }
@@ -155,13 +161,52 @@
 }
 
 .status-message.success {
-  color: #2ecc71; /* Green color for success */
+  color: #2ecc71; 
   border: 1px solid #27ae60;
   background-color: #eafaf1;
 }
 
 .status-message.error {
-  color: #e74c3c; /* Red color for error */
+  color: #e74c3c; 
   border: 1px solid #c0392b;
   background-color: #fbecec;
+}
+
+.free-slot-section {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.free-slot-button {
+  display: inline-block;
+  padding: 14px 24px;
+  background-color: #1ad066;
+  color: #ffffff;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.free-slot-button.selected {
+  background-color: #42805c; 
+}
+
+.free-slot-button:hover {
+  background-color: #53b67c; 
+  transform: translateY(-2px);
+}
+
+.free-slot-button:disabled {
+  background-color: #d5d5d5; 
+  color: #a0a0a0;
+  cursor: not-allowed;
+}
+
+.free-slot-section .instructions {
+  font-size: 16px;
+  margin-bottom: 20px;
+  color: #333;
 }
