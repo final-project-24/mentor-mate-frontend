@@ -65,15 +65,25 @@ const SessionDetails = ({ data }) => {
     return <p>No session data available.</p>;
   }
 
+  const formattedStartDate = new Date(data.start).toLocaleDateString();
+  const formattedStartTime = new Date(data.start).toLocaleTimeString();
+  const formattedEndTime = new Date(data.end).toLocaleTimeString();
+
   return (
     <div className="session-details-container mx-2 mb-10 ">
       <h1 className="text-lg text-accent">
         🥳 WELCOME! <p> These are the details of your upcoming session!</p>
       </h1>
       <br />
-      <p className="session-id ">Session ID: {data.id}</p>
-      <p className="session-name">Session Name: {data.name}</p>
-      <p className="session-description">Description: {data.description}</p>
+      <p className="session-id">Session ID: {data._id}</p>
+      <p className="session-name">
+        Session Name: {data.selectedSkill[0].protoSkillTitle}
+      </p>
+      <p className="session-description">Description: {data.title}</p>
+      <p className="session-date">Date: {formattedStartDate}</p>
+      <p className="session-time">
+        Time: {formattedStartTime} - {formattedEndTime}
+      </p>
       <div className="meeting-link-container">
         <div className="meeting-option">
           <a
@@ -139,6 +149,7 @@ const SessionDetails = ({ data }) => {
         <p>
           You can also join via phone. For Jitsi, use the following dial-in
           numbers:
+        </p>
           <ul>
             <li>
               <a href="tel:+11234567890">+1-123-456-7890</a>{" "}
@@ -152,11 +163,13 @@ const SessionDetails = ({ data }) => {
               {/* Replace with actual Google Meet dial-in numbers */}
             </li>
           </ul>
-          Ensure you have a stable internet connection and permissions enabled
-          for camera and microphone.
-        </p>
+          <p>
+            Ensure you have a stable internet connection and permissions enabled
+            for camera and microphone.
+          </p>
+        </div>
       </div>
-    </div>
+    
   );
 };
 
