@@ -21,9 +21,9 @@ export default function DashboardHome() {
   }
 
   return (
-    <div id="dashboard-home-container  ">
+    <div id="dashboard-home-container  " className=" mt-[90px]  ">
       {isLoggedIn && (
-        <div className="mt-[80px] text-center text-xl pb-2 md:pb-5 ">
+        <div className=" text-center text-xl pb-5  ">
           <h1>
             Welcome
             <p className="text-accent"> {user.userName}</p>
@@ -32,7 +32,7 @@ export default function DashboardHome() {
       )}
       {isLoggedIn && (
         <div className="">
-          <div className="p-3 md:h-[500px]">
+          <div className="px-3 h-[600px] md:ml-32  ">
             <InfoCard
               image={user.image}
               userName={user.userName}

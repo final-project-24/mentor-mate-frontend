@@ -3,6 +3,7 @@
   width: 100%;
   display: flex;
   min-height: 100vh; /* Ensure the parent container has enough height */
+  
 }
 
 .dashboard-sidebar {
