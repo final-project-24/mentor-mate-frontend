@@ -62,7 +62,7 @@ const Payment = ({ bookingId, offerDetails }) => {
   };
 
   return (
-    <div className="payment-container">
+    <div className="payment-container mb-[100px]">
       {stripePending}
 
       {/* Debugging: Render paymentStatus directly */}
@@ -80,7 +80,7 @@ const Payment = ({ bookingId, offerDetails }) => {
 
       {!paymentStatus && !stripePending && (
         <>
-          <h2 className="payment-title">Payment Details</h2>
+          <h2 className="payment-title mt-5">Payment Details</h2>
 
           <div className="offer-details">
             <h3>{title}</h3>
