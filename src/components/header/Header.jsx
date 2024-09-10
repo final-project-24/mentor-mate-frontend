@@ -78,7 +78,7 @@ const Header = () => {
 
   return (
     <div id="header">
-      <nav className="header-container bg-primary fixed top-0 w-full h-[80px] lg:h-[100px] flex items-center px-4 md:px-6 z-50  border-b-2 border-accent ">
+      <nav className="header-container bg-primary fixed top-0 w-full h-[80px] flex items-center px-4 md:px-6 z-50  border-b-2 border-accent ">
         {/* Logo Section */}
         <div
           className={`flex items-center ${
