@@ -32,7 +32,7 @@ export default function DashboardHome() {
       )}
       {isLoggedIn && (
         <div className="">
-          <div className="px-3 h-[600px] md:ml-32  ">
+          <div className="px-3 h-[600px] md:ml-8 lg:ml-32  ">
             <InfoCard
               image={user.image}
               userName={user.userName}
