@@ -53,7 +53,7 @@ const Session = () => {
   //   return <p>No upcoming sessions available.</p>;
   // } // added
   if (!sessionData || sessionData.length === 0) {
-    return <p>No upcoming sessions available.</p>;
+    return <p>No past sessions available.</p>;
   }
 
   return (
