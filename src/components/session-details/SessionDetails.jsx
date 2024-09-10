@@ -66,7 +66,7 @@ const SessionDetails = ({ data }) => {
   }
 
   return (
-    <div className="session-details-container mt-[90px] mx-2 ">
+    <div className="session-details-container mx-2 mb-10 ">
       <h1 className="text-lg text-accent">
         🥳 WELCOME! <p> These are the details of your upcoming session!</p>
       </h1>
