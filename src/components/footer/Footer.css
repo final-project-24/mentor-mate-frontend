@@ -12,13 +12,8 @@
   padding: 0 20px;
   box-sizing: border-box;
   font-size: larger; /* Adjust size as needed */
-<<<<<<< HEAD
-  z-index: var(--z-index-lg); 
-  position: relative; /* Ensure z-index works */
-=======
   /* z-index: var(--z-index-lg);  */
   z-index: 50000 !important;
->>>>>>> origin/main
 }
 
 .main-flex-container {

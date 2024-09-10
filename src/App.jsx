@@ -26,6 +26,7 @@ import SkillCategories from "./components/skills/skill-categories/SkillCategorie
 import Skills from "./components/skills/skills/Skills.jsx";
 import Pricing from "./pages/pricing/Pricing.jsx";
 
+
 export default function App() {
   return (
     <>
