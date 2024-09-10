@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./ReviewSidebar.css";
 import { Link } from "react-router-dom";
 import iconUrl from "../../assets/images/icon.svg";
-import reviews from "./ReviewData"; // Importar los datos de reviews
+import reviews from "./ReviewData";
 
 const Review = ({ name, topic, feedback, rating, profilePic }) => {
   return (
