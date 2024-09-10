@@ -24,14 +24,18 @@ const SessionDetailsHistory = ({ data }) => {
   }
 
   return (
-    <div className="session-details-container">
-      <h1>🥳 WELCOME! These are the details of your finished session!</h1>{" "}
+  
+    <div className="session-details-container mt-[90px] m-2  min-h-[0px]">
+      <h1 className="text-accent">
+        🥳 WELCOME!
+        <p>These are the details of your finished session!</p>
+      </h1>
       <br />
       <p className="session-id">Session ID: {data._id}</p>
       <p className="session-name">
         Session Name: {data.selectedSkill[0].protoSkillTitle}
       </p>
-      <p className="session-description">Description: {data.title}</p>
+      <p className="session-description pb-2">Description: {data.title}</p>
       <ToggleButton
         onToggle={onToggleSubmitFeedback}
         buttonName="Submit Feedback"

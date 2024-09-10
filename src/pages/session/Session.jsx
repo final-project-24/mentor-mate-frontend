@@ -53,7 +53,7 @@ const Session = () => {
   } // added
 
   return (
-    <div>
+    <div className=''>
       {/* <h1>Session Page</h1> */}
       {/* <SessionDetails data={sessionData} /> */}
       {sessionData.map((session) => (
