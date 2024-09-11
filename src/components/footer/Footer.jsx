@@ -12,29 +12,25 @@ import Logo from '../../assets/images/icon.svg'
 
 export default function Footer() {
   return (
-    <footer id="footer" className="bottom-0 left-0 fixed w-full">
-      <div className="main-flex-container  h-auto">
+    <footer id="footer" className="bottom-0 left-0  w-full ">
+      <div className="main-flex-container h-auto md:flex md:items-center md:justify-center  ">
         {/* Logo */}
-        <div className="footer-section flex flex-row items-center  ">
-          <div className="icon-p  w-1/3">
+        <div className="footer-section flex flex-row items-center md: md:w-5/6  ">
+          <div className="icon-p  w-1/3  md:w-1/2  ">
             <a
               href="#"
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             >
-              <img
-                src={Logo}
-                alt="Logo"
-                className="footer-logo  mx-auto"
-              />
+              <img src={Logo} alt="Logo" className="footer-logo mx-auto " />
             </a>
-            <p className="hidden md:block text-center text-sm pt-2">
+            <p className="hidden   text-center text-sm pt-2">
               Your trusted source to find highly-vetted mentors & industry
               professionals
               <br /> to move your career ahead.
             </p>
           </div>
-          <div>
-            <div className="footer-section text-center text-sm ">
+          <div className=" md:w-1/2  ">
+            <div className="footer-section text-center text-sm  first-line:">
               <a href="/about" className="footer-link  text-base px-5 ">
                 About
               </a>

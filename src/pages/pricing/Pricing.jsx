@@ -1,4 +1,4 @@
-import React from "react";
+
 import iconUrl from "../../assets/images/icon.svg"; // Importa el SVG como URL
 import Layout from "../../components/layout/Layout"; // Import your Layout component
 
@@ -56,12 +56,13 @@ const PricingCards = () => {
 
   return (
     <Layout>
-      <div className="w-full py-[12rem] px-4 bg-white">
-        <div className="max-w-[1240px] mx-auto grid md:grid-cols-3 gap-12">
+      <h2 className="text-center text-xl pt-[100px]">Our Prices </h2>
+      <div className="w-[90%] m-10 mx-auto  px-4 bg-white  ">
+        <div className="max-w-[1240px] mx-auto grid  gap-12  md:w-[70%]  lg:grid lg:grid-cols-3 lg:w-full border lg:pt-5 ">
           {cardData.map((card, index) => (
             <div
               key={index}
-              className={`w-full shadow-xl flex flex-col p-4 my-4 rounded-lg hover:scale-105 duration-300`}
+              className={`w-full shadow-xl flex flex-col p-4 my-4 rounded-lg hover:scale-105 duration-300 border border-accent  `}
             >
               <div className="w-20 mx-auto mt-[-3rem] bg-white">
                 {card.image}

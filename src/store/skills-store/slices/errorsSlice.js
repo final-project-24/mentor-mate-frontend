@@ -8,7 +8,7 @@ const initialState = {
 }
 
 export const errorsSlice = createSlice({
-  name: 'errors',
+  name: 'error',
   initialState,
   reducers: {
     set_errors_array: (state, action) => {

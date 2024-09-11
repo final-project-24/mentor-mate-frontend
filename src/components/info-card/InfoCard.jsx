@@ -42,7 +42,7 @@ export default function InfoCard({
 
   return (
     <>
-      <div className="info-card  ">
+      <div className="info-card md:mx-2 ">
         {image && (
           <img className="info-card-image " src={image} alt={userName} />
         )}
@@ -66,7 +66,7 @@ export default function InfoCard({
                   <p>
                     <ToggleButton
                       onToggle={() => handleSkillClick(mentorUuid, skill)}
-                      buttonName={skill.protoSkillId.protoSkillTitle}
+                      buttonName={`${skill.protoSkillId.protoSkillTitle} ${skill.proficiency}`}
                       className="button-type-standard"
                     />
                   </p>

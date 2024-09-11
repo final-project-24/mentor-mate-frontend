@@ -76,7 +76,7 @@ const MentorAvailabilityCalendar = ({ mentorUuid, userRole }) => {
 
   return (
     <div
-      className="calendar-container flex flex-col lg:flex-row pt-96 pb-96"
+      className="calendar-container flex flex-col lg:flex-row mb-[100px]"
       style={{ height: "calc(100vh)" }}
     >
       <div
