@@ -43,7 +43,7 @@ export default function LanguageButton() {
         className="button-type-standard"
       />
     ) : (
-      <div className="change-language-container">
+      <div className="change-language-container pt-5">
         <h2>Change Language</h2>
         <select
           value={activeLanguage}

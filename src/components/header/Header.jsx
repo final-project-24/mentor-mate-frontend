@@ -41,7 +41,7 @@ const Header = () => {
   ];
 
   const menteeLinks = [
-    { to: "/", label: "Home" },
+   // { to: "/", label: "Home" },
     // { to: "/my-account", label: "My Account" },
     // { to: "/my-calendar", label: "My Calendar" },
     // { to: "/my-classes", label: "My Classes" },
@@ -88,7 +88,7 @@ const Header = () => {
           } flex-grow justify-center`}
         >
           <Link
-            to="/"
+            to="/dashboard"
             className="text-xl font-bold text-accent hover:text-neutral"
           >
             Mentor Mate

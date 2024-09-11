@@ -26,6 +26,7 @@ import SkillCategories from "./components/skills/skill-categories/SkillCategorie
 import Skills from "./components/skills/skills/Skills.jsx";
 import Pricing from "./pages/pricing/Pricing.jsx";
 
+
 export default function App() {
   return (
     <>
@@ -40,7 +41,7 @@ export default function App() {
                   <Route path="/why-we" element={<WhyWe />} />
                   <Route path="/authentication" element={<Authentication />} />
                   <Route path="/dashboard" element={<DashboardLayout />}>
-                    <Route index element={<DashboardHome />} />
+                    <Route  index element={<DashboardHome />} />
                     <Route path="search" element={<Search />} />
                     <Route path="schedule" element={<Schedule />} />
                     <Route path="session" element={<Session />} />

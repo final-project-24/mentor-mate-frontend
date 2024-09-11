@@ -100,6 +100,11 @@
   height: 60px;
   border-radius: 50%;
   margin-right: 15px;
+  object-fit: cover; /* Ensures the image covers the area while maintaining aspect ratio */
+  object-position: center; /* Centers the image in the container */
+  min-width: 60px;
+  min-height: 60px;
+  
 }
 
 

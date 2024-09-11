@@ -57,7 +57,7 @@ const Session = () => {
   }
 
   return (
-    <div className="mt-[90px] text-accent mb-[150px]">
+    <div className="mt-[90px] text-accent ">
        <h1 className="text-center text-xl pb-5">Session Page</h1> 
       {sessionData.map((session) => (
         <SessionDetailsHistory key={session._id} data={session} />

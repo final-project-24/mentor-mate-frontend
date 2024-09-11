@@ -57,7 +57,7 @@ const Session = () => {
 
   return (
     <Layout>
-      <div id="session-preview">
+      <div id="session-preview" className="mt-[80px] mb-[100px]">
         {/* <h1>Session Page</h1> */}
         <SessionDetails data={sessionData} />
       </div>
