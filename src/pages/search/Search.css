@@ -5,7 +5,7 @@
   flex-direction: column;
   /* gap: var(--margin-lg); */
   width: 100%;
-  margin-top: var(--margin-lg);
+  margin-top: var(--avoid-header);
  
 }
 
@@ -21,7 +21,7 @@
   align-items: center;
   flex-direction: column;
   gap: var(--margin-lg);
-  width: 100%;
+  width: 50%;
   margin-top: var(--margin-lg);
   /* margin-right: var(--margin-lg); */
   /* margin-left: 50px; */
@@ -33,7 +33,7 @@
   box-shadow: var(--box-shadow-base);
 }
 
-#mentor-list-container {
+.mentor-list-container {
   /* border: 1px solid red; */
   width: 100%;
 }
