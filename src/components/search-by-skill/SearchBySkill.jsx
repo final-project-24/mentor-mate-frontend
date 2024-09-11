@@ -37,8 +37,8 @@ const SearchBySkill = ({
 
 
   return (
-    <div className=" pt-5 pb-20">
-      <div className="w-full flex flex-col md:grid grid-cols-2 md:gap-2 lg:justify-between">
+    <div className=" pt-5 pb-20  lg:w-[70vw] ">
+      <div className="w-full flex flex-col md:grid grid-cols-2 md:gap-2 ">
         <div className="mb-3 border">
           <label htmlFor="dropdown1"></label>
           <select
@@ -109,7 +109,7 @@ const SearchBySkill = ({
       </div>
 
       <div className="flex flex-col items-center">
-        <div className="w-full lg:w-1/5 mx-auto pb-5">
+        <div className="w-full mx-auto pb-5 md:w-2/4">
           <label htmlFor="description"></label>
           <input
             id="description"
@@ -117,7 +117,7 @@ const SearchBySkill = ({
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             placeholder="Enter Description"
-            className="p-1 w-full h-10 border border-gray-300 rounded"
+            className="p-1 w-full h-10 border border-gray-300 rounded "
           />
         </div>
 

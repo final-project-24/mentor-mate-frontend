@@ -6,7 +6,7 @@
   width: 100%;
   margin-bottom: var(--margin-base);
   /* margin-top: var(--margin-lg); */
-  padding: var(--padding-base);
+  /* padding: var(--padding-base); */
   background-color: var(--card-color);
   border-top-width: var(--border-width-base);
   /* border-bottom-width: var(--border-width-base); */

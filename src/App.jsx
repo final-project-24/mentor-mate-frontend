@@ -41,7 +41,7 @@ export default function App() {
                   <Route path="/why-we" element={<WhyWe />} />
                   <Route path="/authentication" element={<Authentication />} />
                   <Route path="/dashboard" element={<DashboardLayout />}>
-                    <Route index element={<DashboardHome />} />
+                    <Route  index element={<DashboardHome />} />
                     <Route path="search" element={<Search />} />
                     <Route path="schedule" element={<Schedule />} />
                     <Route path="session" element={<Session />} />
