@@ -66,7 +66,7 @@ const SearchBar = ({ onResults }) => {
           type="text"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          placeholder="Search for mentors..."
+          placeholder="Search for mentors by user name..."
           className="search-input text-center"
         />
         <button type="submit" className="search-button">
