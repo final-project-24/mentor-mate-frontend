@@ -12,11 +12,11 @@
   padding:;
   box-sizing: border-box;
   font-size: larger; /* Adjust size as needed */
+
+  z-index: var(--z-index-lg);  
+  
   position: relative;
-  /* z-index: var(--z-index-lg);  */
- bottom: 0;
-  left: 0;
-  z-index: 60;
+ 
 }
 
 .main-flex-container {
