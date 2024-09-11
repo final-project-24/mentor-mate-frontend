@@ -1,9 +1,9 @@
 .search-bar-container {
- 
+  width: 100%;
 }
 
 .search-bar-container form {
-  /* display: flex; */
+  display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
@@ -13,11 +13,10 @@
   width: 100%;
   padding: var(--padding-small);
   border: var(--border-width-base) solid var(--border-color-base);
-  /* border-right: none;  */
+  border-right: none; /* Remove right border to blend with button */
   border-top-left-radius: var(--border-radius-base);
   border-bottom-left-radius: var(--border-radius-base);
-   border-top-right-radius: var(--border-radius-base);
-  border-bottom-right-radius: var(--border-radius-base);
+  caret-color: var(--accent-color);
 }
 
 .search-bar-container form input:focus {

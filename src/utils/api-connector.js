@@ -232,6 +232,21 @@ export const fetchFeedbacks = async (bookingId, mentorUuid, menteeUuid) => {
 
 // session API calls ===================================================
 
+// Fetch available upcoming events for a mentor
+export const fetchAvailableUpcomingEventsForMentor = async () => {
+  try {
+    const res = await axios.get("/session/available-upcoming-events");
+    console.log("Fetched available upcoming events for mentor:", res.data); // Log fetched events
+    if (res.status !== 200) {
+      throw new Error("Unable to fetch available upcoming events for mentor");
+    }
+    return res.data;
+  } catch (error) {
+    console.error("Error fetching available upcoming events for mentor:", error);
+    throw error;
+  }
+};
+
 // Fetch upcoming sessions
 export const fetchUpcomingSessions = async () => {
   try {
@@ -357,6 +372,12 @@ export const fetchBookingDetails = async (bookingId) => {
     console.error("Error fetching booking details:", error);
     throw error;
   }
+};
+
+// delete availability
+export const deleteAvailability = async (eventId) => {
+  const response = await axios.delete(`/calendar/${eventId}`);
+  return response.data;
 };
 
 // // Fetch upcoming sessions

@@ -12,6 +12,7 @@ import {
   faTools,
   faUser,
   faChartLine,
+  faTrashAlt,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useAuthContext } from "../../store/authentication-context/AuthenticationContext";
@@ -62,9 +63,7 @@ export default function DashboardSidebar() {
           isClicked={isClicked}
           iconClicked={faTimes}
           iconUnClicked={faBars}
-          className={`sidebar-toggle-button   ${
-            isClicked ? "open" : ""
-          }`}
+          className={`sidebar-toggle-button   ${isClicked ? "open" : ""}`}
         />
         <nav className="dashboard-sidebar-nav ">
           <ul>
@@ -98,6 +97,29 @@ export default function DashboardSidebar() {
                 <FontAwesomeIcon icon={faCalendarAlt} className="fa-icon" />
               </Link>
             </li>
+
+            {user &&
+              user.role === "mentor" && ( // Add null check for user
+                <li>
+                  <Link
+                    to="/dashboard/delete-sessions#top"
+                    onClick={closeSidebar}
+                    className={
+                      activeLink === "/dashboard/delete-sessions"
+                        ? "active"
+                        : ""
+                    }
+                  >
+                    Delete Sessions
+                    <FontAwesomeIcon
+                      icon={faTrashAlt}
+                      className="fa-icon"
+                    />{" "}
+                    {/* Use trash icon */}
+                  </Link>
+                </li>
+              )}
+
             <li>
               <Link
                 to="/dashboard/session#top"
