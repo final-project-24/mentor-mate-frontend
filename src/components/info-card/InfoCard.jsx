@@ -66,7 +66,7 @@ export default function InfoCard({
                   <p>
                     <ToggleButton
                       onToggle={() => handleSkillClick(mentorUuid, skill)}
-                      buttonName={skill.protoSkillId.protoSkillTitle}
+                      buttonName={`${skill.protoSkillId.protoSkillTitle} ${skill.proficiency}`}
                       className="button-type-standard"
                     />
                   </p>
