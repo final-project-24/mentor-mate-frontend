@@ -14,7 +14,7 @@ import useStateSelectors from "../../../hooks/useStateSelectors"
 const ButtonPagination = (props) => {
   const dispatch = useDispatch()
   const {getSkillCategories} = useApiConnectors()
-  const {categoriesLoading} = useStateSelectors()
+  const {skillsLoading} = useStateSelectors()
 
   // define pages
   const page = props.state.page
@@ -23,7 +23,7 @@ const ButtonPagination = (props) => {
   const previousPage = page - 1
 
   const btnClass = classNames('', {
-    'opacity-20': categoriesLoading
+    'opacity-20': skillsLoading
   })
 
   const handleClick = () => {
@@ -44,7 +44,7 @@ const ButtonPagination = (props) => {
     <button 
       className={btnClass}
       onClick={handleClick}
-      disabled={categoriesLoading}
+      disabled={skillsLoading}
     >
       {props.prev
         ? <FontAwesomeIcon icon={faCaretLeft} />

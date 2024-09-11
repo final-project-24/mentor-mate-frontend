@@ -25,7 +25,7 @@ const SkillCategories = () => {
     showSkillCategoryForm,
     addForm,
     pagination,
-    categoriesLoading
+    skillsLoading
   } = useStateSelectors()
   const {getSkillCategories} = useApiConnectors()
 
@@ -71,7 +71,7 @@ const SkillCategories = () => {
             <div className="flex flex-col items-center gap-3">
               <PaginationControls state={pagination}/>
               <>
-                {categoriesLoading &&
+                {skillsLoading &&
                   <div className="flex justify-center items-center min-h-[436px]">
                     {/* TODO: migrate ClipLoader to a separate component and style it */}
                     <ClipLoader />
@@ -79,7 +79,7 @@ const SkillCategories = () => {
                 }
               </>
               <>
-                {!categoriesLoading &&
+                {!skillsLoading &&
                   <ul className="w-full relative flex flex-col gap-3 bg-card">
                     {skillCategories.map((c, i) => (
                       <li

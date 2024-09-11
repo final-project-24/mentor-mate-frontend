@@ -1,134 +1,225 @@
-import { useState } from "react";
-import axios from "axios";
-import ToggleButton from "../toggle-button/ToggleButton";
+/* eslint-disable no-undef */
+import { useEffect, useState } from "react"
 
-const SearchBySkill = ({
-  categoryOptions = [],
-  titleOptions = [],
-  levelOptions = [],
-  languageOptions = [],
-  onSearchResults,
-}) => {
-  const [category, setCategory] = useState("");
-  const [title, setTitle] = useState("");
-  const [level, setLevel] = useState("");
-  const [language, setLanguage] = useState("");
-  const [description, setDescription] = useState("");
+// hooks
+import useApiConnectors from "../../hooks/useApiConnectors"
+import useStateSelectors from "../../hooks/useStateSelectors"
+import { useBookingContext } from "../../store/booking-context/BookingContext"
 
-  const handleSearch = async () => {
-    const searchCriteria = {
-      skillCategoryTitle: category,
-      skillTitle: title,
-      proficiency: level,
-      language,
-      description,
-    };
+// components
+import ButtonSubmitForm from "../skills/buttons/ButtonSubmitForm"
+import logIfNodeDev from "../../utils/logIfNodeDev"
+import isArray from "../../utils/isArray"
 
-    try {
-      const response = await axios.get("/app/user-skill/get-user-skills", {
-        params: searchCriteria,
-      });
-      onSearchResults(response.data.skills); // Pass the results to a parent component or handle it within this component
-    } catch (error) {
-      console.error("Error fetching skills:", error);
+const SearchBySkill = () => {
+  // ! local state variables
+  const [category, setCategory] = useState('n/a')
+  const [title, setTitle] = useState('n/a')
+  const [proficiency, setProficiency] = useState('n/a')
+  
+  // ! contexts
+  const {skillCategories, protoSkills, skillsLoading} = useStateSelectors()
+  const {getSkillCategories, getProtoSkills, getUserSkills, getMentorsByUuid} = useApiConnectors()
+  const {mentors, setMentors} = useBookingContext()
+
+  // ! console logs for states
+  useEffect(() => {logIfNodeDev('skillCategories (skillCategory context): ', skillCategories)}, [skillCategories])
+  useEffect(() => {logIfNodeDev('protoSkills (protoSkills context): ', protoSkills)}, [protoSkills])
+  useEffect(() => {logIfNodeDev('mentors (Booking context): ', mentors)}, [mentors])
+  useEffect(() => {logIfNodeDev('category (local state): ', category)}, [category])
+  useEffect(() => {logIfNodeDev('title: (local state): ', title)}, [title])
+  useEffect(() => {logIfNodeDev('proficiency: (local state): ', proficiency)}, [proficiency])
+
+  // ! function
+  // field is the object key to search by
+  const findIdByState = (localState, contextState, field) => {
+    if (localState === 'n/a' || !isArray(contextState) || typeof field !== 'string') {
+      return null
     }
-  };
-    
 
+    const found = contextState.find(s => s[field] === localState)
+    return found
+      ? found._id
+      : null
+  }
+
+  // ! get categories
+  // get all categories when the component mounts
+  useEffect(() => {
+    (async () => {await getSkillCategories()})()
+  }, [])
+
+  // define categoryId (reused in handleOnSubmit)
+  const categoryIdInit = findIdByState(category, skillCategories, 'skillCategoryTitle')
+
+  // load protoSkills each time when the state of category changes to display only protoSkills relevant to selected category
+  useEffect(() => {
+    (async () => {
+      if (category !== 'n/a') {
+        await getProtoSkills({
+          page: 1,
+          limit: 50,
+          categoryId: categoryIdInit
+        }, false)
+        setTitle('n/a')
+      } else {
+        if (category === 'n/a')
+          await getProtoSkills({
+            page: 1,
+            limit: 50
+          }, true)
+      }
+    })()
+  }, [category])
+
+  // ! search for mentors
+  const handleOnSubmit = async (e) => {
+    e.preventDefault()
+
+    // get skills by filtering criteria
+    let skills = []
+
+    if (category === 'n/a' && title === 'n/a' && proficiency === 'n/a') {
+      skills = await getUserSkills({
+        page: 1,
+        limit: 50,
+      }, false, true)
+    } else {
+      skills = await getUserSkills({
+        page: 1,
+        limit: 50,
+        skillTitle: title === 'n/a' ? null : title,
+        skillCategoryTitle: category === 'n/a' ? null : category,
+        proficiency: proficiency === 'n/a' ? null : proficiency
+      }, false, false)
+    }
+
+    logIfNodeDev('skills', skills)
+
+    if (skills) {
+      let categoryId = null
+      let protoSkillId = null
+
+      const removeDuplicateUuids = (arr) => {
+        const seen = new Set() // declare empty set
+
+        return arr.map(s => ({mentorUuid: s.mentorUuid.uuid})).filter(item => {
+          if (seen.has(item.mentorUuid)) { // check if set has specific item
+            return false
+          }
+
+          seen.add(item.mentorUuid)
+          return true
+        })
+      }
+
+      const uniqueMentorUuids = removeDuplicateUuids(skills)
+      logIfNodeDev('uniqueMentorsUuids: ', uniqueMentorUuids)
+
+      if (title !== 'n/a') {
+        protoSkillId = findIdByState(title, protoSkills, 'protoSkillTitle')
+        console.log('protoSkillId: ', protoSkillId)
+      }
+
+      if (category !== 'n/a') {
+        categoryId = categoryIdInit
+        console.log('categoryId: ', categoryId)
+      }
+
+      const mentorData = {
+        uuids: uniqueMentorUuids,
+        categoryId: !categoryId ? null : categoryId, 
+        protoSkillId: !protoSkillId ? null : protoSkillId,
+        proficiency: proficiency === 'n/a' ? null: proficiency
+      }
+
+      console.log('mentorData: ', mentorData)
+
+      await getMentorsByUuid(mentorData)
+    } else {
+      // set mentors state to empty array if skills variable is undefined
+      setMentors([])
+    }
+  }
 
   return (
-    <div className=" pt-5 pb-20  lg:w-[70vw] ">
-      <div className="w-full flex flex-col md:grid grid-cols-2 md:gap-2 ">
-        <div className="mb-3 border">
-          <label htmlFor="dropdown1"></label>
-          <select
-            id="dropdown1"
-            value={category}
-            onChange={(e) => setCategory(e.target.value)}
-            className="p-1 text-base w-full"
-          >
-            <option value="">Search by Category:</option>
-            {categoryOptions.map((option) => (
-              <option key={option} value={option}>
-                {option}
-              </option>
-            ))}
-          </select>
-        </div>
+    <div className="pt-5 pb-20">
+      <form
+        className="w-full flex flex-col"
+        onSubmit={handleOnSubmit}
+      >
+        <div className="flex flex-col md:grid grid-cols-2 md:gap-2 lg:justify-between">
+          {/* CATEGORY */}
+          <label 
+            // htmlFor="dropdown1"
+          >Search by Category:</label>
+          <div className="mt-1 md:mt-0 mb-3 border-2 rounded-sm">
+            <select
+              // id="dropdown1"
+              onChange={(e) => setCategory(e.target.value)}
+              className="min-w-[200px] p-1 text-base w-full"
+              disabled={skillsLoading}
+            >
+              <option>n/a</option>
+              {skillCategories.map((c) => (
+                <option key={c._id}>
+                  {c.skillCategoryTitle}
+                </option>
+              ))}
+            </select>
+          </div>
 
-        <div className="mb-3 border">
-          <label htmlFor="dropdown2"></label>
-          <select
-            id="dropdown2"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            className="p-1 text-base w-full"
-          >
-            <option value="">Search by Title:</option>
-            {titleOptions.map((option) => (
-              <option key={option} value={option}>
-                {option}
-              </option>
-            ))}
-          </select>
+          {/* TITLE */}
+          <label 
+            // htmlFor="dropdown2"
+          >Search by Title:</label>
+          <div className="mt-1 md:mt-0 mb-3 border-2 rounded-sm">
+            <select
+              // id="dropdown2"
+              onChange={(e) => setTitle(e.target.value)}
+              className="min-w-[200px] p-1 text-base w-full"
+              disabled={skillsLoading}
+            >
+              <option>n/a</option>
+              {protoSkills.map((s) => (
+                <option key={s._id}>
+                  {s.protoSkillTitle}
+                </option>
+              ))}
+            </select>
+          </div>
+          
+          {/* PROFICIENCY */}
+          <label 
+            // htmlFor="dropdown3"
+          >Search by Proficiency:</label>
+          <div>
+            <div className="mt-1 md:mt-0 mb-3 border-2 rounded-sm">
+              <select
+                // id="dropdown3"
+                onChange={(e) => setProficiency(e.target.value.toLowerCase())}
+                className="min-w-[200px] p-1 text-base w-full"
+                disabled={skillsLoading}
+              >
+                <option>n/a</option>
+                {/* ! TODO: hardcoded values because we accept only those 3 proficiency levels */}
+                {['Beginner', 'Intermediate', 'Advanced'].map((p, i) => (
+                  <option key={i}>
+                    {p}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </div>
         </div>
-
-        <div className="mb-3 border">
-          <label htmlFor="dropdown3"></label>
-          <select
-            id="dropdown3"
-            value={level}
-            onChange={(e) => setLevel(e.target.value)}
-            className="p-1 text-base w-full"
-          >
-            <option value="">Search by Level:</option>
-            {levelOptions.map((option) => (
-              <option key={option} value={option}>
-                {option}
-              </option>
-            ))}
-          </select>
+        
+        {/* BUTTON */}
+        <div className="flex justify-center">
+          <ButtonSubmitForm label={'Search for Mentor'}/>
         </div>
-
-        <div className="mb-3 border">
-          <label htmlFor="dropdown4"></label>
-          <select
-            id="dropdown4"
-            value={language}
-            onChange={(e) => setLanguage(e.target.value)}
-            className="p-1 text-base w-full"
-          >
-            <option value="">Search by Language:</option>
-            {languageOptions.map((option) => (
-              <option key={option} value={option}>
-                {option}
-              </option>
-            ))}
-          </select>
-        </div>
-      </div>
-
-      <div className="flex flex-col items-center">
-        <div className="w-full mx-auto pb-5 md:w-2/4">
-          <label htmlFor="description"></label>
-          <input
-            id="description"
-            type="text"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            placeholder="Enter Description"
-            className="p-1 w-full h-10 border border-gray-300 rounded "
-          />
-        </div>
-
-        <ToggleButton
-          onToggle={handleSearch}
-          buttonName="Search Mentor"
-          className="p-1 border border-accent bg-accent rounded-lg text-white"
-        />
-      </div>
+      </form>
     </div>
-  );
-};
+  )
+}
 
-export default SearchBySkill;
+export default SearchBySkill

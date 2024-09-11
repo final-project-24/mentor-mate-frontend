@@ -9,7 +9,7 @@
 }
 
 #settings-container h1 {
-  /* color: var(--secondary-color); */
+  color: var(--secondary-color);
   font-size: var(--font-size-xl);
   margin-bottom: var(--margin-base);
 }
