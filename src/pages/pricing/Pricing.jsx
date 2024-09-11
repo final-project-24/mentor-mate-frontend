@@ -1,4 +1,4 @@
-import React from "react";
+
 import iconUrl from "../../assets/images/icon.svg"; // Importa el SVG como URL
 import Layout from "../../components/layout/Layout"; // Import your Layout component
 
