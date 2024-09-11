@@ -33,7 +33,7 @@
   box-shadow: var(--box-shadow-base);
 }
 
-.mentor-list-container {
+#mentor-list-container {
   /* border: 1px solid red; */
   width: 100%;
 }
