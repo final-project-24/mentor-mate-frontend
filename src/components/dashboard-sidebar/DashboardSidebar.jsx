@@ -77,16 +77,19 @@ export default function DashboardSidebar() {
                 <FontAwesomeIcon icon={faUser} className="fa-icon" />
               </Link>
             </li>
-            <li>
-              <Link
-                to="/dashboard/search#top"
-                onClick={closeSidebar}
-                className={activeLink === "/dashboard/search" ? "active" : ""}
-              >
-                Search for a Mentor
-                <FontAwesomeIcon icon={faSearch} className="fa-icon" />
-              </Link>
-            </li>
+            {user && user.role === "mentee" && (
+              <li>
+                <Link
+                  to="/dashboard/search#top"
+                  onClick={closeSidebar}
+                  className={activeLink === "/dashboard/search" ? "active" : ""}
+                >
+                  Search for a Mentor
+                  <FontAwesomeIcon icon={faSearch} className="fa-icon" />
+                </Link>
+              </li>
+            )}
+
             <li>
               <Link
                 to="/dashboard/schedule#top"
