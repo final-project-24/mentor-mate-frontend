@@ -38,8 +38,8 @@ export default function App() {
             <BookingProvider>
               <DarkModeProvider>
                 <Routes>
-                  <Route path="/" element={<HomePage />} />
-                  <Route path="/why-we" element={<WhyWe />} />
+                  {/* <Route path="/" element={<HomePage />} /> */}
+                  <Route path="/" element={<WhyWe />} />
                   <Route path="/authentication" element={<Authentication />} />
                   <Route path="/dashboard" element={<DashboardLayout />}>
                     <Route  index element={<DashboardHome />} />

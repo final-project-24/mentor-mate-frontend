@@ -26,7 +26,7 @@ const Search = () => {
   return (
     <section id="search" className="pt-[90px]  ">
       <h2 className="text-accent">Search for a Mentor </h2>
-      <div className="search-card md:w-[90%]">
+      <div className="search-card md:w-[90%] lg:w-[70%] xl:w-[50%]">
         <SearchBar />
         {/* <SearchAllMentors  /> */}
       </div>
