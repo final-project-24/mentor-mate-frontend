@@ -10,7 +10,7 @@
   box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
   transition: transform 0.3s ease;
   overflow: hidden; /* Hide overflow to prevent multiple reviews from showing */
-  z-index: 1000;
+  z-index: 5000;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

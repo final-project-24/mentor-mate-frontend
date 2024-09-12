@@ -1,0 +1,62 @@
+#delete-sessions-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  width: 100%;
+  margin-top: var(--margin-avoid-header);
+}
+
+#delete-sessions-container h1 {
+  color: var(--secondary-color);
+  font-size: var(--font-size-xl);
+  margin-top: var(--margin-base);
+}
+
+.session-item {
+  background-color: var(--card-color);
+  border: var(--border-width-base) solid var(--border-color-base);
+  border-radius: var(--border-radius-base);
+  box-shadow: var(--box-shadow-base);
+  padding: var(--padding-base);
+  margin: var(--margin-base) 0;
+  width: 100%;
+  max-width: 600px;
+  transition: background-color var(--transition-base);
+}
+
+.session-item:hover {
+  background-color: var(--card-color-hover);
+}
+
+.session-item div {
+  display: flex;
+  flex-direction: column;
+  /* gap: var(--gap-base); */
+}
+
+.session-item p {
+  color: var(--secondary-color);
+  margin: var(--margin-small) 0;
+  font-size: var(--font-size-base);
+}
+
+.session-item strong {
+  font-weight: var(--font-weight-bold);
+}
+
+.delete-button {
+  align-self: flex-end;
+  background-color: var(--error-color);
+  color: var(--primary-color);
+  padding: var(--padding-small) var(--padding-base);
+  border: none;
+  border-radius: var(--border-radius-base);
+  cursor: pointer;
+  transition: background-color var(--transition-base);
+}
+
+.delete-button:hover {
+  background-color: var(--accent-color-hover);
+}

@@ -13,6 +13,7 @@ import AdminTools from "./pages/admin-tools/AdminTools.jsx";
 import Settings from "./pages/settings/Settings.jsx";
 import Search from "./pages/search/Search.jsx";
 import Schedule from "./pages/schedule/Schedule.jsx";
+import DeleteSessions from "./pages/delete-sessions/DeleteSessions.jsx";
 import Booking from "./pages/booking/Booking.jsx";
 import Terms from "./pages/terms/Terms.jsx";
 import SessionPreview from "./pages/session-preview/SessionPreview.jsx";
@@ -45,6 +46,7 @@ export default function App() {
                     <Route  index element={<DashboardHome />} />
                     <Route path="search" element={<Search />} />
                     <Route path="schedule" element={<Schedule />} />
+                    <Route path="delete-sessions" element={<DeleteSessions />} />
                     <Route path="session" element={<Session />} />
                     <Route path="session-history" element={<SessionHistory />} />
                     {/* <Route path="past-sessions" element={<PastSessions />} /> */}

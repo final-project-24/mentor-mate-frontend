@@ -71,7 +71,7 @@
 
 // export default MentorList;
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -81,10 +81,17 @@ import InfoCard from "../info-card/InfoCard";
 
 const MentorList = () => {
   const { mentors } = useBookingContext();
+  const [searchAttempted, setSearchAttempted] = useState(false);
+
+  useEffect(() => {
+    if (mentors.length > 0) {
+      setSearchAttempted(true);
+    }
+  }, [mentors]);
 
   console.log("Hey there! I'm the MentorList component!"); // Debugging log
 
-  if (!mentors.length) {
+  if (searchAttempted && !mentors.length) {
     return <p className="mentor-list-error-message">No mentors found.</p>;
   }
 
@@ -94,7 +101,7 @@ const MentorList = () => {
 
   // console.log("Unique Mentors:", uniqueMentors); // Debugging line
 
-  const slidesToShow = Math.min(uniqueMentors.length, 3);
+  const slidesToShow = Math.min(uniqueMentors.length, 3) || 1; // Ensure slidesToShow is at least 1
 
   const settings = {
     dots: true,
