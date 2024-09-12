@@ -17,7 +17,7 @@ const Header = () => {
 
   // Define navigation links based on user role
   const guestLinks = [
-    { to: "/why-we", label: "Why We?" },
+    { to: "/", label: "Why We?" },
     { to: "/how-it-works", label: "How It Works" },
     // { to: "/", label: "Home" },
     // { to: "/about-us", label: "About Us" },
@@ -27,13 +27,14 @@ const Header = () => {
   ];
 
   const mentorLinks = [
-    { to: "/", label: "Home" },
+    //{ to: "/", label: "Home" },
     // { to: "/my-account", label: "My Account" },
     // { to: "/my-schedule", label: "My Schedule" },
     // { to: "/settings", label: "Settings" },
     // { to: "/session", label: "Session" },
     // { to: "/feedback", label: "Feedback" },
-    { to: "/about-us", label: "About Us" },
+    // { to: "/about-us", label: "About Us" },
+    { to: "/why-we", label: "Why We?" },
     { to: "/pricing", label: "Pricing" },
     { to: "/contact", label: "Contact" },
     { to: "/dashboard", label: "Dashboard" },
@@ -41,11 +42,12 @@ const Header = () => {
   ];
 
   const menteeLinks = [
-   // { to: "/", label: "Home" },
+    // { to: "/", label: "Home" },
     // { to: "/my-account", label: "My Account" },
     // { to: "/my-calendar", label: "My Calendar" },
     // { to: "/my-classes", label: "My Classes" },
-    { to: "/about-us", label: "About Us" },
+    // { to: "/about-us", label: "About Us" },
+    { to: "/why-we", label: "Why We?" },
     { to: "/pricing", label: "Pricing" },
     { to: "/contact", label: "Contact" },
     { to: "/dashboard", label: "Dashboard" },
@@ -53,11 +55,12 @@ const Header = () => {
   ];
 
   const adminLinks = [
-    { to: "/", label: "Home" },
-    { to: "/about-us", label: "About Us" },
+    // { to: "/", label: "Home" },
+   // { to: "/about-us", label: "About Us" },
     { to: "/pricing", label: "Pricing" },
     { to: "/contact", label: "Contact" },
     { to: "/dashboard", label: "Dashboard" },
+    { to: "/why-we", label: "Why We?" },
     // { to: "/admin-tools", label: "Admin Tools" },
     // { to: "/user-management", label: "User Management" },
   ];
@@ -80,7 +83,23 @@ const Header = () => {
     <div id="header">
       <nav className="header-container bg-primary fixed top-0 w-full h-[80px] flex items-center px-4 md:px-6 z-50  border-b-2 border-accent ">
         {/* Logo Section */}
+
         <div
+          className={`flex items-center ${
+            nav
+              ? "absolute w-full top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 "
+              : "lg:justify-start"
+          } flex-grow justify-center`}
+        >
+          <Link
+            to={isLoggedIn ? "/dashboard" : "/"}
+            className="text-xl font-bold text-accent hover:text-neutral"
+          >
+            Mentor Mate
+          </Link>
+        </div>
+
+        {/* <div
           className={`flex items-center ${
             nav
               ? "absolute w-full top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 "
@@ -93,7 +112,7 @@ const Header = () => {
           >
             Mentor Mate
           </Link>
-        </div>
+        </div> */}
         {/* Navigation Links for Desktop */}
         <ul
           className={`hidden lg:flex flex-grow gap-2 text-sm lg:text-lg xl:text-lg 2xl:text-xl lg:gap-3`}
@@ -123,9 +142,9 @@ const Header = () => {
               Login
             </Link>
           ) : (
-              <div className="hidden lg:flex">
-                <LogoutButton />
-                </div>
+            <div className="hidden lg:flex">
+              <LogoutButton />
+            </div>
           )}
         </div>
         {/* Hamburger Icon */}
