@@ -6,13 +6,14 @@ const useStateSelectors = () => {
   const skillCategories = useSelector(state => state.skillCategory.skillCategories)
   const currentSkillCategory = useSelector(state => state.skillCategory.currentSkillCategory)
   // skill category form
-  const skillCategoryForm = useSelector(state => state.skillCategoryForm)
-  const showSkillCategoryForm = useSelector(state => state.skillCategoryForm.showSkillCategoryForm)
-  const addForm = useSelector(state => state.skillCategoryForm.addForm)
+  const showSkillForm = useSelector(state => state.skillForm.showSkillForm)
+  const addForm = useSelector(state => state.skillForm.addForm)
+  const editForm = useSelector(state => state.skillForm.editForm)
   // proto skills
   const protoSkills = useSelector(state => state.protoSkill.protoSkills)
   // user skills
   const userSkills = useSelector(state => state.userSkill.userSkills)
+  const currentUserSkill = useSelector(state => state.userSkill.currentUserSkill)
   // errors
   const errorsArray = useSelector(state => state.error.errorsArray)
   // pagination
@@ -26,14 +27,15 @@ const useStateSelectors = () => {
     skillCategory,
     skillCategories,
     currentSkillCategory,
-    // skill category form
-    skillCategoryForm,
-    showSkillCategoryForm,
+    // skill form
+    showSkillForm,
     addForm,
+    editForm,
     // proto skills
     protoSkills,
     // user skills
     userSkills,
+    currentUserSkill,
     // errors
     errorsArray,
     // pagination
