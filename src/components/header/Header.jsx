@@ -10,10 +10,10 @@ const Header = () => {
   const [nav, setNav] = useState(false);
   const { isLoggedIn, user } = useAuthContext(); // Use user object from context
 
-  useEffect(() => {
-    console.log("Header - isLoggedIn:", isLoggedIn);
-    console.log("Header - userRole:", user?.role); // Ensure user object exists before accessing role
-  }, [isLoggedIn, user]);
+  // useEffect(() => {
+  //   console.log("Header - isLoggedIn:", isLoggedIn);
+  //   console.log("Header - userRole:", user?.role); // Ensure user object exists before accessing role
+  // }, [isLoggedIn, user]);
 
   // Define navigation links based on user role
   const guestLinks = [
@@ -41,7 +41,7 @@ const Header = () => {
   ];
 
   const menteeLinks = [
-    { to: "/", label: "Home" },
+   // { to: "/", label: "Home" },
     // { to: "/my-account", label: "My Account" },
     // { to: "/my-calendar", label: "My Calendar" },
     // { to: "/my-classes", label: "My Classes" },
@@ -78,7 +78,7 @@ const Header = () => {
 
   return (
     <div id="header">
-      <nav className="header-container bg-primary fixed top-0 w-full h-[80px] lg:h-[100px] flex items-center px-4 md:px-6 z-50  border-b-2 border-accent ">
+      <nav className="header-container bg-primary fixed top-0 w-full h-[80px] flex items-center px-4 md:px-6 z-50  border-b-2 border-accent ">
         {/* Logo Section */}
         <div
           className={`flex items-center ${
@@ -88,7 +88,7 @@ const Header = () => {
           } flex-grow justify-center`}
         >
           <Link
-            to="/"
+            to="/dashboard"
             className="text-xl font-bold text-accent hover:text-neutral"
           >
             Mentor Mate

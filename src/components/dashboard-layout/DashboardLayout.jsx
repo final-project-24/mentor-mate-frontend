@@ -11,7 +11,7 @@ export default function DashboardLayout() {
         <div className="dashboard-sidebar">
           <DashboardSidebar />
         </div>
-        <div className="main-content">
+        <div className="main-content ">
           <Outlet />
         </div>
       </div>

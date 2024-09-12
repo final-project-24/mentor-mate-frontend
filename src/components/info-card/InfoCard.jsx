@@ -31,18 +31,20 @@ export default function InfoCard({
   const { setSelectedMentorUuid, setSelectedSkill } = useBookingContext();
 
   const handleSkillClick = (mentorUuid, skill) => {
-    console.log("Mentor UUID:", mentorUuid); // Debugging log
-    console.log("Skill:", skill); // Debugging log
+    // console.log("Mentor UUID:", mentorUuid); // Debugging log
+    // console.log("Skill:", skill); // Debugging log
+    console.log("Hey there! I'm the InfoCard component!"); // Debugging log
     setSelectedMentorUuid(mentorUuid); // Set the selected mentor UUID in the booking context
     setSelectedSkill(skill); // Set the selected skill in the booking context
     navigate("/dashboard/schedule"); // Navigate to the schedule page
+    window.scrollTo(0, 0); // Scroll to the top of the page
   };
 
   return (
     <>
-      <div className="info-card w-3/4">
+      <div className="info-card md:mx-2 ">
         {image && (
-          <img className="info-card-image" src={image} alt={userName} />
+          <img className="info-card-image " src={image} alt={userName} />
         )}
 
         <div className="info-card-content">
@@ -58,13 +60,13 @@ export default function InfoCard({
           {/* skills */}
           {skills && skills.length > 0 && (
             <ul className="skills">
-              <li>Book a session</li>
+              <li className="text-lg">Book a session</li>
               {skills.map((skill, index) => (
                 <li key={index}>
                   <p>
                     <ToggleButton
                       onToggle={() => handleSkillClick(mentorUuid, skill)}
-                      buttonName={skill.protoSkillId.protoSkillTitle}
+                      buttonName={`${skill.protoSkillId.protoSkillTitle} ${skill.proficiency}`}
                       className="button-type-standard"
                     />
                   </p>

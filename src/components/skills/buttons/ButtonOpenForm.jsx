@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux"
 import { isMobile } from "react-device-detect"
 
 // reducer actions
-import { set_add_form, set_show_skill_category_form } from "../../../store/skills-store/slices/forms/skillCategoryFormSlice"
+import { set_add_form, set_show_skill_category_form } from "../../../store/skills-store/slices/skillCategoryFormSlice"
 
 const ButtonOpenForm = () => {
   const dispatch = useDispatch()

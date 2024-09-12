@@ -4,7 +4,7 @@ import { useState } from "react";
 import axios from 'axios'
 import Layout from "../../components/layout/Layout";
 
-import ReviewSidebar from "../review-sidebar/ReviewSidebar";
+import ReviewSidebar from "../../components/review-sidebar/ReviewSidebar.jsx";
 import { useAuthContext } from "../../store/authentication-context/AuthenticationContext";
 import Schedule from "../schedule/Schedule";
 import InfoCard from "../../components/info-card/InfoCard.jsx";
@@ -207,7 +207,7 @@ const HomePage = () => {
               />
             </div>
             {/* Keep ReviewSidebar from nacho branch */}
-            {/* <ReviewSidebar /> */}
+            <ReviewSidebar />
           </div>
         )}
 
@@ -241,7 +241,7 @@ const HomePage = () => {
                 <Schedule />
               </div>
             )}
-         
+          
       </section>
     </Layout>
   );

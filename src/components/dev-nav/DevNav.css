@@ -1,6 +1,6 @@
 .dev-nav-container {
   margin: var(--margin-small);
-  padding: var(--padding-small);
+  /* padding: var(--padding-small); */
   position: relative;
   display: inline-block;
 }
@@ -15,7 +15,7 @@
 }
 
 .dropdown-menu li {
-  padding: var(--padding-small);
+  /* padding: var(--padding-small); */
   text-align: left;
 }
 

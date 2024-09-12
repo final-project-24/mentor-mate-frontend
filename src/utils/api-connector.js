@@ -187,9 +187,21 @@ export const changeEmail = async (newEmail) => {
 // feedback API calls ==================================================
 
 // submit feedback
-export const submitFeedback = async (feedbackData) => {
+export const submitFeedback = async (
+  feedbackData,
+  bookingId,
+  mentorUuid,
+  menteeUuid
+) => {
   try {
-    const res = await axios.post("/feedback", feedbackData);
+    const res = await axios.post(
+      "/feedback",
+      feedbackData,
+      bookingId,
+      mentorUuid,
+      menteeUuid
+    );
+    console.log("Feedback submitted:", res.data); // Log submitted feedback
     if (res.status !== 201) {
       throw new Error("Unable to submit feedback");
     }
@@ -200,20 +212,87 @@ export const submitFeedback = async (feedbackData) => {
   }
 };
 
-// session API calls ===================================================
-
-// fetch session data
-export const fetchSessionData = async () => {
+// fetch feedbacks
+export const fetchFeedbacks = async (bookingId, mentorUuid, menteeUuid) => {
   try {
-    const response = await axios.get("/session");
-    return response.data;
+    const res = await axios.get("/feedback", {
+      params: { bookingId, mentorUuid, menteeUuid },
+    });
+    console.log("Fetched feedbacks:", res.data); // Log fetched feedbacks
+    if (res.status !== 200) {
+      throw new Error("Unable to fetch feedbacks");
+    }
+    console.log("Fetched feedbacks:", res.data); // Log fetched feedbacks
+    return res.data;
   } catch (error) {
-    console.error("Error fetching session data:", error);
-    throw new Error("Failed to fetch session data");
+    console.error("Error fetching feedbacks:", error);
+    throw error;
   }
 };
 
-// calendar API calls ==================================================
+// session API calls ===================================================
+
+// Fetch upcoming sessions
+export const fetchUpcomingSessions = async () => {
+  try {
+    const res = await axios.get("/session/upcoming-sessions");
+    console.log("Fetched upcoming sessions:", res.data); // Log fetched upcoming sessions
+    if (res.status !== 200) {
+      throw new Error("Unable to fetch upcoming sessions");
+    }
+    return res.data;
+  } catch (error) {
+    console.error("Error fetching upcoming sessions:", error);
+    throw error;
+  }
+};
+
+// Fetch past sessions
+export const fetchPastSessions = async () => {
+  try {
+    const res = await axios.get("/session/past-sessions");
+    console.log("Fetched past sessions:", res.data); // Log fetched past sessions
+    if (res.status !== 200) {
+      throw new Error("Unable to fetch past sessions");
+    }
+    return res.data;
+  } catch (error) {
+    console.error("Error fetching past sessions:", error);
+    throw error;
+  }
+};
+
+//cancel a session
+
+export const cancelSession = async (sessionId) => {
+  try {
+    const res = await axios.delete(`/session/cancel-session/${sessionId}`);
+    if (res.status !== 200) {
+      throw new Error("Unable to cancel session");
+    }
+    return res.data;
+  } catch (error) {
+    console.error("Error canceling session:", error);
+    throw error;
+  }
+};
+
+// Confirm Free Slot Booking
+export const confirmFreeSlotBooking = async (bookingId) => {
+  try {
+    // Assuming you have an endpoint for confirming free slot bookings
+    const res = await axios.post(`/session/confirm-free-slot`, { bookingId });
+    if (res.status !== 200) {
+      throw new Error("Unable to confirm free slot booking");
+    }
+    return res.data;
+  } catch (error) {
+    console.error("Error confirming free slot booking:", error);
+    throw error;
+  }
+};
+
+// calendar / booking API calls ==================================================
 
 // MentorAvailabilityCalendar.jsx
 export const fetchAvailability = async (mentorUuid) => {
@@ -240,7 +319,7 @@ export const addAvailability = async (start, end) => {
     const res = await axios.post("/calendar", {
       start,
       end,
-      title: "Available",
+      title: "1 Hour Session",
     });
     if (res.status !== 200 && res.status !== 201) {
       throw new Error("Unable to add availability");
@@ -267,6 +346,48 @@ export const bookSlot = async (eventId, skillId) => {
     throw error;
   }
 };
+
+// BookingDetails.jsx
+export const fetchBookingDetails = async (bookingId) => {
+  try {
+    const response = await axios.get(`/calendar/booking-details/${bookingId}`);
+    console.log("Booking details:", response.data); // Log booking details
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching booking details:", error);
+    throw error;
+  }
+};
+
+// // Fetch upcoming sessions
+// export const fetchUpcomingSessions = async () => {
+//   try {
+//     const res = await axios.get("/calendar/upcoming-sessions");
+//     console.log("Fetched upcoming sessions:", res.data); // Log fetched upcoming sessions
+//     if (res.status !== 200) {
+//       throw new Error("Unable to fetch upcoming sessions");
+//     }
+//     return res.data;
+//   } catch (error) {
+//     console.error("Error fetching upcoming sessions:", error);
+//     throw error;
+//   }
+// };
+
+// // Fetch past sessions
+// export const fetchPastSessions = async () => {
+//   try {
+//     const res = await axios.get("/calendar/past-sessions");
+//     console.log("Fetched past sessions:", res.data); // Log fetched past sessions
+//     if (res.status !== 200) {
+//       throw new Error("Unable to fetch past sessions");
+//     }
+//     return res.data;
+//   } catch (error) {
+//     console.error("Error fetching past sessions:", error);
+//     throw error;
+//   }
+// };
 
 // // payment API calls ==================================================
 

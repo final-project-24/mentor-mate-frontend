@@ -14,15 +14,18 @@ const Authentication = () => {
 
   const handleToggleSignUpLogin = () => {
     setShowSignUp(!showSignUp);
+    window.scrollTo(0, 0); // Scroll to the top of the page
   };
 
   const handleToggleForgotPassword = () => {
     setShowForgotPassword(!showForgotPassword);
+    window.scrollTo(0, 0); // Scroll to the top of the page
   };
 
   const handleResetPassword = (token) => {
     setResetToken(token);
     setShowForgotPassword(false);
+    window.scrollTo(0, 0); // Scroll to the top of the page
   };
 
   return (

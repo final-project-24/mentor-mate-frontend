@@ -16,6 +16,7 @@
 .booking-content {
   color: var(--secondary-color);
   margin-bottom: var(--margin-base);
+  margin: 0 20px;
 }
 
 #booking-container a {

@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit"
 
 const initialState = {
-  categoriesLoading: false,
+  skillsLoading: false,
   categoriesDeleteLoading: false
 }
 
@@ -9,8 +9,8 @@ const loadingSlice = createSlice({
   name: 'loading',
   initialState,
   reducers: {
-    set_categories_loading: (state, action) => {
-      state.categoriesLoading = action.payload
+    set_skills_loading: (state, action) => {
+      state.skillsLoading = action.payload
     },
     set_category_delete_loading: (state, action) => {
       state.categoriesDeleteLoading = action.payload
@@ -19,8 +19,8 @@ const loadingSlice = createSlice({
 })
 
 export const {
-  set_categories_loading,
-  set_category_delete_loading
+  set_skills_loading,
+  set_category_delete_loading,
 } = loadingSlice.actions
 
 export default loadingSlice.reducer

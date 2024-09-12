@@ -9,7 +9,7 @@ import {
   CardCvcElement,
 } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
-import { createStripePaymentIntent } from "../../../utils/api-connector";
+import { createStripePaymentIntent, confirmFreeSlotBooking } from "../../../utils/api-connector";
 import "./StripePayment.css";
 
 const stripePublicKeyId = import.meta.env.VITE_STRIPE_PUBLIC_KEY;
@@ -17,7 +17,7 @@ const stripePublicKeyId = import.meta.env.VITE_STRIPE_PUBLIC_KEY;
 // Initialize Stripe with public key
 const stripePromise = loadStripe(stripePublicKeyId);
 
-const StripePayment = ({ bookingId, onPaymentSuccess }) => {
+const StripePayment = ({ bookingId, isFreeSlot, onPaymentSuccess }) => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const [clientSecret, setClientSecret] = useState(null);
@@ -27,21 +27,37 @@ const StripePayment = ({ bookingId, onPaymentSuccess }) => {
   const modalRef = useRef(null);
 
   useEffect(() => {
-    // Fetch client secret from backend
+    // Fetch client secret from backend if not a free slot
     const fetchClientSecret = async () => {
-      try {
-        const response = await createStripePaymentIntent(bookingId);
-        setClientSecret(response.clientSecret);
-      } catch (error) {
-        console.error("Error fetching client secret:", error);
-        setError("An error occurred while initializing the payment.");
+      if (!isFreeSlot) {
+        try {
+          const response = await createStripePaymentIntent(bookingId);
+          setClientSecret(response.clientSecret);
+        } catch (error) {
+          console.error("Error fetching client secret:", error);
+          setError("An error occurred while initializing the payment.");
+        }
       }
     };
 
     fetchClientSecret();
-  }, [bookingId]);
+  }, [bookingId, isFreeSlot]);
 
-  const createSubscription = async () => {
+  const handlePayment = async () => {
+    if (isFreeSlot) {
+      // If it's a free slot, confirm booking without payment
+      try {
+        await confirmFreeSlotBooking(bookingId);
+        if (onPaymentSuccess) onPaymentSuccess();
+        navigate("/session-preview");
+        window.scrollTo(0, 0);
+      } catch (error) {
+        console.error("Error confirming free slot booking:", error);
+        setError("An error occurred while confirming your booking.");
+      }
+      return;
+    }
+
     setLoading(true);
     setError(null); // Clear previous errors
     try {
@@ -56,9 +72,6 @@ const StripePayment = ({ bookingId, onPaymentSuccess }) => {
         await stripe.createPaymentMethod({
           type: "card",
           card: elements.getElement(CardNumberElement),
-          // billing_details: {
-          //   name: "Your Name", // Update as necessary
-          // },
         });
 
       if (paymentMethodError) {
@@ -76,7 +89,8 @@ const StripePayment = ({ bookingId, onPaymentSuccess }) => {
         setError(paymentError.message);
       } else if (paymentIntent.status === "succeeded") {
         if (onPaymentSuccess) onPaymentSuccess();
-        navigate("/session"); // Redirect to the session page after payment success
+        navigate("/session-preview"); // Redirect to the session page after payment success
+        window.scrollTo(0, 0); // Scroll to the top of the page
       } else {
         console.log(`Payment status: ${paymentIntent.status}`);
       }
@@ -105,32 +119,36 @@ const StripePayment = ({ bookingId, onPaymentSuccess }) => {
       </div>
 
       <div className="popup-instruction-payment">
-        <p>Enter your card details below to complete the payment.</p>
+        <p>{isFreeSlot ? "No payment is required for this free slot." : "Enter your card details below to complete the payment."}</p>
       </div>
 
-      <div className="card-entry">
-        <label>Card Number</label>
-        <CardNumberElement className="stripe-element" />
-      </div>
+      {!isFreeSlot && (
+        <>
+          <div className="card-entry">
+            <label>Card Number</label>
+            <CardNumberElement className="stripe-element" />
+          </div>
 
-      <div className="expiry-cvc-entry">
-        <div className="card-entry">
-          <label>Expiry Date</label>
-          <CardExpiryElement className="stripe-element" />
-        </div>
+          <div className="expiry-cvc-entry">
+            <div className="card-entry">
+              <label>Expiry Date</label>
+              <CardExpiryElement className="stripe-element" />
+            </div>
 
-        <div className="card-entry">
-          <label>CVC</label>
-          <CardCvcElement className="stripe-element" />
-        </div>
-      </div>
+            <div className="card-entry">
+              <label>CVC</label>
+              <CardCvcElement className="stripe-element" />
+            </div>
+          </div>
+        </>
+      )}
 
       <button
-        disabled={!stripe || loading || !clientSecret}
+        disabled={!stripe || loading || (isFreeSlot && !clientSecret)}
         className="subscribe-button"
-        onClick={createSubscription}
+        onClick={handlePayment}
       >
-        {loading ? "Processing..." : "Pay Now"}
+        {loading ? "Processing..." : isFreeSlot ? "Confirm Booking" : "Pay Now"}
       </button>
 
       {error && <div className="payment-error">{error}</div>}
@@ -145,3 +163,4 @@ const StripePaymentWrapper = (props) => (
 );
 
 export default StripePaymentWrapper;
+

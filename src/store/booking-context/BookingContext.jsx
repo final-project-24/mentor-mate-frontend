@@ -3,11 +3,11 @@ import { createContext, useState, useContext, useEffect } from "react";
 const BookingContext = createContext();
 
 export const BookingProvider = ({ children }) => {
-  const [bookingId, setBookingId] = useState(null);
+  const [bookingId, setBookingId] = useState(null); // data from Booking.jsx
   const [isAgreed, setIsAgreed] = useState(false);
-  const [selectedMentorUuid, setSelectedMentorUuid] = useState(null);
-  const [selectedSkill, setSelectedSkill] = useState(null);
-  const [mentors, setMentors] = useState([]);
+  const [selectedMentorUuid, setSelectedMentorUuid] = useState(null); // data from InfoCard.jsx
+  const [selectedSkill, setSelectedSkill] = useState(null); // data from InfoCard.jsx
+  const [mentors, setMentors] = useState([]); // data from SearchBar.jsx / and other search components
 
   // Debug logs ========================================
 

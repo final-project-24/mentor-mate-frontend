@@ -17,6 +17,9 @@ export const skillCategorySlice = createSlice({
     set_current_skill_category: (state, action) => {
       state.currentSkillCategory = action.payload
     },
+    // add_skill_category: (state, action) => {
+    //   state.skillCategories = [action.payload, ...state.skillCategories]
+    // },
     update_skill_category: (state, action) => {
       const index = state.skillCategories.findIndex(c => c._id === action.payload._id)
 
@@ -26,12 +29,6 @@ export const skillCategorySlice = createSlice({
     },
     delete_skill_category: (state, action) => {
       state.skillCategories.filter(c => c._id !== action.payload)
-    },
-    set_page: (state, action) => {
-      state.page = action.payload
-    },
-    set_total_pages: (state, action) => {
-      state.totalPages = action.payload
     }
   }
 })
@@ -39,9 +36,8 @@ export const skillCategorySlice = createSlice({
 export const {
   set_skill_categories,
   set_current_skill_category,
+  // add_skill_category,
   update_skill_category,
-  set_page,
-  set_total_pages,
   delete_skill_category
 } = skillCategorySlice.actions
 

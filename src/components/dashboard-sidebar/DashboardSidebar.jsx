@@ -1,6 +1,7 @@
 // DashboardSidebar.jsx
 import { useState, useEffect, useRef } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import { HashLink as Link } from "react-router-hash-link";
 import {
   faBars,
   faTimes,
@@ -10,6 +11,7 @@ import {
   faCog,
   faTools,
   faUser,
+  faChartLine,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useAuthContext } from "../../store/authentication-context/AuthenticationContext";
@@ -68,20 +70,17 @@ export default function DashboardSidebar() {
           <ul>
             <li>
               <Link
-                to="/dashboard"
+                to="/dashboard#top"
                 onClick={closeSidebar}
                 className={activeLink === "/dashboard" ? "active" : ""}
               >
                 Your Profile
-                <FontAwesomeIcon
-                  icon={faUser}
-                  className="fa-icon"
-                />
+                <FontAwesomeIcon icon={faUser} className="fa-icon" />
               </Link>
             </li>
             <li>
               <Link
-                to="/dashboard/search"
+                to="/dashboard/search#top"
                 onClick={closeSidebar}
                 className={activeLink === "/dashboard/search" ? "active" : ""}
               >
@@ -91,7 +90,7 @@ export default function DashboardSidebar() {
             </li>
             <li>
               <Link
-                to="/dashboard/schedule"
+                to="/dashboard/schedule#top"
                 onClick={closeSidebar}
                 className={activeLink === "/dashboard/schedule" ? "active" : ""}
               >
@@ -101,7 +100,7 @@ export default function DashboardSidebar() {
             </li>
             <li>
               <Link
-                to="/dashboard/session"
+                to="/dashboard/session#top"
                 onClick={closeSidebar}
                 className={activeLink === "/dashboard/session" ? "active" : ""}
               >
@@ -114,7 +113,19 @@ export default function DashboardSidebar() {
             </li>
             <li>
               <Link
-                to="/dashboard/settings"
+                to="/dashboard/session-history#top"
+                onClick={closeSidebar}
+                className={
+                  activeLink === "/dashboard/session-history" ? "active" : ""
+                }
+              >
+                Your Progress
+                <FontAwesomeIcon icon={faChartLine} className="fa-icon" />
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/dashboard/settings#top"
                 onClick={closeSidebar}
                 className={activeLink === "/dashboard/settings" ? "active" : ""}
               >
@@ -125,7 +136,7 @@ export default function DashboardSidebar() {
             {user?.role === "admin" && (
               <li>
                 <Link
-                  to="/dashboard/admin-tools"
+                  to="/dashboard/admin-tools#top"
                   onClick={closeSidebar}
                   className={
                     activeLink === "/dashboard/admin-tools" ? "active" : ""

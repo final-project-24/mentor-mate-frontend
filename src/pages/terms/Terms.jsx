@@ -17,12 +17,13 @@ const Terms = () => {
 
   const handleGoBack = () => {
     // Navigate to the payment page instead of the booking page
-    navigate('/payment', { state: { agreed: isChecked } });
+    // navigate('/payment', { state: { agreed: isChecked } });
+    navigate('/booking/' + bookingId);
   };
 
   return (
     <Layout>
-      <div className="terms-container">
+      <div className="terms-container mt-[80px] mb-[50px] h-full">
         <h1 className="terms-title">Terms and Conditions</h1>
         <p className="terms-text">
           By agreeing to these terms, you acknowledge and accept the following conditions:

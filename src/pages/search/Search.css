@@ -3,14 +3,14 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  gap: var(--margin-lg);
+  /* gap: var(--margin-lg); */
   width: 100%;
   margin-top: var(--margin-lg);
-  margin-bottom: var(--margin-lg);
+ 
 }
 
 #search h2 {
-  color: var(--secondary-color);
+  /* color: var(--secondary-color); */
   font-size: var(--font-size-lg);
   text-align: center;
 }
@@ -40,7 +40,7 @@
 
 @media (min-width: 350px) {
   .search-card {
-    width: 90%;
+    width: 95%;
   }
 }
 
