@@ -79,7 +79,7 @@ export default function DashboardSidebar() {
               </Link>
             </li>
             {user && user.role === "mentee" && (
-              <li>
+              <li title={isClicked ? '' : 'Search'}>
                 <Link
                   to="/dashboard/search#top"
                   onClick={closeSidebar}
@@ -90,7 +90,7 @@ export default function DashboardSidebar() {
                 </Link>
               </li>
             )}
-            <li>
+            <li title={isClicked ? '' : 'Schedule'}>
               <Link
                 to="/dashboard/schedule#top"
                 onClick={closeSidebar}
@@ -102,7 +102,7 @@ export default function DashboardSidebar() {
             </li>
             {user &&
               user.role === "mentor" && ( // Add null check for user
-                <li>
+                <li title={isClicked ? '' : 'Delete Sessions'}>
                   <Link
                     to="/dashboard/delete-sessions#top"
                     onClick={closeSidebar}
@@ -121,7 +121,7 @@ export default function DashboardSidebar() {
                   </Link>
                 </li>
               )}
-            <li>
+            <li title={isClicked ? '' : 'Upcoming Sessions'}>
               <Link
                 to="/dashboard/session#top"
                 onClick={closeSidebar}
