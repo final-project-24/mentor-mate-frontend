@@ -27,6 +27,7 @@ import SkillCategories from "./components/skills/skill-categories/SkillCategorie
 import Skills from "./components/skills/skills/Skills.jsx";
 import Pricing from "./pages/pricing/Pricing.jsx";
 import AboutUs from "./pages/about-us/AboutUs.jsx";
+import Contact from "./pages/contact/Contact.jsx";
 
 
 export default function App() {
@@ -71,6 +72,7 @@ export default function App() {
                   <Route path="*" element={<NotFound />} />
                   <Route path="/pricing" element={<Pricing />} />
                   <Route path="/about-us" element={<AboutUs />} />
+                  <Route path="/contact" element={<Contact />} />
                 </Routes>
               </DarkModeProvider>
             </BookingProvider>
