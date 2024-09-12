@@ -56,9 +56,9 @@ const PricingCards = () => {
 
   return (
     <Layout>
-      <h2 className="text-center text-xl pt-[100px]">Our Prices </h2>
-      <div className="w-[90%] m-10 mx-auto  px-4 bg-white  ">
-        <div className="max-w-[1240px] mx-auto grid  gap-12  md:w-[70%]  lg:grid lg:grid-cols-3 lg:w-full border lg:pt-5 ">
+      <h2 className="text-center text-xl pt-[100px] ]">Our Prices </h2>
+      <div className="w-[90%] m-10 mx-auto  px-4 bg-white lg:h-[65vh]  ">
+        <div className="max-w-[1240px] mx-auto grid  gap-12  md:w-[70%]  lg:grid lg:grid-cols-3 lg:w-full  lg:pt-5 ">
           {cardData.map((card, index) => (
             <div
               key={index}

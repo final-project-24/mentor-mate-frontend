@@ -1,94 +1,149 @@
 import React from 'react'
 import Layout from '../../components/layout/Layout'
+import auimage from "../../assets/images/about-us-image.jpg";
+
 
 function WhyWe() {
   return (
     <Layout>
-      <article className="mt-[100px] lg:pt-[150px]  ">
-        <h2 className="text-center text-accent font-bold text-xl pt-2 pb-10">
-          Why MentorMate?
-        </h2>
-        <div className="pt-5 text-center">
-          <div className="pb-5 text-lg  ">
-            <strong className="text-lg md:text-xl  text-secondary md:text-accent">
-              Tailored Mentorship
-            </strong>
-            <p className="hidden md:block text-lg">
-              We connect you with mentors who align with your goals and
-              industry, ensuring you receive guidance that's relevant and
-              impactful.
-            </p>
-          </div>
-          <div className="pb-5 text-lg ">
-            <strong className="text-lg md:text-xl  text-secondary md:text-accent">
-              Flexible Learning
-            </strong>
-            <p className="hidden md:block text-lg">
-              OWhether you're a student, a career switcher, or a professional
-              looking to upskill, our platform offers flexible learning paths
-              that fit your schedule and needs.
-            </p>
-          </div>
-          <div className="pb-5 text-lg ">
-            <strong className="text-lg md:text-xl  text-secondary md:text-accent">
-              Community-Driven Growth
-            </strong>
-            <p className="hidden md:block text-lg">
-              Join a thriving community of learners and mentors who are
-              dedicated to mutual growth and success, providing you with a
-              support network that extends beyond your mentorship sessions.
-            </p>
-          </div>
-          <div className="pb-5 text-lg ">
-            <strong className="text-lg md:text-xl  text-secondary md:text-accent">
-              Continuous Improvement
-            </strong>
-            <p className="hidden md:block text-lg">
-              We don't just match you with a mentor and leave it at that. We
-              provide ongoing feedback (and resources?) to ensure you're always
-              moving forward in your career.
-            </p>
-          </div>
-          {/* <p className="pb-10 text-lg ">
-            <strong className="text-lg text-accent">
-              Comprehensive Support:
-            </strong>{" "}
-            Access a wealth of resources to complement your mentorship
-            experience.
-          </p>
+      <section>
+        <div className="mt-[90px] mb-[80px] bg-white">
+          <h1 className="text-center text-accent text-3xl ">
+            Welcome to MentorMate - Your Gateway to Growth and Success!
+          </h1>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="lg:text-center">
+              <h2
+                className="font-heading mb-4 bg-green-500 text-black-100 
+        px-4 py-2 rounded-lg md:w-64 md:mx-auto text-xs font-semibold 
+        tracking-widest text-black uppercase title-font mt-10"
+              >
+                Why choose us?
+              </h2>
+              <p
+                className="font-heading mt-2 text-3xl leading-8 font-semibold 
+        tracking-tight text-gray-900 sm:text-4xl"
+              >
+                Our mission: Empowering growth through personalized mentorship
+                to achieve goals and unlock potential.
+              </p>
+              <p className="mt-4 max-w-2xl text-lg text-gray-500 lg:mx-auto">
+                By choosing us, you are not just getting a mentor—you're joining
+                a community committed to your success.
+              </p>
+            </div>
+            <div className="mt-10 flex justify-center">
+              <img
+                src={auimage} // Imagen importada
+                alt="About us"
+                className="w-full h-auto max-w-lg rounded-lg shadow-md object-cover"
+              />
+            </div>
 
-          <p className="pb-10 text-lg ">
-            <strong className="text-lg text-accent">
-              Personalized Matching:
-            </strong>{" "}
-            Our algorithm finds the best mentor or mentee for you, ensuring a
-            meaningful and productive relationship.
-          </p>
-          <p className="pb-10 text-lg ">
-            <strong className="text-lg text-accent">Expert Mentors:</strong> Our
-            mentors are leaders in their fields, ready to share their wisdom and
-            help you achieve your goals.
-          </p>
-          <p className="pb-10 text-lg ">
-            <strong className="text-lg text-accent">
-              Flexible & Convenient:
-            </strong>{" "}
-            Your schedule, your choice. Connect whenever it suits you.
-          </p>
-          <p className="pb-10 text-lg ">
-            <strong className="text-lg text-accent">Vibrant Community:</strong>{" "}
-            Join a network of motivated individuals eager to learn and grow
-            together.
-          </p>
-          <p className="pb-10 text-lg ">
-            <strong className="text-lg text-accent">
-              Comprehensive Support:
-            </strong>{" "}
-            Access a wealth of resources to complement your mentorship
-            experience.
-          </p> */}
+            <div className="mt-10">
+              <dl
+                className="space-y-10 md:space-y-0 md:grid md:grid-cols-2 
+        md:gap-x-8 md:gap-y-10"
+              >
+                <div className="relative">
+                  <dt>
+                    <div
+                      className="absolute flex items-center justify-center 
+              h-12 w-12 rounded-md bg-primary-500 text-white"
+                    >
+                      <img
+                        src="https://www.svgrepo.com/show/503163/api-settings.svg"
+                        alt="API settings icon"
+                      />
+                    </div>
+                    <p
+                      className="font-heading ml-16 text-lg leading-6 
+              font-bold text-gray-700"
+                    >
+                      Tailored Mentorship
+                    </p>
+                  </dt>
+                  <dd className="mt-2 ml-16 text-base text-gray-500">
+                    We connect you with mentors who align with your goals and
+                    industry, ensuring you receive guidance that's relevant and
+                    impactful.
+                  </dd>
+                </div>
+
+                <div className="relative">
+                  <dt>
+                    <div
+                      className="absolute flex items-center justify-center 
+              h-12 w-12 rounded-md bg-primary-500 text-white"
+                    >
+                      <img
+                        src="https://www.svgrepo.com/show/503138/webpack.svg"
+                        alt="Webpack icon"
+                      />
+                    </div>
+                    <p
+                      className="font-heading ml-16 text-lg leading-6 
+              font-bold text-gray-700"
+                    >
+                      Flexible Learning:{" "}
+                    </p>
+                  </dt>
+                  <dd className="mt-2 ml-16 text-base text-gray-500">
+                    Whether you're a student, a career switcher, or a
+                    professional looking to upskill, our platform offers
+                    flexible learning paths that fit your schedule and needs.
+                  </dd>
+                </div>
+
+                <div className="relative">
+                  <dt>
+                    <div
+                      className="absolute flex items-center justify-center 
+              h-12 w-12 rounded-md bg-primary-500 text-white"
+                    >
+                      <img
+                        src="https://www.svgrepo.com/show/511771/dashboard-671.svg"
+                        alt="Dashboard icon"
+                      />
+                    </div>
+                    <p
+                      className="font-heading ml-16 text-lg leading-6 
+              font-bold text-gray-700"
+                    >
+                      Community-Driven Growth
+                    </p>
+                  </dt>
+                  <dd className="mt-2 ml-16 text-base text-gray-500">
+                    Join a thriving community of learners and mentors who are
+                    dedicated to mutual growth and success, providing you with a
+                    support network that extends beyond your mentorship
+                    sessions.
+                  </dd>
+                </div>
+
+                <div className="relative">
+                  <dt>
+                    <div className="absolute flex items-center justify-center h-12 w-12 rounded-md bg-primary-500 text-white">
+                      <img
+                        src="https://www.svgrepo.com/show/76267/free-commercial-label.svg"
+                        alt="Free commercial label icon"
+                      />
+                    </div>
+                    <p className="font-heading ml-16 text-lg leading-6 font-bold text-gray-700">
+                      Continuous Improvement
+                    </p>
+                  </dt>
+                  <dd className="mt-2 ml-16 text-base text-gray-500">
+                    We don't just match you with a mentor and leave it at that.
+                    We provide ongoing feedback and resources to ensure you are
+                    always moving forward in your career.
+                  </dd>
+                </div>
+              </dl>
+            </div>
+          </div>
         </div>
-      </article>
+      </section>
     </Layout>
   );
 }
