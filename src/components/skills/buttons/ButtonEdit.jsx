@@ -6,18 +6,19 @@ import { useDispatch } from "react-redux"
 import { isMobile } from "react-device-detect"
 
 // reducer actions
-import { set_show_skill_category_form, set_skill_category_description, set_skill_category_title } from "../../../store/skills-store/slices/skillCategoryFormSlice"
-import { set_current_skill_category } from "../../../store/skills-store/slices/skillCategorySlice"
+import { set_show_skill_form } from "../../../store/skills-store/slices/skillFormSlice"
 
 // hooks
 import useStateSelectors from "../../../hooks/useStateSelectors"
+import { set_edit_form } from "../../../store/skills-store/slices/skillFormSlice"
+import { set_current_user_skill } from "../../../store/skills-store/slices/userSkillsSlice"
 
-const ButtonEditCategory = ({skillCategory}) => {
+const ButtonEdit = ({skill}) => {
   const dispatch = useDispatch()
-  const {categoriesDeleteLoading} = useStateSelectors()
+  const {skillsLoading} = useStateSelectors()
 
   const btnClass = classNames('flex items-center', {
-    'opacity-30' : categoriesDeleteLoading
+    'opacity-30' : skillsLoading
   })
 
   const iconClass = classNames('text-lg', {
@@ -25,24 +26,23 @@ const ButtonEditCategory = ({skillCategory}) => {
   })
 
   const handleClick = () => {
-    dispatch(set_current_skill_category(skillCategory))
-    dispatch(set_show_skill_category_form(true))
-    dispatch(set_skill_category_title(skillCategory.skillCategoryTitle))
-    dispatch(set_skill_category_description(skillCategory.skillCategoryDescription))
+    dispatch(set_current_user_skill(skill))
+    dispatch(set_show_skill_form(true))
+    dispatch(set_edit_form(true))
   }
 
   return (
     <button
       className={btnClass}
       onClick={handleClick}
-      disabled={categoriesDeleteLoading}
+      disabled={skillsLoading}
     >
       <FontAwesomeIcon 
         className={iconClass}
-        icon={faPen} 
+        icon={faPen}
       />
     </button>
   )
 }
 
-export default ButtonEditCategory
+export default ButtonEdit
