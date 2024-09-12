@@ -50,7 +50,7 @@ const Sidebar = ({ isOpen, toggleSidebar, reviews, currentIndex }) => {
 };
 
 const ReviewSidebar = () => {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0); // State to manage the current review index
 
   const toggleSidebar = () => {

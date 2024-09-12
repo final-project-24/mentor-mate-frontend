@@ -4,7 +4,7 @@
   width: 300px;
   position: fixed;
   right: 0;
-  top: 10%;
+  top: 0;
   background-color: #f9f6f6;
   padding: 20px;
   box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
@@ -57,7 +57,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1002;
+  z-index: 5001;
   transition: background-color 0.3s ease;
 }
 
@@ -80,17 +80,17 @@
   top: 50%;
   transform: translateY(-50%);
   font-size: 24px; /* Increased font size to fit the '×' character */
-  background-color: #007bff;
+  background-color: var(--accent-color);
   color: white;
   border: none;
   padding: 10px;
   cursor: pointer;
   border-radius: 5px 0 0 5px;
-  z-index: 1001;
+  z-index: 5001;
 }
 
 .smallOpenBtn:hover {
-  background-color: #0056b3; /* Color de fondo al hacer hover */
+  background-color: var(--accent-color-hover);
   color: #f0f0f0; /* Color del texto al hacer hover (opcional) */
 }
 
@@ -161,7 +161,7 @@
 }
 
 .feedbackButton:hover {
-  background-color: #0056b3;
+  background-color: var(--accent-color-hover);
 }
 
 .feedback-icon {

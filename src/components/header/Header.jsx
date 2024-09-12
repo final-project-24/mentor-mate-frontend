@@ -34,7 +34,7 @@ const Header = () => {
     // { to: "/session", label: "Session" },
     // { to: "/feedback", label: "Feedback" },
     // { to: "/about-us", label: "About Us" },
-    { to: "/why-we", label: "Why We?" },
+    { to: "/", label: "Why We?" },
     { to: "/pricing", label: "Pricing" },
     { to: "/contact", label: "Contact" },
     { to: "/dashboard", label: "Dashboard" },
@@ -47,7 +47,7 @@ const Header = () => {
     // { to: "/my-calendar", label: "My Calendar" },
     // { to: "/my-classes", label: "My Classes" },
     // { to: "/about-us", label: "About Us" },
-    { to: "/why-we", label: "Why We?" },
+    { to: "/", label: "Why We?" },
     { to: "/pricing", label: "Pricing" },
     { to: "/contact", label: "Contact" },
     { to: "/dashboard", label: "Dashboard" },
@@ -56,7 +56,8 @@ const Header = () => {
 
   const adminLinks = [
     // { to: "/", label: "Home" },
-   // { to: "/about-us", label: "About Us" },
+    // { to: "/about-us", label: "About Us" },
+    { to: "/", label: "Why We?" },
     { to: "/pricing", label: "Pricing" },
     { to: "/contact", label: "Contact" },
     { to: "/dashboard", label: "Dashboard" },
@@ -65,16 +66,16 @@ const Header = () => {
     // { to: "/user-management", label: "User Management" },
   ];
 
- // Determine the navigation links to display
- const navLinks = !isLoggedIn
- ? guestLinks
- : user?.role === "admin"
- ? adminLinks
- : user?.role === "mentor"
- ? mentorLinks
- : user?.role === "mentee"
- ? menteeLinks
- : [];
+  // Determine the navigation links to display
+  const navLinks = !isLoggedIn
+    ? guestLinks
+    : user?.role === "admin"
+    ? adminLinks
+    : user?.role === "mentor"
+    ? mentorLinks
+    : user?.role === "mentee"
+    ? menteeLinks
+    : [];
 
   const handleClick = () => setNav(!nav);
   const closeMenu = () => setNav(false);
