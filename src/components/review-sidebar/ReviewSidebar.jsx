@@ -2,7 +2,10 @@ import React, { useState, useEffect } from "react";
 import "./ReviewSidebar.css";
 import { Link } from "react-router-dom";
 import iconUrl from "../../assets/images/icon.svg";
-import reviews from "./ReviewData";
+// import reviews from "./ReviewData";
+// -------------------------------
+import { fetchPublicFeedbacks } from "../../utils/api-connector";
+// -------------------------------
 
 const Review = ({ name, topic, feedback, rating, profilePic }) => {
   return (
@@ -33,11 +36,11 @@ const Sidebar = ({ isOpen, toggleSidebar, reviews, currentIndex }) => {
         {reviews.slice(currentIndex, currentIndex + 2).map((review, index) => (
           <Review
             key={index}
-            name={review.name}
-            topic={review.topic}
-            feedback={review.feedback}
+            name={review.userName}
+            topic={review.protoSkillTitles.join(", ")}
+            feedback={review.comment}
             rating={review.rating}
-            profilePic={review.profilePic}
+            profilePic={review.image}
           />
         ))}
       </div>
@@ -52,10 +55,39 @@ const Sidebar = ({ isOpen, toggleSidebar, reviews, currentIndex }) => {
 const ReviewSidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0); // State to manage the current review index
+  // -------------------------------
+  const [reviews, setReviews] = useState([]); // State to store fetched reviews
+  // -------------------------------
 
   const toggleSidebar = () => {
     setIsOpen((prevIsOpen) => !prevIsOpen);
   };
+
+  // -------------------------------
+  // Fetch public feedbacks when the component mounts
+  useEffect(() => {
+    const fetchReviews = async () => {
+      try {
+        const data = await fetchPublicFeedbacks();
+        const formattedReviews = data.map((review) => ({
+          userName: review.mentor.userName,
+          comment: review.comment,
+          rating: review.rating,
+          image: review.mentor.image,
+          protoSkillTitles: review.skills.map(
+            (skill) => skill.protoSkillId.protoSkillTitle
+          ),
+        }));
+        // console.log("formattedReviews:", formattedReviews);
+        setReviews(formattedReviews);
+      } catch (error) {
+        console.error("Error fetching reviews:", error);
+      }
+    };
+
+    fetchReviews();
+  }, []);
+  // -------------------------------
 
   // Automatically cycle through reviews
   useEffect(() => {
