@@ -15,7 +15,7 @@ const ContactForm = () => {
           <h3 className="text-3xl sm:text-4xl leading-normal font-extrabold tracking-tight">
             Get In <span className="text-gray-700 ">Touch</span>
           </h3>
-          <p className="mt-4 leading-7 text-gray-200">
+          <p className="mt-4 leading-7 text-gray-100">
             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
             industry's standard dummy text ever since the 1500s.
           </p>
@@ -78,10 +78,10 @@ const ContactForm = () => {
                 First Name
               </label>
               <input
-                className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                className="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                 id="grid-first-name" type="text" placeholder="Jane"
               />
-              <p className="text-red-500 text-xs italic">Please fill out this field.</p>
+            
             </div>
             <div className="w-full md:w-1/2 px-3">
               <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-last-name">
