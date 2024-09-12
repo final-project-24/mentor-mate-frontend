@@ -230,6 +230,22 @@ export const fetchFeedbacks = async (bookingId, mentorUuid, menteeUuid) => {
   }
 };
 
+// fetch public feedbacks with mentor details and skills
+export const fetchPublicFeedbacks = async () => {
+  try {
+    console.log("🔎 Fetching public feedbacks with mentor details and skills...");
+    const res = await axios.get("/feedback/public");
+    console.log("Fetched public feedbacks:", res.data); // Log fetched public feedbacks
+    if (res.status !== 200) {
+      throw new Error("Unable to fetch public feedbacks");
+    }
+    return res.data;
+  } catch (error) {
+    console.error("Error fetching public feedbacks:", error);
+    throw error;
+  }
+};
+
 // session API calls ===================================================
 
 // Fetch available upcoming events for a mentor

@@ -1,5 +1,6 @@
 import React from 'react'
 import Layout from '../../components/layout/Layout'
+import ReviewSidebar from '../../components/review-sidebar/ReviewSidebar';
 import auimage from "../../assets/images/about-us-image.jpg";
 
 
@@ -39,6 +40,10 @@ function WhyWe() {
                 className="w-full h-auto max-w-lg rounded-lg shadow-md object-cover"
               />
             </div>
+
+            {/* ---------------------- */}
+            <ReviewSidebar />
+            {/* ---------------------- */}
 
             <div className="mt-10">
               <dl
