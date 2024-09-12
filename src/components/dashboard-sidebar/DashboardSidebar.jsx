@@ -13,6 +13,7 @@ import {
   faUser,
   faChartLine,
   faTrashAlt,
+  faSliders
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useAuthContext } from "../../store/authentication-context/AuthenticationContext";
@@ -67,7 +68,7 @@ export default function DashboardSidebar() {
         />
         <nav className="dashboard-sidebar-nav ">
           <ul>
-            <li>
+            <li title={isClicked ? '' : 'Your Profile'}>
               <Link
                 to="/dashboard#top"
                 onClick={closeSidebar}
@@ -89,7 +90,6 @@ export default function DashboardSidebar() {
                 </Link>
               </li>
             )}
-
             <li>
               <Link
                 to="/dashboard/schedule#top"
@@ -100,7 +100,6 @@ export default function DashboardSidebar() {
                 <FontAwesomeIcon icon={faCalendarAlt} className="fa-icon" />
               </Link>
             </li>
-
             {user &&
               user.role === "mentor" && ( // Add null check for user
                 <li>
@@ -122,7 +121,6 @@ export default function DashboardSidebar() {
                   </Link>
                 </li>
               )}
-
             <li>
               <Link
                 to="/dashboard/session#top"
@@ -136,7 +134,7 @@ export default function DashboardSidebar() {
                 />
               </Link>
             </li>
-            <li>
+            <li title={isClicked ? '' : 'Your Progress'}>
               <Link
                 to="/dashboard/session-history#top"
                 onClick={closeSidebar}
@@ -148,7 +146,7 @@ export default function DashboardSidebar() {
                 <FontAwesomeIcon icon={faChartLine} className="fa-icon" />
               </Link>
             </li>
-            <li>
+            <li title={isClicked ? '' : 'Settings'}>
               <Link
                 to="/dashboard/settings#top"
                 onClick={closeSidebar}
@@ -158,8 +156,22 @@ export default function DashboardSidebar() {
                 <FontAwesomeIcon icon={faCog} className="fa-icon" />
               </Link>
             </li>
+            {user?.role === "mentor" && (
+              <li title={isClicked ? '' : 'Manage skills'}>
+                <Link
+                  to="/dashboard/mentor-skills#top"
+                  onClick={closeSidebar}
+                  className={
+                    activeLink === "/dashboard/admin-tools" ? "active" : ""
+                  }
+                >
+                  Manage Skills
+                  <FontAwesomeIcon icon={faSliders} className="fa-icon" />
+                </Link>
+              </li>
+            )}
             {user?.role === "admin" && (
-              <li>
+              <li title={isClicked ? '' : 'Admin Tools'}>
                 <Link
                   to="/dashboard/admin-tools#top"
                   onClick={closeSidebar}
@@ -167,7 +179,7 @@ export default function DashboardSidebar() {
                     activeLink === "/dashboard/admin-tools" ? "active" : ""
                   }
                 >
-                  Admin Dashboard
+                  Admin Tools
                   <FontAwesomeIcon icon={faTools} className="fa-icon" />
                 </Link>
               </li>
