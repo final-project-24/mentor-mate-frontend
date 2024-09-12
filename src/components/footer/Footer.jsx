@@ -12,7 +12,7 @@ import Logo from '../../assets/images/icon.svg'
 
 export default function Footer() {
   return (
-    <footer id="footer" className="bottom-0 left-0  w-full ">
+    <footer id="footer" className="bottom-0 left-0  w-full bg-green-500 ">
       <div className="main-flex-container h-auto md:flex md:items-center md:justify-center  ">
         {/* Logo */}
         <div className="footer-section flex flex-row items-center md: md:w-5/6  ">

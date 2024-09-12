@@ -15,25 +15,25 @@ const ContactForm = () => {
         
           <p className="mt-4 text-sm leading-7 font-regular uppercase">Contact</p>
           <h3 className="text-3xl sm:text-4xl leading-normal font-extrabold tracking-tight">
-            Get In <span className="text-gray-700 ">Touch</span>
+            Get In <span className="text-gray-800 ">Touch</span>
           </h3>
           
           <p className="mt-4 leading-7 text-white">
-          Got a question? We’re here to help! Fill out the form below, 
+          Got a question? <br/>We’re here to help! Fill out the form below, 
           and we’ll get back to you as soon as possible.
           </p>
 
           <div className="flex items-center mt-10">
-          <FontAwesomeIcon icon={faLocationDot} className="h-5 mr-2 text-gray-700" />
+          <FontAwesomeIcon icon={faLocationDot} className="h-5 mr-2 text-gray-800" />
             <span className="text-sm"> Street 742, Evergreen Terrace, Berlin, Germany.</span>
           </div>
           <div className="flex items-center mt-5">
-          <FontAwesomeIcon icon={faPhone} className="h-5 mr-2 text-gray-700" />
+          <FontAwesomeIcon icon={faPhone} className="h-5 mr-2 text-gray-800" />
             
             <span className="text-sm">+93 749 99 65 50</span>
           </div>
           <div className="flex items-center mt-5">
-          <FontAwesomeIcon icon={faPhone} className="h-5 mr-2 text-gray-700" />
+          <FontAwesomeIcon icon={faPhone} className="h-5 mr-2 text-gray-800" />
             <span className="text-sm">24/7</span>
           </div>
           <img src={Logo} alt="Logo" className="footer-logo mx-auto mt-8 " />
