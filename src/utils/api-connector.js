@@ -233,7 +233,7 @@ export const fetchFeedbacks = async (bookingId, mentorUuid, menteeUuid) => {
 // fetch public feedbacks with mentor details and skills
 export const fetchPublicFeedbacks = async () => {
   try {
-    console.log("🔎 Fetching public feedbacks with mentor details and skills...");
+    // console.log("🔎 Fetching public feedbacks with mentor details and skills...");
     const res = await axios.get("/feedback/public");
     console.log("Fetched public feedbacks:", res.data); // Log fetched public feedbacks
     if (res.status !== 200) {
