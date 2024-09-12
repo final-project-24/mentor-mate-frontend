@@ -14,13 +14,16 @@ import {
   delete_skill_category
 } from '../store/skills-store/slices/skillCategorySlice'
 import { 
-  set_show_skill_category_form,
+  set_show_skill_form,
   set_add_form,
-  set_skill_category_title,
-  set_skill_category_description
-} from '../store/skills-store/slices/skillCategoryFormSlice'
+  // set_skill_category_title,
+  // set_skill_category_description
+} from '../store/skills-store/slices/skillFormSlice'
 import { set_proto_skills } from '../store/skills-store/slices/protoSkillSlice'
 import {
+  add_user_skill,
+  delete_user_skill,
+  edit_user_skill,
   set_user_skills
 } from '../store/skills-store/slices/userSkillsSlice'
 import { 
@@ -32,7 +35,8 @@ import {
 } from '../store/skills-store/slices/paginationSlice'
 import { 
   set_skills_loading, 
-  set_category_delete_loading
+  set_category_delete_loading,
+  set_skill_delete_loading
 } from '../store/skills-store/slices/loadingSlice'
 
 // hooks
@@ -147,10 +151,10 @@ const useApiConnectors = () => {
 
         if (res.status === 201) {
           // dispatch(add_skill_category(res.data.category))
-          dispatch(set_skill_category_title(''))
-          dispatch(set_skill_category_description(''))
+          // dispatch(set_skill_category_title(''))
+          // dispatch(set_skill_category_description(''))
           dispatch(set_add_form(false))
-          dispatch(set_show_skill_category_form(false))
+          // dispatch(set_show_skill_category_form(false))
           toast.success('Category added!')
           getSkillCategories()
         }
@@ -173,7 +177,7 @@ const useApiConnectors = () => {
       try {
         const res = await axios({
           method: 'patch',
-          url: `/skill-category/edit-skill-category/${currentSkillCategory._id}`,
+          url: `/skill-category/edit-skill-category/${currentSkillCategory._id}`, // TODO: don't need a separate variable to pass the id, could pass it like in EDIT USER SKILL
           data: {
             skillCategoryTitle: skillCategoryForm.skillCategoryTitle,
             ...generateSkillCategoryDescription()
@@ -185,7 +189,7 @@ const useApiConnectors = () => {
         if (res.status === 200) {
           dispatch(update_skill_category(res.data.updatedCategory))
           dispatch(set_current_skill_category(null))
-          dispatch(set_show_skill_category_form(false))
+          // dispatch(set_show_skill_category_form(false))
           toast.success('Category updated!')
         }
   
@@ -305,7 +309,7 @@ const useApiConnectors = () => {
       proficiency
     })
 
-    console.log('FILTERED PARAMS IN getUserSkills: ', filteredParams)
+    logIfNodeDev('FILTERED PARAMS IN getUserSkills: ', filteredParams)
 
       try {
         const res = await axios({
@@ -334,17 +338,110 @@ const useApiConnectors = () => {
       }
   }
 
+  // ! CREATE USER SKILL
+
+  const createUserSkill = async (skillData) => {
+    dispatch(set_skills_loading(true))
+
+    try {
+      const res = await axios({
+        method: 'post',
+        url: '/user-skill/create-user-skill',
+        data: skillData
+      })
+  
+      logIfNodeDev('addUserSkill API response: ', res)
+
+      if (res.status === 201) {
+        dispatch(add_user_skill(res.data.populatedSkill))
+        toast.success('Skill created!')
+        // TODO: not fetching again, just remove from the slice state
+        // getUserSkills({
+        //   page: 1,
+        //   limit: 50
+        // }, true, false)
+      }
+    } catch (error) {
+      logIfNodeDev('addUserSkill API error: ', error)
+
+      const err = error.response.data.error
+      returnError(err)
+    } finally {
+      dispatch(set_skills_loading(false))
+    }
+  }
+
+  // ! EDIT USER SKILL
+
+  const editUserSkill = async (skillData, userSkillId) => {
+    dispatch(set_skills_loading(true))
+
+    try {
+      const res = await axios({
+        method: 'patch',
+        url: `/user-skill/edit-user-skill/${userSkillId}`,
+        data: skillData
+      })
+  
+      logIfNodeDev('editUserSkill API response: ', res.data.populatedSkill._id)
+  
+      if (res.status === 200) {
+        dispatch(edit_user_skill(res.data.populatedSkill))
+        toast.success('Skill updated!')
+      }
+    } catch (error) {
+      logIfNodeDev('editUserSkill API error: ', error)
+
+      const err = error.response.data.error
+      returnError(err)     
+    } finally {
+      dispatch(set_skills_loading(false))
+    }
+  }
+
+  // ! DELETE USER SKILL
+
+  const deleteUserSkill = async (userSkillId) => {
+    dispatch(set_skill_delete_loading(true))
+    
+    try {
+      const res = await axios({
+        method: 'delete',
+        url: `/user-skill/delete-user-skill/${userSkillId}`
+      })
+
+      logIfNodeDev('deleteUserSkill API response: ', res)
+
+      if (res.status === 200) {
+        dispatch(delete_user_skill(userSkillId))
+        toast.success('Skill deleted!')
+        // getUserSkills({
+        //   page: 1,
+        //   limit: 50
+        // }, true, false)
+      }
+    } catch (error) {
+      logIfNodeDev('deleteUserSkill API error: ', error)
+      toast.success('Skill deleted!')
+
+      const err = error.response.data.error
+      returnError(err)
+    } finally {
+      dispatch(set_skill_delete_loading(false))
+    }
+  }
+
   // ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
   // ! GET MENTORS BY UUID
 
   const getMentorsByUuid = async (mentorData) => {
-    console.log('mentorData in getMentorsByUuid: ', mentorData)
+    logIfNodeDev('mentorData in getMentorsByUuid: ', mentorData)
 
     dispatch(set_skills_loading(true)) // set loading state
 
     const filteredData = constructParams(mentorData)
-    console.log('processedData in getMentorsByUuid', filteredData)
+    logIfNodeDev('processedData in getMentorsByUuid', filteredData)
 
     try {
       const res = await axios({
@@ -378,6 +475,9 @@ const useApiConnectors = () => {
     getProtoSkills,
     // user skills
     getUserSkills,
+    createUserSkill,
+    editUserSkill,
+    deleteUserSkill,
     // mentors
     getMentorsByUuid
   }
