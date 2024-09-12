@@ -5,6 +5,8 @@ import iconUrl from "../../assets/images/icon.svg";
 // import reviews from "./ReviewData";
 // -------------------------------
 import { fetchPublicFeedbacks } from "../../utils/api-connector";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 // -------------------------------
 
 const Review = ({ name, topic, feedback, rating, profilePic }) => {
@@ -107,7 +109,7 @@ const ReviewSidebar = () => {
         currentIndex={currentIndex}
       />
       <button className="smallOpenBtn" onClick={toggleSidebar}>
-        {isOpen ? "×" : "➤"}
+        {isOpen ? "×" : "◀"}
       </button>
     </div>
   );
