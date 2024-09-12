@@ -31,7 +31,7 @@ const DeleteUser = () => {
   // };
 
   return (
-    <div>
+    <div className="delete-user-button-container">
       <button
         className="delete-user-button"
         onClick={() => {
@@ -43,7 +43,7 @@ const DeleteUser = () => {
       </button>
       {showDialog && (
         <ConfirmationDialog
-          message="Are you sure you want to delete this user?"
+          message="Are you sure you want to delete your account?"
           onConfirm={handleDeleteUser}
           onCancel={() => setShowDialog(false)}
         />

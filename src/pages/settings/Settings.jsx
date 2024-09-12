@@ -26,26 +26,22 @@ export default function Settings() {
   }
 
   return (
-    <section id="settings-container" className="mt-[100px] lg:mb-[100px] ">
+    <section id="settings-container" className="mt-[100px] mb-[120px] ">
       <h1 className="text-accent">Settings</h1>
-      <div className="settings-card md:w-[90%]">
-        <h1 className="">Preferences</h1>
-        <div className="md:w-[80%]">
-          <ChangeAppearance />
-          <LanguageButton />
-        </div>
+      <div className="settings-card">
+        <h1 className="text-accent">Preferences</h1>
+        <ChangeAppearance />
+        <LanguageButton />
       </div>
 
-      <div className="settings-card md:w-[90%]">
+      <div className="settings-card">
         {isLoggedIn && (
           <>
             <h1>Account</h1>
-            <div className="md:w-[80%]">
-              <ChangeUserName />
-              <ChangePassword />
-              <ChangeEmail />
-              <DeleteUser />
-            </div>
+            <ChangeUserName />
+            <ChangePassword />
+            <ChangeEmail />
+            <DeleteUser />
           </>
         )}
         {/* <ResetPassword /> */}

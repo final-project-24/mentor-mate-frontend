@@ -135,7 +135,7 @@ const MentorList = () => {
     <div className="mentor-list-container w-[90%] mx-auto pt-5 pb-10 md:w-full">
       <Slider {...settings}>
         {uniqueMentors.map((mentor) => (
-          <div key={mentor.uuid} className="mentor-item">
+          <div key={mentor.uuid} className="mentor-item  md:">
             <InfoCard
               mentorUuid={mentor.uuid}
               image={mentor.image}
