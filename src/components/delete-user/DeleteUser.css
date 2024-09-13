@@ -1,3 +1,7 @@
+.delete-user-button-container {
+width: 100%;
+}
+
 .delete-user-button {
   /* position: relative;  */
   width: 100%;

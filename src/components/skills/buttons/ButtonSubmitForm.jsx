@@ -15,10 +15,10 @@ const ButtonSubmitForm = (props) => {
   const renderLabel = (props, addForm) => {
     if (!props.label) {
       if (addForm) {
-        return 'Add category'
+        return 'Add skill'
       }
         
-      return 'Update category'
+      return 'Update skill'
     } 
       
     return props.label

@@ -1,6 +1,6 @@
 #dashboard-home-container {
   width: 100%;
-  min-height: fit-content; /* Ensures the container fills at least the full viewport */
+  min-height:fit-content ; /* Ensures the container fills at least the full viewport */
   display: flex;
   /* align-items: flex-start; 
   justify-content: flex-start; */

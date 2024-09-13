@@ -8,8 +8,11 @@ import { useBookingContext } from "../../store/booking-context/BookingContext"
 
 // components
 import ButtonSubmitForm from "../skills/buttons/ButtonSubmitForm"
+
+// utils
 import logIfNodeDev from "../../utils/logIfNodeDev"
-import isArray from "../../utils/isArray"
+// import isArray from "../../utils/isArray"
+import findIdByState from "../../utils/findIdByState"
 
 const SearchBySkill = () => {
   // ! local state variables
@@ -29,19 +32,6 @@ const SearchBySkill = () => {
   useEffect(() => {logIfNodeDev('category (local state): ', category)}, [category])
   useEffect(() => {logIfNodeDev('title: (local state): ', title)}, [title])
   useEffect(() => {logIfNodeDev('proficiency: (local state): ', proficiency)}, [proficiency])
-
-  // ! function
-  // field is the object key to search by
-  const findIdByState = (localState, contextState, field) => {
-    if (localState === 'n/a' || !isArray(contextState) || typeof field !== 'string') {
-      return null
-    }
-
-    const found = contextState.find(s => s[field] === localState)
-    return found
-      ? found._id
-      : null
-  }
 
   // ! get categories
   // get all categories when the component mounts
