@@ -7,13 +7,12 @@ import { isMobile } from "react-device-detect"
 // hooks
 import useApiConnectors from "../../../hooks/useApiConnectors"
 import useStateSelectors from "../../../hooks/useStateSelectors"
+import { useAuthContext } from "../../../store/authentication-context/AuthenticationContext"
 
-const ButtonDeleteCategory = ({skillCategory}) => {
-  const {
-    // getSkillCategories, 
-    deleteSkillCategory
-  } = useApiConnectors()
+const ButtonDelete = ({skillId}) => {
+  const {deleteUserSkill} = useApiConnectors()
   const {categoriesDeleteLoading} = useStateSelectors()
+  const {user} = useAuthContext()
 
   const iconClass = classNames('text-lg', {
     'hover:scale-125 transition': !isMobile
@@ -24,8 +23,9 @@ const ButtonDeleteCategory = ({skillCategory}) => {
   })
   
   const handleClick = async () => {
-    await deleteSkillCategory(skillCategory._id)
-    // getSkillCategories()
+    if (user.role === 'mentor') {
+      await deleteUserSkill(skillId)
+    }
   }
 
   return (
@@ -42,4 +42,4 @@ const ButtonDeleteCategory = ({skillCategory}) => {
   )
 }
 
-export default ButtonDeleteCategory
+export default ButtonDelete

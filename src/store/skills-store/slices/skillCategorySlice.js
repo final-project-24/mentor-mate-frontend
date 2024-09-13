@@ -28,7 +28,7 @@ export const skillCategorySlice = createSlice({
       }
     },
     delete_skill_category: (state, action) => {
-      state.skillCategories.filter(c => c._id !== action.payload)
+      state.skillCategories = state.skillCategories.filter(c => c._id !== action.payload)
     }
   }
 })
