@@ -9,6 +9,7 @@
   border-radius: var(--border-radius-base);
   border-color: var(--border-color-base);
   box-shadow: var(--box-shadow-base);
+  min-height: 100%;
 }
 
 .login-error-message {

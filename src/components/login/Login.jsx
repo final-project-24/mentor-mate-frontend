@@ -4,6 +4,7 @@ import { useAuthContext } from "../../store/authentication-context/Authenticatio
 import { useNavigate } from "react-router-dom"; //
 import ToggleButton from "../../components/toggle-button/ToggleButton.jsx";
 
+
 // function Login({ onLogin }) {
 function Login({ onToggleSignUp, onToggleForgotPassword }) {
   const [email, setEmail] = useState("");
@@ -30,39 +31,40 @@ function Login({ onToggleSignUp, onToggleForgotPassword }) {
   };
 
   return (
-
-
-    <div className="login-container px-2 min-h-10 mt-[100px]  border border-red-600">
-      <h2 className="text-accent text-lg pb-4">Login</h2>
-      {errorMessage && <p className="login-error-message">{errorMessage}</p>}
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
+    <div  className="min-h-[72vh]">
+      <div className="login-container px-2  mt-[120px] border border-red-600">
+        <h2 className="text-accent text-lg pb-4">Login</h2>
+        {errorMessage && <p className="login-error-message">{errorMessage}</p>}
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+          <button type="submit" className="">
+            Login
+          </button>
+        </form>
+        <ToggleButton
+          onToggle={onToggleSignUp}
+          buttonName="Switch to Sign Up"
+          className="button-type-link "
         />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
+        <ToggleButton
+          onToggle={onToggleForgotPassword}
+          buttonName="Forgot Password"
+          className="button-type-link"
         />
-        <button type="submit" className="">Login</button>
-      </form>
-      <ToggleButton
-        onToggle={onToggleSignUp}
-        buttonName="Switch to Sign Up"
-        className="button-type-link "
-      />
-      <ToggleButton
-        onToggle={onToggleForgotPassword}
-        buttonName="Forgot Password"
-        className="button-type-link"
-      />
-
+      </div>
     </div>
   );
 }
