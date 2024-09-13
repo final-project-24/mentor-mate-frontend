@@ -23,8 +23,7 @@ import Feedback from "./pages/feedback/Feedback.jsx";
 import Playground from "./pages/playground/Playground.jsx";
 import WhyWe from "./pages/why-we/WhyWe.jsx";
 import NotFound from "./pages/not-found/NotFound.jsx";
-import SkillCategories from "./components/skills/skill-categories/SkillCategories.jsx"
-import Skills from "./components/skills/skills/Skills.jsx";
+import ManageSkills from "./components/skills/manage-skills/ManageSkills.jsx"
 import Pricing from "./pages/pricing/Pricing.jsx";
 import AboutUs from "./pages/about-us/AboutUs.jsx";
 import Contact from "./pages/contact/Contact.jsx";
@@ -54,9 +53,9 @@ export default function App() {
                     <Route path="settings" element={<Settings />} />
                     <Route path="admin-tools" element={<AdminTools />}>
                       {/* <Route index element={<AdminTools />} /> */}
-                      <Route path="skill-categories" element={<SkillCategories />} />
-                      <Route path="skills" element={<Skills />} />
+                      <Route path="admin-skills" element={<ManageSkills />} />
                     </Route>
+                    <Route path="mentor-skills" element={<ManageSkills />} />
                     {/* <Route path="feedback" element={<Feedback />} /> */}
                   </Route>
                   <Route path="/search" element={<Search />} />

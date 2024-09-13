@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import skillCategoryReducer from "./slices/skillCategorySlice"
-import skillCategoryFormReducer from "./slices/skillCategoryFormSlice"
+import skillFormReducer from "./slices/skillFormSlice"
 import protoSkillReducer from "./slices/protoSkillSlice"
 import userSkillsReducer from "./slices/userSkillsSlice"
 import errorsReducer from "./slices/errorsSlice"
@@ -10,7 +10,7 @@ import loadingReducer from "./slices/loadingSlice"
 export const store = configureStore({
   reducer: {
     skillCategory: skillCategoryReducer,
-    skillCategoryForm: skillCategoryFormReducer,
+    skillForm: skillFormReducer,
     protoSkill: protoSkillReducer,
     userSkill: userSkillsReducer, 
     error: errorsReducer, // TODO: maybe can be combined with another slice
