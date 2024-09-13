@@ -107,7 +107,6 @@
 
 import { useState, useEffect } from "react";
 import Layout from "../../components/layout/Layout";
-import axios from "axios";
 import { fetchBookingDetails } from "../../utils/api-connector";
 import { useAuthContext } from "../../store/authentication-context/AuthenticationContext";
 import { useBookingContext } from "../../store/booking-context/BookingContext";
