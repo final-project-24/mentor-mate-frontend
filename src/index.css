@@ -56,7 +56,7 @@ body {
   --margin-xl: 2rem; /* added */
   --margin-xxl: 3rem; /* added */
   --margin-avoid-header: 80px; /* added */
-  --margin-avoid-footer: 300px; /* added */
+  --margin-avoid-footer: 200px; /* added */
   --gap-base: 1rem;
 
   /* Borders */

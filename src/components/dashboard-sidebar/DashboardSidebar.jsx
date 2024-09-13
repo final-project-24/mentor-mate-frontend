@@ -174,7 +174,7 @@ export default function DashboardSidebar() {
             )}
           </ul>
         </nav>
-        <DevNav />
+        {/* <DevNav /> */}
       </div>
     </>
   );
