@@ -133,7 +133,7 @@ const SearchBySkill = () => {
   }
 
   return (
-    <div className="pt-5 pb-20">
+    <div className="pt-5 pb-20 ">
       <form
         className="w-full flex flex-col"
         onSubmit={handleOnSubmit}
@@ -184,7 +184,7 @@ const SearchBySkill = () => {
             // htmlFor="dropdown3"
           >Search by Proficiency:</label>
           <div>
-            <div className="mt-1 md:mt-0 mb-3 border-2 rounded-sm">
+            <div className="mt-1 md:mt-0 mb-10 border-2 rounded-sm">
               <select
                 // id="dropdown3"
                 onChange={(e) => setProficiency(e.target.value.toLowerCase())}
