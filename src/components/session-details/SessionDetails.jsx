@@ -80,7 +80,7 @@ const SessionDetails = ({ data }) => {
   const formattedEndTime = new Date(data.end).toLocaleTimeString();
 
   return (
-    <div className="session-details-container t-20 mx-2 mb-10 lg:mx-auto ">
+    <div className="session-details-container">
       <h1 className="text-lg text-accent">
         🥳 WELCOME! <p> These are the details of your upcoming session!</p>
       </h1>
