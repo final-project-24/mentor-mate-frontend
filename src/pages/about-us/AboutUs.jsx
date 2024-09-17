@@ -1,112 +1,38 @@
 import Layout from "../../components/layout/Layout";
-import auimage from "../../assets/images/about-us-image.jpg";
-import "./AboutUs.css";
+import about from "../../assets/images/about.jpg";
 
-
+import React from 'react';
 
 const AboutUs = () => {
   return (
     <Layout>
-        <section>
-  <div className="py-12 bg-white">
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="lg:text-center">
-        
-        <h2 className="font-heading mb-4 bg-green-500 text-black-100 
-        px-4 py-2 rounded-lg md:w-64 md:mx-auto text-xs font-semibold 
-        tracking-widest text-black uppercase title-font mt-20">
-          Why choose us?
-        </h2>
-        <p className="font-heading mt-2 text-3xl leading-8 font-semibold 
-        tracking-tight text-gray-900 sm:text-4xl">
-        Our mission: Empowering growth through personalized mentorship to 
-        achieve goals and unlock potential.
-        </p>
-        <p className="mt-4 max-w-2xl text-lg text-gray-500 lg:mx-auto">
-        By choosing us, you are not just getting a mentor—you're joining a 
-        community committed to your success.
-        </p>
-      </div>
-      <div className="mt-10 flex justify-center">
-              <img
-                src={auimage} // Imagen importada
-                alt="About us" 
+    <section className="bg-gray-300">
+      <div className="container mx-auto py-16 px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-8">
+          <div className="max-w-lg">
+            <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">About Us</h2>
+            <p className="mt-4 text-grey-600 text-lg">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis eros at lacus feugiat hendrerit sed ut tortor. Suspendisse et magna quis elit efficitur consequat. Mauris eleifend velit a pretium iaculis. Donec sagittis velit et magna euismod, vel aliquet nulla malesuada. Nunc pharetra massa lectus, a fermentum arcu volutpat vel.
+            </p>
+            <div className="mt-8">
+              <a href="#" className="text-blue-500 hover:text-blue-600 font-medium">
+                Learn more about us <span className="ml-2">&#8594;</span>
+              </a>
+            </div>
+          </div>
+          <div className="mt-12 md:mt-0">
+          <img
+                src={about} 
+                alt="About us"
                 className="w-full h-auto max-w-lg rounded-lg shadow-md object-cover"
               />
             </div>
-
-      <div className="mt-10">
-        <dl className="space-y-10 md:space-y-0 md:grid md:grid-cols-2 
-        md:gap-x-8 md:gap-y-10">
-          <div className="relative">
-            <dt>
-              <div className="absolute flex items-center justify-center 
-              h-12 w-12 rounded-md bg-primary-500 text-white">
-                <img src="https://www.svgrepo.com/show/503163/api-settings.svg" 
-                alt="API settings icon" />
-              </div>
-              <p className="font-heading ml-16 text-lg leading-6 
-              font-bold text-gray-700">Tailored Mentorship</p>
-            </dt>
-            <dd className="mt-2 ml-16 text-base text-gray-500">
-            We connect you with mentors who align with your goals and 
-            industry, ensuring you receive guidance that's relevant and impactful.
-            </dd>
-          </div>
-
-          <div className="relative">
-            <dt>
-              <div className="absolute flex items-center justify-center 
-              h-12 w-12 rounded-md bg-primary-500 text-white">
-                <img src="https://www.svgrepo.com/show/503138/webpack.svg" 
-                alt="Webpack icon" />
-              </div>
-              <p className="font-heading ml-16 text-lg leading-6 
-              font-bold text-gray-700">Flexible Learning: </p>
-            </dt>
-            <dd className="mt-2 ml-16 text-base text-gray-500">
-            Whether you're a student, a career switcher, or a professional 
-            looking to upskill, our platform offers flexible learning paths that fit your 
-            schedule and needs.
-            </dd>
-          </div>
-
-          <div className="relative">
-            <dt>
-              <div className="absolute flex items-center justify-center 
-              h-12 w-12 rounded-md bg-primary-500 text-white">
-                <img src="https://www.svgrepo.com/show/511771/dashboard-671.svg" 
-                alt="Dashboard icon" />
-              </div>
-              <p className="font-heading ml-16 text-lg leading-6 
-              font-bold text-gray-700">Community-Driven Growth</p>
-            </dt>
-            <dd className="mt-2 ml-16 text-base text-gray-500">
-            Join a thriving community of learners and mentors who 
-            are dedicated to mutual growth and success, providing you with a support 
-            network that extends beyond your mentorship sessions.
-            </dd>
-          </div>
-
-          <div className="relative">
-            <dt>
-              <div className="absolute flex items-center justify-center h-12 w-12 rounded-md bg-primary-500 text-white">
-                <img src="https://www.svgrepo.com/show/76267/free-commercial-label.svg" alt="Free commercial label icon" />
-              </div>
-              <p className="font-heading ml-16 text-lg leading-6 font-bold text-gray-700">Continuous Improvement</p>
-            </dt>
-            <dd className="mt-2 ml-16 text-base text-gray-500">
-            We don't just match you with a mentor and leave it at that. We provide ongoing feedback and resources to ensure you are always moving forward in your career.
-            </dd>
-          </div>
-        </dl>
+            
+        </div>
       </div>
-    </div>
-  </div>
-</section>
-
-      
+    </section>
     </Layout>
   );
 };
+
 export default AboutUs;
