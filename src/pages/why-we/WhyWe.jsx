@@ -1,4 +1,4 @@
-import React from "react";
+
 import Layout from "../../components/layout/Layout";
 import ReviewSidebar from "../../components/review-sidebar/ReviewSidebar";
 import auimage from "../../assets/images/about-us-image.jpg";
@@ -41,7 +41,7 @@ function WhyWe() {
             </div>
             <div className="mt-10 flex justify-center">
               <img
-                src={auimage} // Imagen importada
+                src={auimage} 
                 alt="About us"
                 className="w-full h-auto max-w-lg rounded-lg shadow-md object-cover"
               />
