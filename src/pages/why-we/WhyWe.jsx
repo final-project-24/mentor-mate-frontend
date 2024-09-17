@@ -1,7 +1,13 @@
-import React from 'react'
-import Layout from '../../components/layout/Layout'
-import ReviewSidebar from '../../components/review-sidebar/ReviewSidebar';
+import React from "react";
+import Layout from "../../components/layout/Layout";
+import ReviewSidebar from "../../components/review-sidebar/ReviewSidebar";
 import auimage from "../../assets/images/about-us-image.jpg";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"; // Import FontAwesomeIcon component
+import {
+  faBookOpenReader,
+  faChalkboardUser,
+  faUserGraduate,faAward,
+} from "@fortawesome/free-solid-svg-icons"; // Correct the icon import
 
 
 function WhyWe() {
@@ -56,11 +62,12 @@ function WhyWe() {
                       className="absolute flex items-center justify-center 
               h-12 w-12 rounded-md bg-primary-500 text-white"
                     >
-                      <img
-                        src="https://www.svgrepo.com/show/503163/api-settings.svg"
-                        alt="API settings icon"
+                      <FontAwesomeIcon
+                        icon={faBookOpenReader}
+                        className="text-4xl text-black"
                       />
                     </div>
+
                     <p
                       className="font-heading ml-16 text-lg leading-6 
               font-bold text-gray-700"
@@ -81,9 +88,9 @@ function WhyWe() {
                       className="absolute flex items-center justify-center 
               h-12 w-12 rounded-md bg-primary-500 text-white"
                     >
-                      <img
-                        src="https://www.svgrepo.com/show/503138/webpack.svg"
-                        alt="Webpack icon"
+                      <FontAwesomeIcon
+                        icon={faChalkboardUser}
+                        className="text-4xl text-black"
                       />
                     </div>
                     <p
@@ -106,9 +113,9 @@ function WhyWe() {
                       className="absolute flex items-center justify-center 
               h-12 w-12 rounded-md bg-primary-500 text-white"
                     >
-                      <img
-                        src="https://www.svgrepo.com/show/511771/dashboard-671.svg"
-                        alt="Dashboard icon"
+                      <FontAwesomeIcon
+                        icon={faUserGraduate}
+                        className="text-4xl text-black"
                       />
                     </div>
                     <p
@@ -129,10 +136,9 @@ function WhyWe() {
                 <div className="relative">
                   <dt>
                     <div className="absolute flex items-center justify-center h-12 w-12 rounded-md bg-primary-500 text-white">
-                      <img
-                        src="https://www.svgrepo.com/show/76267/free-commercial-label.svg"
-                        alt="Free commercial label icon"
-                      />
+                    <FontAwesomeIcon icon={faAward} 
+                    className="text-5xl text-black"
+                    />
                     </div>
                     <p className="font-heading ml-16 text-lg leading-6 font-bold text-gray-700">
                       Continuous Improvement
@@ -153,4 +159,4 @@ function WhyWe() {
   );
 }
 
-export default WhyWe
+export default WhyWe;
