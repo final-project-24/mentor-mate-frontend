@@ -4,9 +4,9 @@
   margin-top: var(--margin-avoid-header);
   /* margin-top: var(--margin-avoid-header); */
   /* background-color: var(--primary-color); */
-  background-color: var(--card-color);
-  opacity: var(--opacity-base);
-  /* border-right: var(--border-width-base) solid var(--border-color-base); */
+  /* background-color: var(--card-color); */
+  /* opacity: var(--opacity-base); */
+  border-right: var(--border-width-base) solid var(--border-color-base);
   /* padding: var(--padding-small); */
   /* position: sticky; */
   position: fixed;
