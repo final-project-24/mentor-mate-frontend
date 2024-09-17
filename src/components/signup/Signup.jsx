@@ -52,14 +52,14 @@ function SignUp({ onToggleLogin }) {
   
 
   return (
-    <div className="container  mx-auto mt-[80px] h-auto mb-[160px] ">
+    <div className="container  mx-auto mt-[80px] h-auto mb-[40px] w-[100%] md:mb-[150px] lg:mb-[500px]">
       <div className="sign-up-container mx-auto  flex  p-2 ">
         <h2 className="pt-5 text-accent text-lg pb-5  ">Sign Up</h2>
         {errorMessage && (
           <p className="sign-up-error-message">{errorMessage}</p>
         )}
 
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="items-center">
           <input
             name="userName"
             type="text"
@@ -97,13 +97,13 @@ function SignUp({ onToggleLogin }) {
             className=" mx-auto p-1"
           />
 
-          <label className="w-full mx-auto flex flex-row  ">
-            <p className="pb-1 text-accent">Role:</p>
+          <label className="w-[100%]   pb-2 ">
+            <p className="pb-1 text-start text-accent">Role:</p>
 
             <select
               value={role}
               onChange={(e) => setRole(e.target.value)}
-              className="w-full text-center"
+              className="w-[100%] text-center "
             >
               <option value="mentor">Mentor</option>
               <option value="mentee">Mentee</option>
@@ -133,14 +133,15 @@ function SignUp({ onToggleLogin }) {
           </div> */}
 
           <div className="">
-            <div className="">
+            <div className=" text-sm mb-4">
               <FileBase64
                 multiple={false}
                 onDone={({ base64 }) => setImage(base64)}
+            
               />
             </div>
           </div> 
-          <button type="submit" className="w-3/4 mx-auto  ">
+          <button type="submit" className="w-3/4 mx-auto pt-3  ">
             Sign Up
           </button>
         </form>

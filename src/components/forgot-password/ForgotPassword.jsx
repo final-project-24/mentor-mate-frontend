@@ -19,7 +19,7 @@ function ForgotPassword({ onResetRequest }) {
   };
 
   return (
-    <div className="forgot-password-container border mx-2 mt-[180px]">
+    <div className="forgot-password-container border mx-2 mt-[180px] mb-[250px] w-[95%]">
       <h2 className="pb-4 text-accent md:text-lg">Forgot Password</h2>
       <form onSubmit={handleSubmit}>
         <input

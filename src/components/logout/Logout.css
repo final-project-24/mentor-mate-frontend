@@ -1,6 +1,6 @@
 .logout-container button {
   width: 100%;
-  background-color: var(--accent-color);
+  background-color: black;
   color: var(--primary-color);
   border: none;
   border-radius: var(--border-radius-small);
