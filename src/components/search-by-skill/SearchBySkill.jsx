@@ -13,6 +13,7 @@ import ButtonSubmitForm from "../skills/buttons/ButtonSubmitForm"
 import logIfNodeDev from "../../utils/logIfNodeDev"
 // import isArray from "../../utils/isArray"
 import findIdByState from "../../utils/findIdByState"
+import paginationParams from "../../utils/paginationParams"
 
 const SearchBySkill = () => {
   // ! local state variables
@@ -25,7 +26,7 @@ const SearchBySkill = () => {
   const {getSkillCategories, getProtoSkills, getUserSkills, getMentorsByUuid} = useApiConnectors()
   const {mentors, setMentors} = useBookingContext()
 
-  // ! console logs for states
+  // ! logs
   useEffect(() => {logIfNodeDev('skillCategories (skillCategory context): ', skillCategories)}, [skillCategories])
   useEffect(() => {logIfNodeDev('protoSkills (protoSkills context): ', protoSkills)}, [protoSkills])
   useEffect(() => {logIfNodeDev('mentors (Booking context): ', mentors)}, [mentors])
@@ -47,16 +48,14 @@ const SearchBySkill = () => {
     (async () => {
       if (category !== 'n/a') {
         await getProtoSkills({
-          page: 1,
-          limit: 50,
+          ...paginationParams,
           categoryId: categoryIdInit
         }, false)
         setTitle('n/a')
       } else {
         if (category === 'n/a')
           await getProtoSkills({
-            page: 1,
-            limit: 50
+            ...paginationParams
           }, true)
       }
     })()
@@ -71,13 +70,11 @@ const SearchBySkill = () => {
 
     if (category === 'n/a' && title === 'n/a' && proficiency === 'n/a') {
       skills = await getUserSkills({
-        page: 1,
-        limit: 50,
+        ...paginationParams
       }, false, true)
     } else {
       skills = await getUserSkills({
-        page: 1,
-        limit: 50,
+        ...paginationParams,
         skillTitle: title === 'n/a' ? null : title,
         skillCategoryTitle: category === 'n/a' ? null : category,
         proficiency: proficiency === 'n/a' ? null : proficiency
