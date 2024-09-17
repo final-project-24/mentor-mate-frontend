@@ -2,7 +2,8 @@
   width: var(--sidebar-width);
   height: 100vh;
   /* margin-top: var(--margin-avoid-header); */
-  background-color: var(--primary-color);
+  /* background-color: var(--primary-color); */
+  background-color: var(--card-color);
   border-right: var(--border-width-base) solid var(--border-color-base);
   /* padding: var(--padding-small); */
   /* position: sticky; */
@@ -21,7 +22,7 @@
   left: 8px;
   z-index: 1100;
   transition: transform 0.3s ease-in-out, left 0.3s ease-in-out;
-  color: var(--accent-color);
+  color: var(--secondary-color);
   background-color: var(--button-color);
   border: none;
   padding: 10px;
@@ -38,7 +39,7 @@
   justify-content: space-between;
   padding: var(--padding-small);
   /* margin-bottom: var(--margin-small); */
-  color: var(--accent-color);
+  color: var(--secondary-color);
   text-decoration: none;
   transition: var(--transition-base);
   /* border-top: var(--border-width-base) solid var(--border-color-base); */
