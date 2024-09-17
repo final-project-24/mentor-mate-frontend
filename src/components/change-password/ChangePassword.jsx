@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { changePassword } from "../../utils/api-connector";
+import { useLanguageContext } from "../../store/language-context/LanguageContext.jsx";
 import "./ChangePassword.css";
 import ToggleButton from "../toggle-button/ToggleButton";
 
@@ -10,6 +11,7 @@ const ChangePassword = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
+  const { settingsData } = useLanguageContext();
 
   const handleChangePassword = async (e) => {
     e.preventDefault();
@@ -17,7 +19,7 @@ const ChangePassword = () => {
     setSuccess("");
 
     if (newPassword !== confirmPassword) {
-      setError("New passwords do not match");
+      setError(settingsData.passwordsDoNotMatchError);
       return;
     }
 
@@ -27,24 +29,24 @@ const ChangePassword = () => {
         newPassword,
         confirmPassword
       );
-      setSuccess("Password changed successfully");
+      setSuccess(settingsData.passwordChangeSuccessMessage);
     } catch (error) {
-      setError(error.response?.data?.msg || "Error changing password");
+      setError(error.response?.data?.msg || settingsData.passwordChangeErrorMessage);
     }
   };
 
   return !showForm ? (
     <ToggleButton
       onToggle={() => setShowForm(true)}
-      buttonName="Change Password"
+      buttonName={settingsData.changePasswordButtonLabel}
       className="button-type-standard"
     />
   ) : (
     <div className="change-password-container">
-      <h2>Change Password</h2>
+      <h2>{settingsData.changePasswordTitle}</h2>
       <form onSubmit={handleChangePassword}>
         <div className="form-group">
-          <label htmlFor="currentPassword">Current Password</label>
+          <label htmlFor="currentPassword">{settingsData.currentPasswordLabel}</label>
           <input
             type="password"
             id="currentPassword"
@@ -54,7 +56,7 @@ const ChangePassword = () => {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="newPassword">New Password</label>
+          <label htmlFor="newPassword">{settingsData.newPasswordLabel}</label>
           <input
             type="password"
             id="newPassword"
@@ -64,7 +66,7 @@ const ChangePassword = () => {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="confirmPassword">Confirm New Password</label>
+          <label htmlFor="confirmPassword">{settingsData.confirmNewPasswordLabel}</label>
           <input
             type="password"
             id="confirmPassword"
@@ -77,7 +79,7 @@ const ChangePassword = () => {
         {success && (
           <p className="change-password-success-message">{success}</p>
         )}
-        <button type="submit">Change Password</button>
+        <button type="submit">{settingsData.changePasswordButtonLabel}</button>
       </form>
     </div>
   );

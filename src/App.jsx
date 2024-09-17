@@ -23,11 +23,10 @@ import Feedback from "./pages/feedback/Feedback.jsx";
 import Playground from "./pages/playground/Playground.jsx";
 import WhyWe from "./pages/why-we/WhyWe.jsx";
 import NotFound from "./pages/not-found/NotFound.jsx";
-import ManageSkills from "./components/skills/manage-skills/ManageSkills.jsx"
+import ManageSkills from "./components/skills/manage-skills/ManageSkills.jsx";
 import Pricing from "./pages/pricing/Pricing.jsx";
 import AboutUs from "./pages/about-us/AboutUs.jsx";
 import Contact from "./pages/contact/Contact.jsx";
-
 
 export default function App() {
   return (
@@ -43,12 +42,18 @@ export default function App() {
                   <Route path="/" element={<WhyWe />} />
                   <Route path="/authentication" element={<Authentication />} />
                   <Route path="/dashboard" element={<DashboardLayout />}>
-                    <Route  index element={<DashboardHome />} />
+                    <Route index element={<DashboardHome />} />
                     <Route path="search" element={<Search />} />
                     <Route path="schedule" element={<Schedule />} />
-                    <Route path="delete-sessions" element={<DeleteSessions />} />
+                    <Route
+                      path="delete-sessions"
+                      element={<DeleteSessions />}
+                    />
                     <Route path="session" element={<Session />} />
-                    <Route path="session-history" element={<SessionHistory />} />
+                    <Route
+                      path="session-history"
+                      element={<SessionHistory />}
+                    />
                     {/* <Route path="past-sessions" element={<PastSessions />} /> */}
                     <Route path="settings" element={<Settings />} />
                     <Route path="admin-tools" element={<AdminTools />}>
