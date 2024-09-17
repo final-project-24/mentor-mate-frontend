@@ -29,6 +29,25 @@ body {
   padding: 0;
 }
 
+/* Global text color styles */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span,
+a,
+li {
+  color: var(--secondary-color) !important;
+}
+
+/* Add hover color for a tags */
+a:hover {
+  color: var(--accent-color-hover) !important;
+}
+
 /*  Custom style variables ============================== */
 /* usage with css: color: var(--primary-color); */
 
@@ -112,6 +131,10 @@ body {
   --card-color-hover: #555555;
   --border-color-base: #555555;
   --box-shadow-base: 0 2px 4px rgba(0, 0, 0, 0.5);
+
+  body {
+    background: rgb(89, 88, 88) !important;
+  }
 }
 
 /* container ===================================== */

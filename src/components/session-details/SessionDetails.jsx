@@ -58,17 +58,9 @@ const SessionDetails = ({ data }) => {
   const handleRebookSession = async () => {
     setLoading(true);
     try {
-      if (isFreeSlot) {
-        // Redirect to the payment section for free slot rebooking
-        navigate("/dashboard/payment");
-      } else {
-        // Navigate to the search page if no free slot is available
-        navigate("/dashboard/search");
-      }
+      navigate("/dashboard/search");
       window.scrollTo(0, 0);
-      setCancelMessage(
-        "Your session has been successfully rebooked. Please select a new slot."
-      );
+      setCancelMessage("Please select a new slot.");
     } catch (error) {
       console.error("Error processing rebooking:", error);
       setCancelMessage("Failed to rebook the session. Please try again later.");

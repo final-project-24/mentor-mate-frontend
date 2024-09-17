@@ -1,10 +1,12 @@
 .dashboard-sidebar {
   width: var(--sidebar-width);
   height: 100vh;
+  margin-top: var(--margin-avoid-header);
   /* margin-top: var(--margin-avoid-header); */
   /* background-color: var(--primary-color); */
   background-color: var(--card-color);
-  border-right: var(--border-width-base) solid var(--border-color-base);
+  opacity: var(--opacity-base);
+  /* border-right: var(--border-width-base) solid var(--border-color-base); */
   /* padding: var(--padding-small); */
   /* position: sticky; */
   position: fixed;
@@ -30,7 +32,7 @@
 }
 
 .dashboard-sidebar-nav {
-  margin-top: 120px;
+  margin-top: 40px;
 }
 
 .dashboard-sidebar a {
@@ -84,7 +86,7 @@
     display: none; /* Hide the toggle button on larger screens */
   }
   .dashboard-sidebar-nav {
-    margin-top: var(--margin-avoid-header);
+    margin-top: var(--margin-small);
   }
 }
 
