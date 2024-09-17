@@ -61,15 +61,15 @@ const SearchBar = ({ onResults }) => {
 
   return (
     <div className="search-bar-container ">
-      <form onSubmit={handleSearch} className="search-bar flex flex-col ">
+      <form onSubmit={handleSearch} className="search-bar">
         <input
           type="text"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          placeholder="Search for mentors..."
+          placeholder="Search for mentors by user name..."
           className="search-input text-center"
         />
-        <button type="submit" className="search-button mt-3">
+        <button type="submit" className="search-button">
           <FontAwesomeIcon icon={faSearch} />
         </button>
       </form>

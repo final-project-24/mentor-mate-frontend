@@ -184,6 +184,20 @@ export const changeEmail = async (newEmail) => {
   }
 };
 
+// change user image
+export const changeUserImage = async (newImage) => {
+  try {
+    const res = await axios.put("/user/change-image", { newImage });
+    if (res.status !== 200) {
+      throw new Error("Unable to change user image");
+    }
+    return res.data;
+  } catch (error) {
+    console.error("Error changing user image:", error);
+    throw error;
+  }
+};
+
 // feedback API calls ==================================================
 
 // submit feedback
@@ -230,7 +244,38 @@ export const fetchFeedbacks = async (bookingId, mentorUuid, menteeUuid) => {
   }
 };
 
+// fetch public feedbacks with mentor details and skills
+export const fetchPublicFeedbacks = async () => {
+  try {
+    // console.log("🔎 Fetching public feedbacks with mentor details and skills...");
+    const res = await axios.get("/feedback/public");
+    console.log("Fetched public feedbacks:", res.data); // Log fetched public feedbacks
+    if (res.status !== 200) {
+      throw new Error("Unable to fetch public feedbacks");
+    }
+    return res.data;
+  } catch (error) {
+    console.error("Error fetching public feedbacks:", error);
+    throw error;
+  }
+};
+
 // session API calls ===================================================
+
+// Fetch available upcoming events for a mentor
+export const fetchAvailableUpcomingEventsForMentor = async () => {
+  try {
+    const res = await axios.get("/session/available-upcoming-events");
+    console.log("Fetched available upcoming events for mentor:", res.data); // Log fetched events
+    if (res.status !== 200) {
+      throw new Error("Unable to fetch available upcoming events for mentor");
+    }
+    return res.data;
+  } catch (error) {
+    console.error("Error fetching available upcoming events for mentor:", error);
+    throw error;
+  }
+};
 
 // Fetch upcoming sessions
 export const fetchUpcomingSessions = async () => {
@@ -357,6 +402,12 @@ export const fetchBookingDetails = async (bookingId) => {
     console.error("Error fetching booking details:", error);
     throw error;
   }
+};
+
+// delete availability
+export const deleteAvailability = async (eventId) => {
+  const response = await axios.delete(`/calendar/${eventId}`);
+  return response.data;
 };
 
 // // Fetch upcoming sessions

@@ -55,7 +55,7 @@
 //         console.error("Error fetching booking details:", error);
 //       } finally {
 //         console.log("Booking details fetched successfully.");
-//       }
+//       }4000 0027 6000 0016 
 //     };
 
 //     if (bookingId) {
@@ -107,7 +107,6 @@
 
 import { useState, useEffect } from "react";
 import Layout from "../../components/layout/Layout";
-import axios from "axios";
 import { fetchBookingDetails } from "../../utils/api-connector";
 import { useAuthContext } from "../../store/authentication-context/AuthenticationContext";
 import { useBookingContext } from "../../store/booking-context/BookingContext";

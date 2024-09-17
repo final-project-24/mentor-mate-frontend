@@ -40,12 +40,23 @@ const MentorAvailabilityCalendar = ({ mentorUuid, userRole }) => {
     }
   };
 
-  // Handle slot selection
-  const handleSelectSlot = (slotInfo) => {
-    if (userRole === "mentor") {
-      setSelectedSlot(slotInfo);
+// Handle slot selection
+const handleSelectSlot = (slotInfo) => {
+  if (userRole === "mentor") {
+    const start = new Date(slotInfo.start);
+    const end = new Date(start);
+
+    // Check if the selected slot is a whole day
+    if (slotInfo.slots.length === 1 && slotInfo.slots[0].getHours() === 0) {
+      start.setHours(12, 0, 0, 0); // Set start time to 12 PM
+      end.setHours(13, 0, 0, 0); // Set end time to 1 PM
+    } else {
+      end.setMinutes(start.getMinutes() + 60); // Set the end time to 60 minutes after the start time
     }
-  };
+
+    setSelectedSlot({ start, end });
+  }
+};
 
   // Handle adding availability
   const handleAddAvailability = async () => {
@@ -76,7 +87,7 @@ const MentorAvailabilityCalendar = ({ mentorUuid, userRole }) => {
 
   return (
     <div
-      className="calendar-container flex flex-col lg:flex-row pt-96 pb-96"
+      className="calendar-container flex flex-col lg:flex-row mb-[100px]"
       style={{ height: "calc(100vh)" }}
     >
       <div
@@ -84,7 +95,7 @@ const MentorAvailabilityCalendar = ({ mentorUuid, userRole }) => {
           selectedSlot ? "lg:w-[70%]" : "w-full"
         }`}
       >
-        <div>
+        <div className="calendar-wrapper">
           <Calendar
             localizer={localizer}
             events={events}

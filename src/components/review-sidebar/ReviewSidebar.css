@@ -4,13 +4,14 @@
   width: 300px;
   position: fixed;
   right: 0;
-  top: 10%;
+  top: 0;
   background-color: #f9f6f6;
   padding: 20px;
   box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
   transition: transform 0.3s ease;
-  overflow: hidden; /* Hide overflow to prevent multiple reviews from showing */
-  z-index: 1000;
+  /* overflow: hidden;  */
+  overflow-y: auto; /* Add vertical scrollbar */
+  z-index: 5000;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -57,7 +58,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1002;
+  z-index: 5001;
   transition: background-color 0.3s ease;
 }
 
@@ -80,17 +81,17 @@
   top: 50%;
   transform: translateY(-50%);
   font-size: 24px; /* Increased font size to fit the '×' character */
-  background-color: #007bff;
+  background-color: var(--accent-color);
   color: white;
   border: none;
   padding: 10px;
   cursor: pointer;
   border-radius: 5px 0 0 5px;
-  z-index: 1001;
+  z-index: 5001;
 }
 
 .smallOpenBtn:hover {
-  background-color: #0056b3; /* Color de fondo al hacer hover */
+  background-color: var(--accent-color-hover);
   color: #f0f0f0; /* Color del texto al hacer hover (opcional) */
 }
 
@@ -100,6 +101,11 @@
   height: 60px;
   border-radius: 50%;
   margin-right: 15px;
+  object-fit: cover; /* Ensures the image covers the area while maintaining aspect ratio */
+  object-position: center; /* Centers the image in the container */
+  min-width: 60px;
+  min-height: 60px;
+  
 }
 
 
@@ -156,7 +162,7 @@
 }
 
 .feedbackButton:hover {
-  background-color: #0056b3;
+  background-color: var(--accent-color-hover);
 }
 
 .feedback-icon {
@@ -172,3 +178,5 @@
   display: inline-flex; /* Ensures elements are aligned on the same line */
   align-items: center; /* Vertically centers the icon with the text */
 }
+
+

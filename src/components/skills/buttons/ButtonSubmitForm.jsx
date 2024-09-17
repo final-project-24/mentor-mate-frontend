@@ -4,24 +4,33 @@ import useStateSelectors from "../../../hooks/useStateSelectors"
 import { isMobile } from "react-device-detect"
 
 /* eslint-disable react/prop-types */
-const ButtonSubmitForm = () => {
-  const {categoriesLoading, addForm} = useStateSelectors()
+const ButtonSubmitForm = (props) => {
+  const {skillsLoading, addForm} = useStateSelectors()
 
   const btnClass = classNames('min-w-[150px] max-w-[200px] bg-accent text-primary p-2.5 rounded-md transition', {
-    'opacity-30': categoriesLoading,
+    'opacity-30': skillsLoading,
     'hover:bg-[#2ecc71]': !isMobile
   })
+
+  const renderLabel = (props, addForm) => {
+    if (!props.label) {
+      if (addForm) {
+        return 'Add skill'
+      }
+        
+      return 'Update skill'
+    } 
+      
+    return props.label
+  }
 
   return (
     <button
       className={btnClass}
       type="submit"
-      disabled={categoriesLoading}
+      disabled={skillsLoading}
     >
-      {addForm
-        ? 'Add category'
-        : 'Update category'
-      }
+      {renderLabel(props, addForm)}
     </button>
   )
 }

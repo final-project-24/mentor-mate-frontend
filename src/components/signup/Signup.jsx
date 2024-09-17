@@ -44,11 +44,11 @@ function SignUp({ onToggleLogin }) {
     }
   };
 
-  const [selectedFile, setSelectedFile] = useState(null);
+  // const [selectedFile, setSelectedFile] = useState(null);
 
-  const handleFileChange = (event) => {
-    setSelectedFile(event.target.files[0]);
-  };
+  // const handleFileChange = (event) => {
+  //   setSelectedFile(event.target.files[0]);
+  // };
   
 
   return (
@@ -110,7 +110,7 @@ function SignUp({ onToggleLogin }) {
             </select>
           </label>
 
-          <div className="">
+          {/* <div className="">
             <input
               type="file"
               name="file"
@@ -130,16 +130,16 @@ function SignUp({ onToggleLogin }) {
                 ? `Selected file: ${selectedFile.name}`
                 : "No file selected"}
             </p>
-          </div>
+          </div> */}
 
-          {/* <div className="w-3/4 mx-auto pb-2 ">
+          <div className="">
             <div className="">
               <FileBase64
                 multiple={false}
                 onDone={({ base64 }) => setImage(base64)}
               />
             </div>
-          </div>  */}
+          </div> 
           <button type="submit" className="w-3/4 mx-auto  ">
             Sign Up
           </button>

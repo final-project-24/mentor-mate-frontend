@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { changeEmail } from "../../utils/api-connector";
+import { useLanguageContext } from "../../store/language-context/LanguageContext.jsx";
 import "./ChangeEmail.css";
 import ToggleButton from "../toggle-button/ToggleButton";
 
@@ -8,6 +9,7 @@ const ChangeEmail = () => {
   const [newEmail, setNewEmail] = useState("");
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
+  const { settingsData } = useLanguageContext();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -25,15 +27,15 @@ const ChangeEmail = () => {
   return !showForm ? (
     <ToggleButton
       onToggle={() => setShowForm(true)}
-      buttonName="Change Email"
+      buttonName={settingsData.changeEmailButtonLabel}
       className="button-type-standard"
     />
   ) : (
     <div className="change-email-container">
-      <h2>Change Email</h2>
+      <h2>{settingsData.changeEmailTitle}</h2>
       <form onSubmit={handleSubmit}>
         <div>
-          <label htmlFor="newEmail">New Email:</label>
+          <label htmlFor="newEmail">{settingsData.newEmailLabel}</label>
           <input
             type="email"
             id="newEmail"
@@ -42,7 +44,7 @@ const ChangeEmail = () => {
             required
           />
         </div>
-        <button type="submit">Change Email</button>
+        <button type="submit">{settingsData.changeEmailButtonLabel}</button>
       </form>
       {message && <p style={{ color: "green" }}>{message}</p>}
       {error && <p style={{ color: "red" }}>{error}</p>}

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { changeUserName } from "../../utils/api-connector";
+import { useLanguageContext } from "../../store/language-context/LanguageContext.jsx";
 import "./ChangeUserName.css";
 import ToggleButton from "../toggle-button/ToggleButton";
 
@@ -8,6 +9,7 @@ const ChangeUserName = () => {
   const [newUserName, setNewUserName] = useState("");
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
+  const { settingsData } = useLanguageContext();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -25,15 +27,15 @@ const ChangeUserName = () => {
   return !showForm ? (
     <ToggleButton
       onToggle={() => setShowForm(true)}
-      buttonName="Change Username"
+      buttonName={settingsData.changeUsernameButtonLabel}
       className="button-type-standard"
     />
   ) : (
     <div className="change-user-name-container">
-      <h2>Change Username</h2>
+      <h2>{settingsData.changeUsernameTitle}</h2>
       <form onSubmit={handleSubmit}>
         <div>
-          <label htmlFor="newUserName">New Username:</label>
+          <label htmlFor="newUserName">{settingsData.newUsernameLabel}</label>
           <input
             type="text"
             id="newUserName"
@@ -42,7 +44,7 @@ const ChangeUserName = () => {
             required
           />
         </div>
-        <button type="submit">Change Username</button>
+        <button type="submit">{settingsData.changeUsernameButtonLabel}</button>
       </form>
       {message && <p style={{ color: "green" }}>{message}</p>}
       {error && <p style={{ color: "red" }}>{error}</p>}

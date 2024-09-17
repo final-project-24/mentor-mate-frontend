@@ -2,18 +2,20 @@
 .dashboard-layout {
   width: 100%;
   display: flex;
-  min-height: 100vh; /* Ensure the parent container has enough height */
+  min-height: 100vh;
+  /* margin-top: var(--margin-avoid-header); */
+  /* margin-bottom: var(--margin-avoid-footer); */
 }
 
 .dashboard-sidebar {
-  width: var(--sidebar-width); 
+  width: var(--sidebar-width);
   flex-shrink: 0; /* Prevent the sidebar from shrinking */
 }
 
 .main-content {
   flex-grow: 1;
   height: auto;
-  
+
   /* padding: var(--padding-base); */
   /* Ensure the main content can scroll */
   overflow-y: auto;
@@ -23,13 +25,11 @@
   .main-content {
     margin-left: var(--mini-sidebar-margin-left);
     height: 100%;
-    
   }
 }
 
 @media (min-width: 768px) {
   .main-content {
     margin-left: var(--sidebar-width);
-    
   }
 }

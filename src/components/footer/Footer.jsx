@@ -12,11 +12,11 @@ import Logo from '../../assets/images/icon.svg'
 
 export default function Footer() {
   return (
-    <footer id="footer" className="bottom-0 left-0 fixed w-full">
-      <div className="main-flex-container  h-auto">
+    <footer id="footer" className="bottom-0 left-0  w-full ">
+      <div className="main-flex-container h-auto md:flex md:items-center md:justify-center lg:pt-2 lg:pb-2  ">
         {/* Logo */}
-        <div className="footer-section flex flex-row items-center  ">
-          <div className="icon-p  w-1/3">
+        <div className="footer-section flex flex-row items-center md: md:w-5/6   lg:w-full  ">
+          <div className="icon-p  w-1/3  md:w-1/2  lg:flex flex-col lg:w-1/2  ">
             <a
               href="#"
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
@@ -24,21 +24,32 @@ export default function Footer() {
               <img
                 src={Logo}
                 alt="Logo"
-                className="footer-logo  mx-auto"
+                className="lg:hidden footer-logo mx-auto "
+              />
+              <img
+                src={iconUrl}
+                alt="Mentormate Logo"
+                className="hidden lg:block  footer-logo mx-auto "
               />
             </a>
-            <p className="hidden md:block text-center text-sm pt-2">
+            <p className="hidden lg:block  text-center text-lg p-2">
               Your trusted source to find highly-vetted mentors & industry
               professionals
               <br /> to move your career ahead.
             </p>
           </div>
-          <div>
-            <div className="footer-section text-center text-sm ">
-              <a href="/about" className="footer-link  text-base px-5 ">
+          <div className=" md:w-1/2  ">
+            <div className="footer-section text-center lg:pb-6  ">
+              <a
+                href="/about"
+                className="footer-link  text-base lg:text-xl px-5 lg:px-10 "
+              >
                 About
               </a>
-              <a href="/terms" className="footer-link text-base px-5 ">
+              <a
+                href="/terms"
+                className="footer-link text-base lg:text-xl px-5 lg:px-10 "
+              >
                 Terms
               </a>
             </div>
@@ -50,19 +61,19 @@ export default function Footer() {
             <div className="footer-section footer-social-media flex justify-around pt-4 pb-4 ">
               <FontAwesomeIcon
                 icon={faFacebook}
-                className="social-icon  text-lg"
+                className="social-icon  text-lg lg:text-3xl"
               />
               <FontAwesomeIcon
                 icon={faInstagram}
-                className="social-icon text-lg"
+                className="social-icon text-lg lg:text-3xl"
               />
               <FontAwesomeIcon
                 icon={faLinkedin}
-                className="social-icon  text-lg"
+                className="social-icon  text-lg lg:text-3xl"
               />
               <FontAwesomeIcon
                 icon={faXTwitter}
-                className="social-icon  text-lg"
+                className="social-icon  text-lg lg:text-3xl"
               />
             </div>
           </div>

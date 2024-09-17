@@ -4,17 +4,13 @@ import "./ChangeLanguage.css";
 import ToggleButton from "../toggle-button/ToggleButton";
 
 export default function LanguageButton() {
-  const { switchToEnglish, switchToGerman } = useLanguageContext();
+  const { switchToEnglish, switchToGerman, settingsData } = useLanguageContext();
   const [activeLanguage, setActiveLanguage] = useState("eng");
   const [showDropdown, setShowDropdown] = useState(false);
 
-  console.log("Active Language:", activeLanguage); //
-  console.log("Switch to English:", switchToEnglish); //
-  console.log("Switch to German:", switchToGerman); //
-
   const languages = [
-    { code: "eng", label: "English", switchFunction: switchToEnglish },
-    { code: "ger", label: "German", switchFunction: switchToGerman },
+    { code: "eng", label: settingsData.englishLabel, switchFunction: switchToEnglish },
+    { code: "ger", label: settingsData.germanLabel, switchFunction: switchToGerman },
     // Add more languages here
   ];
 
@@ -39,12 +35,12 @@ export default function LanguageButton() {
     !showDropdown ? (
       <ToggleButton
         onToggle={() => setShowDropdown(true)}
-        buttonName="Change Language"
+        buttonName={settingsData.changeLanguageButtonLabel}
         className="button-type-standard"
       />
     ) : (
-      <div className="change-language-container">
-        <h2>Change Language</h2>
+      <div className="change-language-container pt-5">
+        <h2>{settingsData.changeLanguageTitle}</h2>
         <select
           value={activeLanguage}
           onChange={handleLanguageChange}

@@ -6,24 +6,26 @@ import { useDispatch } from "react-redux"
 import { isMobile } from "react-device-detect"
 
 // reducer actions
-import { set_add_form, set_show_skill_category_form, set_skill_category_description, set_skill_category_title } from "../../../store/skills-store/slices/skillCategoryFormSlice"
-import { set_current_skill_category } from "../../../store/skills-store/slices/skillCategorySlice"
+import { set_add_form, set_show_skill_form } from "../../../store/skills-store/slices/skillFormSlice"
 import { set_errors_array } from "../../../store/skills-store/slices/errorsSlice"
+import { set_edit_form } from "../../../store/skills-store/slices/skillFormSlice"
+
+// hooks
+import useStateSelectors from "../../../hooks/useStateSelectors"
 
 const ButtonCloseForm = () => {
   const dispatch = useDispatch()
+  const {addForm, editForm} = useStateSelectors()
 
   const iconClass = classNames('text-lg' , {
     'hover:scale-125 transition': !isMobile
   })
 
   const handleClick = () => {
-    dispatch(set_current_skill_category(null))
-    dispatch(set_show_skill_category_form(false))
-    dispatch(set_skill_category_title(''))
-    dispatch(set_skill_category_description(''))
+    dispatch(set_show_skill_form(false))
     dispatch(set_errors_array([]))
-    dispatch(set_add_form(false))
+    if (addForm) dispatch(set_add_form(false))
+    if (editForm) dispatch(set_edit_form(false))
   }
 
   return (
