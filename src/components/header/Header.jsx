@@ -84,20 +84,28 @@ const Header = () => {
 
   return (
     <div id="header">
-      <nav className="header-container bg-[#d7e1d6eb] fixed top-0 w-full h-[80px] flex items-center lg:grid lg:grid-cols-3   px-4 md:px-6 z-50 ">
+      <nav className="header-container bg-[#d7e1d6eb] fixed top-0  w-full h-[80px] flex flex-row lg:grid lg:grid-cols-3 px-4 md:px-6 lg:px-0 z-50 ">
         {/* Logo Section */}
 
         <div
-          className={`flex items-center ${
-            nav ? "absolute w-full   z-50  " : "lg:justify-start"
-          } flex-grow justify-center`}
+          className={`flex items-center  ${
+            nav ? "absolute w-full z-50  " : "lg:justify-start"
+          } flex-grow `}
         >
           <Link
             to={isLoggedIn ? "/dashboard" : "/"}
             className="text-xl font-bold text-black hover:text-neutral "
           >
-            <img src={Logo} alt="" className="hidden lg:grid h-[80px] py-1 " />
-            <img src={LogoSmall} alt="" className="w-1/6 lg:hidden" />
+            <img
+              src={Logo}
+              alt=""
+              className="hidden lg:grid lg:w-[250px] lg:px-2 h-[80px] py-2 border border-red-600 "
+            />
+            <img
+              src={LogoSmall}
+              alt=""
+              className="w-1/6 p-1 md:w-2/12 md:p-1  border border-red-600   lg:hidden"
+            />
           </Link>
         </div>
 
@@ -117,7 +125,7 @@ const Header = () => {
         </div> */}
         {/* Navigation Links for Desktop */}
         <ul
-          className={`hidden lg:flex flex-grow gap-2 text-sm lg:text-lg xl:text-lg 2xl:text-xl lg:gap-10  justify-center `}
+          className={`hidden lg:flex flex-grow gap-2 text-sm lg:text-[25px]  lg:gap-20  justify-center lg:items-center border border-red-600  `}
         >
           {navLinks.map(({ to, label }) => (
             <li key={to}>
@@ -144,7 +152,7 @@ const Header = () => {
               Login
             </Link>
           ) : (
-            <div className="hidden lg:flex pt-2 border border-red-600">
+            <div className="hidden lg:flex lg:w-[250px] lg:px-2  lg:justify-end pt-2 border border-red-600">
               <LogoutButton />
             </div>
           )}
@@ -177,7 +185,7 @@ const Header = () => {
               {navLinks.map(({ to, label }) => (
                 <li
                   key={to}
-                  className="text-lg text-center py-2 hover:text-gray-700 mb-2 w-full px-6 "
+                  className="text-lg text-center py-2  hover:text-gray-700 mb-2 w-full px-6 "
                   onClick={closeMenu} // Close menu on click
                 >
                   <Link to={to}>{label}</Link>
