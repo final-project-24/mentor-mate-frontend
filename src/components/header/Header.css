@@ -26,3 +26,8 @@
   color: var(--accent-color-hover);
 }
 
+.header-container {
+  background-color: var(--card-color) !important;
+  opacity: var(--opacity-base);
+  border: none;
+}
