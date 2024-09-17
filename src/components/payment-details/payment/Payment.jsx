@@ -84,7 +84,7 @@ const Payment = ({ bookingId, offerDetails }) => {
 
       {!paymentStatus && !stripePending && (
         <>
-          <h2 className="payment-title mt-5">Payment Details</h2>
+          <h2 className="payment-title mt-[90px]">Payment Details</h2>
 
           <div className="offer-details">
             <h3>{title}</h3>

@@ -24,7 +24,7 @@ const Search = () => {
   }
 
   return (
-    <section id="search" className="pt-[90px]  ">
+    <section id="search" className="pt-[90px] px-5 ">
       {/* <section id="search"> */}
       <h2 className="text-accent">Search for a Mentor </h2>
       {/* <div className="search-card md:w-[90%]"> */}
@@ -38,8 +38,8 @@ const Search = () => {
 
       <h2 className="text-accent text-center text-xl">or Skill</h2>
       <div>
-        {" "}
-        <SearchBySkill />{" "}
+        
+        <SearchBySkill />
       </div>
     </section>
   );

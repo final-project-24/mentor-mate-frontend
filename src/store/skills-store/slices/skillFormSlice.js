@@ -3,7 +3,10 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   showSkillForm: false,
   addForm: false,
-  editForm: false
+  category: '',
+  skill: '',
+  proficiency: '',
+  notes: ''
 }
 
 const skillFormSlice = createSlice({
@@ -16,8 +19,17 @@ const skillFormSlice = createSlice({
     set_add_form: (state, action) => {
       state.addForm = action.payload
     },
-    set_edit_form: (state, action) => {
-      state.editForm = action.payload
+    set_category: (state, action) => {
+      state.category = action.payload
+    },
+    set_skill: (state, action) => {
+      state.skill = action.payload
+    },
+    set_proficiency: (state, action) => {
+      state.proficiency = action.payload
+    },
+    set_notes: (state, action) => {
+      state.notes = action.payload
     }
   }
 })
@@ -25,7 +37,10 @@ const skillFormSlice = createSlice({
 export const {
   set_show_skill_form,
   set_add_form,
-  set_edit_form
+  set_category,
+  set_skill,
+  set_proficiency,
+  set_notes
 } = skillFormSlice.actions
 
 export default skillFormSlice.reducer

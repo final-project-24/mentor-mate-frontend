@@ -1,46 +1,51 @@
 import { useSelector } from 'react-redux'
 
 const useStateSelectors = () => {
-  // skill category
-  const skillCategory = useSelector(state => state.skillCategory)
+  // * skill item
+  const currentSkillItem = useSelector(state => state.skill.currentSkillItem)
+  // * skill category
+  // const skillCategory = useSelector(state => state.skillCategory)
   const skillCategories = useSelector(state => state.skillCategory.skillCategories)
-  const currentSkillCategory = useSelector(state => state.skillCategory.currentSkillCategory)
-  // skill category form
+  // * proto skills
+  const protoSkills = useSelector(state => state.protoSkill.protoSkills)
+  // * user skills
+  const userSkills = useSelector(state => state.userSkill.userSkills)
+  // const currentUserSkill = useSelector(state => state.userSkill.currentUserSkill)
+  // * skill category form
+  const skillForm = useSelector(state => state.skillForm)
   const showSkillForm = useSelector(state => state.skillForm.showSkillForm)
   const addForm = useSelector(state => state.skillForm.addForm)
-  const editForm = useSelector(state => state.skillForm.editForm)
-  // proto skills
-  const protoSkills = useSelector(state => state.protoSkill.protoSkills)
-  // user skills
-  const userSkills = useSelector(state => state.userSkill.userSkills)
-  const currentUserSkill = useSelector(state => state.userSkill.currentUserSkill)
-  // errors
+  // const editForm = useSelector(state => state.skillForm.editForm)
+  // * errors
   const errorsArray = useSelector(state => state.error.errorsArray)
-  // pagination
+  // * pagination
   const pagination = useSelector(state => state.pagination)
-  // loading
+  // * loading
   const skillsLoading = useSelector(state => state.loading.skillsLoading)
   const categoriesDeleteLoading = useSelector(state => state.loading.categoriesDeleteLoading)
 
   return {
-    // skill category
-    skillCategory,
+    // * skill
+    currentSkillItem,
+    // * skill category
+    // skillCategory,
     skillCategories,
-    currentSkillCategory,
-    // skill form
+    // currentSkillCategory,
+    // * proto skills
+    protoSkills,
+    // * user skills
+    userSkills,
+    // currentUserSkill,
+    // * skill form
+    skillForm,
     showSkillForm,
     addForm,
-    editForm,
-    // proto skills
-    protoSkills,
-    // user skills
-    userSkills,
-    currentUserSkill,
-    // errors
+    // editForm,
+    // * errors
     errorsArray,
-    // pagination
+    // * pagination
     pagination,
-    // loading
+    // * loading
     skillsLoading,
     categoriesDeleteLoading
   } 
