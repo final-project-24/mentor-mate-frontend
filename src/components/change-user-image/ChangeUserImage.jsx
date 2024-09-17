@@ -1,12 +1,13 @@
 import { useState } from "react";
-import { changeUserName } from "../../utils/api-connector";
+import { changeUserImage } from "../../utils/api-connector";
+import FileBase64 from "react-file-base64";
 import { useLanguageContext } from "../../store/language-context/LanguageContext.jsx";
-import "./ChangeUserName.css";
+import "./ChangeUserImage.css";
 import ToggleButton from "../toggle-button/ToggleButton";
 
-const ChangeUserName = () => {
+const ChangeUserImage = () => {
   const [showForm, setShowForm] = useState(false);
-  const [newUserName, setNewUserName] = useState("");
+  const [newImage, setNewImage] = useState("");
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
   const { settingsData } = useLanguageContext();
@@ -17,7 +18,7 @@ const ChangeUserName = () => {
     setError("");
 
     try {
-      const response = await changeUserName(newUserName);
+      const response = await changeUserImage(newImage);
       setMessage(response.message);
     } catch (error) {
       setError(error.message);
@@ -27,24 +28,21 @@ const ChangeUserName = () => {
   return !showForm ? (
     <ToggleButton
       onToggle={() => setShowForm(true)}
-      buttonName={settingsData.changeUsernameButtonLabel}
+      buttonName={settingsData.changeUserImageButtonLabel}
       className="button-type-standard"
     />
   ) : (
-    <div className="change-user-name-container">
-      <h2>{settingsData.changeUsernameTitle}</h2>
+    <div className="change-user-image-container">
+      <h2>{settingsData.changeUserImageButtonLabel}</h2>
       <form onSubmit={handleSubmit}>
         <div>
-          <label htmlFor="newUserName">{settingsData.newUsernameLabel}</label>
-          <input
-            type="text"
-            id="newUserName"
-            value={newUserName}
-            onChange={(e) => setNewUserName(e.target.value)}
-            required
+          <label htmlFor="newImage">{settingsData.newImageLabel}</label>
+          <FileBase64
+            multiple={false}
+            onDone={({ base64 }) => setNewImage(base64)}
           />
         </div>
-        <button type="submit">{settingsData.changeUsernameButtonLabel}</button>
+        <button type="submit">{settingsData.changeUserImageButtonLabel}</button>
       </form>
       {message && <p style={{ color: "green" }}>{message}</p>}
       {error && <p style={{ color: "red" }}>{error}</p>}
@@ -52,4 +50,4 @@ const ChangeUserName = () => {
   );
 };
 
-export default ChangeUserName;
+export default ChangeUserImage;

@@ -57,14 +57,14 @@ const PricingCards = () => {
   return (
     <Layout>
       <h2 className="text-center text-xl pt-[100px] ]">Our Prices </h2>
-      <div className="w-[90%] m-10 mx-auto  px-4 bg-white lg:h-[65vh]  ">
+      <div className="w-[90%] m-10 mx-auto  px-4 lg:h-[65vh]  ">
         <div className="max-w-[1240px] mx-auto grid  gap-12  md:w-[70%]  lg:grid lg:grid-cols-3 lg:w-full  lg:pt-5 ">
           {cardData.map((card, index) => (
             <div
               key={index}
               className={`w-full shadow-xl flex flex-col p-4 my-4 rounded-lg hover:scale-105 duration-300 border border-accent  `}
             >
-              <div className="w-20 mx-auto mt-[-3rem] bg-white">
+              <div className="w-20 mx-auto mt-[-3rem] ">
                 {card.image}
               </div>
               <h2 className="text-2xl font-bold text-center py-8">
