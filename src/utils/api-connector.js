@@ -184,6 +184,20 @@ export const changeEmail = async (newEmail) => {
   }
 };
 
+// change user image
+export const changeUserImage = async (newImage) => {
+  try {
+    const res = await axios.put("/user/change-image", { newImage });
+    if (res.status !== 200) {
+      throw new Error("Unable to change user image");
+    }
+    return res.data;
+  } catch (error) {
+    console.error("Error changing user image:", error);
+    throw error;
+  }
+};
+
 // feedback API calls ==================================================
 
 // submit feedback

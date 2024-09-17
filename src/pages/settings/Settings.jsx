@@ -1,5 +1,6 @@
 // import React from "react";
 import { useAuthContext } from "../../store/authentication-context/AuthenticationContext.jsx";
+import { useLanguageContext } from "../../store/language-context/LanguageContext.jsx";
 import "./Settings.css";
 import Loading from "../../components/loading/Loading";
 import NotLoggedInMessage from "../../components/not-logged-in-message/NotLoggedInMessage";
@@ -7,6 +8,7 @@ import NotLoggedInMessage from "../../components/not-logged-in-message/NotLogged
 import ChangeAppearance from "../../components/change-appearance/ChangeAppearance.jsx";
 import LanguageButton from "../../components/change-language/ChangeLanguage.jsx";
 import ChangeUserName from "../../components/change-user-name/ChangeUserName.jsx";
+import ChangeUserImage from "../../components/change-user-image/ChangeUserImage.jsx";
 import ChangePassword from "../../components/change-password/ChangePassword.jsx";
 import ChangeEmail from "../../components/change-email/ChangeEmail.jsx";
 import DeleteUser from "../../components/delete-user/DeleteUser.jsx";
@@ -14,6 +16,7 @@ import DeleteUser from "../../components/delete-user/DeleteUser.jsx";
 
 export default function Settings() {
   const { user, loading, isLoggedIn } = useAuthContext(); // Use useAuthContext hook to access isLoggedIn and user state
+  const { settingsData } = useLanguageContext();
 
   // If the page is still loading, display a loading indicator
   if (loading) {
@@ -27,9 +30,9 @@ export default function Settings() {
 
   return (
     <section id="settings-container" className="mt-[100px]  lg:mb-[100px] ">
-      <h1 className="text-accent">Settings</h1>
+      <h1 className="text-accent">{settingsData.settingsTitle}</h1>
       <div className="settings-card md:w-[80%] lg:w-[60%] xl:w-[40%] lg ">
-        <h1 className="">Preferences</h1>
+        <h1 className="">{settingsData.preferencesTitle}</h1>
         <div className="md:w-[60%] xl:w-[50%]  ">
           <ChangeAppearance />
           <LanguageButton />
@@ -39,9 +42,10 @@ export default function Settings() {
       <div className="settings-card md:w-[80%] lg:w-[60%] xl:w-[40%]">
         {isLoggedIn && (
           <>
-            <h1>Account</h1>
+            <h1>{settingsData.accountTitle}</h1>
             <div className="md:w-[60%] xl:w-[50%]">
               <ChangeUserName />
+              <ChangeUserImage />
               <ChangePassword />
               <ChangeEmail />
               <DeleteUser />

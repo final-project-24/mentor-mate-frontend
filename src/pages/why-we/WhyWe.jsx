@@ -8,7 +8,7 @@ function WhyWe() {
   return (
     <Layout>
       <section>
-        <div className="mt-[90px] mb-[80px] bg-white">
+        <div className="mt-[90px] mb-[80px]">
           <h1 className="text-center text-accent text-3xl ">
             Welcome to MentorMate - Your Gateway to Growth and Success!
           </h1>
