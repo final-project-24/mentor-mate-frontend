@@ -95,7 +95,7 @@ const handleSelectSlot = (slotInfo) => {
           selectedSlot ? "lg:w-[70%]" : "w-full"
         }`}
       >
-        <div className="text-lg">
+        <div>
           <Calendar
             localizer={localizer}
             events={events}

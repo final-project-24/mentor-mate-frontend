@@ -5,6 +5,20 @@
   align-items: center;
   justify-content: center;
   padding: 20px;
-  background-color: var(--primary-color);
+  /* background-color: var(--primary-color); */
   color: var(--secondary-color);
+}
+
+.view-sessions-btn {
+  padding: 10px 20px;
+  margin-top: 20px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.view-sessions-btn:hover {
+  background-color: #45a049;
 }

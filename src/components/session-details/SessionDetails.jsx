@@ -41,7 +41,7 @@ const SessionDetails = ({ data }) => {
         );
         console.log("Response:", response.data);
         setCancelMessage("Your session has been canceled successfully!");
-        setIsFreeSlot(true);
+        setIsFreeSlot(true); // Assuming free slot is available after cancellation
       } else {
         setCancelMessage("No session ID available.");
       }
@@ -58,7 +58,13 @@ const SessionDetails = ({ data }) => {
   const handleRebookSession = async () => {
     setLoading(true);
     try {
-      navigate("/dashboard/search");
+      if (isFreeSlot) {
+        // Redirect to the payment section for free slot rebooking
+        navigate("/dashboard/payment");
+      } else {
+        // Navigate to the search page if no free slot is available
+        navigate("/dashboard/search");
+      }
       window.scrollTo(0, 0);
       setCancelMessage(
         "Your session has been successfully rebooked. Please select a new slot."
@@ -75,12 +81,8 @@ const SessionDetails = ({ data }) => {
     return <p>No session data available.</p>;
   }
 
-  const formattedStartDate = new Date(data.start).toLocaleDateString();
-  const formattedStartTime = new Date(data.start).toLocaleTimeString();
-  const formattedEndTime = new Date(data.end).toLocaleTimeString();
-
   return (
-    <div className="session-details-container t-20 mx-2 mb-10 lg:mx-auto ">
+    <div className="session-details-container">
       <h1 className="text-lg text-accent">
         🥳 WELCOME! <p> These are the details of your upcoming session!</p>
       </h1>
@@ -90,10 +92,6 @@ const SessionDetails = ({ data }) => {
         Session Name: {data.selectedSkill[0].protoSkillTitle}
       </p>
       <p className="session-description">Description: {data.title}</p>
-      <p className="session-date">Date: {formattedStartDate}</p>
-      <p className="session-time">
-        Time: {formattedStartTime} - {formattedEndTime}
-      </p>
       <div className="meeting-link-container">
         <div className="meeting-option">
           <a

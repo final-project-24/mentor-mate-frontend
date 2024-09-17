@@ -1,7 +1,7 @@
 .payment-container {
   width: 100%;
   max-width: 600px;
-  margin: 0px auto;
+  margin: 120px auto 20px; 
   padding: 40px; 
   border-radius: 12px; 
   background-color: #ffffff;
