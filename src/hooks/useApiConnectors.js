@@ -6,20 +6,18 @@ import { useDispatch } from 'react-redux'
 import { NODE_ENV } from '../utils/config'
 
 // reducer actions
+import { set_current_skill_item } from '../store/skills-store/slices/skillSlice'
 import { 
   set_skill_categories,
-  set_current_skill_category,
-  // add_skill_category,
+  add_skill_category,
   update_skill_category,
   delete_skill_category
 } from '../store/skills-store/slices/skillCategorySlice'
 import { 
   set_show_skill_form,
   set_add_form,
-  // set_skill_category_title,
-  // set_skill_category_description
 } from '../store/skills-store/slices/skillFormSlice'
-import { set_proto_skills } from '../store/skills-store/slices/protoSkillSlice'
+import { add_proto_skill, delete_proto_skill, edit_proto_skill, set_proto_skills } from '../store/skills-store/slices/protoSkillSlice'
 import {
   add_user_skill,
   delete_user_skill,
@@ -49,24 +47,22 @@ import isArray from '../utils/isArray'
 
 const useApiConnectors = () => {
   const dispatch = useDispatch()
-  const {
-    currentSkillCategory, 
-    skillCategoryForm
-  } = useStateSelectors()
+  const {currentSkillItem} = useStateSelectors()
   const {setMentors} = useBookingContext() // TODO: maybe better to set mentors locally and restrict the hook to use reducer actions only
 
   // ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
   // ! HELPERS
   // * adds specific params to params object in the axios call
+  // TODO: skillCategoryForm doesn't exist anymore!
   // used by createSkillCategory and editSkillCategory
-  const generateSkillCategoryDescription = () => {
-    if (skillCategoryForm.skillCategoryDescription.length > 0) {
-      return {
-        skillCategoryDescription: skillCategoryForm.skillCategoryDescription
-      }
-    }
-  }
+  // const generateSkillCategoryDescription = () => {
+  //   if (skillCategoryForm.skillCategoryDescription.length > 0) {
+  //     return {
+  //       skillCategoryDescription: skillCategoryForm.skillCategoryDescription
+  //     }
+  //   }
+  // }
 
   // * excludes empty params from the params object in the axios call
   // used by filtering getters with options object in function call
@@ -95,7 +91,7 @@ const useApiConnectors = () => {
 
   // ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-  // ! GET SKILL CATEGORY
+  // ! GET SKILL CATEGORIES
   const getSkillCategories = async ({
     page = 1, 
     limit = 50
@@ -150,11 +146,7 @@ const useApiConnectors = () => {
         logIfNodeDev('createSkillCategory API response: ', res)
 
         if (res.status === 201) {
-          // dispatch(add_skill_category(res.data.category))
-          // dispatch(set_skill_category_title(''))
-          // dispatch(set_skill_category_description(''))
           dispatch(set_add_form(false))
-          // dispatch(set_show_skill_category_form(false))
           toast.success('Category added!')
           getSkillCategories()
         }
@@ -188,7 +180,6 @@ const useApiConnectors = () => {
   
         if (res.status === 200) {
           dispatch(update_skill_category(res.data.updatedCategory))
-          dispatch(set_current_skill_category(null))
           // dispatch(set_show_skill_category_form(false))
           toast.success('Category updated!')
         }
@@ -281,10 +272,92 @@ const useApiConnectors = () => {
     }, NODE_ENV === 'dev' ? 0 : 0)
   }
 
+  // ! CREATE PROTO SKILL
+  const createProtoSkill = async (skillData) => {
+    dispatch(set_skills_loading(true))
+    
+    try {
+      const res = await axios({
+        method: 'post',
+        url: '/proto-skill/create-proto-skill',
+        data: skillData
+      })
+
+      logIfNodeDev('createProtoSkill API res: ', res)
+
+      if (res.status === 201) {
+        dispatch(add_proto_skill(res.data.populatedSkill))
+        dispatch(set_add_form(false))
+        dispatch(set_show_skill_form(false))
+        toast.success('Skill created!')
+      }
+    } catch (error) {
+      logIfNodeDev('createProtoSkill API error: ', error)
+
+      const err = error.response.data.error
+      returnError(err)
+    } finally {
+      dispatch(set_skills_loading(false))
+    }
+  }
+
+  // ! EDIT PROTO SKILL
+  const editProtoSkill = async (skillData, skillId) => {
+    dispatch(set_skills_loading(true))
+
+    try {
+      const res = await axios({
+        method: 'patch',
+        url: `/proto-skill/edit-proto-skill/${skillId}`,
+        data: skillData
+      })
+
+      logIfNodeDev('editProtoSkill API res: ', res)
+
+      if (res.status === 200) {
+        dispatch(edit_proto_skill(res.data.populatedSkill))
+        dispatch(set_show_skill_form(false))
+        toast.success('Skill updated!')
+      }
+    } catch (error) {
+      logIfNodeDev('editProtoSkill API error: ', error)
+
+      const err = error.response.data.error
+      returnError(err)     
+    } finally {
+      dispatch(set_skills_loading(false))
+    }
+  }
+
+  // ! DELETE PROTO SKILL
+  const deleteProtoSkill = async (protoSkillId) => {
+    dispatch(set_skill_delete_loading(true))
+
+    try {
+      const res = await axios({
+        method: 'delete',
+        url: `/proto-skill/delete-proto-skill/${protoSkillId}`
+      })
+
+      logIfNodeDev('deleteProtoSkill API response: ', res)
+      
+      if (res.status === 200) {
+        dispatch(delete_proto_skill(protoSkillId))
+        toast.success('Skill deleted!')
+      }
+    } catch (error) {
+      logIfNodeDev('deleteProtoSkill API error: ', error)
+
+      const err = error.response.data.error
+      returnError(err)
+    } finally {
+      dispatch(set_skill_delete_loading(false))
+    }
+  }
+
   // ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
   // ! GET USER SKILLS
-
   const getUserSkills = async (
   // options object
   {
@@ -339,7 +412,6 @@ const useApiConnectors = () => {
   }
 
   // ! CREATE USER SKILL
-
   const createUserSkill = async (skillData) => {
     dispatch(set_skills_loading(true))
 
@@ -354,12 +426,9 @@ const useApiConnectors = () => {
 
       if (res.status === 201) {
         dispatch(add_user_skill(res.data.populatedSkill))
+        dispatch(set_add_form(false))
+        dispatch(set_show_skill_form(false))
         toast.success('Skill created!')
-        // TODO: not fetching again, just remove from the slice state
-        // getUserSkills({
-        //   page: 1,
-        //   limit: 50
-        // }, true, false)
       }
     } catch (error) {
       logIfNodeDev('addUserSkill API error: ', error)
@@ -372,7 +441,6 @@ const useApiConnectors = () => {
   }
 
   // ! EDIT USER SKILL
-
   const editUserSkill = async (skillData, userSkillId) => {
     dispatch(set_skills_loading(true))
 
@@ -383,10 +451,11 @@ const useApiConnectors = () => {
         data: skillData
       })
   
-      logIfNodeDev('editUserSkill API response: ', res.data.populatedSkill._id)
+      logIfNodeDev('editUserSkill API response: ', res)
   
       if (res.status === 200) {
         dispatch(edit_user_skill(res.data.populatedSkill))
+        dispatch(set_show_skill_form(false))
         toast.success('Skill updated!')
       }
     } catch (error) {
@@ -400,7 +469,6 @@ const useApiConnectors = () => {
   }
 
   // ! DELETE USER SKILL
-
   const deleteUserSkill = async (userSkillId) => {
     dispatch(set_skill_delete_loading(true))
     
@@ -415,14 +483,9 @@ const useApiConnectors = () => {
       if (res.status === 200) {
         dispatch(delete_user_skill(userSkillId))
         toast.success('Skill deleted!')
-        // getUserSkills({
-        //   page: 1,
-        //   limit: 50
-        // }, true, false)
       }
     } catch (error) {
       logIfNodeDev('deleteUserSkill API error: ', error)
-      toast.success('Skill deleted!')
 
       const err = error.response.data.error
       returnError(err)
@@ -434,7 +497,6 @@ const useApiConnectors = () => {
   // ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
   // ! GET MENTORS BY UUID
-
   const getMentorsByUuid = async (mentorData) => {
     logIfNodeDev('mentorData in getMentorsByUuid: ', mentorData)
 
@@ -472,7 +534,10 @@ const useApiConnectors = () => {
     editSkillCategory,
     deleteSkillCategory,
     // proto skills
+    createProtoSkill,
     getProtoSkills,
+    editProtoSkill,
+    deleteProtoSkill,
     // user skills
     getUserSkills,
     createUserSkill,
