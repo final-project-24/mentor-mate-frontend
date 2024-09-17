@@ -8,14 +8,14 @@ import { isMobile } from "react-device-detect"
 // reducer actions
 import { set_add_form, set_show_skill_form } from "../../../store/skills-store/slices/skillFormSlice"
 import { set_errors_array } from "../../../store/skills-store/slices/errorsSlice"
-import { set_edit_form } from "../../../store/skills-store/slices/skillFormSlice"
+import { set_current_skill_item } from "../../../store/skills-store/slices/skillSlice"
 
 // hooks
 import useStateSelectors from "../../../hooks/useStateSelectors"
 
 const ButtonCloseForm = () => {
   const dispatch = useDispatch()
-  const {addForm, editForm} = useStateSelectors()
+  const {currentSkillItem, addForm} = useStateSelectors()
 
   const iconClass = classNames('text-lg' , {
     'hover:scale-125 transition': !isMobile
@@ -25,7 +25,6 @@ const ButtonCloseForm = () => {
     dispatch(set_show_skill_form(false))
     dispatch(set_errors_array([]))
     if (addForm) dispatch(set_add_form(false))
-    if (editForm) dispatch(set_edit_form(false))
   }
 
   return (

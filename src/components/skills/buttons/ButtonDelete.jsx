@@ -10,7 +10,7 @@ import useStateSelectors from "../../../hooks/useStateSelectors"
 import { useAuthContext } from "../../../store/authentication-context/AuthenticationContext"
 
 const ButtonDelete = ({skillId}) => {
-  const {deleteUserSkill} = useApiConnectors()
+  const {deleteProtoSkill, deleteUserSkill} = useApiConnectors()
   const {categoriesDeleteLoading} = useStateSelectors()
   const {user} = useAuthContext()
 
@@ -25,6 +25,8 @@ const ButtonDelete = ({skillId}) => {
   const handleClick = async () => {
     if (user.role === 'mentor') {
       await deleteUserSkill(skillId)
+    } else {
+      await deleteProtoSkill(skillId)
     }
   }
 
