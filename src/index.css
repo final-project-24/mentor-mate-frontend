@@ -62,7 +62,8 @@ a:hover {
   --error-color: #e50f0f;
   --card-color: #f9f9f9;
   /* --card-color: #d7e1d6eb;  */
-  --card-color-hover: #f0f0f0; /* added */
+  /* --card-color-hover: #f0f0f0;  */
+  --card-color-hover: #F1F6F4;
 
   /* Typography */
   --font-family: "Arial, sans-serif";
@@ -128,7 +129,8 @@ a:hover {
   --neutral-color: #b7792c;
   --error-color: #e50f0f;
   --card-color: #444444;
-  --card-color-hover: #555555;
+  /* --card-color-hover: #555555; */
+  --card-color-hover: #484848;
   --border-color-base: #6c6c6c;
   --box-shadow-base: 0 2px 4px rgba(0, 0, 0, 0.5);
 
