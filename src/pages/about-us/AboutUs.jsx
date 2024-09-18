@@ -6,6 +6,7 @@ import React from 'react';
 const AboutUs = () => {
   return (
     <Layout>
+      <br />
     <section className="">
       <div className="container mx-auto py-16 px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-8">
@@ -45,7 +46,7 @@ const AboutUs = () => {
           <img
                 src={about} 
                 alt="About us"
-                className="w-full h-auto max-w-lg md:max-w-xl lg:max-w-4xl rounded-lg shadow-md object-cover"
+                className="w-full h-auto max-w-lg md:max-w-xl lg:max-w-2xl rounded-lg shadow-md object-cover"
               />
             </div>
             
