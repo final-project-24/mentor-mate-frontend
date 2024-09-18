@@ -6,6 +6,7 @@ import React from 'react';
 const AboutUs = () => {
   return (
     <Layout>
+      <br />
     <section className="">
       <div className="container mx-auto py-16 px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-8">
@@ -16,6 +17,7 @@ const AboutUs = () => {
             Our mission is to bridge the gap between aspiring professionals and experienced mentors who provide tailored, practical guidance in key 
             fields like technology, language, and career development.
             </p>
+            <br/>            
             <h3 className="text-3xl font-extrabold text-black sm:text-4xl">Personalized Mentorship Tailored to Your Unique Journey</h3>
             <p className="mt-4 text-lg"style={{ color: "#333" }}>
             We understand that everyone's journey is unique, so we’ve built a platform that offers
@@ -24,6 +26,7 @@ const AboutUs = () => {
              we connect you with mentors who are aligned with your ambitions, 
              helping you make informed decisions and progress in meaningful ways.
             </p>
+            <br/> 
             <h3 className="text-3xl font-extrabold text-black sm:text-4xl">Learn Your Way, Grow Together</h3>
             <p className="mt-4 text-grey-600 text-lg">
             Learning should be flexible, which is why our platform allows you to access mentorship on your terms. 
