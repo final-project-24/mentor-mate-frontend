@@ -75,7 +75,7 @@ export default function App() {
                   <Route path="/playground" element={<Playground />} />
                   <Route path="*" element={<NotFound />} />
                   <Route path="/pricing" element={<Pricing />} />
-                  <Route path="/about-us" element={<AboutUs />} />
+                  <Route path="/about" element={<AboutUs />} />
                   <Route path="/contact" element={<Contact />} />
                 </Routes>
               </DarkModeProvider>

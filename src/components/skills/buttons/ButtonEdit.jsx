@@ -1,22 +1,30 @@
 /* eslint-disable react/prop-types */
 import classNames from "classnames"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faPen } from "@fortawesome/free-solid-svg-icons"
 import { useDispatch } from "react-redux"
 import { isMobile } from "react-device-detect"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faPen } from "@fortawesome/free-solid-svg-icons"
 
 // reducer actions
-import { set_show_skill_form } from "../../../store/skills-store/slices/skillFormSlice"
+import { set_current_skill_item } from "../../../store/skills-store/slices/skillSlice"
+import {
+  set_show_skill_form, 
+  set_skill,
+  set_proficiency,
+  set_notes
+} from "../../../store/skills-store/slices/skillFormSlice"
 
 // hooks
 import useStateSelectors from "../../../hooks/useStateSelectors"
-import { set_edit_form } from "../../../store/skills-store/slices/skillFormSlice"
-import { set_current_user_skill } from "../../../store/skills-store/slices/userSkillsSlice"
+import { useAuthContext } from "../../../store/authentication-context/AuthenticationContext"
 
 const ButtonEdit = ({skill}) => {
   const dispatch = useDispatch()
+  const {user} = useAuthContext()
+  const isMentor = user.role === 'mentor'
   const {skillsLoading} = useStateSelectors()
 
+  // ! classes
   const btnClass = classNames('flex items-center', {
     'opacity-30' : skillsLoading
   })
@@ -26,9 +34,16 @@ const ButtonEdit = ({skill}) => {
   })
 
   const handleClick = () => {
-    dispatch(set_current_user_skill(skill))
+    dispatch(set_current_skill_item(skill))
     dispatch(set_show_skill_form(true))
-    dispatch(set_edit_form(true))
+
+    if (isMentor) {
+      dispatch(set_proficiency(skill.proficiency))
+      dispatch(set_notes(skill.notes))
+    } else {
+      dispatch(set_skill(skill.protoSkillTitle))
+      dispatch(set_notes(skill.protoSkillDescription))
+    }
   }
 
   return (

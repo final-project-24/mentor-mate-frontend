@@ -3,7 +3,9 @@ import { useDispatch } from "react-redux"
 import { isMobile } from "react-device-detect"
 
 // reducer actions
-import { set_add_form, set_show_skill_form } from "../../../store/skills-store/slices/skillFormSlice"
+import { set_add_form, set_notes, set_proficiency, set_show_skill_form, set_skill } from "../../../store/skills-store/slices/skillFormSlice"
+import { set_errors_array } from "../../../store/skills-store/slices/errorsSlice"
+import { set_current_skill_item } from "../../../store/skills-store/slices/skillSlice"
 
 const ButtonOpenForm = () => {
   const dispatch = useDispatch()
@@ -13,8 +15,15 @@ const ButtonOpenForm = () => {
   })
 
   const handleClick = () => {
+    setTimeout(() => {
+      dispatch(set_current_skill_item(null))
+    }, 200) // TODO: without this delay the state variable is cleared too late
+    dispatch(set_errors_array([]))
     dispatch(set_show_skill_form(true))
     dispatch(set_add_form(true))
+    dispatch(set_skill(''))
+    dispatch(set_proficiency(''))
+    dispatch(set_notes(''))
   }
 
   return (

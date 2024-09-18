@@ -1,6 +1,38 @@
 /* Add this CSS class for the container */
 .calendar-wrapper {
-    background-color: #f0f0f0; /* Grey background */
-    padding: 16px; /* Padding for better spacing */
-    border-radius: 8px; /* Optional: Rounded corners */
-  }
+  background-color: #f0f0f0; /* Grey background */
+  padding: 16px; /* Padding for better spacing */
+  border-radius: 8px; /* Optional: Rounded corners */
+}
+
+/* Override styles for the button */
+.selected-slot-info button {
+  background-color: #000000 !important; /* Black background */
+  color: #ffffff !important; /* White text */
+}
+
+/* Override styles for selectable calendar spots */
+.rbc-slot-selecting {
+  background-color: #000000 !important; /* Black background */
+}
+
+/* Override styles for the text below the spots */
+.rbc-event-label {
+  color: #000000 !important; /* Black text */
+}
+
+/* Override styles for available slots inside the calendar */
+.rbc-event {
+  background-color: #000000 !important; /* Black background */
+  color: #ffffff !important; /* White text */
+}
+
+/* Override styles for the text indicating more available spots */
+.rbc-show-more {
+  color: #000000 !important; /* Black text */
+}
+
+/* Override styles for the Add Availability button container */
+.selected-slot-info {
+  background-color: #f0f0f0 !important; /* Grey background */
+}
