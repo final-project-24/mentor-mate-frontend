@@ -1,22 +1,17 @@
-.login-button-container {
-  width: 200px;
-}
-
-.login-button-container a {
-  display: inline-block;
-  width: 100%;
-  background-color: var(--accent-color);
+.login-button-container button {
+   width: 100%; 
+  background-color: black;
   color: var(--primary-color);
   border: none;
   border-radius: var(--border-radius-small);
   cursor: pointer;
-  /* margin-bottom: var(--margin-small); */
+  margin-bottom: var(--margin-small);
   padding: var(--padding-small);
-  text-align: center;
-  text-decoration: none;
   transition: var(--transition-base);
+  
+ 
 }
 
-.login-button-container a:hover {
+ button:hover {
   background-color: var(--accent-color-hover);
 }
