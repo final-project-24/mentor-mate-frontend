@@ -4,6 +4,8 @@ import LogoutButton from "../logout/Logout.jsx";
 import LoginButton from "../login-button/LoginButton.jsx";
 import { useAuthContext } from "../../store/authentication-context/AuthenticationContext.jsx";
 import { FaBars, FaTimes } from "react-icons/fa";
+import Logo from '../../assets/images/mentormateLogo.svg'
+import LogoSmall from '../../assets/images/icon.svg'
 import "./Header.css";
 
 const Header = () => {
@@ -82,21 +84,20 @@ const Header = () => {
 
   return (
     <div id="header">
-      <nav className="header-container bg-primary fixed top-0 w-full h-[80px] flex items-center px-4 md:px-6 z-50  border-b-2 border-accent ">
+      <nav className="header-container bg-[#d7e1d6eb] fixed top-0 w-full h-[80px] flex items-center lg:grid lg:grid-cols-3   px-4 md:px-6 z-50 ">
         {/* Logo Section */}
 
         <div
           className={`flex items-center ${
-            nav
-              ? "absolute w-full top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 "
-              : "lg:justify-start"
+            nav ? "absolute w-full   z-50  " : "lg:justify-start"
           } flex-grow justify-center`}
         >
           <Link
             to={isLoggedIn ? "/dashboard" : "/"}
-            className="text-xl font-bold text-accent hover:text-neutral"
+            className="text-xl font-bold text-black hover:text-neutral "
           >
-            Mentor Mate
+            <img src={Logo} alt="" className="hidden lg:grid h-[80px] py-1 " />
+            <img src={LogoSmall} alt="" className="w-1/6 lg:hidden" />
           </Link>
         </div>
 
@@ -116,7 +117,7 @@ const Header = () => {
         </div> */}
         {/* Navigation Links for Desktop */}
         <ul
-          className={`hidden lg:flex flex-grow gap-2 text-sm lg:text-lg xl:text-lg 2xl:text-xl lg:gap-3`}
+          className={`hidden lg:flex flex-grow gap-2 text-sm lg:text-lg xl:text-lg 2xl:text-xl lg:gap-10  justify-center `}
         >
           {navLinks.map(({ to, label }) => (
             <li key={to}>
@@ -133,7 +134,7 @@ const Header = () => {
         </ul>
         {/* Login/Logout Button */}
         <div
-          className={`ml-auto flex items-center ${nav ? "hidden" : "lg:flex"}`}
+          className={`ml-auto flex items-center  ${nav ? "hidden" : "lg:flex"}`}
         >
           {!isLoggedIn ? (
             <Link
@@ -143,7 +144,7 @@ const Header = () => {
               Login
             </Link>
           ) : (
-            <div className="hidden lg:flex">
+            <div className="hidden lg:flex pt-2 border border-red-600">
               <LogoutButton />
             </div>
           )}
@@ -171,7 +172,7 @@ const Header = () => {
             {/* Menu taking up 3/4 of the screen */}
             <ul
               id="mobile-menu"
-              className="w-3/4  bg-[#fffdfd] text-gray-700 flex flex-col pt-[100px] items-center "
+              className="w-3/4 bg-[#d7e1d6eb] text-gray-700 flex flex-col pt-[100px] items-center "
             >
               {navLinks.map(({ to, label }) => (
                 <li

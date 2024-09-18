@@ -13,13 +13,13 @@
   width: 100%;
   /* border-bottom-width: var(--border-width-base); */
   /* border-bottom-color: var(--border-color-base); */
-  background-color: var(--card-color);
+   background-color: var(--card-color); 
   position: sticky;
   top: 0;
   z-index: 1001;
 }
 #header a {
-  color: var(--accent-color);
+  color: black;
 }
 
 #header a:hover {

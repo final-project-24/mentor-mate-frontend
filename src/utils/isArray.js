@@ -1,3 +1,3 @@
-const isArray = (error) => Array.isArray(error)
+const isArray = (arr) => Array.isArray(arr)
 
 export default isArray

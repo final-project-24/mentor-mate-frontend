@@ -12,9 +12,9 @@ const userSkillSlice = createSlice({
     set_user_skills: (state, action) => {
       state.userSkills = action.payload
     },
-    set_current_user_skill: (state, action) => {
-      state.currentUserSkill = action.payload
-    },
+    // set_current_user_skill: (state, action) => {
+    //   state.currentUserSkill = action.payload
+    // },
     add_user_skill: (state, action) => {
       state.userSkills = [action.payload, ...state.userSkills]
     },
@@ -33,7 +33,7 @@ const userSkillSlice = createSlice({
 
 export const {
   set_user_skills,
-  set_current_user_skill,
+  // set_current_user_skill,
   add_user_skill,
   edit_user_skill,
   delete_user_skill

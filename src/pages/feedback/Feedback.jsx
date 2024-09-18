@@ -31,8 +31,8 @@ function Feedback() {
 
   return (
     <Layout>
-      <div>
-        <h2>{isMentor ? "Mentor Feedback" : "Mentee Feedback"}</h2>
+      <div className="pt-[110px] w-[90%] mx-auto">
+        <h2 className="text-center pb-10 text-lg ">{isMentor ? "Mentor Feedback" : "Mentee Feedback"}</h2>
         <FeedbackForm isMentor={isMentor} onSubmit={handleFeedbackSubmit} />
       </div>
     </Layout>

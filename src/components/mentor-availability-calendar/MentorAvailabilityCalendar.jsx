@@ -87,11 +87,11 @@ const handleSelectSlot = (slotInfo) => {
 
   return (
     <div
-      className="calendar-container flex flex-col lg:flex-row mb-[100px]"
+      className="calendar-container w-[90%] h-[90%] border  border-red-600  flex flex-col lg:flex-row mb-[100px]"
       style={{ height: "calc(100vh)" }}
     >
       <div
-        className={`calendar flex flex-col lg:flex transition-all duration-300 border border-red-600 ml-1  ${
+        className={`calendar flex flex-col lg:flex transition-all duration-300   ${
           selectedSlot ? "lg:w-[70%]" : "w-full"
         }`}
       >
@@ -109,7 +109,7 @@ const handleSelectSlot = (slotInfo) => {
         </div>
       </div>
       {userRole === "mentor" && selectedSlot && (
-        <div className="selected-slot-info lg:w-[30%] mt-4 p-4 bg-blue-100 rounded flex flex-col items-center justify-center transition-all duration-300">
+        <div className="selected-slot-info lg:w-[50%] mt-4 p-4 bg-blue-100 rounded flex flex-col items-center justify-center transition-all duration-300">
           <h3 className="text-lg font-semibold">Add Availability</h3>
           <p>
             Start: {moment(selectedSlot.start).format("MMMM Do YYYY, h:mm a")}
@@ -129,45 +129,3 @@ const handleSelectSlot = (slotInfo) => {
 
 export default MentorAvailabilityCalendar;
 
-/*
-  The following is the commented-out code:
-  
-  return (
-    <div
-      className="calendar-container flex flex-col lg:flex-row"
-      style={{ height: "calc(100vh)" }}
-    >
-      <div
-        className={`calendar flex transition-all duration-300 ${
-          selectedSlot ? "lg:w-[70%]" : "w-full"
-        }`}
-      >
-        <Calendar
-          localizer={localizer}
-          events={events}
-          startAccessor="start"
-          endAccessor="end"
-          style={{ height: "100vh", width: "100%" }}
-          selectable={userRole === "mentor"}
-          onSelectSlot={handleSelectSlot}
-          onSelectEvent={handleBookSlot}
-        />
-      </div>
-      {userRole === "mentor" && selectedSlot && (
-        <div className="selected-slot-info lg:w-[30%] mt-4 p-4 bg-blue-100 rounded flex flex-col items-center justify-center transition-all duration-300">
-          <h3 className="text-lg font-semibold">Add Availability</h3>
-          <p>
-            Start: {moment(selectedSlot.start).format("MMMM Do YYYY, h:mm a")}
-          </p>
-          <p>End: {moment(selectedSlot.end).format("MMMM Do YYYY, h:mm a")}</p>
-          <button
-            className="mt-2 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-            onClick={handleAddAvailability}
-          >
-            Add Availability
-          </button>
-        </div>
-      )}
-    </div>
-  );
-*/
