@@ -86,7 +86,7 @@
     display: none; /* Hide the toggle button on larger screens */
   }
   .dashboard-sidebar-nav {
-    margin-top: var(--margin-small);
+    margin-top: 0;
   }
 }
 
