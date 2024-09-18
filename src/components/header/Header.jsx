@@ -84,7 +84,7 @@ const Header = () => {
 
   return (
     <div id="header">
-      <nav className="header-container bg-[#d7e1d6eb] fixed top-0  w-full h-[80px] flex flex-row lg:grid lg:grid-cols-3 px-4 md:px-6 lg:px-0 z-50 ">
+      <nav className="header-container bg-[#d7e1d6eb] fixed top-0  w-full h-[80px] flex flex-row lg:grid lg:grid-cols-[250px_auto_250px] lg:w-screen px-4 md:px-6 lg:px-0 z-50 ">
         {/* Logo Section */}
 
         <div
@@ -99,60 +99,67 @@ const Header = () => {
             <img
               src={Logo}
               alt=""
-              className="hidden lg:grid lg:w-[250px] lg:px-2 h-[80px] py-2 border border-red-600 "
+              className="hidden lg:grid lg:w-[250px] lg:px-2 h-[80px] py-2  "
             />
             <img
               src={LogoSmall}
               alt=""
-              className="w-1/6 p-1 md:w-2/12 md:p-1  border border-red-600   lg:hidden"
+              className="w-1/6 p-1 md:w-2/12 md:p-1    lg:hidden"
             />
           </Link>
         </div>
 
-        {/* <div
-          className={`flex items-center ${
-            nav
-              ? "absolute w-full top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 "
-              : "lg:justify-start"
-          } flex-grow justify-center`}
-        >
-          <Link
-            to="/dashboard"
-            className="text-xl font-bold text-accent hover:text-neutral"
+        {isLoggedIn ? (
+          <ul
+            className={`hidden lg:flex flex-grow gap-2 text-sm lg:text-[22px] lg:ml-[250px] xl:justify-center lg:justify-start lg:items-center`}
           >
-            Mentor Mate
-          </Link>
-        </div> */}
-        {/* Navigation Links for Desktop */}
-        <ul
-          className={`hidden lg:flex flex-grow gap-2 text-sm lg:text-[25px]  lg:gap-20  justify-center lg:items-center border border-red-600  `}
-        >
-          {navLinks.map(({ to, label }) => (
-            <li key={to}>
-              <NavLink
-                to={to}
-                className={({ isActive }) =>
-                  isActive ? "text-neutral" : "hover:text-neutral"
-                }
-              >
-                {label}
-              </NavLink>
-            </li>
-          ))}
-        </ul>
+            {navLinks.map(({ to, label }) => (
+              <li key={to}>
+                <NavLink
+                  to={to}
+                  className={({ isActive }) =>
+                    isActive ? "text-neutral" : "hover:text-neutral"
+                  }
+                >
+                  {label}
+                </NavLink>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <ul
+            className={`hidden lg:flex flex-grow gap-2 text-sm lg:text-base xl:text-lg  lg:justify-center  lg:items-center`}
+          >
+            {navLinks.map(({ to, label }) => (
+              <li key={to}>
+                <NavLink
+                  to={to}
+                  className={({ isActive }) =>
+                    isActive ? "text-neutral" : "hover:text-neutral"
+                  }
+                >
+                  {label}
+                </NavLink>
+              </li>
+            ))}
+          </ul>
+        )}
+
         {/* Login/Logout Button */}
         <div
-          className={`ml-auto flex items-center  ${nav ? "hidden" : "lg:flex"}`}
+          className={`ml-auto flex items-center w-[250px]  ${
+            nav ? "hidden" : "lg:flex"
+          }`}
         >
           {!isLoggedIn ? (
             <Link
               to="/authentication"
-              className="hidden lg:block text-primary rounded-xl p-2 hover:bg-accent hover:text-primary"
+              className="hidden lg:flex lg:w-[250px] lg:px-5  lg:justify-end pt-2 "
             >
-              Login
+              <LoginButton />
             </Link>
           ) : (
-            <div className="hidden lg:flex lg:w-[250px] lg:px-2  lg:justify-end pt-2 border border-red-600">
+            <div className="hidden lg:flex lg:w-[250px] lg:px-5  lg:justify-end pt-2 ">
               <LogoutButton />
             </div>
           )}
@@ -195,9 +202,9 @@ const Header = () => {
                 <li onClick={closeMenu}>
                   <Link
                     to="/authentication"
-                    className=" text-primary bg-accent rounded-2xl p-2"
+                    className=" text-primary bg-accent rounded-2xl p-2 "
                   >
-                    Login
+                    <LoginButton/>
                   </Link>
                 </li>
               ) : (

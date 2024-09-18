@@ -24,12 +24,12 @@ export default function Footer() {
               <img
                 src={Logo}
                 alt="Logo"
-                className="lg:hidden footer-logo border border-red-600  p-5"
+                className="lg:hidden footer-logo   p-5"
               />
               <img
                 src={iconUrl}
                 alt="Mentormate Logo"
-                className="hidden lg:block  footer-logo mx-auto "
+                className="hidden lg:block p-2  footer-logo mx-auto "
               />
             </a>
             <p className="hidden lg:block  text-center text-lg p-2">

@@ -84,7 +84,7 @@ const Payment = ({ bookingId, offerDetails }) => {
 
       {!paymentStatus && !stripePending && (
         <>
-          <h2 className="payment-title mt-[90px]">Payment Details</h2>
+          <h2 className="payment-title ">Payment Details</h2>
 
           <div className="offer-details">
             <h3>{title}</h3>
@@ -117,13 +117,14 @@ const Payment = ({ bookingId, offerDetails }) => {
                 </Link>
                 .
               </p>
-              <label className="terms-checkbox">
+              <label className="terms-checkbox flex justify-center ">
                 <input
                   type="checkbox"
                   checked={isAgreed}
                   onChange={handleCheckboxChange}
                 />
-                I agree to the Terms and Conditions
+                <p className="px-2"> I agree to the Terms and Conditions</p>
+              
               </label>
             </div>
           )}
@@ -133,8 +134,11 @@ const Payment = ({ bookingId, offerDetails }) => {
               <h3 className="payment-methods-title">
                 Select Your Payment Method
               </h3>
-              <h6>IMPORTANT: If you have a free spot token, please scroll down the page and click the appropriate button to select your free slot.</h6><br />
-              
+              <h6>
+                IMPORTANT: If you have a free spot token, please scroll down the
+                page and click the appropriate button to select your free slot.
+              </h6>
+              <br />
 
               {/* Stripe Payment Integration */}
               <div className="stripe-payment-section">
@@ -155,18 +159,17 @@ const Payment = ({ bookingId, offerDetails }) => {
                 />
               </div>
               <div className="free-slot-section">
-            <p className="instructions">
-              This is a free slot. Click below to proceed without payment.
-            </p>
-            <button
-              className={`free-slot-button ${isFreeSlot ? 'selected' : ''}`}
-              onClick={handleFreeSlotClick}
-            >
-              {isFreeSlot ? 'Free Slot Selected' : 'Select Free Slot'}
-            </button>
-          </div>
+                <p className="instructions">
+                  This is a free slot. Click below to proceed without payment.
+                </p>
+                <button
+                  className={`free-slot-button ${isFreeSlot ? "selected" : ""}`}
+                  onClick={handleFreeSlotClick}
+                >
+                  {isFreeSlot ? "Free Slot Selected" : "Select Free Slot"}
+                </button>
+              </div>
             </div>
-            
           )}
         </>
       )}
