@@ -169,7 +169,7 @@ const isDashboardActive = location.pathname === "/dashboard";
                 <li onClick={closeMenu}>
                   <Link
                     to="/authentication"
-                    className="text-primary bg-accent rounded-2xl p-2"
+                    className="text-primary  rounded-2xl p-2"
                   >
                     <LoginButton />
                   </Link>
