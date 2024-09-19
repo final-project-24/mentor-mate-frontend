@@ -87,7 +87,7 @@ const handleSelectSlot = (slotInfo) => {
 
   return (
     <div
-      className="calendar-container w-[90%] h-[90%] border  border-red-600  flex flex-col lg:flex-row mb-[100px]"
+      className="calendar-container w-100vw h-[90%] lg:w-[100%]  flex flex-col lg:flex-row mb-[100px]"
       style={{ height: "calc(100vh)" }}
     >
       <div

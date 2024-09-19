@@ -134,9 +134,9 @@ a:hover {
   --border-color-base: #6c6c6c;
   --box-shadow-base: 0 2px 4px rgba(0, 0, 0, 0.5);
 
-  body {
+  /* body {
     background: rgb(89, 88, 88) !important;
-  }
+  } */
 }
 
 

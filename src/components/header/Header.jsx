@@ -72,8 +72,8 @@ const isDashboardActive = location.pathname === "/dashboard";
         {/* Logo Section */}
         <div
           className={`flex items-center ${
-            nav ? "absolute w-full z-50" : "lg:justify-start"
-          } flex-grow`}
+            nav ? "absolute  z-50" : "lg:justify-start"
+          }p-1 `}
         >
           <Link
             to={isLoggedIn ? "/dashboard" : "/"}
@@ -87,7 +87,7 @@ const isDashboardActive = location.pathname === "/dashboard";
             <img
               src={LogoSmall}
               alt="Logo Small"
-              className="w-1/6 p-1 md:w-2/12 md:p-1 lg:hidden"
+              className="w-[80px] p-1 md:w-[80px] md:p-2 lg:hidden"
             />
           </Link>
         </div>
@@ -143,16 +143,18 @@ const isDashboardActive = location.pathname === "/dashboard";
 
         {/* Mobile Menu */}
         {nav && (
-          <div className="fixed top-[80px] left-0 w-full h-[calc(100vh-80px)] flex z-40">
+          <div
+          id="blurring"
+            className="fixed top-[80px] left-0 w-full h-[calc(100vh-80px)] flex z-10">
             {/* Blurred 1/4 screen overlay */}
             <div
-              className="w-1/4 backdrop-blur-sm z-40"
+              className="w-1/4  backdrop-blur-sm z-50 "
               onClick={closeMenu}
             ></div>
             {/* Menu taking up 3/4 of the screen */}
             <ul
               id="mobile-menu"
-              className="w-3/4 bg-[#d7e1d6eb] text-gray-700 flex flex-col pt-[100px] items-center"
+              className="w-3/4 bg-[#d7e1d6] text-gray-700 flex flex-col pt-[100px] items-center"
             >
               {navLinks.map(({ to, label }) => (
                 <li
